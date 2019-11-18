@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "log": "conventional-changelog --config commit/lib/log -i CHANGELOG.md -s -r 0",
-    "cz": "git add . && git cz"
+    "cz": "npm run log && git add . && git cz"
   },
   "repository": {
     "type": "git",

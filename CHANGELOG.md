@@ -17,6 +17,7 @@
 ### 🐛 Bug 修复
 
 * **changelog：** fix some changelog ([3bc624a](https://github.com/luoxue-victor/learn_webpack/commit/3bc624a))
+* **commit config：** 修改提交代码配置 ([dd90ff9](https://github.com/luoxue-victor/learn_webpack/commit/dd90ff9))
 
 
 
