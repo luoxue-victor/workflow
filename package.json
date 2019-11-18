@@ -1,0 +1,41 @@
+{
+  "name": "learn_webpack",
+  "version": "1.0.0",
+  "description": "学习webpack",
+  "main": "index.js",
+  "scripts": {
+    "log": "conventional-changelog --config node_modules/jimi-web-changelog/lib/log -i CHANGELOG.md -s -r 1",
+    "cz": "git add . && git cz"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luoxue-victor/learn_webpack.git"
+  },
+  "author": "jijiang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/luoxue-victor/learn_webpack/issues"
+  },
+  "homepage": "https://github.com/luoxue-victor/learn_webpack#readme",
+  "dependencies": {
+    "@commitlint/config-conventional": "^8.2.0",
+    "jimi-web-changelog": "^0.1.7",
+    "webpack": "^4.41.2"
+  },
+  "devDependencies": {
+    "commitizen": "^4.0.3",
+    "commitlint": "^8.2.0",
+    "conventional-changelog-cli": "^2.0.28",
+    "husky": "^3.0.9"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/jimi-web-changelog/lib/cz"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  }
+}
