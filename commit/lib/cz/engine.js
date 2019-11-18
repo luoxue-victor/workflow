@@ -21,7 +21,6 @@ const getList = (obj) => {
   }));
 };
 
-
 module.exports = function (options) {
   const typeList = getList(options.types);
 

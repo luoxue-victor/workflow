@@ -8,7 +8,7 @@ module.exports = {
       2,
       'always',
       [
-        "ci",
+        "ci",       // 集成开发集成部署
         "docs",     // Adds or alters documentation. 仅仅修改了文档，比如README, CHANGELOG, CONTRIBUTE等等
         "chore",    // Other changes that don't modify src or test files. 改变构建流程、或者增加依赖库、工具等
         "feat",     // Adds a new feature. 新增feature
