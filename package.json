@@ -19,7 +19,9 @@
   "homepage": "https://github.com/luoxue-victor/learn_webpack#readme",
   "dependencies": {
     "@commitlint/config-conventional": "^8.2.0",
+    "inquirer": "^7.0.0",
     "jimi-web-changelog": "^0.1.7",
+    "prompt": "^1.0.0",
     "webpack": "^4.41.2"
   },
   "devDependencies": {

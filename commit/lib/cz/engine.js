@@ -10,7 +10,7 @@ const filter = (array) => {
     return x;
   });
 };
- 
+
 // 获取选择列表
 const getList = (obj) => {
   const objLeng = longest(Object.keys(obj)).length * 2 + 1;
@@ -21,13 +21,15 @@ const getList = (obj) => {
   }));
 };
 
+
 module.exports = function (options) {
   const typeList = getList(options.types);
+  const inquirer = require('inquirer')
+
 
   return {
     prompter(cz, commit) {
       console.log(chalk.yellow('\n标题会在100个字符后进行裁剪。 主体内容每行会在100个字符后自动换行，手动换行请直接输入"\\n"。\n'));
-
       cz.prompt([
         {
           type: 'list',
@@ -35,11 +37,16 @@ module.exports = function (options) {
           message: '选择你提交的信息类型:',
           choices: typeList
         }, {
-          type: 'input',
+          type: 'string',
           name: 'scope',
-          required: true,
-          pattern: /^\w+$/,
-          message: '本次提交的改变所影响的范围？',
+          // validate(str) {
+          //   if (str.length > 1) {
+          //     return str.length > 1
+          //   } else {
+          //     console.log('字符长度大于1')
+          //   }
+          // },
+          message: '本次提交的改变所影响的范围？必填',
         }, {
           type: 'input',
           name: 'subject',
@@ -73,44 +80,45 @@ module.exports = function (options) {
             return answers.isIssueAffected;
           }
         }
-      ]).then((answers) => {
-        const maxLineWidth = 100;
+      ])
+        .then((answers) => {
+          const maxLineWidth = 100;
 
-        const wrapOptions = {
-          trim: true,
-          newline: '\n',
-          indent: '',
-          width: maxLineWidth
-        };
+          const wrapOptions = {
+            trim: true,
+            newline: '\n',
+            indent: '',
+            width: maxLineWidth
+          };
 
-        // 判断影响范围是否输入
-        const scope = answers.scope ? `(${answers.scope.trim()})` : '';
+          // 判断影响范围是否输入
+          const scope = answers.scope ? `(${answers.scope.trim()})` : '';
 
-        // 限制短描述为 100 个字符
-        console.log('**********')
-        console.log(answers.type)
-        console.log(scope)
-        console.log(answers.subject.trim())
-        console.log('**********')
-        const head = (`${answers.type + scope}: ${answers.subject.trim()}`).slice(0, maxLineWidth);
+          // 限制短描述为 100 个字符
+          console.log('**********')
+          console.log(answers.type)
+          console.log(scope)
+          console.log(answers.subject.trim())
+          console.log('**********')
+          const head = (`${answers.type + scope}: ${answers.subject.trim()}`).slice(0, maxLineWidth);
 
-        // 限制详细描述最长宽度为 100 个字符串
-        const body = wrap(answers.body, wrapOptions);
+          // 限制详细描述最长宽度为 100 个字符串
+          const body = wrap(answers.body, wrapOptions);
 
-        // Apply breaking change prefix, removing it if already present
-        let breaking = answers.breaking ? answers.breaking.trim() : '';
+          // Apply breaking change prefix, removing it if already present
+          let breaking = answers.breaking ? answers.breaking.trim() : '';
 
-        // 如果手动输入了 不兼容变更，则过滤掉，最后进行长度限制
-        breaking = breaking ? `不兼容变更: ${breaking.replace(/^不兼容变更: /, '')}` : '';
-        breaking = wrap(breaking, wrapOptions);
+          // 如果手动输入了 不兼容变更，则过滤掉，最后进行长度限制
+          breaking = breaking ? `不兼容变更: ${breaking.replace(/^不兼容变更: /, '')}` : '';
+          breaking = wrap(breaking, wrapOptions);
 
-        const issues = answers.issues ? wrap(answers.issues, wrapOptions) : '';
+          const issues = answers.issues ? wrap(answers.issues, wrapOptions) : '';
 
-        const footer = filter([breaking, issues]).join('\n\n');
+          const footer = filter([breaking, issues]).join('\n\n');
 
-        console.log('------222----',head, body, footer, '------222---------')
-        commit(`${head}\n\n${body}\n\n${footer}`);
-      });
+          console.log('------222----', head, body, footer, '------222---------')
+          commit(`${head}\n\n${body}\n\n${footer}`);
+        });
     }
   };
 };

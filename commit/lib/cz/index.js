@@ -1,5 +1,4 @@
 'format cjs';
-
 const engine = require('./engine');
 
 module.exports = engine({
