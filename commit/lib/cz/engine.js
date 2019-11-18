@@ -10,7 +10,7 @@ const filter = (array) => {
     return x;
   });
 };
-
+ 
 // 获取选择列表
 const getList = (obj) => {
   const objLeng = longest(Object.keys(obj)).length * 2 + 1;
@@ -37,7 +37,9 @@ module.exports = function (options) {
         }, {
           type: 'input',
           name: 'scope',
-          message: '本次提交的改变所影响的范围？ (按 enter 键跳过)\n',
+          required: true,
+          pattern: /^\w+$/,
+          // message: '本次提交的改变所影响的范围？',
         }, {
           type: 'input',
           name: 'subject',

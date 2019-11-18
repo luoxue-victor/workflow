@@ -46,25 +46,25 @@ module.exports = engine({
     }
   },
   scopes: {
-    整个项目: {
+    global: {
       description: '影响整个项目',
       title: 'global'
     },
-    视图层: {
+    ui: {
       description: 'UI 界面',
       title: 'ui'
     },
-    数据层: {
+    data: {
       description: '数据变化',
       title: 'data'
     },
-    公共模块: {
+    component: {
       description: '影响公共组件使用',
       title: 'component'
     },
-    未知: {
+    unknown: {
       description: '不知道影响范围',
-      title: 'component'
+      title: 'unknown'
     }
   }
 });
