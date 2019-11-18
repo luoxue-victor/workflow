@@ -24,8 +24,6 @@ const getList = (obj) => {
 
 module.exports = function (options) {
   const typeList = getList(options.types);
-  const inquirer = require('inquirer')
-
 
   return {
     prompter(cz, commit) {
@@ -95,11 +93,6 @@ module.exports = function (options) {
           const scope = answers.scope ? `(${answers.scope.trim()})` : '';
 
           // 限制短描述为 100 个字符
-          console.log('**********')
-          console.log(answers.type)
-          console.log(scope)
-          console.log(answers.subject.trim())
-          console.log('**********')
           const head = (`${answers.type + scope}: ${answers.subject.trim()}`).slice(0, maxLineWidth);
 
           // 限制详细描述最长宽度为 100 个字符串
@@ -116,7 +109,6 @@ module.exports = function (options) {
 
           const footer = filter([breaking, issues]).join('\n\n');
 
-          console.log('------222----', head, body, footer, '------222---------')
           commit(`${head}\n\n${body}\n\n${footer}`);
         });
     }
