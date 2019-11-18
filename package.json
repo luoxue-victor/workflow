@@ -4,7 +4,7 @@
   "description": "学习webpack",
   "main": "index.js",
   "scripts": {
-    "log": "conventional-changelog --config node_modules/jimi-web-changelog/lib/log -i CHANGELOG.md -s -r 1",
+    "log": "conventional-changelog --config commit/lib/log -i CHANGELOG.md -s -r 1",
     "cz": "git add . && git cz"
   },
   "repository": {
@@ -30,7 +30,7 @@
   },
   "config": {
     "commitizen": {
-      "path": "./node_modules/jimi-web-changelog/lib/cz"
+      "path": "commit/lib/cz"
     }
   },
   "husky": {
