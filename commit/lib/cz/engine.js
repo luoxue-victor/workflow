@@ -39,18 +39,18 @@ module.exports = function (options) {
         }, {
           type: 'string',
           name: 'scope',
-          // validate(str) {
-          //   if (str.length > 1) {
-          //     return str.length > 1
-          //   } else {
-          //     console.log('字符长度大于1')
-          //   }
-          // },
-          message: '本次提交的改变所影响的范围？必填',
+          message: '（非必填）本次提交的改变所影响的范围？',
         }, {
           type: 'input',
           name: 'subject',
-          message: '写一个简短的变化描述，尽量包含主谓宾结构，杜绝简单的单词:\n'
+          validate(str) {
+            if (str.length > 1) {
+              return str.length > 1
+            } else {
+              console.log('字符长度大于1')
+            }
+          },
+          message: '（必填）写一个简短的变化描述，尽量包含主谓宾结构，杜绝简单的单词:'
         }, {
           type: 'input',
           name: 'body',
