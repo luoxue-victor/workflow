@@ -39,7 +39,7 @@ module.exports = function (options) {
         }, {
           type: 'string',
           name: 'scope',
-          message: '（非必填）本次提交的改变所影响的范围？',
+          message: '（非必填）本次提交的改变所影响的范围？\n',
         }, {
           type: 'input',
           name: 'subject',
@@ -50,11 +50,11 @@ module.exports = function (options) {
               console.log('字符长度大于1')
             }
           },
-          message: '（必填）写一个简短的变化描述，尽量包含主谓宾结构，杜绝简单的单词:'
+          message: '（必填）写一个简短的变化描述，尽量包含主谓宾结构，杜绝简单的单词:\n'
         }, {
           type: 'input',
           name: 'body',
-          message: '提供更详细的变更描述: (按 enter 跳过)\n'
+          message: '（非必填）提供更详细的变更描述:\n'
         }, {
           type: 'confirm',
           name: 'isBreaking',
