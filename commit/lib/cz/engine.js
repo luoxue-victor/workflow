@@ -39,7 +39,7 @@ module.exports = function (options) {
           name: 'scope',
           required: true,
           pattern: /^\w+$/,
-          // message: '本次提交的改变所影响的范围？',
+          message: '本次提交的改变所影响的范围？',
         }, {
           type: 'input',
           name: 'subject',
