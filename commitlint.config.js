@@ -4,7 +4,7 @@ module.exports = {
     'subject-case': [0, 'never'],
     'subject-empty': [2, 'never'],
     'type-empty': [2, 'never'],
-    'type-enum': [
+    'type-enum': [ 
       2,
       'always',
       [
@@ -17,7 +17,8 @@ module.exports = {
         "refactor", // Rewrites code without feature, performance or bug changes. 代码重构，没有加新功能或者修复bug
         "revert",    // Reverts a previous commit. 回滚到上一个版本                
         "style",    // Improves formatting, white-space. 仅仅修改了空格、格式缩进、都好等等，不改变代码逻辑                
-        "test"     // Adds or modifies tests. 测试用例，包括单元测试、集成测试等                
+        "test",     // Adds or modifies tests. 测试用例，包括单元测试、集成测试等    
+        "新功能",            
       ]
     ]
   }
