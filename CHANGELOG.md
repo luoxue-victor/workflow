@@ -14,4 +14,9 @@
 * **feat：** asdada ([64090c7](https://github.com/luoxue-victor/learn_webpack/commit/64090c7))
 
 
+### 🐛 Bug 修复
+
+* **changelog：** fix some changelog ([3bc624a](https://github.com/luoxue-victor/learn_webpack/commit/3bc624a))
+
+
 
