@@ -1,10 +1,10 @@
 {
-  "name": "learn_webpack",
+  "name": "learn_webpack_aaaaa",
   "version": "1.0.0",
   "description": "学习webpack",
   "main": "index.js",
   "scripts": {
-    "log": "conventional-changelog --config commit/lib/log -i CHANGELOG.md -s -r 0",
+    "log": "conventional-changelog --config ./node_modules/vue-cli-plugin-commitlint/lib/log -i CHANGELOG.md -s -r 0",
     "cz": "npm run log && git add . && git cz"
   },
   "repository": {
@@ -19,17 +19,19 @@
   "homepage": "https://github.com/luoxue-victor/learn_webpack#readme",
   "dependencies": {
     "@commitlint/config-conventional": "^8.2.0",
+    "vue-cli-plugin-dustess-commit": "^1.0.2",
     "webpack": "^4.41.2"
   },
   "devDependencies": {
     "commitizen": "^4.0.3",
     "commitlint": "^8.2.0",
     "conventional-changelog-cli": "^2.0.28",
-    "husky": "^3.0.9"
+    "husky": "^3.1.0",
+    "vue-cli-plugin-commitlint": "^1.0.4"
   },
   "config": {
     "commitizen": {
-      "path": "commit/lib/cz"
+      "path": "./node_modules/vue-cli-plugin-commitlint/lib/cz"
     }
   },
   "husky": {
