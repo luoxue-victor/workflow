@@ -9,14 +9,15 @@
 * **asdasdasdas：** 你爱哈的 ([ea12f9c](https://github.com/luoxue-victor/learn_webpack/commit/ea12f9c))
 * **autoprefixer：** css 自动添加前缀 ([4e88451](https://github.com/luoxue-victor/learn_webpack/commit/4e88451))
 * **config：** add config  option ([83c9f1e](https://github.com/luoxue-victor/learn_webpack/commit/83c9f1e))
-* **feat：** aaaaa ([73abf42](https://github.com/luoxue-victor/learn_webpack/commit/73abf42))
+* **daasd：** asdasd ([0b6ee85](https://github.com/luoxue-victor/learn_webpack/commit/0b6ee85))
+* **feat：** asdada ([64090c7](https://github.com/luoxue-victor/learn_webpack/commit/64090c7))
 * **init：** 项目初始化 ([d7835fb](https://github.com/luoxue-victor/learn_webpack/commit/d7835fb))
+* **sourcemap：** 开启了sourcemap ([5022873](https://github.com/luoxue-victor/learn_webpack/commit/5022873))
 * **webpack：** webpack配置 ([9a1d29c](https://github.com/luoxue-victor/learn_webpack/commit/9a1d29c))
 * 你好 ([6e534da](https://github.com/luoxue-victor/learn_webpack/commit/6e534da))
 * asasdasasd ([8f9515f](https://github.com/luoxue-victor/learn_webpack/commit/8f9515f))
 * asd ([d278787](https://github.com/luoxue-victor/learn_webpack/commit/d278787))
-* **daasd：** asdasd ([0b6ee85](https://github.com/luoxue-victor/learn_webpack/commit/0b6ee85))
-* **feat：** asdada ([64090c7](https://github.com/luoxue-victor/learn_webpack/commit/64090c7))
+* **feat：** aaaaa ([73abf42](https://github.com/luoxue-victor/learn_webpack/commit/73abf42))
 
 
 ### 🐛 Bug 修复

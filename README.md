@@ -1,6 +1,16 @@
 # 一步步从零开始 webpack 搭建一个大型项目
 
-## 课题 1： 打包 src 下的 index.js index.css 到 dist/bundle.js
+> 很多人都或多或少使用过 webpack，但是很少有人能够系统的学习 webpack 配置，遇到错误的时候就会一脸懵，不知道从哪查起？性能优化时也不知道能做什么，网上的优化教程是不是符合自己的项目？等一系列问题！本文从最基础配置一步步到一个完善的大型项目的过程。让你对webpack再也不会畏惧，让它真正成为你的得力助手！
+
+## 课题1
+
+> 打包 src 下的 index.js index.css 到 dist/bundle.js
+
+1. dev 打包出未压缩文件
+2. build 打包出压缩文件
+3. 将 css 打包进 js 文件
+4. 输出 bundle.js
+5. 使用 webpack-chain 重写配置
 
 ### 配置
 
@@ -13,9 +23,9 @@ package.json
     "build": "cross-env NODE_ENV=production webpack" // 生产环境
   },
   "dependencies": {
-    "cross-env": "^6.0.3",
-    "css-loader": "^3.2.0",
-    "rimraf": "^3.0.0",
+    "cross-env": "^6.0.3",  // 兼容各种环境
+    "css-loader": "^3.2.0", 
+    "rimraf": "^3.0.0",     // 删除文件
     "webpack": "^4.41.2"
   },
   "devDependencies": {
@@ -62,7 +72,9 @@ body {
 }
 ```
 
-使用 webpack-chain 修改配置
+### 使用 webpack-chain 重写上面配置
+
+我们用 webpack-chain 来写 webpack 的配置，原因是 webpack-chain 的方式更加灵活
 
 ```js
 const path = require('path');
@@ -97,7 +109,7 @@ config.module
 module.exports = config.toConfig();
 ```
 
-## 课题 2: 将 css、js 打包进 html，并使用 devServer
+## 课题 2: 将 css、js 打包进 html，并开启 dev 跟 build 模式
 
 package.json
 
