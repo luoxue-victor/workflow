@@ -15,14 +15,7 @@ module.exports = () => {
     return map.set(name, require(_)(config, resolve))
   })
 
-  map.forEach((v, key) => {
-    // css 配置
-    if (key === 'css') {
-      v('css', /\.css$/);
-    } else {
-      v()
-    }
-  })
+  map.forEach(v => v());
   
   return config
 }
