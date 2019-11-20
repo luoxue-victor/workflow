@@ -657,3 +657,24 @@ module.exports = {
   background-color: orange;
 }
 ```
+
+### 开启 source map 
+
+```js
+config.devtool('cheap-source-map')
+```
+
+```js
+|--dist
+  |-- app.bundle.js
+  |-- app.bundle.js.map
+  |-- app.css
+  |-- app.css.map
+  |-- index.html
+```
+
+在源文件下会有一行注释，证明开启了 sourcemap
+
+```js
+/*# sourceMappingURL=app.css.map*/
+```

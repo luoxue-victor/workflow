@@ -54,6 +54,7 @@
     "mini-css-extract-plugin": "^0.8.0",
     "postcss-loader": "^3.0.0",
     "postcss-px-to-viewport": "^1.1.1",
+    "style-loader": "^1.0.0",
     "vue-cli-plugin-commitlint": "^1.0.4",
     "webpack-chain": "^6.0.0",
     "webpack-cli": "^3.3.10",

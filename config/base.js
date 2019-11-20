@@ -12,6 +12,8 @@ module.exports = (config, resolve) => {
       // 出口
       .output
       .path(resolve('dist'))
-      .filename('[name].bundle.js');
+      .filename('[name].bundle.js')
+
+    config.devtool('cheap-source-map')
   }
 }

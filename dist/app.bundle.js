@@ -94,7 +94,25 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _ts_index_ts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ts/index.ts */ \"./src/ts/index.ts\");\n\n\n__webpack_require__(/*! ./style/index.css */ \"./src/style/index.css\");\n\n__webpack_require__(/*! ./style/app.css */ \"./src/style/app.css\");\n\n__webpack_require__(/*! ./style/index.less */ \"./src/style/index.less\");\n\n__webpack_require__(/*! ./style/index.scss */ \"./src/style/index.scss\");\n\n__webpack_require__(/*! ./style/index.postcss */ \"./src/style/index.postcss\");\n\nnew _ts_index_ts__WEBPACK_IMPORTED_MODULE_0__[\"default\"]();\nvar h2 = document.createElement('h2');\nh2.className = 'test';\nh2.innerText = 'testaaa';\ndocument.body.append(h2);\n\n//# sourceURL=webpack:///./src/main.js?");
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ts_index_ts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ts/index.ts */ "./src/ts/index.ts");
+
+
+__webpack_require__(/*! ./style/index.css */ "./src/style/index.css");
+
+__webpack_require__(/*! ./style/app.css */ "./src/style/app.css");
+
+__webpack_require__(/*! ./style/index.less */ "./src/style/index.less");
+
+__webpack_require__(/*! ./style/index.scss */ "./src/style/index.scss");
+
+__webpack_require__(/*! ./style/index.postcss */ "./src/style/index.postcss");
+
+new _ts_index_ts__WEBPACK_IMPORTED_MODULE_0__["default"]();
+var h2 = document.createElement('h2');
+h2.className = 'test';
+h2.innerText = 'testaaa';
+document.body.append(h2);
 
 /***/ }),
 
@@ -105,7 +123,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _ts_
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./src/style/app.css?");
+// extracted by mini-css-extract-plugin
 
 /***/ }),
 
@@ -116,7 +134,7 @@ eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./src/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./src/style/index.css?");
+// extracted by mini-css-extract-plugin
 
 /***/ }),
 
@@ -127,7 +145,7 @@ eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./src/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./src/style/index.less?");
+// extracted by mini-css-extract-plugin
 
 /***/ }),
 
@@ -138,7 +156,7 @@ eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./src/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./src/style/index.postcss?");
+// extracted by mini-css-extract-plugin
 
 /***/ }),
 
@@ -149,7 +167,7 @@ eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./src/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./src/style/index.scss?");
+// extracted by mini-css-extract-plugin
 
 /***/ }),
 
@@ -161,7 +179,18 @@ eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./src/
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return A; });\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nvar A = function A() {\n  _classCallCheck(this, A);\n\n  var a = '123';\n  console.log(a);\n};\n\n\n\n//# sourceURL=webpack:///./src/ts/index.ts?");
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return A; });
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var A = function A() {
+  _classCallCheck(this, A);
+
+  var a = '123';
+  console.log(a);
+};
+
+
 
 /***/ }),
 
@@ -172,8 +201,10 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = __webpack_require__(/*! /Users/luoxue/Desktop/learn/learn_webpack/src/main.js */\"./src/main.js\");\n\n\n//# sourceURL=webpack:///multi_./src/main.js?");
+module.exports = __webpack_require__(/*! /Users/luoxue/Desktop/learn/learn_webpack/src/main.js */"./src/main.js");
+
 
 /***/ })
 
 /******/ });
+//# sourceMappingURL=app.bundle.js.map
