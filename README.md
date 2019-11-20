@@ -1,14 +1,12 @@
 # 一步步从零开始 webpack 搭建一个大型项目
 
-> 很多人都或多或少使用过 webpack，但是很少有人能够系统的学习 webpack 配置，遇到错误的时候就会一脸懵，不知道从哪查起？性能优化时也不知道能做什么，网上的优化教程是不是符合自己的项目？等一系列问题！本文从最基础配置一步步到一个完善的大型项目的过程。让你对webpack再也不会畏惧，让它真正成为你的得力助手！
-
+> 很多人都或多或少使用过 webpack，但是很少有人能够系统的学习 webpack 配置，遇到错误的时候就会一脸懵，不知道从哪查起？性能优化时也不知道能做什么，网上的优化教程是不是符合自己的项目？等一系列问题！本文从最基础配置一步步到一个完善的大型项目的过程。让你对 webpack 再也不会畏惧，让它真正成为你的得力助手！
 
 本文从下面几个课题来实现
 
 - 课题 1: css 如何打包进 js？
 
-
-## 课题1: css 如何打包进 js？
+## 课题 1: css 如何打包进 js？
 
 > 打包 src 下的 index.js index.css 到 dist/bundle.js
 
@@ -31,9 +29,9 @@ package.json
     "build": "cross-env NODE_ENV=production webpack" // 生产环境
   },
   "dependencies": {
-    "cross-env": "^6.0.3",  // 兼容各种环境
-    "css-loader": "^3.2.0", 
-    "rimraf": "^3.0.0",     // 删除文件
+    "cross-env": "^6.0.3", // 兼容各种环境
+    "css-loader": "^3.2.0",
+    "rimraf": "^3.0.0", // 删除文件
     "webpack": "^4.41.2"
   },
   "devDependencies": {
@@ -80,6 +78,20 @@ body {
 }
 ```
 
+dist/bundle.js
+
+从打包出来的函数可以看出，webpack 把所有 require 的文件都当成了一个对象，而对象内就是一个 eval 函数
+
+```js
+{
+  "./src/style/index.css": function(module, exports, __webpack_require__) {
+    eval(
+      "exports = module.exports = __webpack_require__(\"./node_modules/css-loader/dist/runtime/api.js\")(false);\n// Module\nexports.push([module.i, \"body {\\n  width: 100%;\\n  height: 100vh;\\n  background-color: orange;\\n}\", \"\"]);\n\n\n//# sourceURL=webpack:///./src/style/index.css?"
+    );
+  }
+}
+```
+
 ### 使用 webpack-chain 重写上面配置
 
 我们用 webpack-chain 来写 webpack 的配置，原因是 webpack-chain 的方式更加灵活
@@ -120,8 +132,6 @@ module.exports = config.toConfig();
 ## 课题 2
 
 将 css、js 打包进 html，并开启 devServer
-
-
 
 package.json
 
@@ -651,12 +661,12 @@ module.exports = {
       ]
     }
   }
-}
+};
 ```
 
 效果
 
-``` css
+```css
 /* index.css */
 .test {
   width: 200px;
@@ -666,9 +676,10 @@ module.exports = {
   background-color: orange;
 }
 ```
+
 转换后
 
-``` css
+```css
 /* index.css */
 .test {
   width: 26.66667vw;
@@ -682,10 +693,10 @@ module.exports = {
 }
 ```
 
-### 开启 source map 
+### 开启 source map
 
 ```js
-config.devtool('cheap-source-map')
+config.devtool('cheap-source-map');
 ```
 
 ```js
