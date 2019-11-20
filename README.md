@@ -607,3 +607,53 @@ dist/app.css
   height: 26.66667vw;
 }
 ```
+
+### 配置 autoprefixer
+
+自动添加 css 前缀
+
+postcss.config.js
+
+```js
+module.exports = {
+  plugins: {
+    autoprefixer: {
+      overrideBrowserslist: [
+        '> 1%',
+        'last 3 versions',
+        'iOS >= 8',
+        'Android >= 4',
+        'Chrome >= 40'
+      ]
+    }
+  }
+}
+```
+
+效果
+
+``` css
+/* index.css */
+.test {
+  width: 200px;
+  height: 200px;
+  color: red;
+  display: flex;
+  background-color: orange;
+}
+```
+转换后
+
+``` css
+/* index.css */
+.test {
+  width: 26.66667vw;
+  height: 26.66667vw;
+  color: red;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: orange;
+}
+```

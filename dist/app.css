@@ -3,6 +3,10 @@
   width: 26.66667vw;
   height: 26.66667vw;
   color: red;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   background-color: orange;
 }
 /* app.css */
