@@ -2,9 +2,17 @@
 
 > 很多人都或多或少使用过 webpack，但是很少有人能够系统的学习 webpack 配置，遇到错误的时候就会一脸懵，不知道从哪查起？性能优化时也不知道能做什么，网上的优化教程是不是符合自己的项目？等一系列问题！本文从最基础配置一步步到一个完善的大型项目的过程。让你对webpack再也不会畏惧，让它真正成为你的得力助手！
 
-## 课题1
+
+本文从下面几个课题来实现
+
+- 课题 1: css 如何打包进 js？
+
+
+## 课题1: css 如何打包进 js？
 
 > 打包 src 下的 index.js index.css 到 dist/bundle.js
+
+css 并不能被 webpack 识别，但是可以通过 loader 来将 css 转换成 js
 
 1. dev 打包出未压缩文件
 2. build 打包出压缩文件
@@ -109,7 +117,11 @@ config.module
 module.exports = config.toConfig();
 ```
 
-## 课题 2: 将 css、js 打包进 html，并开启 dev 跟 build 模式
+## 课题 2
+
+将 css、js 打包进 html，并开启 devServer
+
+
 
 package.json
 
