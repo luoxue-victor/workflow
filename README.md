@@ -80,16 +80,33 @@ body {
 
 dist/bundle.js
 
+我删掉了一些注释，跟一些干扰内容，这个样看起来回更加清晰一点
+
 从打包出来的函数可以看出，webpack 把所有 require 的文件都当成了一个对象，而对象内就是一个 eval 函数
 
 ```js
-{
-  "./src/style/index.css": function(module, exports, __webpack_require__) {
-    eval(
-      "exports = module.exports = __webpack_require__(\"./node_modules/css-loader/dist/runtime/api.js\")(false);\n// Module\nexports.push([module.i, \"body {\\n  width: 100%;\\n  height: 100vh;\\n  background-color: orange;\\n}\", \"\"]);\n\n\n//# sourceURL=webpack:///./src/style/index.css?"
-    );
+(function (modules) {
+  function __webpack_require__(moduleId) {
+    // ...
+    // ...
+    return module.exports;
   }
-}
+  return __webpack_require__(__webpack_require__.s = 0);
+})({
+  "./src/index.js":
+    (function (module, exports, __webpack_require__) {
+
+      eval("const css = __webpack_require__(/*! ./style/index.css */ \"./src/style/index.css\")\nconst a = 100;\nconsole.log(a, css)\n\n//# sourceURL=webpack:///./src/index.js?");
+
+    }),
+
+  "./src/style/index.css":
+    (function (module, exports, __webpack_require__) {
+
+      eval("exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\")(false);\n// Module\nexports.push([module.i, \"body {\\n  width: 100%;\\n  height: 100vh;\\n  background-color: orange;\\n}\", \"\"]);\n\n\n//# sourceURL=webpack:///./src/style/index.css?");
+
+    })
+});
 ```
 
 ### 使用 webpack-chain 重写上面配置
