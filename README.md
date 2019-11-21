@@ -80,32 +80,60 @@ body {
 
 dist/bundle.js
 
-我删掉了一些注释，跟一些干扰内容，这个样看起来回更加清晰一点
+我删掉了一些注释跟一些干扰内容，这样看起来会更清晰一点
 
-从打包出来的函数可以看出，webpack 把所有 require 的文件都当成了一个对象，而对象内就是一个 eval 函数
+- `bundle` 是一个立即执行函数，可以认为它是把所有模块捆绑在一起的一个巨型模块。
+- `webpack` 将所有模块打包成了 `bundle` 的依赖，通过一个对象注入，`0 模块` 就是入口
+- `webpack` 通过 `__webpack_require__` 引入模块
+- `__webpack_require__` 就是我们使用的 `require`，被 `webpack` 封装了一层
 
 ```js
-(function (modules) {
+(function(modules) {
   function __webpack_require__(moduleId) {
-    // ...
-    // ...
+    if (installedModules[moduleId]) {
+      return installedModules[moduleId].exports;
+    }
+    var module = (installedModules[moduleId] = {
+      i: moduleId,
+      l: false,
+      exports: {}
+    });
+
+    modules[moduleId].call(
+      module.exports,
+      module,
+      module.exports,
+      __webpack_require__
+    );
+
+    module.l = true;
+
     return module.exports;
   }
-  return __webpack_require__(__webpack_require__.s = 0);
+  return __webpack_require__((__webpack_require__.s = 0));
 })({
-  "./src/index.js":
-    (function (module, exports, __webpack_require__) {
+  './src/index.js': function(module, exports, __webpack_require__) {
+    eval(`
+      const css = __webpack_require__("./src/style/index.css")
+      const a = 100;
+      console.log(a, css)
+    `);
+  },
 
-      eval("const css = __webpack_require__(/*! ./style/index.css */ \"./src/style/index.css\")\nconst a = 100;\nconsole.log(a, css)\n\n//# sourceURL=webpack:///./src/index.js?");
+  './src/style/index.css': function(module, exports, __webpack_require__) {
+    eval(`
+      exports = module.exports = __webpack_require__("./node_modules/css-loader/dist/runtime/api.js")(false);
+      exports.push([module.i, "body {
+        width: 100%;
+        height: 100vh;
+        background-color: orange;
+      }", ""]);
+    `);
+  },
 
-    }),
-
-  "./src/style/index.css":
-    (function (module, exports, __webpack_require__) {
-
-      eval("exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\")(false);\n// Module\nexports.push([module.i, \"body {\\n  width: 100%;\\n  height: 100vh;\\n  background-color: orange;\\n}\", \"\"]);\n\n\n//# sourceURL=webpack:///./src/style/index.css?");
-
-    })
+  0: function(module, exports, __webpack_require__) {
+    module.exports = __webpack_require__('./src/index.js');
+  }
 });
 ```
 
@@ -146,7 +174,7 @@ config.module
 module.exports = config.toConfig();
 ```
 
-## 课题 2
+## 课题2：搭建开发环境跟生产环境
 
 将 css、js 打包进 html，并开启 devServer
 
