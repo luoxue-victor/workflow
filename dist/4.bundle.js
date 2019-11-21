@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[4],{17:function(n,o,t){"use strict";t.r(o),t.d(o,"default",(function(){return c}));var c=function n(){!function(n,o){if(!(n instanceof o))throw new TypeError("Cannot call a class as a function")}(this,n);console.log("123")}}}]);
+//# sourceMappingURL=4.bundle.js.map
