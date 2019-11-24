@@ -4,7 +4,7 @@
 
 本文从下面几个课题来实现
 
-- 课题 1: [css 如何打包进 js？探究 webpack 打包原理](./docs/课时1.md)。
+- 课题 1: [初探 webpack？探究 webpack 打包原理](./docs/课时1.md)。
 - 课题 2：[搭建开发环境跟生产环境](./docs/课时2.md)
 - 课题 3：[基础配置（loder，ts、babel、css、less、sass、postcss）等](./docs/课时3.md)
 - 课时 4：[webpack 性能优化 1](./docs/课时4.md)

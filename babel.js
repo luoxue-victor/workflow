@@ -24,7 +24,7 @@ module.exports = function (api) {
       '@babel/plugin-transform-typescript', 
       'transform-class-properties',
       '@babel/proposal-object-rest-spread',
-      '@babel/plugin-proposal-optional-chaining'
+      // '@babel/plugin-proposal-optional-chaining'
     ]
   }
 }

@@ -18,6 +18,9 @@
   width: 40vw;
 }
 
-.test{height:40vw}
+/* index.scss */
+.test {
+  height: 40vw;
+}
 
 /*# sourceMappingURL=app.css.map*/
