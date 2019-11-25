@@ -6,5 +6,7 @@
 
 - 课题 1: [初探 webpack？探究 webpack 打包原理](./docs/课时1.md)。
 - 课题 2：[搭建开发环境跟生产环境](./docs/课时2.md)
-- 课题 3：[基础配置（loder，ts、babel、css、less、sass、postcss）等](./docs/课时3.md)
+- 课题 3：[基础配置之loader](./docs/课时3.md)
 - 课时 4：[webpack 性能优化 1](./docs/课时4.md)
+- 课时 5：[手写loader实现可选链](./docs/课时5.md)
+- 课时 6：[webpack编译优化](./docs/课时6.md)

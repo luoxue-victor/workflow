@@ -1,5 +1,41 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["app"],{
 
+/***/ "./node_modules/react/index.js":
+/*!**********************************************************************!*\
+  !*** delegated ./node_modules/react/index.js from dll-reference dll ***!
+  \**********************************************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = (__webpack_require__(/*! dll-reference dll */ "dll-reference dll"))(6);
+
+/***/ }),
+
+/***/ "./node_modules/vue/dist/vue.runtime.esm.js":
+/*!***********************************************************************************!*\
+  !*** delegated ./node_modules/vue/dist/vue.runtime.esm.js from dll-reference dll ***!
+  \***********************************************************************************/
+/*! exports provided: default */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = (__webpack_require__(/*! dll-reference dll */ "dll-reference dll"))(2);
+
+/***/ }),
+
+/***/ "./node_modules/webpack/buildin/global.js":
+/*!*********************************************************************************!*\
+  !*** delegated ./node_modules/webpack/buildin/global.js from dll-reference dll ***!
+  \*********************************************************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = (__webpack_require__(/*! dll-reference dll */ "dll-reference dll"))(0);
+
+/***/ }),
+
 /***/ "./src/main.js":
 /*!*********************!*\
   !*** ./src/main.js ***!
@@ -27,13 +63,12 @@ __webpack_require__(/*! ./style/index.scss */ "./src/style/index.scss");
 
 __webpack_require__.e(/*! import() */ 0).then(__webpack_require__.t.bind(null, /*! ./style/index.postcss */ "./src/style/index.postcss", 7));
 
+__webpack_require__(/*! ./option-chain */ "./src/option-chain.js");
+
 __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.runtime.esm.js");
 
 __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
-
-
-var optionChain = __webpack_require__(/*! ./option-chain */ "./src/option-chain.js");
 
 console.log(Object(_treeShaking__WEBPACK_IMPORTED_MODULE_0__[/* cube */ "a"])(2));
 var h2 = document.createElement('h2');
@@ -58,8 +93,9 @@ var obj = {
     }
   }
 };
-console.log(obj && obj.foo.bar.baz);
-console.log(obj && obj.foo.err.baz);
+console.log(obj && obj.foo && obj.foo.bar && obj.foo.bar.asd); // obj && obj.foo && obj.foo.bar && obj.foo.bar.baz
+
+console.log(obj && obj.foo && obj.foo.err && obj.foo.err.baz); // obj && obj.foo && obj.foo.err && obj.foo.err.baz
 
 /***/ }),
 
@@ -147,6 +183,18 @@ function cube(x) {
 
 module.exports = __webpack_require__(/*! /Users/luoxue/Desktop/learn/learn_webpack/src/main.js */"./src/main.js");
 
+
+/***/ }),
+
+/***/ "dll-reference dll":
+/*!**********************!*\
+  !*** external "dll" ***!
+  \**********************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports) {
+
+module.exports = dll;
 
 /***/ })
 
