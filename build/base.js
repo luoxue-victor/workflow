@@ -7,12 +7,12 @@ const resolve = (p) => {
   return path.join(process.cwd(), p)
 }
 
-module.exports = () => {
+module.exports = (options) => {
   const map = new Map()
 
   files.map(_ => {
     const name = _.split('/').pop().replace('.js', '')
-    return map.set(name, require(_)(config, resolve))
+    return map.set(name, require(_)({config, resolve, options}))
   })
 
   map.forEach(v => v());

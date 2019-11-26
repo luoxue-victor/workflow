@@ -1,4 +1,4 @@
-module.exports = (config, resolve) => {
+module.exports = ({ config }) => {
   const createCSSRule = (lang, test, loader, options = {}) => {
     const baseRule = config.module.rule(lang).test(test);
     const normalRule = baseRule.oneOf('normal');

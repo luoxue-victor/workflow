@@ -1,5 +1,5 @@
 
-module.exports = (config, resolve) => {
+module.exports = ({ config }) => {
   return () => {
     config
       .optimization

@@ -1,14 +1,14 @@
 {
-  "name": "learn_webpack",
-  "version": "1.0.0",
-  "description": "学习webpack",
+  "name": "webpack-box",
+  "version": "1.0.2",
+  "description": "webpack打包器",
   "main": "index.js",
+  "bin": {
+    "box": "bin/box.js"
+  },
   "scripts": {
-    "dll": "cross-env NODE_ENV=production node build/dll.js --report",
     "log": "conventional-changelog --config ./node_modules/vue-cli-plugin-commitlint/lib/log -i CHANGELOG.md -s -r 0",
-    "cz": "npm run log && git add . && git cz",
-    "dev": "cross-env NODE_ENV=development node build/dev.js",
-    "build": "cross-env NODE_ENV=production node build/build.js"
+    "cz": "npm run log && git add . && git cz"
   },
   "repository": {
     "type": "git",

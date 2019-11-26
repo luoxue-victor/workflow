@@ -1,40 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["app"],{
-
-/***/ "./node_modules/react/index.js":
-/*!**********************************************************************!*\
-  !*** delegated ./node_modules/react/index.js from dll-reference dll ***!
-  \**********************************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = (__webpack_require__(/*! dll-reference dll */ "dll-reference dll"))(6);
-
-/***/ }),
-
-/***/ "./node_modules/vue/dist/vue.runtime.esm.js":
-/*!***********************************************************************************!*\
-  !*** delegated ./node_modules/vue/dist/vue.runtime.esm.js from dll-reference dll ***!
-  \***********************************************************************************/
-/*! exports provided: default */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = (__webpack_require__(/*! dll-reference dll */ "dll-reference dll"))(2);
-
-/***/ }),
-
-/***/ "./node_modules/webpack/buildin/global.js":
-/*!*********************************************************************************!*\
-  !*** delegated ./node_modules/webpack/buildin/global.js from dll-reference dll ***!
-  \*********************************************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = (__webpack_require__(/*! dll-reference dll */ "dll-reference dll"))(0);
-
-/***/ }),
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["index2"],{
 
 /***/ "./src/main.js":
 /*!*********************!*\
@@ -184,19 +148,7 @@ function cube(x) {
 module.exports = __webpack_require__(/*! /Users/luoxue/Desktop/learn/learn_webpack/src/main.js */"./src/main.js");
 
 
-/***/ }),
-
-/***/ "dll-reference dll":
-/*!**********************!*\
-  !*** external "dll" ***!
-  \**********************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports) {
-
-module.exports = dll;
-
 /***/ })
 
 },[[0,"manifest","chunk-vendors"]]]);
-//# sourceMappingURL=app.bundle.js.map
+//# sourceMappingURL=index2.bundle.js.map

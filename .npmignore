@@ -1,0 +1,6 @@
+docs
+node_modules
+.gitignore
+commitlint.config.js
+dist
+dll
