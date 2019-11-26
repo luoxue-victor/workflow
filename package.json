@@ -1,6 +1,6 @@
 {
   "name": "webpack-box",
-  "version": "1.0.2",
+  "version": "1.0.0",
   "description": "webpack打包器",
   "main": "index.js",
   "bin": {
@@ -48,9 +48,7 @@
     "typescript": "^3.7.2",
     "vue": "^2.6.10",
     "webpack": "^4.41.2",
-    "webpack-dashboard": "^3.2.0"
-  },
-  "devDependencies": {
+    "webpack-dashboard": "^3.2.0",
     "autoprefixer": "^9.7.2",
     "babel-plugin-transform-imports": "^2.0.0",
     "cache-loader": "^4.1.0",
@@ -73,6 +71,7 @@
     "webpack-deep-scope-plugin": "^1.6.2",
     "webpack-dev-server": "^3.9.0"
   },
+  "devDependencies": {},
   "config": {
     "commitizen": {
       "path": "./node_modules/vue-cli-plugin-commitlint/lib/cz"

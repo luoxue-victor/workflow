@@ -10,7 +10,6 @@ require('./style/index.less')
 require('./style/index.scss')
 import('./style/index.postcss');
 
-require('./option-chain')
 require('vue')
 require('react')
 

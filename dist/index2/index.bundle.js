@@ -27,8 +27,6 @@ __webpack_require__(/*! ./style/index.scss */ "./src/style/index.scss");
 
 __webpack_require__.e(/*! import() */ 0).then(__webpack_require__.t.bind(null, /*! ./style/index.postcss */ "./src/style/index.postcss", 7));
 
-__webpack_require__(/*! ./option-chain */ "./src/option-chain.js");
-
 __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.runtime.esm.js");
 
 __webpack_require__(/*! react */ "./node_modules/react/index.js");
@@ -39,27 +37,6 @@ var h2 = document.createElement('h2');
 h2.className = 'test';
 h2.innerText = 'testaaa';
 document.body.append(h2);
-
-/***/ }),
-
-/***/ "./src/option-chain.js":
-/*!*****************************!*\
-  !*** ./src/option-chain.js ***!
-  \*****************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports) {
-
-var obj = {
-  foo: {
-    bar: {
-      baz: 2
-    }
-  }
-};
-console.log(obj && obj.foo && obj.foo.bar && obj.foo.bar.asd); // obj && obj.foo && obj.foo.bar && obj.foo.bar.baz
-
-console.log(obj && obj.foo && obj.foo.err && obj.foo.err.baz); // obj && obj.foo && obj.foo.err && obj.foo.err.baz
 
 /***/ }),
 

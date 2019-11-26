@@ -2,6 +2,7 @@ module.exports = ({ config, resolve, options }) => {
   let name = 'app',
     entry = options.entry || 'src/main.js',
     dist = options.dist || 'dist';
+    publicPath = options.publicPath || '/'
   if (options.name) {
     name = options.name;
     dist = `${dist}/${name}`
@@ -21,6 +22,7 @@ module.exports = ({ config, resolve, options }) => {
       .output
       .path(resolve(dist))
       .filename('[name].bundle.js')
+      .publicPath(publicPath)
 
     config.devtool('cheap-source-map')
   }
