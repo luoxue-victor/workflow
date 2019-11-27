@@ -1,4 +1,4 @@
-# 1.0.0 (2019-11-26)
+## 1.0.1 (2019-11-27)
 
 ### 🌟 新功能
 
@@ -26,6 +26,7 @@
 
 ### 🐛 Bug 修复
 
+* **build：** 修复了build是 publicPath 的问题 ([ac2ab19](https://github.com/luoxue-victor/learn_webpack/commit/ac2ab19))
 * **changelog：** fix some changelog ([3bc624a](https://github.com/luoxue-victor/learn_webpack/commit/3bc624a))
 * **commit config：** 修改提交代码配置 ([dd90ff9](https://github.com/luoxue-victor/learn_webpack/commit/dd90ff9))
 * **scripts cz：** 修改脚本cz命令 ([b4a8c51](https://github.com/luoxue-victor/learn_webpack/commit/b4a8c51))
