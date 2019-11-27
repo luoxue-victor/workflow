@@ -4,10 +4,85 @@
 
 本文从下面几个课题来实现
 
-- 课题 1: [初探 webpack？探究 webpack 打包原理](./docs/课时1.md)。
+- 课题 1：[初探 webpack？探究 webpack 打包原理](./docs/课时1.md)。
 - 课题 2：[搭建开发环境跟生产环境](./docs/课时2.md)
 - 课题 3：[基础配置之loader](./docs/课时3.md)
 - 课时 4：[webpack性能优化](./docs/课时4.md)
 - 课时 5：[手写loader实现可选链](./docs/课时5.md)
 - 课时 6：[webpack编译优化](./docs/课时6.md)
 - 课时 7：[多页面配置](./docs/课时7.md)
+- 课时 8：[手写一个webpack插件](./docs/课时8.md)
+
+## 脚手架
+
+```js
+npm i -g webpack-box
+```
+
+### 使用
+
+```bash
+box dev   # 开发环境
+box build # 生产环境
+box dll   # 编译差分包
+box dev index   # 指定页面编译（多页面）
+box build index # 指定页面编译（多页面）
+box build index --report # 开启打包分析
+```
+
+在 package.json 中使用
+
+```json
+{
+  "scripts": {
+    "dev": "box dev",
+    "build": "box build",
+    "dll": "box dll"
+  }
+}
+```
+使用
+
+```bash
+npm run build --report # 开启打包分析
+```
+
+扩展配置 
+
+box.config.js
+
+```js
+module.exports = function (config) {
+  /**
+   * @param {boolean} dll 开启差分包
+   * @param {object} pages 多页面配置 通过 box run/build index 来使用
+   * @param {function} chainWebpack 
+   *     | @param {object} config webpack-chain 的配置
+   * @param {string} entry 入口
+   * @param {string} output 出口  
+   * @param {string} publicPath 
+   * @param {string} template 
+   * @param {string} filename 
+   */
+  return {
+    entry: 'src/main.js',
+    output: 'dist',
+    publicPath: '/common/',
+    port: 8888,
+    pages: {
+      index: {
+        entry: 'src/main.js',
+        template: 'public/index.html',
+        filename: 'index.html',
+      },
+      index2: {
+        entry: 'src/main.js',
+        template: 'public/index2.html',
+        filename: 'index2.html',
+      }
+    },
+    chainWebpack(config) {
+    }
+  }
+}
+```

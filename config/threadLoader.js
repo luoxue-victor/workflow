@@ -1,7 +1,7 @@
-module.exports = ({ config }) => {
+module.exports = ({ config, options }) => {
   const baseRule = config.module.rule('js').test(/.js|.tsx?$/);
   return () => {
-    const useThreads = true;
+    const useThreads = options.useThreads;
     if (useThreads) {
       const threadLoaderConfig = baseRule
         .use('thread-loader')

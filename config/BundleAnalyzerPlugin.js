@@ -4,7 +4,7 @@ const {
 
 module.exports = ({ config, options }) => {
   return () => {
-    if (options.report) {
+    if (process.env.npm_config_report || options.report) {
       config.plugin('BundleAnalyzerPlugin')
         .use(BundleAnalyzerPlugin, [{
           analyzerMode: 'static'

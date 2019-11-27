@@ -1,11 +1,11 @@
 module.exports = ({ config, resolve, options }) => {
   let name = 'app',
     entry = options.entry || 'src/main.js',
-    dist = options.dist || 'dist';
+    output = options.output || 'dist';
     publicPath = options.publicPath || '/'
   if (options.name) {
     name = options.name;
-    dist = `${dist}/${name}`
+    output = `${output}/${name}`
     entry = options.pages[name].entry;
   }
   return () => {
@@ -20,7 +20,7 @@ module.exports = ({ config, resolve, options }) => {
       .set('mode', "development") // process.env.NODE_ENV
       // 出口
       .output
-      .path(resolve(dist))
+      .path(resolve(output))
       .filename('[name].bundle.js')
       .publicPath(publicPath)
 

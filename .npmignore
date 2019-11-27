@@ -4,3 +4,8 @@ node_modules
 commitlint.config.js
 dist
 dll
+webapck-plugin-copy.js
+box.config.js
+options-chain-loader.js
+commitlint.config.js
+src

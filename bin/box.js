@@ -6,6 +6,7 @@ const packageConfig = require('../package.json');
 const { cleanArgs } = require('../lib')
 const path = require('path')
 const __name__ = `build,dev,dll`
+process.env.NODE_ENV = 'none'
 
 let boxConf = {}
 let lock = false
@@ -25,6 +26,7 @@ program
     const options = cleanArgs(cmd)
     const args = Object.assign(options, { name }, boxConf)
     if (lock) return
+    process.env.NODE_ENV = 'production'
     lock = true;
     if (!name && boxConf.pages) {
       args.clear = true
@@ -44,6 +46,7 @@ program
   .description(`构建生产环境`)
   .option('-d, --dll', '合并差分包')
   .action(async (name, cmd) => {
+    process.env.NODE_ENV = 'development'
     const options = cleanArgs(cmd)
     const args = Object.assign(options, { name }, boxConf)
     if (lock) return
