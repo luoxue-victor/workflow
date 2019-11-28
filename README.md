@@ -12,6 +12,7 @@
 - 课时 6：[webpack编译优化](./docs/课时6.md)
 - 课时 7：[多页面配置](./docs/课时7.md)
 - 课时 8：[手写一个webpack插件](./docs/课时8.md)
+- 课时 9：[构建 ssr](./docs/课时9.md)
 
 ## 脚手架
 
@@ -28,6 +29,9 @@ webpack-box dll   # 编译差分包
 webpack-box dev index   # 指定页面编译（多页面）
 webpack-box build index # 指定页面编译（多页面）
 webpack-box build index --report # 开启打包分析
+webpack-box build index --report # 开启打包分析
+webpack-box build:ssr  # 编译ssr
+webpack-box ssr:server # 在 server 端运行
 ```
 
 在 package.json 中使用
@@ -37,7 +41,9 @@ webpack-box build index --report # 开启打包分析
   "scripts": {
     "dev": "webpack-box dev",
     "build": "webpack-box build",
-    "dll": "webpack-box dll"
+    "dll": "webpack-box dll",
+    "build:ssr": "webpack-box build:ssr",
+    "ssr:server": "webpack-box ssr:server"
   }
 }
 ```
