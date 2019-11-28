@@ -1,9 +1,8 @@
 module.exports = function (config) {
   /**
-   * @param {boolean} dll 开启差分包
+   * @param {object} dll 开启差分包
    * @param {object} pages 多页面配置 通过 box run/build index 来使用
    * @param {function} chainWebpack 
-   *                  | @param {object} config webpack-chain 的配置
    * @param {string} entry 入口
    * @param {string} output 出口  
    * @param {string} publicPath 
@@ -14,6 +13,9 @@ module.exports = function (config) {
     output: 'dist',
     publicPath: '/common/',
     port: 8888,
+    dll: {
+      venders: ['react']
+    },
     pages: {
       index: {
         entry: 'src/main.js',

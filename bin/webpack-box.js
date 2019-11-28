@@ -5,7 +5,7 @@ const program = require('commander')
 const packageConfig = require('../package.json');
 const { cleanArgs } = require('../lib')
 const path = require('path')
-const __name__ = `build,dev,dll`
+const __name__ = `build,dev,dll,ssr,build:ssr,ssr:server`
 process.env.NODE_ENV = 'none'
 
 let boxConf = {}
@@ -65,6 +65,32 @@ program
     if (lock) return
     lock = true;
     require('../build/dll')(args)
+  })
+
+program
+  .usage('<command> [options]')
+  .version(packageConfig.version)
+  .command('build:ssr [app-page]')
+  .description(`服务端渲染`)
+  .action(async (name, cmd) => {
+    const options = cleanArgs(cmd)
+    const args = Object.assign(options, { name }, boxConf)
+    if (lock) return
+    lock = true;
+    require('../build/ssr')(args)
+  })
+
+program
+  .usage('<command> [options]')
+  .version(packageConfig.version)
+  .command('ssr:server [app-page]')
+  .description(`服务端渲染 server 端运行`)
+  .action(async (name, cmd) => {
+    const options = cleanArgs(cmd)
+    const args = Object.assign(options, { name }, boxConf)
+    if (lock) return
+    lock = true;
+    require('../build/ssr-server')(args)
   })
 
 program.parse(process.argv).args && program.parse(process.argv).args[0];

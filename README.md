@@ -22,12 +22,12 @@ npm i -g webpack-box
 ### 使用
 
 ```bash
-box dev   # 开发环境
-box build # 生产环境
-box dll   # 编译差分包
-box dev index   # 指定页面编译（多页面）
-box build index # 指定页面编译（多页面）
-box build index --report # 开启打包分析
+webpack-box dev   # 开发环境
+webpack-box build # 生产环境
+webpack-box dll   # 编译差分包
+webpack-box dev index   # 指定页面编译（多页面）
+webpack-box build index # 指定页面编译（多页面）
+webpack-box build index --report # 开启打包分析
 ```
 
 在 package.json 中使用
@@ -35,9 +35,9 @@ box build index --report # 开启打包分析
 ```json
 {
   "scripts": {
-    "dev": "box dev",
-    "build": "box build",
-    "dll": "box dll"
+    "dev": "webpack-box dev",
+    "build": "webpack-box build",
+    "dll": "webpack-box dll"
   }
 }
 ```
@@ -54,21 +54,22 @@ box.config.js
 ```js
 module.exports = function (config) {
   /**
-   * @param {boolean} dll 开启差分包
+   * @param {object} dll 开启差分包
    * @param {object} pages 多页面配置 通过 box run/build index 来使用
    * @param {function} chainWebpack 
-   *     | @param {object} config webpack-chain 的配置
    * @param {string} entry 入口
    * @param {string} output 出口  
    * @param {string} publicPath 
-   * @param {string} template 
-   * @param {string} filename 
+   * @param {string} port 
    */
   return {
     entry: 'src/main.js',
     output: 'dist',
     publicPath: '/common/',
     port: 8888,
+    dll: {
+      venders: ['vue', 'react']
+    },
     pages: {
       index: {
         entry: 'src/main.js',

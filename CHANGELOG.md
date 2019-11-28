@@ -1,4 +1,4 @@
-## 1.0.1 (2019-11-27)
+## 1.0.1 (2019-11-28)
 
 ### 🌟 新功能
 
@@ -17,6 +17,7 @@
 * **feat：** asdada ([64090c7](https://github.com/luoxue-victor/learn_webpack/commit/64090c7))
 * **init：** 项目初始化 ([d7835fb](https://github.com/luoxue-victor/learn_webpack/commit/d7835fb))
 * **options-chain：** 增加可选链并完善文档 ([b188007](https://github.com/luoxue-victor/learn_webpack/commit/b188007))
+* **plugin：** 增加课题8 写一个webpack插件 ([0d021ce](https://github.com/luoxue-victor/learn_webpack/commit/0d021ce))
 * **sourcemap：** 开启了sourcemap ([5022873](https://github.com/luoxue-victor/learn_webpack/commit/5022873))
 * **webpack：** webpack配置 ([9a1d29c](https://github.com/luoxue-victor/learn_webpack/commit/9a1d29c))
 * 你好 ([6e534da](https://github.com/luoxue-victor/learn_webpack/commit/6e534da))

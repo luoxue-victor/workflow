@@ -1,34 +1,38 @@
 module.exports = function (options) {
   const path = require("path");
-  const dllPath = path.join(process.cwd(), 'dll');
   const Config = require('webpack-chain');
   const config = new Config();
   const webpack = require('webpack')
   const rimraf = require('rimraf');
   const ora = require('ora')
   const chalk = require('chalk')
-  const BundleAnalyzerPlugin = require('../config/BundleAnalyzerPlugin')(config)
+  const PATHS = {
+    build: path.join(process.cwd(), "static"),
+    ssrDemo: path.join(process.cwd(), "src", "ssr.jsx"),
+  };
 
-  if (options.report) BundleAnalyzerPlugin()
-  if (options.dll && !Array.isArray(options.dll.venders)) throw console.log('请添加 dll.entry');
-
-  options.dll.venders.forEach(_ => config.entry('dll').add(_).end())
+  require('../config/babelLoader')({ config, tsx: true })()
+  require('../config/HtmlWebpackPlugin')({
+    config, options: {
+      publicPath: '/',
+      filename: 'client.ssr.html'
+    }
+  })()
 
   config
-    .set('mode', "production")
+    .entry('ssr')
+    .add(PATHS.ssrDemo)
+    .end()
+    .set('mode', "development")  //  production
     .output
-    .path(dllPath)
+    .path(PATHS.build)
     .filename('[name].js')
+    .libraryTarget('umd')
+    .globalObject('this')
     .library("[name]")
     .end()
-    .plugin('DllPlugin')
-    .use(webpack.DllPlugin, [{
-      name: "[name]",
-      path: path.join(process.cwd(), 'dll', 'manifest.json'),
-    }])
-    .end()
 
-  rimraf.sync(path.join(process.cwd(), 'dll'))
+  rimraf.sync(path.join(process.cwd(), PATHS.build))
   const spinner = ora('开始构建项目...')
   spinner.start()
 
