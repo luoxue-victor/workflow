@@ -29,7 +29,6 @@ webpack-box dll   # 编译差分包
 webpack-box dev index   # 指定页面编译（多页面）
 webpack-box build index # 指定页面编译（多页面）
 webpack-box build index --report # 开启打包分析
-webpack-box build index --report # 开启打包分析
 webpack-box build:ssr  # 编译ssr
 webpack-box ssr:server # 在 server 端运行
 ```
