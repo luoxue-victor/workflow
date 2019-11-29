@@ -19,7 +19,7 @@ program
   .usage('<command> [options]')
   .version(packageConfig.version)
   .command('build [app-page]')
-  .description(`构建开发环境`)
+  .description(`构建生产环境`)
   .option('-r, --report', '打包分析报告')
   .option('-d, --dll', '合并差分包')
   .action(async (name, cmd) => {
@@ -43,7 +43,7 @@ program
   .usage('<command> [options]')
   .version(packageConfig.version)
   .command('dev [app-page]')
-  .description(`构建生产环境`)
+  .description(`构建开发环境`)
   .option('-d, --dll', '合并差分包')
   .action(async (name, cmd) => {
     process.env.NODE_ENV = 'development'
