@@ -1,6 +1,6 @@
 {
   "name": "webpack-box",
-  "version": "1.0.1",
+  "version": "1.0.5",
   "description": "webpack打包器",
   "main": "index.js",
   "bin": {

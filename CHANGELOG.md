@@ -1,4 +1,4 @@
-## 1.0.1 (2019-11-29)
+## 1.0.5 (2019-11-30)
 
 ### 🌟 新功能
 
@@ -13,6 +13,7 @@
 * **autoprefixer：** css 自动添加前缀 ([4e88451](https://github.com/luoxue-victor/learn_webpack/commit/4e88451))
 * **config：** add config  option ([83c9f1e](https://github.com/luoxue-victor/learn_webpack/commit/83c9f1e))
 * **daasd：** asdasd ([0b6ee85](https://github.com/luoxue-victor/learn_webpack/commit/0b6ee85))
+* **docs：** 整理文档 ([32d578f](https://github.com/luoxue-victor/learn_webpack/commit/32d578f))
 * **feat：** aaaaa ([73abf42](https://github.com/luoxue-victor/learn_webpack/commit/73abf42))
 * **feat：** asdada ([64090c7](https://github.com/luoxue-victor/learn_webpack/commit/64090c7))
 * **init：** 项目初始化 ([d7835fb](https://github.com/luoxue-victor/learn_webpack/commit/d7835fb))
