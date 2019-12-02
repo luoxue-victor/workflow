@@ -30,6 +30,7 @@
 ### 🐛 Bug 修复
 
 * **build：** 修复了build是 publicPath 的问题 ([ac2ab19](https://github.com/luoxue-victor/learn_webpack/commit/ac2ab19))
+* **build/base：** 获取文件名使用path.basename ([5efdc7d](https://github.com/luoxue-victor/learn_webpack/commit/5efdc7d))
 * **changelog：** fix some changelog ([3bc624a](https://github.com/luoxue-victor/learn_webpack/commit/3bc624a))
 * **commit config：** 修改提交代码配置 ([dd90ff9](https://github.com/luoxue-victor/learn_webpack/commit/dd90ff9))
 * **package：** asdasdasdad ([8a4cff1](https://github.com/luoxue-victor/learn_webpack/commit/8a4cff1))

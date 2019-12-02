@@ -24,7 +24,7 @@ module.exports = (__webpack_require__(/*! dll-reference ssr */ "dll-reference ss
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _treeShaking__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./treeShaking */ "./src/treeShaking.js");
 // import TS from './ts/index.ts'
-__webpack_require__.e(/*! import() */ 1).then(__webpack_require__.bind(null, /*! ./ts/index.ts */ "./src/ts/index.ts")).then(function (res) {
+__webpack_require__.e(/*! import() */ 0).then(__webpack_require__.bind(null, /*! ./ts/index.ts */ "./src/ts/index.ts")).then(function (res) {
   console.log(res);
   new res.default();
 });
@@ -37,7 +37,7 @@ __webpack_require__(/*! ./style/index.less */ "./src/style/index.less");
 
 __webpack_require__(/*! ./style/index.scss */ "./src/style/index.scss");
 
-__webpack_require__.e(/*! import() */ 0).then(__webpack_require__.t.bind(null, /*! ./style/index.postcss */ "./src/style/index.postcss", 7));
+__webpack_require__.e(/*! import() */ 1).then(__webpack_require__.t.bind(null, /*! ./style/index.postcss */ "./src/style/index.postcss", 7));
 
 __webpack_require__(/*! react */ "./node_modules/react/index.js");
 

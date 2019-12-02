@@ -1,3 +1,8 @@
+// @ts-ignore
+import B from './index3.ts'
+
+new B()
+
 export default class A {
   constructor() {
     const a: string = '123'
