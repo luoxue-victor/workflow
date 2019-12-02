@@ -1,5 +1,17 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["index"],{
 
+/***/ "./node_modules/react/index.js":
+/*!**********************************************************************!*\
+  !*** delegated ./node_modules/react/index.js from dll-reference ssr ***!
+  \**********************************************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = (__webpack_require__(/*! dll-reference ssr */ "dll-reference ssr"))("./node_modules/react/index.js");
+
+/***/ }),
+
 /***/ "./src/main.js":
 /*!*********************!*\
   !*** ./src/main.js ***!
@@ -26,8 +38,6 @@ __webpack_require__(/*! ./style/index.less */ "./src/style/index.less");
 __webpack_require__(/*! ./style/index.scss */ "./src/style/index.scss");
 
 __webpack_require__.e(/*! import() */ 0).then(__webpack_require__.t.bind(null, /*! ./style/index.postcss */ "./src/style/index.postcss", 7));
-
-__webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.runtime.esm.js");
 
 __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
@@ -124,6 +134,18 @@ function cube(x) {
 
 module.exports = __webpack_require__(/*! /Users/luoxue/Desktop/learn/learn_webpack/src/main.js */"./src/main.js");
 
+
+/***/ }),
+
+/***/ "dll-reference ssr":
+/*!**********************!*\
+  !*** external "ssr" ***!
+  \**********************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports) {
+
+module.exports = ssr;
 
 /***/ })
 

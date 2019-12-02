@@ -11,7 +11,7 @@ module.exports = (options) => {
   const map = new Map()
 
   files.map(_ => {
-    const name = _.split('/').pop().replace('.js', '')
+    const name = path.basename(_, '.js')
     return map.set(name, require(_)({config, resolve, options}))
   })
 
