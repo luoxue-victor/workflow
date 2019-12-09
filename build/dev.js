@@ -1,10 +1,25 @@
-module.exports = function (options) {
-  const config = require('./base')(options)
-  const webpack = require('webpack')
-  const chalk = require('chalk')
-  const WebpackDevServer = require('webpack-dev-server')
+module.exports.command = function(injectCommand) {
+  injectCommand(function({ program, cleanArgs, boxConfig }) {
+    program
+      .command("dev [app-page]")
+      .description(`构建开发环境`)
+      .option("-d, --dll", "合并差分包")
+      .action(async (name, cmd) => {
+        process.env.NODE_ENV = "development";
+        const options = cleanArgs(cmd);
+        const args = Object.assign(options, { name }, boxConfig);
+        action(args);
+      });
+  });
+};
+
+function action(options) {
+  const config = require("./base")(options);
+  const webpack = require("webpack");
+  const chalk = require("chalk");
+  const WebpackDevServer = require("webpack-dev-server");
   const port = options.port || 8080;
-  const publicPath = options.publicPath || '/'
+  const publicPath = options.publicPath || "/";
 
   config.devServer
     .quiet(true)
@@ -12,33 +27,36 @@ module.exports = function (options) {
     .https(false)
     .disableHostCheck(true)
     .publicPath(publicPath)
-    .clientLogLevel('none')
+    .clientLogLevel("none");
 
-  if (typeof options.chainWebpack === 'function') {
-    options.chainWebpack(config)
+  if (typeof options.chainWebpack === "function") {
+    options.chainWebpack(config);
   }
 
-  const compiler = webpack(config.toConfig())
+  const compiler = webpack(config.toConfig());
   // 拿到 devServer 参数
-  const chainDevServer = compiler.options.devServer
-  const server = new WebpackDevServer(compiler, Object.assign(chainDevServer, {}))
+  const chainDevServer = compiler.options.devServer;
+  const server = new WebpackDevServer(
+    compiler,
+    Object.assign(chainDevServer, {})
+  );
 
-    ;['SIGINT', 'SIGTERM'].forEach(signal => {
-      process.on(signal, () => {
-        server.close(() => {
-          process.exit(0)
-        })
-      })
+  ["SIGINT", "SIGTERM"].forEach(signal => {
+    process.on(signal, () => {
+      server.close(() => {
+        process.exit(0);
+      });
     });
+  });
   // 监听端口
   server.listen(port);
 
   new Promise(() => {
-    compiler.hooks.done.tap('dev', stats => {
-      const empty = '    '
+    compiler.hooks.done.tap("dev", stats => {
+      const empty = "    ";
       const common = `App running at:
-      - Local: http://127.0.0.1:${port}${publicPath}\n`
-      console.log(chalk.cyan('\n' + empty + common))
-    })
-  })
+      - Local: http://127.0.0.1:${port}${publicPath}\n`;
+      console.log(chalk.cyan("\n" + empty + common));
+    });
+  });
 }

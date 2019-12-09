@@ -14,7 +14,6 @@ require('react')
 
 import { cube, square } from './treeShaking';
 
-
 console.log(cube(2)) 
 
 const h2 = document.createElement('h2')
