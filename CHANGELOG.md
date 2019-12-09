@@ -27,6 +27,7 @@
  ssr | 增加ssr配置 | [d4c4b7d](https://github.com/luoxue-victor/learn_webpack/commit/d4c4b7d)
  stylelint | 新增stylelint功能 | [3d7143a](https://github.com/luoxue-victor/learn_webpack/commit/3d7143a)
  ts | 测试ts引用ts文件 | [4a47ee1](https://github.com/luoxue-victor/learn_webpack/commit/4a47ee1)
+ tslint | 12课时，tslint配置 | [8b24f6a](https://github.com/luoxue-victor/learn_webpack/commit/8b24f6a)
  webpack | webpack配置 | [9a1d29c](https://github.com/luoxue-victor/learn_webpack/commit/9a1d29c)
  你好 | [6e534da](https://github.com/luoxue-victor/learn_webpack/commit/6e534da)
  asasdasasd | [8f9515f](https://github.com/luoxue-victor/learn_webpack/commit/8f9515f)
