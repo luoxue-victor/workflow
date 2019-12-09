@@ -1,7 +1,9 @@
-module.exports = ({ config, options, api }) => {
-  const { lintOnSave = 'warning' } = options
-  const extensions = ['js', 'jsx', 'vue']
+module.exports = ({ config, options: { eslint: { lintOnSave = false, extensions } }, api }) => {
+  const path = require('path')
+  const eslintOptionsPath = path.join('..', 'packages', 'eslint', 'eslintOptions')
+  extensions = extensions || require(eslintOptionsPath).extensions(api)
   return () => {
+    if (!lintOnSave) return
     const path = require('path')
     const cwd = api.getCwd()
     const { resolveModule, loadModule } = require('@vue/cli-shared-utils')

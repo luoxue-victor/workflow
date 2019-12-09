@@ -9,31 +9,31 @@ module.exports = ({ config, resolve, tsx }) => {
             chrome: 59,
             edge: 13,
             firefox: 50,
-            safari: 8,
-          },
-        },
+            safari: 8
+          }
+        }
       ],
       [
-        '@babel/preset-typescript', 
+        '@babel/preset-typescript',
         {
-          'allExtensions': true
+          allExtensions: true
         }
       ]
     ],
     plugins: [
-      '@babel/plugin-transform-typescript', 
+      '@babel/plugin-transform-typescript',
       'transform-class-properties',
-      '@babel/proposal-object-rest-spread',
+      '@babel/proposal-object-rest-spread'
     ]
   }
 
   if (tsx) {
     babelConf.presets[1].pop()
-    babelConf.presets.push('@babel/preset-react');
+    babelConf.presets.push('@babel/preset-react')
     babelConf.plugins.shift()
   }
 
-  const baseRule = config.module.rule('js').test(/.[jt]sx?$/);
+  const baseRule = config.module.rule('js').test(/.[jt]sx?$/)
   return () => {
     baseRule
       .use('babel')

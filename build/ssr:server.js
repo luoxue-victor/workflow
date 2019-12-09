@@ -1,17 +1,4 @@
-module.exports.command = function(injectCommand) {
-  injectCommand(function({ program, cleanArgs, boxConfig }) {
-    program
-      .command('ssr:server [app-page]')
-      .description('服务端渲染')
-      .action(async (name, cmd) => {
-        const options = cleanArgs(cmd)
-        const args = Object.assign(options, { name }, boxConfig)
-        action(args)
-      })
-  })
-}
-
-function action(options) {
+module.exports = function (options) {
   const express = require('express')
   const { renderToString } = require('react-dom/server')
   const chalk = require('chalk')

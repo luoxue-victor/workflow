@@ -1,4 +1,3 @@
-console.log('--------eslint-------')
 module.exports = {
   root: true,
   env: {

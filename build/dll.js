@@ -1,17 +1,4 @@
-module.exports.command = function(injectCommand) {
-  injectCommand(function({ program, cleanArgs, boxConfig }) {
-    program
-      .command('dll [app-page]')
-      .description('编译差分包')
-      .action(async (name, cmd) => {
-        const options = cleanArgs(cmd)
-        const args = Object.assign(options, { name }, boxConfig)
-        action(args)
-      })
-  })
-}
-
-function action(options) {
+module.exports = function (options) {
   const path = require('path')
   const dllPath = path.join(process.cwd(), 'dll')
   const Config = require('webpack-chain')

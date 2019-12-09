@@ -15,6 +15,7 @@
 * **config：** add config  option ([83c9f1e](https://github.com/luoxue-victor/learn_webpack/commit/83c9f1e))
 * **daasd：** asdasd ([0b6ee85](https://github.com/luoxue-victor/learn_webpack/commit/0b6ee85))
 * **docs：** 整理文档 ([32d578f](https://github.com/luoxue-victor/learn_webpack/commit/32d578f))
+* **eslint：** 增加 eslint，并保存是自动修复 ([6dd3812](https://github.com/luoxue-victor/learn_webpack/commit/6dd3812))
 * **feat：** aaaaa ([73abf42](https://github.com/luoxue-victor/learn_webpack/commit/73abf42))
 * **feat：** asdada ([64090c7](https://github.com/luoxue-victor/learn_webpack/commit/64090c7))
 * **init：** 项目初始化 ([d7835fb](https://github.com/luoxue-victor/learn_webpack/commit/d7835fb))

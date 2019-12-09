@@ -3,7 +3,8 @@ import { cube } from './treeShaking'
 
 import('./ts/index.ts').then(res => {
   console.log(res)
-  // new res.default()
+  // eslint-disable-next-line new-cap
+  new res.default()
 })
 require('./style/index.css')
 require('./style/app.css')

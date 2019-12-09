@@ -4,7 +4,6 @@ const path = require('path')
 exports.genCacheConfig = function (id, partialIdentifier, configFiles = []) {
   const fs = require('fs')
   const cacheDirectory = this.resolve(`node_modules/.cache/${id}`)
-
   // replace \r\n to \n generate consistent hash
   // const fmtFunc = conf => {
   //   if (typeof conf === 'function') {
@@ -24,6 +23,7 @@ exports.genCacheConfig = function (id, partialIdentifier, configFiles = []) {
       // fmtFunc(this.service.projectOptions.configureWebpack)
     ]
   }
+  console.log(configFiles)
 
   if (!Array.isArray(configFiles)) {
     configFiles = [configFiles]

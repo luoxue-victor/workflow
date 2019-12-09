@@ -5,14 +5,14 @@ const {
   injectCommand,
   commandComplete,
   commandName
-} = require('../cli/CommandAPI')
+} = require('../api/CommandAPI')
+const PluginAPI = require('../api/PluginAPI')
 
-const PluginAPI = require('../cli/PluginAPI')
 commandName.push(...commandsName)
-
+// 注册命令行
 commandsName.forEach(name => {
-  const { command } = require(`../build/${name}`)
-  command(injectCommand, PluginAPI)
+  const cwd = require(`../cwd/${name}`)
+  cwd(injectCommand, PluginAPI)
 })
-
+// 命令行注册完成
 commandComplete()

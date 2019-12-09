@@ -1,7 +1,7 @@
 module.exports = ({ config }) => {
   const createCSSRule = (lang, test, loader, options = {}) => {
-    const baseRule = config.module.rule(lang).test(test);
-    const normalRule = baseRule.oneOf('normal');
+    const baseRule = config.module.rule(lang).test(test)
+    const normalRule = baseRule.oneOf('normal')
 
     normalRule
       .use('extract-css-loader')
@@ -27,9 +27,9 @@ module.exports = ({ config }) => {
   }
 
   return () => {
-    createCSSRule('css', /\.css$/, 'css-loader', {});
-    createCSSRule('less', /\.less$/, 'less-loader', {});
-    createCSSRule('scss', /\.scss$/, 'sass-loader', {});
-    createCSSRule('postcss', /\.p(ost)?css$/);
+    createCSSRule('css', /\.css$/, 'css-loader', {})
+    createCSSRule('less', /\.less$/, 'less-loader', {})
+    createCSSRule('scss', /\.scss$/, 'sass-loader', {})
+    createCSSRule('postcss', /\.p(ost)?css$/)
   }
 }

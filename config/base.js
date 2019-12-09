@@ -1,12 +1,12 @@
 module.exports = ({ config, resolve, options }) => {
-  let name = 'app',
-    entry = options.entry || 'src/main.js',
-    output = options.output || 'dist';
-    publicPath = options.publicPath || '/'
+  let name = 'app'
+  let entry = options.entry || 'src/main.js'
+  let output = options.output || 'dist'
+  const publicPath = options.publicPath || '/'
   if (options.name) {
-    name = options.name;
+    name = options.name
     output = `${output}/${name}`
-    entry = options.pages[name].entry;
+    entry = options.pages[name].entry
   }
   return () => {
     config
@@ -17,7 +17,7 @@ module.exports = ({ config, resolve, options }) => {
       .end()
       // 模式 "production" | "development" | "none"
       // .mode(process.env.NODE_ENV) 等价下面
-      .set('mode', "development") // process.env.NODE_ENV
+      .set('mode', 'development') // process.env.NODE_ENV
       // 出口
       .output
       .path(resolve(output))

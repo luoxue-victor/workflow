@@ -64,6 +64,7 @@
     "husky": "^3.1.0",
     "less": "^3.10.3",
     "less-loader": "^5.0.0",
+    "lint-staged": "^9.5.0",
     "mini-css-extract-plugin": "^0.8.0",
     "ora": "^4.0.3",
     "postcss-loader": "^3.0.0",
@@ -94,7 +95,14 @@
   },
   "husky": {
     "hooks": {
+      "pre-commit": "lint-staged",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "webpack-box lint eslint",
+      "git add"
+    ]
   }
 }
