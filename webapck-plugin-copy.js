@@ -3,13 +3,14 @@ const globby = require('globby')
 
 class CopyDirWebpackPlugin {
   constructor(options) {
-    this.options = options;
+    this.options = options
   }
+
   apply(compiler) {
     const opt = this.options
     compiler.plugin('done', (stats) => {
       if (process.env.NODE_ENV === 'production') {
-        (async ()=>{
+        (async () => {
           const toFilesPath = await globby([`${opt.to}/**`, '!.git/**'])
           toFilesPath.forEach(filePath => fs.removeSync(filePath))
           const fromFilesPath = await globby([`${opt.from}/**`])
@@ -23,7 +24,7 @@ class CopyDirWebpackPlugin {
           console.log(`  完成copy ${opt.from} to ${opt.to}`)
         })()
       }
-    });
+    })
   }
 }
 

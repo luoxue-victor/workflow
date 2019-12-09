@@ -1,62 +1,61 @@
 module.exports.command = function(injectCommand) {
   injectCommand(function({ program, cleanArgs, boxConfig }) {
     program
-      .command("dll [app-page]")
-      .description(`编译差分包`)
+      .command('dll [app-page]')
+      .description('编译差分包')
       .action(async (name, cmd) => {
-        const options = cleanArgs(cmd);
-        const args = Object.assign(options, { name }, boxConfig);
-        action(args);
-      });
-  });
-};
+        const options = cleanArgs(cmd)
+        const args = Object.assign(options, { name }, boxConfig)
+        action(args)
+      })
+  })
+}
 
 function action(options) {
-  const path = require("path");
-  const dllPath = path.join(process.cwd(), "dll");
-  const Config = require("webpack-chain");
-  const config = new Config();
-  const webpack = require("webpack");
-  const rimraf = require("rimraf");
-  const ora = require("ora");
-  const chalk = require("chalk");
-  const BundleAnalyzerPlugin = require("../config/BundleAnalyzerPlugin")(
+  const path = require('path')
+  const dllPath = path.join(process.cwd(), 'dll')
+  const Config = require('webpack-chain')
+  const config = new Config()
+  const webpack = require('webpack')
+  const rimraf = require('rimraf')
+  const ora = require('ora')
+  const chalk = require('chalk')
+  const BundleAnalyzerPlugin = require('../config/BundleAnalyzerPlugin')(
     config
-  );
+  )
 
-  if (options.report) BundleAnalyzerPlugin();
-  if (options.dll && !Array.isArray(options.dll.venders))
-    throw console.log("请添加 dll.entry");
+  if (options.report) BundleAnalyzerPlugin()
+  if (options.dll && !Array.isArray(options.dll.venders)) { throw console.log('请添加 dll.entry') }
 
   options.dll.venders.forEach(_ =>
     config
-      .entry("dll")
+      .entry('dll')
       .add(_)
       .end()
-  );
+  )
 
   config
-    .set("mode", "production")
+    .set('mode', 'production')
     .output.path(dllPath)
-    .filename("[name].js")
-    .library("[name]")
+    .filename('[name].js')
+    .library('[name]')
     .end()
-    .plugin("DllPlugin")
+    .plugin('DllPlugin')
     .use(webpack.DllPlugin, [
       {
-        name: "[name]",
-        path: path.join(process.cwd(), "dll", "manifest.json")
+        name: '[name]',
+        path: path.join(process.cwd(), 'dll', 'manifest.json')
       }
     ])
-    .end();
+    .end()
 
-  rimraf.sync(path.join(process.cwd(), "dll"));
-  const spinner = ora("开始构建项目...");
-  spinner.start();
+  rimraf.sync(path.join(process.cwd(), 'dll'))
+  const spinner = ora('开始构建项目...')
+  spinner.start()
 
   webpack(config.toConfig(), function(err, stats) {
-    spinner.stop();
-    if (err) throw err;
+    spinner.stop()
+    if (err) throw err
     process.stdout.write(
       stats.toString({
         colors: true,
@@ -64,13 +63,13 @@ function action(options) {
         children: false,
         chunks: false,
         chunkModules: false
-      }) + "\n\n"
-    );
+      }) + '\n\n'
+    )
 
     if (stats.hasErrors()) {
-      console.log(chalk.red("构建失败\n"));
-      process.exit(1);
+      console.log(chalk.red('构建失败\n'))
+      process.exit(1)
     }
-    console.log(chalk.cyan("build完成\n"));
-  });
+    console.log(chalk.cyan('build完成\n'))
+  })
 }

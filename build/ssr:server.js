@@ -1,39 +1,39 @@
 module.exports.command = function(injectCommand) {
   injectCommand(function({ program, cleanArgs, boxConfig }) {
     program
-      .command("ssr:server [app-page]")
-      .description(`服务端渲染`)
+      .command('ssr:server [app-page]')
+      .description('服务端渲染')
       .action(async (name, cmd) => {
-        const options = cleanArgs(cmd);
-        const args = Object.assign(options, { name }, boxConfig);
-        action(args);
-      });
-  });
-};
+        const options = cleanArgs(cmd)
+        const args = Object.assign(options, { name }, boxConfig)
+        action(args)
+      })
+  })
+}
 
 function action(options) {
-  const express = require("express");
-  const { renderToString } = require("react-dom/server");
-  const chalk = require("chalk");
+  const express = require('express')
+  const { renderToString } = require('react-dom/server')
+  const chalk = require('chalk')
 
-  const SSR = require("../static/ssr");
-  const port = process.env.PORT || 8080;
+  const SSR = require('../static/ssr')
+  const port = process.env.PORT || 8080
 
-  server(port);
+  server(port)
 
   function server(port) {
-    const app = express();
-    app.use(express.static("static"));
-    app.get("/", (req, res) =>
+    const app = express()
+    app.use(express.static('static'))
+    app.get('/', (req, res) =>
       res.status(200).send(renderMarkup(renderToString(SSR)))
-    );
+    )
 
-    const empty = "    ";
+    const empty = '    '
     const common = `App running at:
-      - Local: http://127.0.0.1:${port}\n`;
-    console.log(chalk.cyan("\n" + empty + common));
+      - Local: http://127.0.0.1:${port}\n`
+    console.log(chalk.cyan('\n' + empty + common))
 
-    app.listen(port, () => process.send && process.send("online"));
+    app.listen(port, () => process.send && process.send('online'))
   }
 
   function renderMarkup(html) {
@@ -47,6 +47,6 @@ function action(options) {
       <div id="app">${html}</div>
       <script src="./ssr.js"></script>
     </body>
-  </html>`;
+  </html>`
   }
 }

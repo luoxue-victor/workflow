@@ -3,6 +3,7 @@
 ### 🌟 新功能
 
 * **编译：** 提升编译速度，增加了 cache-loader dllPlugin threadLoader ([4d44ad7](https://github.com/luoxue-victor/learn_webpack/commit/4d44ad7))
+* **抽离 commander 层：** 修改脚手架二次调用的bug，增加了commander 层 ([b1aa749](https://github.com/luoxue-victor/learn_webpack/commit/b1aa749))
 * **多页面：** webpack配置多页面打包 ([86a0418](https://github.com/luoxue-victor/learn_webpack/commit/86a0418))
 * **课题2：** 完成基本构建，js、css打包进html，实现dev跟build环境 ([71a6a19](https://github.com/luoxue-victor/learn_webpack/commit/71a6a19))
 * **新增loader配置：** 增加ts、css、less、sass、postcss、babel配置 ([53616f8](https://github.com/luoxue-victor/learn_webpack/commit/53616f8))
