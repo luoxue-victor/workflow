@@ -68,15 +68,20 @@ module.exports = function(config) {
    * @param {string} entry 入口
    * @param {string} output 出口
    * @param {string} publicPath
-   * @param {string} port
+   * @param {string} port 端口
+   * @param {object} eslint eslint 配置
    */
   return {
     entry: "src/main.js",
     output: "dist",
     publicPath: "/common/",
     port: 8888,
+    eslint: {
+      lintOnSave: true, // 开启运行时检测
+      extensions: ["js", "jsx", "vue"] // 默认 ['js', 'jsx']
+    },
     dll: {
-      venders: ["vue", "react"]
+      venders: ["react"]
     },
     pages: {
       index: {

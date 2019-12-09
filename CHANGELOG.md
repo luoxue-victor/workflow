@@ -19,6 +19,7 @@
 * **feat：** aaaaa ([73abf42](https://github.com/luoxue-victor/learn_webpack/commit/73abf42))
 * **feat：** asdada ([64090c7](https://github.com/luoxue-victor/learn_webpack/commit/64090c7))
 * **init：** 项目初始化 ([d7835fb](https://github.com/luoxue-victor/learn_webpack/commit/d7835fb))
+* **lint-staged：** 添加 lint-staged，并修改课题10文档 ([a84dff0](https://github.com/luoxue-victor/learn_webpack/commit/a84dff0))
 * **options-chain：** 增加可选链并完善文档 ([b188007](https://github.com/luoxue-victor/learn_webpack/commit/b188007))
 * **plugin：** 增加课题8 写一个webpack插件 ([0d021ce](https://github.com/luoxue-victor/learn_webpack/commit/0d021ce))
 * **sourcemap：** 开启了sourcemap ([5022873](https://github.com/luoxue-victor/learn_webpack/commit/5022873))
