@@ -58,6 +58,7 @@
  eslint 文档 | 修改eslint 文档，并添加cwd分层 | [d23329b](https://github.com/luoxue-victor/learn_webpack/commit/d23329b)
  readme | 保存文档 | [99c82c1](https://github.com/luoxue-victor/learn_webpack/commit/99c82c1)
  readme | 新增ssr说明 | [18e152a](https://github.com/luoxue-victor/learn_webpack/commit/18e152a)
+ stylelint | 课时11的文档完善 | [4a55f80](https://github.com/luoxue-victor/learn_webpack/commit/4a55f80)
  version | v1.0.5 | [c2b5932](https://github.com/luoxue-victor/learn_webpack/commit/c2b5932)
 
 

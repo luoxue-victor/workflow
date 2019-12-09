@@ -1,4 +1,12 @@
-module.exports = ({ config, options: { stylelint: { lintOnSave = false, extensions } = {} }, api }) => {
+module.exports = ({
+  config,
+  options: {
+    stylelint: {
+      lintOnSave = false,
+      extensions = ['vue', 'htm', 'html', 'css', 'sss', 'less', 'scss']
+    } = {}
+  }
+}) => {
   const StyleLintPlugin = require('stylelint-webpack-plugin')
   const CodeframeFormatter = require('stylelint-codeframe-formatter')
   const stylelint = []
@@ -8,7 +16,7 @@ module.exports = ({ config, options: { stylelint: { lintOnSave = false, extensio
       .plugin('stylelint')
       .use(StyleLintPlugin, [Object.assign({
         failOnError: lintOnSave === 'error',
-        files: ['src/**/*.{vue,htm,html,css,sss,less,scss}'],
+        files: [`src/**/*.{${extensions.join()}}`],
         formatter: CodeframeFormatter
       }, stylelint)])
       .end()

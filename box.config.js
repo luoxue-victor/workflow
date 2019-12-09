@@ -8,6 +8,8 @@ module.exports = function (config) {
    * @param {string} publicPath
    * @param {string} port 端口
    * @param {object} eslint eslint 配置
+   * @param {object} stylelint stylelint 配置
+   * @param {object} eslint eslint 配置
    */
   return {
     entry: 'src/main.js',
@@ -17,6 +19,14 @@ module.exports = function (config) {
     eslint: {
       lintOnSave: true, // 开启运行时检测
       extensions: ['js', 'jsx', 'vue'] // 默认 ['js', 'jsx']
+    },
+    tslint: {
+      lintOnSave: true, // 开启运行时检测
+      useThreads: true
+    },
+    stylelint: {
+      lintOnSave: true // 开启运行时检测
+      // extensions: ['vue', 'htm', 'html', 'css', 'sss', 'less', 'scss']
     },
     dll: {
       venders: ['react']

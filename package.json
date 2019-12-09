@@ -81,8 +81,10 @@
     "stylelint-config-standard": "^19.0.0",
     "stylelint-webpack-plugin": "^1.1.2",
     "thread-loader": "^2.1.3",
+    "tslint": "^5.20.1",
     "typescript": "^3.7.2",
     "vue-cli-plugin-commitlint": "^1.0.10",
+    "vue-template-compiler": "^2.6.10",
     "webpack": "^4.41.2",
     "webpack-bundle-analyzer": "^3.6.0",
     "webpack-chain": "^6.0.0",
@@ -107,6 +109,10 @@
   "lint-staged": {
     "*.{vue,htm,html,css,sss,less,scss}": [
       "webpack-box lint stylelint",
+      "git add"
+    ],
+    "*.{ts,tsx}": [
+      "webpack-box lint tslint",
       "git add"
     ],
     "*.{js,jsx}": [
