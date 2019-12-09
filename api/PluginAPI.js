@@ -23,7 +23,6 @@ exports.genCacheConfig = function (id, partialIdentifier, configFiles = []) {
       // fmtFunc(this.service.projectOptions.configureWebpack)
     ]
   }
-  console.log(configFiles)
 
   if (!Array.isArray(configFiles)) {
     configFiles = [configFiles]
@@ -41,7 +40,6 @@ exports.genCacheConfig = function (id, partialIdentifier, configFiles = []) {
     }
 
     if (absolutePath.endsWith('.js')) {
-      // should evaluate config scripts to reflect environment variable changes
       try {
         return JSON.stringify(require(absolutePath))
       } catch (e) {

@@ -86,7 +86,7 @@ module.exports = async function lint({ api, args = {}, pluginOptions = {} }) {
         } else {
           console.log(format(
             chalk`{bgGreen.black  DONE }`,
-            `stylelint 没有发现错误!${options.fix ? chalk` {blue (autofix enabled)}` : ''}`
+            `stylelint 没有发现错误!${options.fix ? chalk` {blue (已经自动修复)}` : ''}`
           ))
         }
       }

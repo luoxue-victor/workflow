@@ -5,7 +5,7 @@
    * @param formatOnSave 保存时自动修复
    */
   "editor.tabSize": 2,
-  "editor.formatOnSave": true,
+  "editor.formatOnSave": false,
   /*
    * @description eslint 配置
    * @param alwaysShowStatus 配置
@@ -13,7 +13,7 @@
    * @param validate 在vue中添加错误提示
    */
   "eslint.alwaysShowStatus": true,
-  "eslint.autoFixOnSave": true,
+  "eslint.autoFixOnSave": false,
   "eslint.validate": [
     "javascript",
     "javascriptreact",
@@ -33,7 +33,7 @@
    * @description stylelint 配置
    * @param autoFixOnSave 保存时自动修复
    */
-  "stylelint.autoFixOnSave": true,
+  "stylelint.autoFixOnSave": false,
   /*
    * @description vetur 配置
    */

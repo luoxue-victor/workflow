@@ -35,6 +35,7 @@
 ### 🐛 Bug 修复
 范围|描述|commitId
 --|--|--
+ 更新了 commitlint 功能 | commitlint 更新到 1.0.10 版本 | [57155ce](https://github.com/luoxue-victor/learn_webpack/commit/57155ce)
  build | 修复了build是 publicPath 的问题 | [ac2ab19](https://github.com/luoxue-victor/learn_webpack/commit/ac2ab19)
  build/base | 获取文件名使用path.basename | [5efdc7d](https://github.com/luoxue-victor/learn_webpack/commit/5efdc7d)
  changelog | fix some changelog | [3bc624a](https://github.com/luoxue-victor/learn_webpack/commit/3bc624a)

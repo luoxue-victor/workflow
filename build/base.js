@@ -3,7 +3,7 @@ const Config = require('webpack-chain')
 const config = new Config()
 const files = findSync('../config')
 const path = require('path')
-const PluginAPI = require('../cli/PluginAPI')
+const PluginAPI = require('../api/PluginAPI')
 const resolve = (p) => {
   return path.join(process.cwd(), p)
 }

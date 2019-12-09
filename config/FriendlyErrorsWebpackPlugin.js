@@ -1,8 +1,10 @@
-const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
-
 module.exports = ({ config }) => {
+  const { transformer, formatter } = require('../util/resolveLoaderError')
   return () => {
-    config.plugin('error')
-      .use(FriendlyErrorsWebpackPlugin)
+    config.plugin('friendly-errors')
+      .use(require('@soda/friendly-errors-webpack-plugin'), [{
+        additionalTransformers: [transformer],
+        additionalFormatters: [formatter]
+      }])
   }
 }
