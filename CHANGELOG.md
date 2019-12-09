@@ -56,6 +56,7 @@
  课题2 | 修改课题2介绍段 | [865af5d](https://github.com/luoxue-victor/learn_webpack/commit/865af5d)
  docs | 更新readme，修改了配置 | [a2cc0ed](https://github.com/luoxue-victor/learn_webpack/commit/a2cc0ed)
  docs | 新建docs文档目录 | [140b3b8](https://github.com/luoxue-victor/learn_webpack/commit/140b3b8)
+ docs | 修改文档 | [1982613](https://github.com/luoxue-victor/learn_webpack/commit/1982613)
  docs | 修改文档 | [bdc9a97](https://github.com/luoxue-victor/learn_webpack/commit/bdc9a97)
  eslint 文档 | 修改eslint 文档，并添加cwd分层 | [d23329b](https://github.com/luoxue-victor/learn_webpack/commit/d23329b)
  readme | 保存文档 | [99c82c1](https://github.com/luoxue-victor/learn_webpack/commit/99c82c1)

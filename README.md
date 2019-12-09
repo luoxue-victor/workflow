@@ -12,7 +12,7 @@
 - 课时 6：[webpack 编译优化](./docs/课时6.md)
 - 课时 7：[多页面配置](./docs/课时7.md)
 - 课时 8：[手写一个 webpack 插件](./docs/课时8.md)
-- 课时 9：[构建 ssr](./docs/课时9.md)
+- 课时 9：[构建 ssr 项目模型](./docs/课时9.md)
 - 课时 10：[添加 eslint 并自动修复](./docs/课时10.md)
 - 课时 11：[添加 stylelint 并自动修复](./docs/课时11.md)
 - 课时 12：[添加 tslint 并自动修复](./docs/课时12.md)
