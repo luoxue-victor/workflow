@@ -13,7 +13,8 @@ module.exports = {
     'max-len': 0,
     'space-before-function-paren': 0,
     'eslint-disable-next-line': 0,
-    'no-useless-escape': 0
+    'no-useless-escape': 0,
+    'one-var': 0
   },
   globals: {
     wx: true,
