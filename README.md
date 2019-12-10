@@ -1,8 +1,14 @@
 # webpack 工程师的自我修养
 
-> 本来想要做一个大型项目的 webpack 教程，但是我发现还可以做更多的事情，所以这里我要将这个项目做成 webpack 手册，所有您可以来这里找到任何想要的 webpack 配置
+> 本来想要做一个大型项目的 webpack 教程，但是我发现还可以做更多的事情，所以这里我要将这个项目做成 webpack 手册，您可以来这里找到任何想要的 webpack 配置
 
 本文从下面几个课题来实现
+
+
+## collapsible markdown?
+
+<details>
+<summary>点击查看课题</summary>
 
 - 课题 1：[初探 webpack？探究 webpack 打包原理](./docs/课时1.md)。
 - 课题 2：[搭建开发环境跟生产环境](./docs/课时2.md)
@@ -17,6 +23,8 @@
 - 课时 11：[添加 stylelint 并自动修复](./docs/课时11.md)
 - 课时 12：[添加 tslint 并自动修复](./docs/课时12.md)
 - 课时 13：[配置别名](./docs/课时13.md)
+
+</details>
 
 ## 脚手架
 

@@ -10,6 +10,7 @@
  新增loader配置 | 增加ts、css、less、sass、postcss、babel配置 | [53616f8](https://github.com/luoxue-victor/learn_webpack/commit/53616f8)
  性能优化 | 性能优化1 | [0909b33](https://github.com/luoxue-victor/learn_webpack/commit/0909b33)
  修改了配置文件 | i feat a config | [382c60c](https://github.com/luoxue-victor/learn_webpack/commit/382c60c)
+ alias | 配置别名 第13课时 | [804f932](https://github.com/luoxue-victor/learn_webpack/commit/804f932)
  all | 初始化一个项目 | [336cc13](https://github.com/luoxue-victor/learn_webpack/commit/336cc13)
  asdasdasdas | 你爱哈的 | [ea12f9c](https://github.com/luoxue-victor/learn_webpack/commit/ea12f9c)
  autoprefixer | css 自动添加前缀 | [4e88451](https://github.com/luoxue-victor/learn_webpack/commit/4e88451)
