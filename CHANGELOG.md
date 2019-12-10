@@ -1,5 +1,32 @@
 ## 1.0.6 (2019-12-10)
 
+### 📝 文档
+范围|描述|commitId
+--|--|--
+ 介绍文 | 修改课题1 部分文档 | [cd555f3](https://github.com/luoxue-victor/learn_webpack/commit/cd555f3)
+ 课时1 | 课时1 webpack 解析 | [00be805](https://github.com/luoxue-victor/learn_webpack/commit/00be805)
+ 课时6 | 修改课时6文档 | [9e4cc38](https://github.com/luoxue-victor/learn_webpack/commit/9e4cc38)
+ 课题2 | 修改课题2介绍段 | [865af5d](https://github.com/luoxue-victor/learn_webpack/commit/865af5d)
+ 增加折叠文档 | 增加折叠文档 | [b443f26](https://github.com/luoxue-victor/learn_webpack/commit/b443f26)
+ docs | 更新readme，修改了配置 | [a2cc0ed](https://github.com/luoxue-victor/learn_webpack/commit/a2cc0ed)
+ docs | 新建docs文档目录 | [140b3b8](https://github.com/luoxue-victor/learn_webpack/commit/140b3b8)
+ docs | 修改文档 | [1982613](https://github.com/luoxue-victor/learn_webpack/commit/1982613)
+ docs | 修改文档 | [bdc9a97](https://github.com/luoxue-victor/learn_webpack/commit/bdc9a97)
+ eslint 文档 | 修改eslint 文档，并添加cwd分层 | [d23329b](https://github.com/luoxue-victor/learn_webpack/commit/d23329b)
+ readme | 保存文档 | [99c82c1](https://github.com/luoxue-victor/learn_webpack/commit/99c82c1)
+ readme | 新增ssr说明 | [18e152a](https://github.com/luoxue-victor/learn_webpack/commit/18e152a)
+ readme | 修改readme | [06b1b2f](https://github.com/luoxue-victor/learn_webpack/commit/06b1b2f)
+ stylelint | 课时11的文档完善 | [4a55f80](https://github.com/luoxue-victor/learn_webpack/commit/4a55f80)
+ version | v1.0.5 | [c2b5932](https://github.com/luoxue-victor/learn_webpack/commit/c2b5932)
+
+
+范围|描述|commitId
+--|--|--
+ Delete .DS_Store | [b9d18cd](https://github.com/luoxue-victor/learn_webpack/commit/b9d18cd)
+ dev,build 命令descreiption错误 | [b47f016](https://github.com/luoxue-victor/learn_webpack/commit/b47f016)
+ Initial commit | [18fbebf](https://github.com/luoxue-victor/learn_webpack/commit/18fbebf)
+
+
 ### 🌟 新功能
 范围|描述|commitId
 --|--|--
@@ -46,29 +73,4 @@
  delete | 删除无用代码 | [0831fc9](https://github.com/luoxue-victor/learn_webpack/commit/0831fc9)
  package | asdasdasdad | [8a4cff1](https://github.com/luoxue-victor/learn_webpack/commit/8a4cff1)
  scripts cz | 修改脚本cz命令 | [b4a8c51](https://github.com/luoxue-victor/learn_webpack/commit/b4a8c51)
-
-
-### 📝 文档
-范围|描述|commitId
---|--|--
- 介绍文 | 修改课题1 部分文档 | [cd555f3](https://github.com/luoxue-victor/learn_webpack/commit/cd555f3)
- 课时1 | 课时1 webpack 解析 | [00be805](https://github.com/luoxue-victor/learn_webpack/commit/00be805)
- 课时6 | 修改课时6文档 | [9e4cc38](https://github.com/luoxue-victor/learn_webpack/commit/9e4cc38)
- 课题2 | 修改课题2介绍段 | [865af5d](https://github.com/luoxue-victor/learn_webpack/commit/865af5d)
- docs | 更新readme，修改了配置 | [a2cc0ed](https://github.com/luoxue-victor/learn_webpack/commit/a2cc0ed)
- docs | 新建docs文档目录 | [140b3b8](https://github.com/luoxue-victor/learn_webpack/commit/140b3b8)
- docs | 修改文档 | [1982613](https://github.com/luoxue-victor/learn_webpack/commit/1982613)
- docs | 修改文档 | [bdc9a97](https://github.com/luoxue-victor/learn_webpack/commit/bdc9a97)
- eslint 文档 | 修改eslint 文档，并添加cwd分层 | [d23329b](https://github.com/luoxue-victor/learn_webpack/commit/d23329b)
- readme | 保存文档 | [99c82c1](https://github.com/luoxue-victor/learn_webpack/commit/99c82c1)
- readme | 新增ssr说明 | [18e152a](https://github.com/luoxue-victor/learn_webpack/commit/18e152a)
- readme | 修改readme | [06b1b2f](https://github.com/luoxue-victor/learn_webpack/commit/06b1b2f)
- stylelint | 课时11的文档完善 | [4a55f80](https://github.com/luoxue-victor/learn_webpack/commit/4a55f80)
- version | v1.0.5 | [c2b5932](https://github.com/luoxue-victor/learn_webpack/commit/c2b5932)
-
-
-范围|描述|commitId
---|--|--
- dev,build 命令descreiption错误 | [b47f016](https://github.com/luoxue-victor/learn_webpack/commit/b47f016)
- Initial commit | [18fbebf](https://github.com/luoxue-victor/learn_webpack/commit/18fbebf)
 

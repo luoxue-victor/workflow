@@ -4,11 +4,10 @@
 
 本文从下面几个课题来实现
 
-
-## collapsible markdown?
+## 课题列表
 
 <details>
-<summary>点击查看课题</summary>
+ <summary>点击查看课题</summary>
 
 - 课题 1：[初探 webpack？探究 webpack 打包原理](./docs/课时1.md)。
 - 课题 2：[搭建开发环境跟生产环境](./docs/课时2.md)
