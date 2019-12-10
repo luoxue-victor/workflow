@@ -7,7 +7,7 @@
 ### 课题列表
 
 <details open=“open”>
- <summary>点击关闭课题列表</summary>
+ <summary style="text-align: center; width: 30%; border: 10px solid white; background: cyan; color: black;">点击关闭/打开课题列表</summary>
 
 - 课题 1：[初探 webpack？探究 webpack 打包原理](./docs/课时1.md)。
 - 课题 2：[搭建开发环境跟生产环境](./docs/课时2.md)
@@ -28,7 +28,7 @@
 ### 安装
 
 <details open=“open”>
- <summary>点击关闭安装</summary>
+ <summary style="text-align: center; width: 30%; border: 10px solid white; background: cyan; color: black;">点击关闭/打开安装</summary>
 
 ```bash
 npm i -g webpack-box # 全局安装使用
@@ -40,7 +40,7 @@ npm link # 建立软连接，可以使用 webpack-box 命令
 ### 使用
 
 <details open=“open”>
- <summary>点击关闭使用</summary>
+ <summary style="text-align: center; width: 30%; border: 10px solid white; background: cyan; color: black;">点击关闭/打开使用</summary>
 
 ```bash
 webpack-box dev   # 开发环境
@@ -75,7 +75,7 @@ webpack-box lint stylelint # 自动修复 stylelint 错误
 ### 扩展配置
 
 <details open=“open”>
-  <summary>点击关闭扩展配置</summary>
+  <summary style="text-align: center; width: 30%; border: 10px solid white; background: cyan; color: black;">点击关闭/打开扩展配置</summary>
 
 在根目录下添加 `box.config.js`，即可配置使用
 
