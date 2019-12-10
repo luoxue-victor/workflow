@@ -4,7 +4,7 @@
 
 本文从下面几个课题来实现
 
-## 课题列表
+### 课题列表
 
 <details>
  <summary>点击查看课题</summary>
@@ -25,10 +25,11 @@
 
 </details>
 
-## 脚手架
+### 安装
 
-```js
-npm i -g webpack-box
+```bash
+npm i -g webpack-box # 全局安装使用
+npm link # 建立软连接，可以使用 webpack-box 命令
 ```
 
 ### 使用
@@ -57,13 +58,20 @@ webpack-box lint stylelint # 自动修复 stylelint 错误
     "dll": "webpack-box dll",
     "build:ssr": "webpack-box build:ssr",
     "ssr:server": "webpack-box ssr:server"
+    ...
+    ...
   }
 }
 ```
 
-###扩展配置
+### 扩展配置
+
+在根目录下添加 `box.config.js`，即可配置使用
 
 box.config.js
+
+<details>
+  <summary>点击查看配置</summary>
 
 ```js
 module.exports = function (config) {
@@ -116,3 +124,5 @@ module.exports = function (config) {
   }
 }
 ```
+
+</details>
