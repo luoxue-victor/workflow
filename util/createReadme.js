@@ -34,7 +34,9 @@ function detailTag (title, ctx) {
 ### ${title}
 
 <details open=“open”>
-  <summary>点击关闭/打开${title}</summary> \n\n${ctx}
+  <summary>点击关闭/打开${title}</summary> 
+  <br/>
+\n\n${ctx}
 </details> \n\n`
 }
 

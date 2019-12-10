@@ -8,6 +8,8 @@
 
 <details open=“open”>
   <summary>点击关闭/打开所有课题</summary> 
+  <br/>
+
 
 - [课题01：初探 webpack](./docs/课时-01.md)
 - [课题02：搭建可插拔的开发环境跟生产环境](./docs/课时-02.md)
@@ -76,6 +78,8 @@ webpack-box lint stylelint # 自动修复 stylelint 错误
 
 <details open=“open”>
   <summary>点击关闭/打开所有配置</summary> 
+  <br/>
+
 
 - [打包分析](./config/BundleAnalyzerPlugin.js)
 - [开启gzip](./config/CompressionWebpackPlugin.js)

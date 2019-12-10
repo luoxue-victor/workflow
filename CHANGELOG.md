@@ -9,6 +9,7 @@
  changelog | fix some changelog | [3bc624a](https://github.com/luoxue-victor/learn_webpack/commit/3bc624a)
  commit config | 修改提交代码配置 | [dd90ff9](https://github.com/luoxue-victor/learn_webpack/commit/dd90ff9)
  create readme | 生成文档 box.config 格式错误 | [3401e28](https://github.com/luoxue-victor/learn_webpack/commit/3401e28)
+ create readme | 修改生成 安装 bug | [63d8666](https://github.com/luoxue-victor/learn_webpack/commit/63d8666)
  create readme | 修改生成 install 文档标题错误 | [4171dda](https://github.com/luoxue-victor/learn_webpack/commit/4171dda)
  createreadme | 文档生成bug修改 | [2730902](https://github.com/luoxue-victor/learn_webpack/commit/2730902)
  delete | 删除无用代码 | [0831fc9](https://github.com/luoxue-victor/learn_webpack/commit/0831fc9)
