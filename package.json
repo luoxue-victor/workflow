@@ -8,7 +8,7 @@
   },
   "scripts": {
     "log": "conventional-changelog --config ./node_modules/vue-cli-plugin-commitlint/lib/log -i CHANGELOG.md -s -r 0",
-    "cz": "npm run log && git add . && git cz",
+    "cz": "npm run cr && npm run log && git add . && git cz",
     "cr": "node util/createReadme.js"
   },
   "repository": {
@@ -104,7 +104,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
-      "commit-msg": "npm run cr && commitlint -E HUSKY_GIT_PARAMS"
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "lint-staged": {
