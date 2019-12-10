@@ -23,7 +23,7 @@
 - [课题12：添加 tslint](./docs/课时-12.md)
 - [课题13：配置别名](./docs/课时-13.md)
 
-</details>### 安装
+</details>### 安装 
 
 <details open=“open”>
  <summary>点击关闭/打开安装</summary>
@@ -101,7 +101,6 @@ webpack-box lint stylelint # 自动修复 stylelint 错误
 <details open=“open”>
   <br/>
   <summary>点击关闭/打开扩展配置</summary>
-  <br/>
 在根目录下添加 `box.config.js`，即可配置使用
 
 box.config.js
@@ -171,3 +170,4 @@ module.exports = function (config) {
 ```
 
 </details>  
+

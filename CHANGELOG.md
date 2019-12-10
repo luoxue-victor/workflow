@@ -13,6 +13,7 @@
  delete | 删除无用代码 | [0831fc9](https://github.com/luoxue-victor/learn_webpack/commit/0831fc9)
  merge | 合并master | [065420b](https://github.com/luoxue-victor/learn_webpack/commit/065420b)
  package | asdasdasdad | [8a4cff1](https://github.com/luoxue-victor/learn_webpack/commit/8a4cff1)
+ package.json | 修改 npm run cr 位置 | [242f695](https://github.com/luoxue-victor/learn_webpack/commit/242f695)
  packagejson | 调整生成文档在 commit-msg 钩子内 | [d21b695](https://github.com/luoxue-victor/learn_webpack/commit/d21b695)
  scripts cz | 修改脚本cz命令 | [b4a8c51](https://github.com/luoxue-victor/learn_webpack/commit/b4a8c51)
 

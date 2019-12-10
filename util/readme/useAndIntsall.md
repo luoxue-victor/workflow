@@ -1,4 +1,4 @@
-### 安装
+### 安装 
 
 <details open=“open”>
  <summary>点击关闭/打开安装</summary>
