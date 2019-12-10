@@ -17,6 +17,7 @@
  readme | 新增ssr说明 | [18e152a](https://github.com/luoxue-victor/learn_webpack/commit/18e152a)
  readme | 修改文档 | [8cd7443](https://github.com/luoxue-victor/learn_webpack/commit/8cd7443)
  readme | 修改readme | [06b1b2f](https://github.com/luoxue-victor/learn_webpack/commit/06b1b2f)
+ readme | 折叠扩展配置 | [8bea7ea](https://github.com/luoxue-victor/learn_webpack/commit/8bea7ea)
  stylelint | 课时11的文档完善 | [4a55f80](https://github.com/luoxue-victor/learn_webpack/commit/4a55f80)
  version | v1.0.5 | [c2b5932](https://github.com/luoxue-victor/learn_webpack/commit/c2b5932)
 

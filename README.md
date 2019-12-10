@@ -6,8 +6,8 @@
 
 ### 课题列表
 
-<details>
- <summary>点击查看课题</summary>
+<details open=“open”>
+ <summary>点击关闭课题列表</summary>
 
 - 课题 1：[初探 webpack？探究 webpack 打包原理](./docs/课时1.md)。
 - 课题 2：[搭建开发环境跟生产环境](./docs/课时2.md)
@@ -27,12 +27,20 @@
 
 ### 安装
 
+<details open=“open”>
+ <summary>点击关闭安装</summary>
+
 ```bash
 npm i -g webpack-box # 全局安装使用
 npm link # 建立软连接，可以使用 webpack-box 命令
 ```
 
+</details>
+
 ### 使用
+
+<details open=“open”>
+ <summary>点击关闭使用</summary>
 
 ```bash
 webpack-box dev   # 开发环境
@@ -58,20 +66,20 @@ webpack-box lint stylelint # 自动修复 stylelint 错误
     "dll": "webpack-box dll",
     "build:ssr": "webpack-box build:ssr",
     "ssr:server": "webpack-box ssr:server"
-    ...
-    ...
   }
 }
 ```
 
+</details>
+
 ### 扩展配置
+
+<details open=“open”>
+  <summary>点击关闭扩展配置</summary>
 
 在根目录下添加 `box.config.js`，即可配置使用
 
 box.config.js
-
-<details>
-  <summary>点击查看配置</summary>
 
 ```js
 module.exports = function (config) {
