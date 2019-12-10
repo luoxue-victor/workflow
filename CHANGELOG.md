@@ -13,6 +13,7 @@
  alias | 配置别名 第13课时 | [804f932](https://github.com/luoxue-victor/learn_webpack/commit/804f932)
  all | 初始化一个项目 | [336cc13](https://github.com/luoxue-victor/learn_webpack/commit/336cc13)
  asdasdasdas | 你爱哈的 | [ea12f9c](https://github.com/luoxue-victor/learn_webpack/commit/ea12f9c)
+ auto readme | 自动生成 readme 文件 | [1e0a526](https://github.com/luoxue-victor/learn_webpack/commit/1e0a526)
  autoprefixer | css 自动添加前缀 | [4e88451](https://github.com/luoxue-victor/learn_webpack/commit/4e88451)
  config | add config  option | [83c9f1e](https://github.com/luoxue-victor/learn_webpack/commit/83c9f1e)
  create readme | 创建readme | [571bfaa](https://github.com/luoxue-victor/learn_webpack/commit/571bfaa)
@@ -34,19 +35,6 @@
  你好 | [6e534da](https://github.com/luoxue-victor/learn_webpack/commit/6e534da)
  asasdasasd | [8f9515f](https://github.com/luoxue-victor/learn_webpack/commit/8f9515f)
  asd | [d278787](https://github.com/luoxue-victor/learn_webpack/commit/d278787)
-
-
-### 🐛 Bug 修复
-范围|描述|commitId
---|--|--
- 更新了 commitlint 功能 | commitlint 更新到 1.0.10 版本 | [57155ce](https://github.com/luoxue-victor/learn_webpack/commit/57155ce)
- build | 修复了build是 publicPath 的问题 | [ac2ab19](https://github.com/luoxue-victor/learn_webpack/commit/ac2ab19)
- build/base | 获取文件名使用path.basename | [5efdc7d](https://github.com/luoxue-victor/learn_webpack/commit/5efdc7d)
- changelog | fix some changelog | [3bc624a](https://github.com/luoxue-victor/learn_webpack/commit/3bc624a)
- commit config | 修改提交代码配置 | [dd90ff9](https://github.com/luoxue-victor/learn_webpack/commit/dd90ff9)
- delete | 删除无用代码 | [0831fc9](https://github.com/luoxue-victor/learn_webpack/commit/0831fc9)
- package | asdasdasdad | [8a4cff1](https://github.com/luoxue-victor/learn_webpack/commit/8a4cff1)
- scripts cz | 修改脚本cz命令 | [b4a8c51](https://github.com/luoxue-victor/learn_webpack/commit/b4a8c51)
 
 
 ### 📝 文档
@@ -79,4 +67,17 @@
  Delete .DS_Store | [b9d18cd](https://github.com/luoxue-victor/learn_webpack/commit/b9d18cd)
  dev,build 命令descreiption错误 | [b47f016](https://github.com/luoxue-victor/learn_webpack/commit/b47f016)
  Initial commit | [18fbebf](https://github.com/luoxue-victor/learn_webpack/commit/18fbebf)
+
+
+### 🐛 Bug 修复
+范围|描述|commitId
+--|--|--
+ 更新了 commitlint 功能 | commitlint 更新到 1.0.10 版本 | [57155ce](https://github.com/luoxue-victor/learn_webpack/commit/57155ce)
+ build | 修复了build是 publicPath 的问题 | [ac2ab19](https://github.com/luoxue-victor/learn_webpack/commit/ac2ab19)
+ build/base | 获取文件名使用path.basename | [5efdc7d](https://github.com/luoxue-victor/learn_webpack/commit/5efdc7d)
+ changelog | fix some changelog | [3bc624a](https://github.com/luoxue-victor/learn_webpack/commit/3bc624a)
+ commit config | 修改提交代码配置 | [dd90ff9](https://github.com/luoxue-victor/learn_webpack/commit/dd90ff9)
+ delete | 删除无用代码 | [0831fc9](https://github.com/luoxue-victor/learn_webpack/commit/0831fc9)
+ package | asdasdasdad | [8a4cff1](https://github.com/luoxue-victor/learn_webpack/commit/8a4cff1)
+ scripts cz | 修改脚本cz命令 | [b4a8c51](https://github.com/luoxue-victor/learn_webpack/commit/b4a8c51)
 

@@ -30,7 +30,9 @@ fs.writeFileSync('README.md', ctx, 'utf-8')
 
 function detailTag (title, ctx) {
   return `
+
 ### ${title}
+
 <details open=“open”>
   <summary>点击关闭/打开${title}</summary> \n\n${ctx}
 </details>`
@@ -54,11 +56,13 @@ function boxConfig () {
   let ctx = ''
   ctx = fs.readFileSync(path.join(process.cwd(), 'box.config.js')).toString()
   return `
-  ### 扩展配置
+
+### 扩展配置
 
   <details open=“open”>
+    <br/>
     <summary>点击关闭/打开扩展配置</summary>
-  
+    <br/>
   在根目录下添加 \`box.config.js\`，即可配置使用
   
   box.config.js
