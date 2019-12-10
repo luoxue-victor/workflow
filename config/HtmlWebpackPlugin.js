@@ -1,3 +1,4 @@
+// [html-webpack-plugin 生成html]
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
 

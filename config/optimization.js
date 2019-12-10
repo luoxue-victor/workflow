@@ -1,3 +1,4 @@
+// [optimization 优化配置]
 module.exports = ({ config }) => {
   return () => {
     config

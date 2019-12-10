@@ -1,7 +1,7 @@
 // import TS from './ts/index.ts'
-import { cube } from './treeShaking'
+import { cube } from '@src/treeShaking'
 
-import('./ts/index.ts').then(res => {
+import('@src/ts/index.ts').then(res => {
   console.log(res)
   // eslint-disable-next-line new-cap
   new res.default()

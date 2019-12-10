@@ -1,3 +1,4 @@
+// [dll-plugin 配置]
 const webpack = require('webpack')
 
 module.exports = ({ config, resolve, options }) => {

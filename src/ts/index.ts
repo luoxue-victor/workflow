@@ -1,5 +1,4 @@
-// @ts-ignore
-import B from './index3.ts'
+import B from '@src/ts/index3.ts'
 
 new B()
 

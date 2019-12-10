@@ -1,3 +1,4 @@
+// [样式表配置]
 module.exports = ({ config }) => {
   const createCSSRule = (lang, test, loader, options = {}) => {
     const baseRule = config.module.rule(lang).test(test)

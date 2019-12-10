@@ -1,3 +1,4 @@
+// [cache-loader 配置]
 module.exports = ({ config, resolve }) => {
   const baseRule = config.module.rule('js').test(/.js|.tsx?$/)
   return () => {

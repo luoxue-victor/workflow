@@ -1,4 +1,4 @@
-## 1.0.6 (2019-12-09)
+## 1.0.6 (2019-12-10)
 
 ### 🌟 新功能
 范围|描述|commitId
@@ -61,6 +61,7 @@
  eslint 文档 | 修改eslint 文档，并添加cwd分层 | [d23329b](https://github.com/luoxue-victor/learn_webpack/commit/d23329b)
  readme | 保存文档 | [99c82c1](https://github.com/luoxue-victor/learn_webpack/commit/99c82c1)
  readme | 新增ssr说明 | [18e152a](https://github.com/luoxue-victor/learn_webpack/commit/18e152a)
+ readme | 修改readme | [06b1b2f](https://github.com/luoxue-victor/learn_webpack/commit/06b1b2f)
  stylelint | 课时11的文档完善 | [4a55f80](https://github.com/luoxue-victor/learn_webpack/commit/4a55f80)
  version | v1.0.5 | [c2b5932](https://github.com/luoxue-victor/learn_webpack/commit/c2b5932)
 

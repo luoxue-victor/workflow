@@ -1,3 +1,4 @@
+// [babel-loader 配置]
 module.exports = ({ config, resolve, tsx }) => {
   const babelConf = {
     presets: [

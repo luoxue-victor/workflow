@@ -1,3 +1,4 @@
+// [打包分析]
 const {
   BundleAnalyzerPlugin
 } = require('webpack-bundle-analyzer')

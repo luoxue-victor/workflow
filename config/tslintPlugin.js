@@ -1,3 +1,4 @@
+// [tslint 配置]
 module.exports = ({
   config,
   options: {

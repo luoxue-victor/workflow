@@ -1,3 +1,8 @@
+const path = require('path')
+function resolve (dir) {
+  return path.join(process.cwd(), dir)
+}
+
 module.exports = function (config) {
   /**
    * @param {object} dll 开启差分包
@@ -5,17 +10,23 @@ module.exports = function (config) {
    * @param {function} chainWebpack
    * @param {string} entry 入口
    * @param {string} output 出口
+   *
    * @param {string} publicPath
    * @param {string} port 端口
    * @param {object} eslint eslint 配置
    * @param {object} stylelint stylelint 配置
    * @param {object} eslint eslint 配置
+   * @param {object} alias 配置别名
    */
   return {
     entry: 'src/main.js',
     output: 'dist',
     publicPath: '/common/',
     port: 8888,
+    alias: {
+      '@': resolve('src'),
+      '@src': resolve('src')
+    },
     eslint: {
       lintOnSave: true, // 开启运行时检测
       extensions: ['js', 'jsx', 'vue'] // 默认 ['js', 'jsx']

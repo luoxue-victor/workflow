@@ -1,6 +1,6 @@
-# 一步步从零开始 webpack 搭建一个大型项目
+# webpack 工程师的自我修养
 
-> 很多人都或多或少使用过 webpack，但是很少有人能够系统的学习 webpack 配置，遇到错误的时候就会一脸懵，不知道从哪查起？性能优化时也不知道能做什么，网上的优化教程是不是符合自己的项目？等一系列问题！本文从最基础配置一步步到一个完善的大型项目的过程。让你对 webpack 再也不会畏惧，让它真正成为你的得力助手！
+> 本来想要做一个大型项目的 webpack 教程，但是我发现还可以做更多的事情，所以这里我要将这个项目做成 webpack 手册，所有您可以来这里找到任何想要的 webpack 配置
 
 本文从下面几个课题来实现
 
@@ -16,6 +16,7 @@
 - 课时 10：[添加 eslint 并自动修复](./docs/课时10.md)
 - 课时 11：[添加 stylelint 并自动修复](./docs/课时11.md)
 - 课时 12：[添加 tslint 并自动修复](./docs/课时12.md)
+- 课时 13：[配置别名](./docs/课时13.md)
 
 ## 脚手架
 
@@ -35,6 +36,8 @@ webpack-box build index --report # 开启打包分析
 webpack-box build:ssr  # 编译ssr
 webpack-box ssr:server # 在 server 端运行
 webpack-box lint eslint # 自动修复 eslint 错误
+webpack-box lint tslint # 自动修复 tslint 错误
+webpack-box lint stylelint # 自动修复 stylelint 错误
 ```
 
 在 package.json 中使用
@@ -51,13 +54,7 @@ webpack-box lint eslint # 自动修复 eslint 错误
 }
 ```
 
-使用
-
-```bash
-npm run build --report # 开启打包分析
-```
-
-扩展配置
+###扩展配置
 
 box.config.js
 

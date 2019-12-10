@@ -1,4 +1,4 @@
-
+// [开启gzip]
 const CompressionWebpackPlugin = require('compression-webpack-plugin')
 
 module.exports = ({ config }) => {

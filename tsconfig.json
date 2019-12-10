@@ -20,7 +20,9 @@
     "types": ["node"],
     "rootDir": ".",
     "paths": {
-      "@src": ["src"]
+      "@src/*": [
+        "src/*"
+      ]
     }
   },
   "include": ["src"]

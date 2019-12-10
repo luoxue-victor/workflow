@@ -1,3 +1,4 @@
+// [基础配置]
 module.exports = ({ config, resolve, options }) => {
   let name = 'app'
   let entry = options.entry || 'src/main.js'
