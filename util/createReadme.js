@@ -59,20 +59,20 @@ function boxConfig () {
 
 ### 扩展配置
 
-  <details open=“open”>
-    <br/>
-    <summary>点击关闭/打开扩展配置</summary>
-    <br/>
-  在根目录下添加 \`box.config.js\`，即可配置使用
+<details open=“open”>
+  <br/>
+  <summary>点击关闭/打开扩展配置</summary>
+  <br/>
+在根目录下添加 \`box.config.js\`，即可配置使用
+
+box.config.js
   
-  box.config.js
-  
-  \`\`\`js
+\`\`\`js
 ${ctx}
-  \`\`\`
-  
-  </details>  
-  `
+\`\`\`
+
+</details>  
+`
 }
 
 function readMdBy(name) {

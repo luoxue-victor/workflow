@@ -98,15 +98,15 @@ webpack-box lint stylelint # 自动修复 stylelint 错误
 
 ### 扩展配置
 
-  <details open=“open”>
-    <br/>
-    <summary>点击关闭/打开扩展配置</summary>
-    <br/>
-  在根目录下添加 `box.config.js`，即可配置使用
+<details open=“open”>
+  <br/>
+  <summary>点击关闭/打开扩展配置</summary>
+  <br/>
+在根目录下添加 `box.config.js`，即可配置使用
+
+box.config.js
   
-  box.config.js
-  
-  ```js
+```js
 const path = require('path')
 function resolve (dir) {
   return path.join(process.cwd(), dir)
@@ -167,8 +167,6 @@ module.exports = function (config) {
     }
   }
 }
-
-  ```
-  
-  </details>  
+```
+</details>  
   

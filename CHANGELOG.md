@@ -10,6 +10,7 @@
  commit config | 修改提交代码配置 | [dd90ff9](https://github.com/luoxue-victor/learn_webpack/commit/dd90ff9)
  createreadme | 文档生成bug修改 | [2730902](https://github.com/luoxue-victor/learn_webpack/commit/2730902)
  delete | 删除无用代码 | [0831fc9](https://github.com/luoxue-victor/learn_webpack/commit/0831fc9)
+ merge | 合并master | [065420b](https://github.com/luoxue-victor/learn_webpack/commit/065420b)
  package | asdasdasdad | [8a4cff1](https://github.com/luoxue-victor/learn_webpack/commit/8a4cff1)
  packagejson | 调整生成文档在 commit-msg 钩子内 | [d21b695](https://github.com/luoxue-victor/learn_webpack/commit/d21b695)
  scripts cz | 修改脚本cz命令 | [b4a8c51](https://github.com/luoxue-victor/learn_webpack/commit/b4a8c51)
