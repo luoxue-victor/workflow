@@ -30,7 +30,7 @@
 ### 安装 
 
 <details open=“open”>
- <summary>点击关闭/打开安装</summary>
+ <summary>点击关闭/打开安装</summary><br/>
 
 ```bash
 npm i -g webpack-box # 全局安装使用
@@ -42,7 +42,7 @@ npm link # 建立软连接，可以使用 webpack-box 命令
 ### 使用
 
 <details open=“open”>
- <summary>点击关闭/打开使用</summary>
+ <summary>点击关闭/打开使用</summary><br/>
 
 ```bash
 webpack-box dev   # 开发环境
