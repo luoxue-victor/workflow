@@ -35,7 +35,7 @@ function detailTag (title, ctx) {
 
 <details open=“open”>
   <summary>点击关闭/打开${title}</summary> \n\n${ctx}
-</details>`
+</details> \n\n`
 }
 
 function extraTxt (dirname, firstRowStrategy) {
