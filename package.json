@@ -103,8 +103,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run cr && lint-staged",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+      "pre-commit": "lint-staged",
+      "commit-msg": "npm run cr && commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "lint-staged": {

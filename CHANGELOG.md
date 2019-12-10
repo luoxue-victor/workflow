@@ -37,6 +37,20 @@
  asd | [d278787](https://github.com/luoxue-victor/learn_webpack/commit/d278787)
 
 
+### 🐛 Bug 修复
+范围|描述|commitId
+--|--|--
+ 更新了 commitlint 功能 | commitlint 更新到 1.0.10 版本 | [57155ce](https://github.com/luoxue-victor/learn_webpack/commit/57155ce)
+ build | 修复了build是 publicPath 的问题 | [ac2ab19](https://github.com/luoxue-victor/learn_webpack/commit/ac2ab19)
+ build/base | 获取文件名使用path.basename | [5efdc7d](https://github.com/luoxue-victor/learn_webpack/commit/5efdc7d)
+ changelog | fix some changelog | [3bc624a](https://github.com/luoxue-victor/learn_webpack/commit/3bc624a)
+ commit config | 修改提交代码配置 | [dd90ff9](https://github.com/luoxue-victor/learn_webpack/commit/dd90ff9)
+ createreadme | 文档生成bug修改 | [2730902](https://github.com/luoxue-victor/learn_webpack/commit/2730902)
+ delete | 删除无用代码 | [0831fc9](https://github.com/luoxue-victor/learn_webpack/commit/0831fc9)
+ package | asdasdasdad | [8a4cff1](https://github.com/luoxue-victor/learn_webpack/commit/8a4cff1)
+ scripts cz | 修改脚本cz命令 | [b4a8c51](https://github.com/luoxue-victor/learn_webpack/commit/b4a8c51)
+
+
 ### 📝 文档
 范围|描述|commitId
 --|--|--
@@ -67,17 +81,4 @@
  Delete .DS_Store | [b9d18cd](https://github.com/luoxue-victor/learn_webpack/commit/b9d18cd)
  dev,build 命令descreiption错误 | [b47f016](https://github.com/luoxue-victor/learn_webpack/commit/b47f016)
  Initial commit | [18fbebf](https://github.com/luoxue-victor/learn_webpack/commit/18fbebf)
-
-
-### 🐛 Bug 修复
-范围|描述|commitId
---|--|--
- 更新了 commitlint 功能 | commitlint 更新到 1.0.10 版本 | [57155ce](https://github.com/luoxue-victor/learn_webpack/commit/57155ce)
- build | 修复了build是 publicPath 的问题 | [ac2ab19](https://github.com/luoxue-victor/learn_webpack/commit/ac2ab19)
- build/base | 获取文件名使用path.basename | [5efdc7d](https://github.com/luoxue-victor/learn_webpack/commit/5efdc7d)
- changelog | fix some changelog | [3bc624a](https://github.com/luoxue-victor/learn_webpack/commit/3bc624a)
- commit config | 修改提交代码配置 | [dd90ff9](https://github.com/luoxue-victor/learn_webpack/commit/dd90ff9)
- delete | 删除无用代码 | [0831fc9](https://github.com/luoxue-victor/learn_webpack/commit/0831fc9)
- package | asdasdasdad | [8a4cff1](https://github.com/luoxue-victor/learn_webpack/commit/8a4cff1)
- scripts cz | 修改脚本cz命令 | [b4a8c51](https://github.com/luoxue-victor/learn_webpack/commit/b4a8c51)
 

@@ -3,7 +3,9 @@
 > 本来想要做一个大型项目的 webpack 教程，但是我发现还可以做更多的事情，所以这里我要将这个项目做成 webpack 手册，您可以来这里找到任何想要的 webpack 配置
 
 本文从下面几个课题来实现
+
 ### 所有课题
+
 <details open=“open”>
   <summary>点击关闭/打开所有课题</summary> 
 
@@ -67,7 +69,9 @@ webpack-box lint stylelint # 自动修复 stylelint 错误
 ```
 
 </details>
+
 ### 所有配置
+
 <details open=“open”>
   <summary>点击关闭/打开所有配置</summary> 
 
@@ -91,11 +95,13 @@ webpack-box lint stylelint # 自动修复 stylelint 错误
 - [tslint 配置](./config/tslintPlugin.js)
 
 </details>
-  ### 扩展配置
+
+### 扩展配置
 
   <details open=“open”>
+    <br/>
     <summary>点击关闭/打开扩展配置</summary>
-  
+    <br/>
   在根目录下添加 `box.config.js`，即可配置使用
   
   box.config.js
