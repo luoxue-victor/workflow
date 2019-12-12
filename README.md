@@ -16,7 +16,7 @@
 - [课题03：基础配置（loder，ts、babel、css、less、sass、postcss）等](./docs/课时-03.md)
 - [课题04：webpack 性能优化1](./docs/课时-04.md)
 - [课题05: 手写一个loader，实现可选链](./docs/课时-05.md)
-- [课题06: webpack编译优化](./docs/课时-06.md)
+- [课题06：webpack编译优化](./docs/课时-06.md)
 - [课题07：多页面配置](./docs/课时-07.md)
 - [课题08：手写一个 webpack plugin](./docs/课时-08.md)
 - [课题09：webpack 构建 ssr](./docs/课时-09.md)
@@ -24,6 +24,7 @@
 - [课题11：添加 stylelint](./docs/课时-11.md)
 - [课题12：添加 tslint](./docs/课时-12.md)
 - [课题13：配置别名](./docs/课时-13.md)
+- [课时 14: 升级 webpack5](./docs/课时-14.md)
 
 </details> 
 
@@ -91,7 +92,7 @@ webpack-box lint stylelint # 自动修复 stylelint 错误
 - [别名配置](./config/alias.js)
 - [babel-loader 配置](./config/babelLoader.js)
 - [基础配置](./config/base.js)
-- [cache-loader 配置](./config/cacheLoader.js)
+- [cache-loader 配置（webpack 5 弃用）](./config/cacheLoader.js)
 - [eslint-loader 配置](./config/eslintLoader.js)
 - [提取 manifest](./config/manifest.js)
 - [optimization 优化配置](./config/optimization.js)
@@ -155,9 +156,9 @@ module.exports = function (config) {
       lintOnSave: true // 开启运行时检测
       // extensions: ['vue', 'htm', 'html', 'css', 'sss', 'less', 'scss']
     },
-    dll: {
-      venders: ['react']
-    },
+    // dll: {
+    //   venders: ['react']
+    // },
     pages: {
       index: {
         entry: 'src/main.js',

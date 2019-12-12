@@ -1,4 +1,4 @@
-import B from '@src/ts/index3.ts'
+import B from '@src/ts/importTsTest.ts'
 
 new B()
 

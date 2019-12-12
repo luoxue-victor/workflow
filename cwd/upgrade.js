@@ -1,12 +1,12 @@
-module.exports = function({ injectCommand }) {
+module.exports = function({ cliName, injectCommand }) {
   injectCommand(function({ program, cleanArgs, boxConfig }) {
     program
-      .command('build:ssr [app-page]')
-      .description('服务端渲染 server 端运行')
+      .command(`${cliName} <v>`)
+      .description('webpack版本，输入 4 或 5 ')
       .action(async (name, cmd) => {
         const options = cleanArgs(cmd)
         const args = Object.assign(options, { name }, boxConfig)
-        require('../build/build:ssr')(args)
+        require(`../build/${cliName}`)(args)
       })
   })
 }

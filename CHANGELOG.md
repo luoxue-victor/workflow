@@ -1,4 +1,4 @@
-## 1.0.6 (2019-12-10)
+## 1.0.6 (2019-12-12)
 
 ### 🐛 Bug 修复
 范围|描述|commitId
@@ -14,6 +14,7 @@
  create readme | 修改生成 install 文档标题错误 | [4171dda](https://github.com/luoxue-victor/learn_webpack/commit/4171dda)
  createreadme | 文档生成bug修改 | [2730902](https://github.com/luoxue-victor/learn_webpack/commit/2730902)
  delete | 删除无用代码 | [0831fc9](https://github.com/luoxue-victor/learn_webpack/commit/0831fc9)
+ install and use 间距 | install and use 间距 | [94ff06b](https://github.com/luoxue-victor/learn_webpack/commit/94ff06b)
  merge | 合并master | [065420b](https://github.com/luoxue-victor/learn_webpack/commit/065420b)
  package | asdasdasdad | [8a4cff1](https://github.com/luoxue-victor/learn_webpack/commit/8a4cff1)
  package.json | 修改 npm run cr 位置 | [242f695](https://github.com/luoxue-victor/learn_webpack/commit/242f695)

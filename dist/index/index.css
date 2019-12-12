@@ -9,10 +9,12 @@
   display: flex;
   background-color: orange;
 }
+
 /* app.css */
 .test {
   font-size: 8vw;
 }
+
 /* index.less */
 .test {
   width: 40vw;

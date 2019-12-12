@@ -1,4 +1,4 @@
-module.exports = function(injectCommand) {
+module.exports = function({ injectCommand }) {
   injectCommand(function({ program, cleanArgs, boxConfig }) {
     program
       .command('dev [app-page]')

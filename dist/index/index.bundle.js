@@ -1,17 +1,5 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["index"],{
 
-/***/ "./node_modules/react/index.js":
-/*!**********************************************************************!*\
-  !*** delegated ./node_modules/react/index.js from dll-reference ssr ***!
-  \**********************************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = (__webpack_require__(/*! dll-reference ssr */ "dll-reference ssr"))("./node_modules/react/index.js");
-
-/***/ }),
-
 /***/ "./src/main.js":
 /*!*********************!*\
   !*** ./src/main.js ***!
@@ -22,11 +10,13 @@ module.exports = (__webpack_require__(/*! dll-reference ssr */ "dll-reference ss
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _treeShaking__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./treeShaking */ "./src/treeShaking.js");
+/* harmony import */ var _src_treeShaking__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @src/treeShaking */ "./src/treeShaking.js");
 // import TS from './ts/index.ts'
 
-__webpack_require__.e(/*! import() */ 0).then(__webpack_require__.bind(null, /*! ./ts/index.ts */ "./src/ts/index.ts")).then(function (res) {
-  console.log(res); // new res.default()
+__webpack_require__.e(/*! import() */ 0).then(__webpack_require__.bind(null, /*! @src/ts/index.ts */ "./src/ts/index.ts")).then(function (res) {
+  console.log(res); // eslint-disable-next-line new-cap
+
+  new res.default();
 });
 
 __webpack_require__(/*! ./style/index.css */ "./src/style/index.css");
@@ -41,10 +31,10 @@ __webpack_require__.e(/*! import() */ 1).then(__webpack_require__.t.bind(null, /
 
 __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
-console.log(Object(_treeShaking__WEBPACK_IMPORTED_MODULE_0__[/* cube */ "a"])(2));
+console.log(Object(_src_treeShaking__WEBPACK_IMPORTED_MODULE_0__[/* cube */ "a"])(2));
 var h2 = document.createElement('h2');
 h2.className = 'test';
-h2.innerText = 'testaaa';
+h2.innerText = 'webpack 5';
 document.body.append(h2);
 
 /***/ }),
@@ -133,18 +123,6 @@ function cube(x) {
 
 module.exports = __webpack_require__(/*! /Users/luoxue/Desktop/learn/learn_webpack/src/main.js */"./src/main.js");
 
-
-/***/ }),
-
-/***/ "dll-reference ssr":
-/*!**********************!*\
-  !*** external "ssr" ***!
-  \**********************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports) {
-
-module.exports = ssr;
 
 /***/ })
 

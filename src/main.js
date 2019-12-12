@@ -17,5 +17,5 @@ console.log(cube(2))
 
 const h2 = document.createElement('h2')
 h2.className = 'test'
-h2.innerText = 'testaaa'
+h2.innerText = 'webpack 5'
 document.body.append(h2)

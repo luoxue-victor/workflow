@@ -39,9 +39,9 @@ module.exports = function (config) {
       lintOnSave: true // 开启运行时检测
       // extensions: ['vue', 'htm', 'html', 'css', 'sss', 'less', 'scss']
     },
-    dll: {
-      venders: ['react']
-    },
+    // dll: {
+    //   venders: ['react']
+    // },
     pages: {
       index: {
         entry: 'src/main.js',

@@ -5,7 +5,7 @@
    * @param formatOnSave 保存时自动修复
    */
   "editor.tabSize": 2,
-  "editor.formatOnSave": false,
+  "editor.formatOnSave": true,
   /*
    * @description eslint 配置
    * @param alwaysShowStatus 配置
@@ -27,13 +27,13 @@
    * @param autoFixOnSave 保存时自动修复
    * @param alwaysShowRuleFailuresAsWarnings 所有特征都是用 Warnings
    */
-  "tslint.autoFixOnSave": false,
+  "tslint.autoFixOnSave": true,
   "tslint.alwaysShowRuleFailuresAsWarnings": true,
   /*
    * @description stylelint 配置
    * @param autoFixOnSave 保存时自动修复
    */
-  "stylelint.autoFixOnSave": false,
+  "stylelint.autoFixOnSave": true,
   /*
    * @description vetur 配置
    */
