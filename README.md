@@ -28,7 +28,7 @@
 
 </details> 
 
-### 安装 
+### 安装
 
 <details open=“open”>
  <summary>点击关闭/打开安装</summary><br/>
@@ -57,6 +57,7 @@ webpack-box ssr:server # 在 server 端运行
 webpack-box lint eslint # 自动修复 eslint 错误
 webpack-box lint tslint # 自动修复 tslint 错误
 webpack-box lint stylelint # 自动修复 stylelint 错误
+webpack-box upgrade 5 # 可以切换到 webpack5/4
 ```
 
 在 package.json 中使用
@@ -74,6 +75,7 @@ webpack-box lint stylelint # 自动修复 stylelint 错误
 ```
 
 </details>
+
 
 ### 所有配置
 
