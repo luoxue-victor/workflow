@@ -84,6 +84,7 @@
  readme | 折叠扩展配置 | [8bea7ea](https://github.com/luoxue-victor/learn_webpack/commit/8bea7ea)
  stylelint | 课时11的文档完善 | [4a55f80](https://github.com/luoxue-victor/learn_webpack/commit/4a55f80)
  version | v1.0.5 | [c2b5932](https://github.com/luoxue-victor/learn_webpack/commit/c2b5932)
+ webpack5 | 更新 webpack5 文档 | [c9b2f66](https://github.com/luoxue-victor/learn_webpack/commit/c9b2f66)
 
 
 范围|描述|commitId
