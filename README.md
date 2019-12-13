@@ -27,7 +27,8 @@
 - [课题 11：添加 stylelint](./docs/课时-11.md)
 - [课题 12：添加 tslint](./docs/课时-12.md)
 - [课题 13：配置别名](./docs/课时-13.md)
-- [课时 14: 升级 webpack5](./docs/课时-14.md)
+- [课时 14：升级 webpack5](./docs/课时-14.md)
+- [课时 15：定义变量](./docs/课时-15.md)
 
 </details> 
 
@@ -90,6 +91,7 @@ webpack-box upgrade 5 # 可以切换到 webpack5/4
 - [打包分析](./config/BundleAnalyzerPlugin.js)
 - [开启gzip](./config/CompressionWebpackPlugin.js)
 - [dll-plugin 配置](./config/DllPlugin.js)
+- [EnvironmentPlugin 定义全局变量](./config/EnvironmentPlugin.js)
 - [fork-ts-checher 检查ts类型](./config/ForkTsChecker.js)
 - [friendly-errors-webpack-plugin 友好错误提示](./config/FriendlyErrorsWebpackPlugin.js)
 - [html-webpack-plugin 生成html](./config/HtmlWebpackPlugin.js)
@@ -145,6 +147,9 @@ module.exports = function (config) {
     output: 'dist',
     publicPath: '/common/',
     port: 8888,
+    env: {
+      MY_ENV: 'my-env'
+    },
     alias: {
       '@': resolve('src'),
       '@src': resolve('src')

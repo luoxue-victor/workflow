@@ -13,6 +13,9 @@ require('./style/index.scss')
 import('./style/index.postcss')
 require('react')
 
+if (process.env.NODE_ENV === 'production') {
+  console.log('Welcome to production')
+}
 console.log(cube(2))
 
 const h2 = document.createElement('h2')

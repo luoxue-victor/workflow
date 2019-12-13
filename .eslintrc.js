@@ -19,7 +19,8 @@ module.exports = {
   globals: {
     wx: true,
     window: true,
-    document: true
+    document: true,
+    MY_ENV: true
   },
   parserOptions: {
     parser: '@typescript-eslint/parser'

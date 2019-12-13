@@ -31,6 +31,10 @@ __webpack_require__.e(/*! import() */ "src_style_index_postcss").then(__webpack_
 
 __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
+if (true) {
+  console.log('Welcome to production');
+}
+
 console.log((0,_src_treeShaking__WEBPACK_IMPORTED_MODULE_0__.cube)(2));
 var h2 = document.createElement('h2');
 h2.className = 'test';

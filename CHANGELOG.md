@@ -8,6 +8,7 @@
  课时6 | 修改课时6文档 | [9e4cc38](https://github.com/luoxue-victor/learn_webpack/commit/9e4cc38)
  课题2 | 修改课题2介绍段 | [865af5d](https://github.com/luoxue-victor/learn_webpack/commit/865af5d)
  增加折叠文档 | 增加折叠文档 | [b443f26](https://github.com/luoxue-victor/learn_webpack/commit/b443f26)
+ doc | 修改文档 | [437ba89](https://github.com/luoxue-victor/learn_webpack/commit/437ba89)
  docs | 更新readme，修改了配置 | [a2cc0ed](https://github.com/luoxue-victor/learn_webpack/commit/a2cc0ed)
  docs | 新建docs文档目录 | [140b3b8](https://github.com/luoxue-victor/learn_webpack/commit/140b3b8)
  docs | 修改文档 | [1982613](https://github.com/luoxue-victor/learn_webpack/commit/1982613)
@@ -30,6 +31,7 @@
 
 范围|描述|commitId
 --|--|--
+ Update README.md | [87ef92f](https://github.com/luoxue-victor/learn_webpack/commit/87ef92f)
  Update 课时-14.md | [6e4c579](https://github.com/luoxue-victor/learn_webpack/commit/6e4c579)
  Update README.md | [3ebdc06](https://github.com/luoxue-victor/learn_webpack/commit/3ebdc06)
  Delete .DS_Store | [b9d18cd](https://github.com/luoxue-victor/learn_webpack/commit/b9d18cd)
