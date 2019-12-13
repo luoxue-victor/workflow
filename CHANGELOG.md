@@ -21,6 +21,7 @@
  readme | 修改文档 | [8cd7443](https://github.com/luoxue-victor/learn_webpack/commit/8cd7443)
  readme | 修改readme | [06b1b2f](https://github.com/luoxue-victor/learn_webpack/commit/06b1b2f)
  readme | 增加文档点击颜色对比 | [0a7bf69](https://github.com/luoxue-victor/learn_webpack/commit/0a7bf69)
+ readme | 招募志同道合者 | [427507e](https://github.com/luoxue-victor/learn_webpack/commit/427507e)
  readme | 折叠扩展配置 | [8bea7ea](https://github.com/luoxue-victor/learn_webpack/commit/8bea7ea)
  stylelint | 课时11的文档完善 | [4a55f80](https://github.com/luoxue-victor/learn_webpack/commit/4a55f80)
  version | v1.0.5 | [c2b5932](https://github.com/luoxue-victor/learn_webpack/commit/c2b5932)
