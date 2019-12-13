@@ -16,6 +16,9 @@ module.exports = ({ config, resolve, options }) => {
       // 入口路径
       .add(resolve(entry))
       .end()
+      .cache({
+        type: 'filesystem'
+      })
       // 模式 "production" | "development" | "none"
       // .mode(process.env.NODE_ENV) 等价下面
       .set('mode', 'development') // process.env.NODE_ENV
@@ -24,6 +27,7 @@ module.exports = ({ config, resolve, options }) => {
       .path(resolve(output))
       .filename('[name].bundle.js')
       .publicPath(publicPath)
+      .set('ecmaVersion', 6)
 
     config.devtool('cheap-source-map')
   }

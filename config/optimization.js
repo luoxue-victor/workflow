@@ -4,7 +4,12 @@ module.exports = ({ config }) => {
     config
       .optimization.splitChunks({
         chunks: 'async',
-        minSize: 30000,
+        // webpack5
+        // https://github.com/webpack/changelog-v5#splitchunks-and-module-sizes
+        minSize: {
+          javascript: 30000,
+          style: 50000
+        },
         minChunks: 1,
         maxAsyncRequests: 3,
         maxInitialRequests: 3,
@@ -25,5 +30,6 @@ module.exports = ({ config }) => {
         }
       })
     config.optimization.usedExports(true)
+    // config.optimization.set('chunkIds', 'natural')
   }
 }

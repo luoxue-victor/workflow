@@ -1,4 +1,4 @@
-## 1.0.6 (2019-12-12)
+## 1.0.6 (2019-12-13)
 
 ### 🌟 新功能
 范围|描述|commitId
@@ -60,14 +60,6 @@
  scripts cz | 修改脚本cz命令 | [b4a8c51](https://github.com/luoxue-victor/learn_webpack/commit/b4a8c51)
 
 
-范围|描述|commitId
---|--|--
- Update README.md | [3ebdc06](https://github.com/luoxue-victor/learn_webpack/commit/3ebdc06)
- Delete .DS_Store | [b9d18cd](https://github.com/luoxue-victor/learn_webpack/commit/b9d18cd)
- dev,build 命令descreiption错误 | [b47f016](https://github.com/luoxue-victor/learn_webpack/commit/b47f016)
- Initial commit | [18fbebf](https://github.com/luoxue-victor/learn_webpack/commit/18fbebf)
-
-
 ### 📝 文档
 范围|描述|commitId
 --|--|--
@@ -84,6 +76,7 @@
  readme | 保存文档 | [99c82c1](https://github.com/luoxue-victor/learn_webpack/commit/99c82c1)
  readme | 代码折叠默认展开 | [01e1ea8](https://github.com/luoxue-victor/learn_webpack/commit/01e1ea8)
  readme | 添加readme 钩子 | [83d51b1](https://github.com/luoxue-victor/learn_webpack/commit/83d51b1)
+ readme | 文档增加 upgrade | [c62ed0a](https://github.com/luoxue-victor/learn_webpack/commit/c62ed0a)
  readme | 新增ssr说明 | [18e152a](https://github.com/luoxue-victor/learn_webpack/commit/18e152a)
  readme | 修改文档 | [8cd7443](https://github.com/luoxue-victor/learn_webpack/commit/8cd7443)
  readme | 修改readme | [06b1b2f](https://github.com/luoxue-victor/learn_webpack/commit/06b1b2f)
@@ -91,4 +84,12 @@
  readme | 折叠扩展配置 | [8bea7ea](https://github.com/luoxue-victor/learn_webpack/commit/8bea7ea)
  stylelint | 课时11的文档完善 | [4a55f80](https://github.com/luoxue-victor/learn_webpack/commit/4a55f80)
  version | v1.0.5 | [c2b5932](https://github.com/luoxue-victor/learn_webpack/commit/c2b5932)
+
+
+范围|描述|commitId
+--|--|--
+ Update README.md | [3ebdc06](https://github.com/luoxue-victor/learn_webpack/commit/3ebdc06)
+ Delete .DS_Store | [b9d18cd](https://github.com/luoxue-victor/learn_webpack/commit/b9d18cd)
+ dev,build 命令descreiption错误 | [b47f016](https://github.com/luoxue-victor/learn_webpack/commit/b47f016)
+ Initial commit | [18fbebf](https://github.com/luoxue-victor/learn_webpack/commit/18fbebf)
 
