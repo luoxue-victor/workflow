@@ -1,4 +1,4 @@
-// [EnvironmentPlugin 定义全局变量]
+// [EnvironmentPlugin 定义通用变量]
 const webpack = require('webpack')
 
 module.exports = ({ config, resolve, options }) => {

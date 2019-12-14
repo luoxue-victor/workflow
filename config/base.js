@@ -1,5 +1,5 @@
 // [基础配置]
-module.exports = ({ config, resolve, options }) => {
+module.exports = ({ config, webpackVersion, resolve, options }) => {
   let name = 'app'
   let entry = options.entry || 'src/main.js'
   let output = options.output || 'dist'
@@ -27,8 +27,10 @@ module.exports = ({ config, resolve, options }) => {
       .path(resolve(output))
       .filename('[name].bundle.js')
       .publicPath(publicPath)
-      .set('ecmaVersion', 6)
 
+    if (parseInt(webpackVersion) === 5) {
+      config.output.set('ecmaVersion', 6)
+    }
     config.devtool('cheap-source-map')
   }
 }

@@ -28,7 +28,8 @@
 - [课题 12：添加 tslint](./docs/课时-12.md)
 - [课题 13：配置别名](./docs/课时-13.md)
 - [课时 14：升级 webpack5](./docs/课时-14.md)
-- [课时 15：定义变量](./docs/课时-15.md)
+- [课时 15：定义通用变量](./docs/课时-15.md)
+- [课时 16：严格区分路径大小写](./docs/课时-16.md)
 
 </details> 
 
@@ -91,7 +92,7 @@ webpack-box upgrade 5 # 可以切换到 webpack5/4
 - [打包分析](./config/BundleAnalyzerPlugin.js)
 - [开启gzip](./config/CompressionWebpackPlugin.js)
 - [dll-plugin 配置](./config/DllPlugin.js)
-- [EnvironmentPlugin 定义全局变量](./config/EnvironmentPlugin.js)
+- [EnvironmentPlugin 定义通用变量](./config/EnvironmentPlugin.js)
 - [fork-ts-checher 检查ts类型](./config/ForkTsChecker.js)
 - [friendly-errors-webpack-plugin 友好错误提示](./config/FriendlyErrorsWebpackPlugin.js)
 - [html-webpack-plugin 生成html](./config/HtmlWebpackPlugin.js)
@@ -100,6 +101,7 @@ webpack-box upgrade 5 # 可以切换到 webpack5/4
 - [babel-loader 配置](./config/babelLoader.js)
 - [基础配置](./config/base.js)
 - [cache-loader 配置（webpack 5 弃用）](./config/cacheLoader.js)
+- [CaseSensitivePaths 严格区分大小写](./config/caseSensitivePaths.js)
 - [eslint-loader 配置](./config/eslintLoader.js)
 - [提取 manifest](./config/manifest.js)
 - [optimization 优化配置](./config/optimization.js)
