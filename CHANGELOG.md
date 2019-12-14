@@ -25,6 +25,7 @@
  eslint | 增加 eslint，并保存是自动修复 | [6dd3812](https://github.com/luoxue-victor/learn_webpack/commit/6dd3812)
  feat | aaaaa | [73abf42](https://github.com/luoxue-victor/learn_webpack/commit/73abf42)
  feat | asdada | [64090c7](https://github.com/luoxue-victor/learn_webpack/commit/64090c7)
+ global-style | 设置全局样式 | [ddfca57](https://github.com/luoxue-victor/learn_webpack/commit/ddfca57)
  init | 项目初始化 | [d7835fb](https://github.com/luoxue-victor/learn_webpack/commit/d7835fb)
  lint-staged | 添加 lint-staged，并修改课题10文档 | [a84dff0](https://github.com/luoxue-victor/learn_webpack/commit/a84dff0)
  options-chain | 增加可选链并完善文档 | [b188007](https://github.com/luoxue-victor/learn_webpack/commit/b188007)
