@@ -15,6 +15,7 @@
  asdasdasdas | 你爱哈的 | [ea12f9c](https://github.com/luoxue-victor/learn_webpack/commit/ea12f9c)
  auto readme | 自动生成 readme 文件 | [1e0a526](https://github.com/luoxue-victor/learn_webpack/commit/1e0a526)
  autoprefixer | css 自动添加前缀 | [4e88451](https://github.com/luoxue-victor/learn_webpack/commit/4e88451)
+ case-sensitive=paths | 严格区分大小写 | [164b04d](https://github.com/luoxue-victor/learn_webpack/commit/164b04d)
  config | add config  option | [83c9f1e](https://github.com/luoxue-victor/learn_webpack/commit/83c9f1e)
  create readme | 创建readme | [571bfaa](https://github.com/luoxue-victor/learn_webpack/commit/571bfaa)
  daasd | asdasd | [0b6ee85](https://github.com/luoxue-victor/learn_webpack/commit/0b6ee85)

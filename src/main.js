@@ -12,11 +12,13 @@ require('./style/index.less')
 require('./style/index.scss')
 import('./style/index.postcss')
 require('react')
+const myPubPic = require('./assets/my-pub.jpeg')
 
 if (process.env.NODE_ENV === 'production') {
   console.log('Welcome to production')
 }
 console.log(cube(2))
+console.log(myPubPic)
 
 const h2 = document.createElement('h2')
 h2.className = 'test'

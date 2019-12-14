@@ -17,6 +17,7 @@ module.exports = function (config) {
    * @param {object} stylelint stylelint 配置
    * @param {object} eslint eslint 配置
    * @param {object} alias 配置别名
+   * @param {Boolean} filenameHashing 文件名是否使用 hash
    */
   return {
     entry: 'src/main.js',
@@ -30,6 +31,7 @@ module.exports = function (config) {
       '@': resolve('src'),
       '@src': resolve('src')
     },
+    filenameHashing: true,
     eslint: {
       lintOnSave: true, // 开启运行时检测
       extensions: ['js', 'jsx', 'vue'] // 默认 ['js', 'jsx']

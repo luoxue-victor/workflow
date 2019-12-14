@@ -30,6 +30,7 @@
 - [课时 14：升级 webpack5](./docs/课时-14.md)
 - [课时 15：定义通用变量](./docs/课时-15.md)
 - [课时 16：严格区分路径大小写](./docs/课时-16.md)
+- [课时 17：加载资源 images、svg、media、fonts](./docs/课时-17.md)
 
 </details> 
 
@@ -98,6 +99,7 @@ webpack-box upgrade 5 # 可以切换到 webpack5/4
 - [html-webpack-plugin 生成html](./config/HtmlWebpackPlugin.js)
 - [mini-css-extract-plugin 配置](./config/MiniCssExtractPlugin.js)
 - [别名配置](./config/alias.js)
+- [加载资源 images、svg、media、fonts](./config/assets.js)
 - [babel-loader 配置](./config/babelLoader.js)
 - [基础配置](./config/base.js)
 - [cache-loader 配置（webpack 5 弃用）](./config/cacheLoader.js)
@@ -143,6 +145,7 @@ module.exports = function (config) {
    * @param {object} stylelint stylelint 配置
    * @param {object} eslint eslint 配置
    * @param {object} alias 配置别名
+   * @param {Boolean} filenameHashing 文件名是否使用 hash
    */
   return {
     entry: 'src/main.js',
@@ -156,6 +159,7 @@ module.exports = function (config) {
       '@': resolve('src'),
       '@src': resolve('src')
     },
+    filenameHashing: true,
     eslint: {
       lintOnSave: true, // 开启运行时检测
       extensions: ['js', 'jsx', 'vue'] // 默认 ['js', 'jsx']

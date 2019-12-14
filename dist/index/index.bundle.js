@@ -31,11 +31,14 @@ __webpack_require__.e(/*! import() */ "src_style_index_postcss").then(__webpack_
 
 __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
+var myPubPic = __webpack_require__(/*! ./assets/my-pub.jpeg */ "./src/assets/my-pub.jpeg");
+
 if (true) {
   console.log('Welcome to production');
 }
 
 console.log((0,_src_treeShaking__WEBPACK_IMPORTED_MODULE_0__.cube)(2));
+console.log(myPubPic);
 var h2 = document.createElement('h2');
 h2.className = 'test';
 h2.innerText = 'webpack 5';
@@ -123,6 +126,25 @@ function cube(x) {
 /***/ (() => {
 
 // extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "./src/assets/my-pub.jpeg":
+/*!********************************!*\
+  !*** ./src/assets/my-pub.jpeg ***!
+  \********************************/
+/*! namespace exports */
+/*! export default [provided] [maybe used (runtime-defined)] [usage prevents renaming] */
+/*! other exports [not provided] [maybe used (runtime-defined)] */
+/*! runtime requirements: __webpack_exports__, __webpack_require__.r, __webpack_require__.p, __webpack_require__.d, __webpack_require__.* */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + "img/my-pub.2ca11318.jpeg");
 
 /***/ })
 
