@@ -15,9 +15,22 @@
   font-size: 8vw;
 }
 
+.g-less-test {
+  width: 100%;
+}
 /* index.less */
 .test {
   width: 40vw;
+  color: #ccc;
+  width: 100%;
+}
+
+body {
+  width: 100%;
+}
+
+.g-scss-test {
+  width: 100%;
 }
 
 /* index.scss */
@@ -25,4 +38,4 @@
   height: 40vw;
 }
 
-/*# sourceMappingURL=index.css.map*/
+/*# sourceMappingURL=index.dc29877e.css.map*/

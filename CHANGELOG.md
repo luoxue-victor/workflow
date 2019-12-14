@@ -13,6 +13,7 @@
  alias | 配置别名 第13课时 | [804f932](https://github.com/luoxue-victor/learn_webpack/commit/804f932)
  all | 初始化一个项目 | [336cc13](https://github.com/luoxue-victor/learn_webpack/commit/336cc13)
  asdasdasdas | 你爱哈的 | [ea12f9c](https://github.com/luoxue-victor/learn_webpack/commit/ea12f9c)
+ assets | 加载资源 images、svg、media、fonts | [14920e8](https://github.com/luoxue-victor/learn_webpack/commit/14920e8)
  auto readme | 自动生成 readme 文件 | [1e0a526](https://github.com/luoxue-victor/learn_webpack/commit/1e0a526)
  autoprefixer | css 自动添加前缀 | [4e88451](https://github.com/luoxue-victor/learn_webpack/commit/4e88451)
  case-sensitive=paths | 严格区分大小写 | [164b04d](https://github.com/luoxue-victor/learn_webpack/commit/164b04d)

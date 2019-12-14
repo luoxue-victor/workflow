@@ -31,6 +31,7 @@
 - [课时 15：定义通用变量](./docs/课时-15.md)
 - [课时 16：严格区分路径大小写](./docs/课时-16.md)
 - [课时 17：加载资源 images、svg、media、fonts](./docs/课时-17.md)
+- [课时 17：设置全局样式](./docs/课时-18.md)
 
 </details> 
 
@@ -109,6 +110,7 @@ webpack-box upgrade 5 # 可以切换到 webpack5/4
 - [optimization 优化配置](./config/optimization.js)
 - [样式表配置](./config/style.js)
 - [stylelint 配置](./config/styleLintPlugin.js)
+- [设置 style 全局变量](./config/styleResourcesLoader.js)
 - [多线程配置](./config/threadLoader.js)
 - [tslint 配置](./config/tslintPlugin.js)
 
@@ -138,14 +140,15 @@ module.exports = function (config) {
    * @param {function} chainWebpack
    * @param {string} entry 入口
    * @param {string} output 出口
-   *
    * @param {string} publicPath
    * @param {string} port 端口
    * @param {object} eslint eslint 配置
    * @param {object} stylelint stylelint 配置
    * @param {object} eslint eslint 配置
    * @param {object} alias 配置别名
-   * @param {Boolean} filenameHashing 文件名是否使用 hash
+   * @param {object} env 配置通用变量，可以在 node 跟 web 之间共同使用
+   * @param {Boolean} filenameHashing 文件名是否使用 hash，当文件发生变动的时候 filename 才会改变
+   * @param {Boolean} css 配置 css
    */
   return {
     entry: 'src/main.js',
@@ -158,6 +161,34 @@ module.exports = function (config) {
     alias: {
       '@': resolve('src'),
       '@src': resolve('src')
+    },
+    resources: {
+      less: {
+        patterns: [
+          path.resolve(__dirname, './src/global/*.less')
+        ]
+      },
+      scss: {
+        patterns: [
+          path.resolve(__dirname, './src/global/*.scss')
+        ]
+      }
+    },
+    css: {
+      sourceMap: true,
+      loaderOptions: {
+        css: {},
+        less: {
+          globalVars: {
+            gray: '#ccc'
+          }
+        },
+        sass: {},
+        postcss: {},
+        stylus: {}
+      },
+      isCssModule: false, // 是否对css进行模块化处理
+      needInlineMinification: false // 是否需要压缩css
     },
     filenameHashing: true,
     eslint: {

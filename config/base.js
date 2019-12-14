@@ -25,7 +25,7 @@ module.exports = ({ config, webpackVersion, resolve, options }) => {
       // 出口
       .output
       .path(resolve(output))
-      .filename('[name].bundle.js')
+      .filename(`js/${options.filenameHashing ? '[name].[contenthash:8]' : ''}.bundle.js`)
       .publicPath(publicPath)
 
     if (parseInt(webpackVersion) === 5) {

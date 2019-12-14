@@ -1,1 +1,0 @@
-{"version":3,"file":"1.css","sources":["webpack:///./src/style/index.postcss"],"sourcesContent":["/* index.postcss */\n.test {\n  background: green;\n  height: 26.66667vw;\n}\n\n.asd {\n  height: 13.33333vw;\n}\n"],"mappings":"AAAA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;;","sourceRoot":""}

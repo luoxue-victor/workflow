@@ -77,6 +77,19 @@ function cube(x) {
 
 /***/ }),
 
+/***/ "./src/style/index.less":
+/*!******************************!*\
+  !*** ./src/style/index.less ***!
+  \******************************/
+/*! unknown exports (runtime-defined) */
+/*! exports [maybe provided (runtime-defined)] [maybe used (runtime-defined)] */
+/*! runtime requirements:  */
+/***/ (() => {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
 /***/ "./src/style/app.css":
 /*!***************************!*\
   !*** ./src/style/app.css ***!
@@ -94,19 +107,6 @@ function cube(x) {
 /*!*****************************!*\
   !*** ./src/style/index.css ***!
   \*****************************/
-/*! unknown exports (runtime-defined) */
-/*! exports [maybe provided (runtime-defined)] [maybe used (runtime-defined)] */
-/*! runtime requirements:  */
-/***/ (() => {
-
-// extracted by mini-css-extract-plugin
-
-/***/ }),
-
-/***/ "./src/style/index.less":
-/*!******************************!*\
-  !*** ./src/style/index.less ***!
-  \******************************/
 /*! unknown exports (runtime-defined) */
 /*! exports [maybe provided (runtime-defined)] [maybe used (runtime-defined)] */
 /*! runtime requirements:  */
@@ -149,4 +149,4 @@ __webpack_require__.r(__webpack_exports__);
 /***/ })
 
 },[["./src/main.js","manifest","chunk-vendors"]]]);
-//# sourceMappingURL=index.bundle.js.map
+//# sourceMappingURL=index.c4e613fc.bundle.js.map
