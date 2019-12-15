@@ -1,4 +1,4 @@
-## 1.0.6 (2019-12-14)
+## 1.0.6 (2019-12-15)
 
 ### 🌟 新功能
 范围|描述|commitId
@@ -42,6 +42,28 @@
  asd | [d278787](https://github.com/luoxue-victor/learn_webpack/commit/d278787)
 
 
+### 🐛 Bug 修复
+范围|描述|commitId
+--|--|--
+ 更新了 commitlint 功能 | commitlint 更新到 1.0.10 版本 | [57155ce](https://github.com/luoxue-victor/learn_webpack/commit/57155ce)
+ 间距 | 修改readme间距 | [13f8e0a](https://github.com/luoxue-victor/learn_webpack/commit/13f8e0a)
+ build | 修复了build是 publicPath 的问题 | [ac2ab19](https://github.com/luoxue-victor/learn_webpack/commit/ac2ab19)
+ build/base | 获取文件名使用path.basename | [5efdc7d](https://github.com/luoxue-victor/learn_webpack/commit/5efdc7d)
+ changelog | fix some changelog | [3bc624a](https://github.com/luoxue-victor/learn_webpack/commit/3bc624a)
+ commit config | 修改提交代码配置 | [dd90ff9](https://github.com/luoxue-victor/learn_webpack/commit/dd90ff9)
+ create readme | 生成文档 box.config 格式错误 | [3401e28](https://github.com/luoxue-victor/learn_webpack/commit/3401e28)
+ create readme | 修改生成 安装 bug | [63d8666](https://github.com/luoxue-victor/learn_webpack/commit/63d8666)
+ create readme | 修改生成 install 文档标题错误 | [4171dda](https://github.com/luoxue-victor/learn_webpack/commit/4171dda)
+ createreadme | 文档生成bug修改 | [2730902](https://github.com/luoxue-victor/learn_webpack/commit/2730902)
+ delete | 删除无用代码 | [0831fc9](https://github.com/luoxue-victor/learn_webpack/commit/0831fc9)
+ install and use 间距 | install and use 间距 | [94ff06b](https://github.com/luoxue-victor/learn_webpack/commit/94ff06b)
+ merge | 合并master | [065420b](https://github.com/luoxue-victor/learn_webpack/commit/065420b)
+ package | asdasdasdad | [8a4cff1](https://github.com/luoxue-victor/learn_webpack/commit/8a4cff1)
+ package.json | 修改 npm run cr 位置 | [242f695](https://github.com/luoxue-victor/learn_webpack/commit/242f695)
+ packagejson | 调整生成文档在 commit-msg 钩子内 | [d21b695](https://github.com/luoxue-victor/learn_webpack/commit/d21b695)
+ scripts cz | 修改脚本cz命令 | [b4a8c51](https://github.com/luoxue-victor/learn_webpack/commit/b4a8c51)
+
+
 ### 📝 文档
 范围|描述|commitId
 --|--|--
@@ -56,6 +78,7 @@
  docs | 修改文档 | [1982613](https://github.com/luoxue-victor/learn_webpack/commit/1982613)
  docs | 修改文档 | [bdc9a97](https://github.com/luoxue-victor/learn_webpack/commit/bdc9a97)
  eslint 文档 | 修改eslint 文档，并添加cwd分层 | [d23329b](https://github.com/luoxue-victor/learn_webpack/commit/d23329b)
+ readme | 17->18 | [6cc2e69](https://github.com/luoxue-victor/learn_webpack/commit/6cc2e69)
  readme | 保存文档 | [99c82c1](https://github.com/luoxue-victor/learn_webpack/commit/99c82c1)
  readme | 代码折叠默认展开 | [01e1ea8](https://github.com/luoxue-victor/learn_webpack/commit/01e1ea8)
  readme | 添加readme 钩子 | [83d51b1](https://github.com/luoxue-victor/learn_webpack/commit/83d51b1)
@@ -79,26 +102,4 @@
  Delete .DS_Store | [b9d18cd](https://github.com/luoxue-victor/learn_webpack/commit/b9d18cd)
  dev,build 命令descreiption错误 | [b47f016](https://github.com/luoxue-victor/learn_webpack/commit/b47f016)
  Initial commit | [18fbebf](https://github.com/luoxue-victor/learn_webpack/commit/18fbebf)
-
-
-### 🐛 Bug 修复
-范围|描述|commitId
---|--|--
- 更新了 commitlint 功能 | commitlint 更新到 1.0.10 版本 | [57155ce](https://github.com/luoxue-victor/learn_webpack/commit/57155ce)
- 间距 | 修改readme间距 | [13f8e0a](https://github.com/luoxue-victor/learn_webpack/commit/13f8e0a)
- build | 修复了build是 publicPath 的问题 | [ac2ab19](https://github.com/luoxue-victor/learn_webpack/commit/ac2ab19)
- build/base | 获取文件名使用path.basename | [5efdc7d](https://github.com/luoxue-victor/learn_webpack/commit/5efdc7d)
- changelog | fix some changelog | [3bc624a](https://github.com/luoxue-victor/learn_webpack/commit/3bc624a)
- commit config | 修改提交代码配置 | [dd90ff9](https://github.com/luoxue-victor/learn_webpack/commit/dd90ff9)
- create readme | 生成文档 box.config 格式错误 | [3401e28](https://github.com/luoxue-victor/learn_webpack/commit/3401e28)
- create readme | 修改生成 安装 bug | [63d8666](https://github.com/luoxue-victor/learn_webpack/commit/63d8666)
- create readme | 修改生成 install 文档标题错误 | [4171dda](https://github.com/luoxue-victor/learn_webpack/commit/4171dda)
- createreadme | 文档生成bug修改 | [2730902](https://github.com/luoxue-victor/learn_webpack/commit/2730902)
- delete | 删除无用代码 | [0831fc9](https://github.com/luoxue-victor/learn_webpack/commit/0831fc9)
- install and use 间距 | install and use 间距 | [94ff06b](https://github.com/luoxue-victor/learn_webpack/commit/94ff06b)
- merge | 合并master | [065420b](https://github.com/luoxue-victor/learn_webpack/commit/065420b)
- package | asdasdasdad | [8a4cff1](https://github.com/luoxue-victor/learn_webpack/commit/8a4cff1)
- package.json | 修改 npm run cr 位置 | [242f695](https://github.com/luoxue-victor/learn_webpack/commit/242f695)
- packagejson | 调整生成文档在 commit-msg 钩子内 | [d21b695](https://github.com/luoxue-victor/learn_webpack/commit/d21b695)
- scripts cz | 修改脚本cz命令 | [b4a8c51](https://github.com/luoxue-victor/learn_webpack/commit/b4a8c51)
 
