@@ -1,6 +1,6 @@
 # webpack 工程师的自我修养
 
-<div style="text-align: center;">
+<div align="center">
 
 ![logo](public/asset/logo-mini2.png)
 
