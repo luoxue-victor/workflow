@@ -34,7 +34,7 @@ module.exports = ({ config, resolve, tsx }) => {
     babelConf.plugins.shift()
   }
 
-  const baseRule = config.module.rule('js').test(/.[jt]sx?$/)
+  const baseRule = config.module.rule('babel').test(/.[jt]sx?$/)
   return () => {
     baseRule
       .use('babel')

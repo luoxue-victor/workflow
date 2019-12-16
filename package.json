@@ -43,6 +43,7 @@
     "browser-refresh": "^1.7.3",
     "cache-loader": "^4.1.0",
     "case-sensitive-paths-webpack-plugin": "^2.2.0",
+    "cli-highlight": "^2.1.4",
     "commitizen": "^4.0.3",
     "commitlint": "^8.2.0",
     "compression-webpack-plugin": "^3.0.0",

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 process.env.NODE_ENV = 'none'
-const commandsName = ['build', 'dev', 'dll', 'build:ssr', 'ssr:server', 'lint', 'upgrade']
+const commandsName = ['build', 'dev', 'dll', 'build:ssr', 'ssr:server', 'lint', 'upgrade', 'inspect']
 const {
   injectCommand,
   commandComplete,

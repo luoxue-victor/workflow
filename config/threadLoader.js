@@ -1,6 +1,6 @@
 // [多线程配置]
 module.exports = ({ config, options }) => {
-  const baseRule = config.module.rule('js').test(/.js|.tsx?$/)
+  const baseRule = config.module.rule('thread').test(/.js|.tsx?$/)
   return () => {
     const useThreads = options.useThreads
     if (useThreads) {

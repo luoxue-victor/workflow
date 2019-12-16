@@ -1,6 +1,6 @@
 # webpack 工程师的自我修养
 
-![logo](public/asset/logo.jpg)
+![logo](public/asset/logo-mini2.png)
 
 > 本来想要做一个大型项目的 webpack 教程，但是我发现还可以做更多的事情，所以这里我要将这个项目做成 webpack 手册，您可以来这里找到任何想要的 webpack 配置
 
@@ -34,6 +34,7 @@
 - [课时 16：严格区分路径大小写](./docs/课时-16.md)
 - [课时 17：加载资源 images、svg、media、fonts](./docs/课时-17.md)
 - [课时 18：设置全局样式](./docs/课时-18.md)
+- [添加 webpack 配置检查命令](./docs/课时-19.md)
 
 </details> 
 

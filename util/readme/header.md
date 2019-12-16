@@ -1,6 +1,6 @@
 # webpack 工程师的自我修养
 
-![logo](public/asset/logo.jpg)
+![logo](public/asset/logo-mini2.png)
 
 > 本来想要做一个大型项目的 webpack 教程，但是我发现还可以做更多的事情，所以这里我要将这个项目做成 webpack 手册，您可以来这里找到任何想要的 webpack 配置
 
