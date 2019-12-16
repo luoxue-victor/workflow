@@ -17,7 +17,7 @@ docsCtx = extraTxt('docs', function(firstRow) {
 function joinCtx () {
   let str = ''
   str += readMdBy('header')
-  str += detailTag('所有课题', docsCtx)
+  str += detailTag('所有课题', docsCtx, false)
   str += readMdBy('useAndIntsall')
   str += detailTag('所有配置', configCtx)
   str += boxConfig()
@@ -28,12 +28,12 @@ const ctx = joinCtx()
 
 fs.writeFileSync('README.md', ctx, 'utf-8')
 
-function detailTag (title, ctx) {
+function detailTag (title, ctx, isOpen = true) {
   return `
 
 ### ${title}
 
-<details open=“open”>
+<details ${isOpen ? 'open=“open”' : ''}>
   <summary>点击关闭/打开${title}</summary> 
   <br/>
 \n\n${ctx}

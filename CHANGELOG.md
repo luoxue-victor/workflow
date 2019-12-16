@@ -79,6 +79,7 @@
  docs | 新建docs文档目录 | [140b3b8](https://github.com/luoxue-victor/learn_webpack/commit/140b3b8)
  docs | 修改文档 | [1982613](https://github.com/luoxue-victor/learn_webpack/commit/1982613)
  docs | 修改文档 | [bdc9a97](https://github.com/luoxue-victor/learn_webpack/commit/bdc9a97)
+ docs inspect | 增加inspect命令行 | [f8c0a3a](https://github.com/luoxue-victor/learn_webpack/commit/f8c0a3a)
  eslint 文档 | 修改eslint 文档，并添加cwd分层 | [d23329b](https://github.com/luoxue-victor/learn_webpack/commit/d23329b)
  logo | 修改logo | [b167240](https://github.com/luoxue-victor/learn_webpack/commit/b167240)
  logo | logo 居中 | [8e5c678](https://github.com/luoxue-victor/learn_webpack/commit/8e5c678)
