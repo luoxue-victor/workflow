@@ -9,6 +9,7 @@ module.exports = ({ config, webpackVersion, resolve, options }) => {
     output = `${output}/${name}`
     entry = options.pages[name].entry
   }
+  const isV5 = parseInt(webpackVersion) >= 5
   return () => {
     config
       // 入口名称
@@ -25,10 +26,10 @@ module.exports = ({ config, webpackVersion, resolve, options }) => {
       // 出口
       .output
       .path(resolve(output))
-      .filename(`js/${options.filenameHashing ? '[name].[contenthash:8]' : ''}.bundle.js`)
+      .filename(`js/${options.filenameHashing ? `[name]${isV5 ? '.[contenthash:8]' : ''}` : ''}.bundle.js`)
       .publicPath(publicPath)
 
-    if (parseInt(webpackVersion) === 5) {
+    if (isV5) {
       config.output.set('ecmaVersion', 6)
     }
     config.devtool('cheap-source-map')

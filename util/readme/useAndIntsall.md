@@ -4,7 +4,9 @@
  <summary>点击关闭/打开安装</summary><br/>
 
 ```bash
+# 全局安装
 npm i -g webpack-box # 全局安装使用
+# 本地调试
 npm link # 建立软连接，可以使用 webpack-box 命令
 ```
 

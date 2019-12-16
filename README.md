@@ -50,7 +50,9 @@
  <summary>点击关闭/打开安装</summary><br/>
 
 ```bash
+# 全局安装
 npm i -g webpack-box # 全局安装使用
+# 本地调试
 npm link # 建立软连接，可以使用 webpack-box 命令
 ```
 
@@ -117,12 +119,14 @@ webpack-box inspect --plugin mini-css-extract # 查看指定插件配置
 - [friendly-errors-webpack-plugin 友好错误提示](./config/FriendlyErrorsWebpackPlugin.js)
 - [html-webpack-plugin 生成html](./config/HtmlWebpackPlugin.js)
 - [mini-css-extract-plugin 配置](./config/MiniCssExtractPlugin.js)
+- [ProgressBarPlugin 构建时添加进度条配置](./config/ProgressBarPlugin.js)
 - [别名配置](./config/alias.js)
 - [加载资源 images、svg、media、fonts](./config/assets.js)
 - [babel-loader 配置](./config/babelLoader.js)
 - [基础配置](./config/base.js)
 - [cache-loader 配置（webpack 5 弃用）](./config/cacheLoader.js)
 - [CaseSensitivePaths 严格区分大小写](./config/caseSensitivePaths.js)
+- [dashboard 增加仪表盘配置](./config/dashboard.js)
 - [eslint-loader 配置](./config/eslintLoader.js)
 - [提取 manifest](./config/manifest.js)
 - [optimization 优化配置](./config/optimization.js)

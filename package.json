@@ -7,6 +7,7 @@
     "webpack-box": "bin/webpack-box.js"
   },
   "scripts": {
+    "dev": "webpack-dashboard -- webpack-box dev",
     "log": "conventional-changelog --config ./node_modules/vue-cli-plugin-commitlint/lib/log -i CHANGELOG.md -s -r 0",
     "cz": "npm run cr && npm run log && git add . && git cz",
     "cr": "node util/createReadme.js"
@@ -78,6 +79,7 @@
     "ora": "^4.0.3",
     "postcss-loader": "^3.0.0",
     "postcss-px-to-viewport": "^1.1.1",
+    "progress-bar-webpack-plugin": "^1.12.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "rimraf": "^3.0.0",

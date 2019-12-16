@@ -33,9 +33,7 @@ __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var myPubPic = __webpack_require__(/*! ./assets/my-pub.jpeg */ "./src/assets/my-pub.jpeg");
 
-if (true) {
-  console.log('Welcome to production');
-}
+if (false) {}
 
 console.log((0,_src_treeShaking__WEBPACK_IMPORTED_MODULE_0__.cube)(2));
 console.log(myPubPic);
@@ -149,4 +147,4 @@ __webpack_require__.r(__webpack_exports__);
 /***/ })
 
 },[["./src/main.js","manifest","chunk-vendors"]]]);
-//# sourceMappingURL=index.c4e613fc.bundle.js.map
+//# sourceMappingURL=index.9c6e684d.bundle.js.map
