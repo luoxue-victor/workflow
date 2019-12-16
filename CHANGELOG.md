@@ -81,6 +81,7 @@
  docs | 修改文档 | [bdc9a97](https://github.com/luoxue-victor/learn_webpack/commit/bdc9a97)
  eslint 文档 | 修改eslint 文档，并添加cwd分层 | [d23329b](https://github.com/luoxue-victor/learn_webpack/commit/d23329b)
  logo | 修改logo | [b167240](https://github.com/luoxue-victor/learn_webpack/commit/b167240)
+ logo | logo 居中 | [8e5c678](https://github.com/luoxue-victor/learn_webpack/commit/8e5c678)
  readme | 17->18 | [6cc2e69](https://github.com/luoxue-victor/learn_webpack/commit/6cc2e69)
  readme | 保存文档 | [99c82c1](https://github.com/luoxue-victor/learn_webpack/commit/99c82c1)
  readme | 代码折叠默认展开 | [01e1ea8](https://github.com/luoxue-victor/learn_webpack/commit/01e1ea8)
