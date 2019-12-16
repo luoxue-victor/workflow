@@ -41,6 +41,7 @@
 - [课时 17：加载资源 images、svg、media、fonts](./docs/课时-17.md)
 - [课时 18：设置全局样式](./docs/课时-18.md)
 - [课时 19：添加 webpack 配置检查命令](./docs/课时-19.md)
+- [添加 prefetch + preload](./docs/课时-20.md)
 
 </details> 
 

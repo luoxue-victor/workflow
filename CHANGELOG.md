@@ -32,6 +32,7 @@
  logo | 添加logo | [32ff923](https://github.com/luoxue-victor/learn_webpack/commit/32ff923)
  options-chain | 增加可选链并完善文档 | [b188007](https://github.com/luoxue-victor/learn_webpack/commit/b188007)
  plugin | 增加课题8 写一个webpack插件 | [0d021ce](https://github.com/luoxue-victor/learn_webpack/commit/0d021ce)
+ prefetch + preload | 增加prefetch跟preload | [80903d3](https://github.com/luoxue-victor/learn_webpack/commit/80903d3)
  sourcemap | 开启了sourcemap | [5022873](https://github.com/luoxue-victor/learn_webpack/commit/5022873)
  ssr | 增加ssr配置 | [d4c4b7d](https://github.com/luoxue-victor/learn_webpack/commit/d4c4b7d)
  stylelint | 新增stylelint功能 | [3d7143a](https://github.com/luoxue-victor/learn_webpack/commit/3d7143a)
