@@ -119,6 +119,7 @@ webpack-box inspect --plugin mini-css-extract # 查看指定插件配置
 - [friendly-errors-webpack-plugin 友好错误提示](./config/FriendlyErrorsWebpackPlugin.js)
 - [html-webpack-plugin 生成html](./config/HtmlWebpackPlugin.js)
 - [mini-css-extract-plugin 配置](./config/MiniCssExtractPlugin.js)
+- [PreloadWebpackPlugin](./config/PreloadWebpackPlugin.js)
 - [ProgressBarPlugin 构建时添加进度条配置](./config/ProgressBarPlugin.js)
 - [别名配置](./config/alias.js)
 - [加载资源 images、svg、media、fonts](./config/assets.js)

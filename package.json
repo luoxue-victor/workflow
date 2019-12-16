@@ -79,6 +79,7 @@
     "ora": "^4.0.3",
     "postcss-loader": "^3.0.0",
     "postcss-px-to-viewport": "^1.1.1",
+    "preload-webpack-plugin": "^3.0.0-beta.4",
     "progress-bar-webpack-plugin": "^1.12.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",

@@ -20,6 +20,7 @@
  config | add config  option | [83c9f1e](https://github.com/luoxue-victor/learn_webpack/commit/83c9f1e)
  create readme | 创建readme | [571bfaa](https://github.com/luoxue-victor/learn_webpack/commit/571bfaa)
  daasd | asdasd | [0b6ee85](https://github.com/luoxue-victor/learn_webpack/commit/0b6ee85)
+ dashboard and progressbar | 构建时添加仪表盘跟进度条 | [08666da](https://github.com/luoxue-victor/learn_webpack/commit/08666da)
  docs | 整理文档 | [32d578f](https://github.com/luoxue-victor/learn_webpack/commit/32d578f)
  env | 添加环境变量插件 | [e95e772](https://github.com/luoxue-victor/learn_webpack/commit/e95e772)
  eslint | 增加 eslint，并保存是自动修复 | [6dd3812](https://github.com/luoxue-victor/learn_webpack/commit/6dd3812)
