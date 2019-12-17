@@ -1,5 +1,51 @@
 ## 1.0.6 (2019-12-17)
 
+### 🌟 新功能
+范围|描述|commitId
+--|--|--
+ 编译 | 提升编译速度，增加了 cache-loader dllPlugin threadLoader | [4d44ad7](https://github.com/luoxue-victor/learn_webpack/commit/4d44ad7)
+ 抽离 commander 层 | 修改脚手架二次调用的bug，增加了commander 层 | [b1aa749](https://github.com/luoxue-victor/learn_webpack/commit/b1aa749)
+ 多页面 | webpack配置多页面打包 | [86a0418](https://github.com/luoxue-victor/learn_webpack/commit/86a0418)
+ 课题2 | 完成基本构建，js、css打包进html，实现dev跟build环境 | [71a6a19](https://github.com/luoxue-victor/learn_webpack/commit/71a6a19)
+ 新增loader配置 | 增加ts、css、less、sass、postcss、babel配置 | [53616f8](https://github.com/luoxue-victor/learn_webpack/commit/53616f8)
+ 性能优化 | 性能优化1 | [0909b33](https://github.com/luoxue-victor/learn_webpack/commit/0909b33)
+ 修改了配置文件 | i feat a config | [382c60c](https://github.com/luoxue-victor/learn_webpack/commit/382c60c)
+ alias | 配置别名 第13课时 | [804f932](https://github.com/luoxue-victor/learn_webpack/commit/804f932)
+ all | 初始化一个项目 | [336cc13](https://github.com/luoxue-victor/learn_webpack/commit/336cc13)
+ asdasdasdas | 你爱哈的 | [ea12f9c](https://github.com/luoxue-victor/learn_webpack/commit/ea12f9c)
+ assets | 加载资源 images、svg、media、fonts | [14920e8](https://github.com/luoxue-victor/learn_webpack/commit/14920e8)
+ auto readme | 自动生成 readme 文件 | [1e0a526](https://github.com/luoxue-victor/learn_webpack/commit/1e0a526)
+ autoprefixer | css 自动添加前缀 | [4e88451](https://github.com/luoxue-victor/learn_webpack/commit/4e88451)
+ case-sensitive=paths | 严格区分大小写 | [164b04d](https://github.com/luoxue-victor/learn_webpack/commit/164b04d)
+ config | add config  option | [83c9f1e](https://github.com/luoxue-victor/learn_webpack/commit/83c9f1e)
+ create readme | 创建readme | [571bfaa](https://github.com/luoxue-victor/learn_webpack/commit/571bfaa)
+ daasd | asdasd | [0b6ee85](https://github.com/luoxue-victor/learn_webpack/commit/0b6ee85)
+ dashboard and progressbar | 构建时添加仪表盘跟进度条 | [08666da](https://github.com/luoxue-victor/learn_webpack/commit/08666da)
+ docs | 整理文档 | [32d578f](https://github.com/luoxue-victor/learn_webpack/commit/32d578f)
+ docs | preload | [ee62311](https://github.com/luoxue-victor/learn_webpack/commit/ee62311)
+ env | 添加环境变量插件 | [e95e772](https://github.com/luoxue-victor/learn_webpack/commit/e95e772)
+ eslint | 增加 eslint，并保存是自动修复 | [6dd3812](https://github.com/luoxue-victor/learn_webpack/commit/6dd3812)
+ feat | aaaaa | [73abf42](https://github.com/luoxue-victor/learn_webpack/commit/73abf42)
+ feat | asdada | [64090c7](https://github.com/luoxue-victor/learn_webpack/commit/64090c7)
+ global-style | 设置全局样式 | [ddfca57](https://github.com/luoxue-victor/learn_webpack/commit/ddfca57)
+ init | 项目初始化 | [d7835fb](https://github.com/luoxue-victor/learn_webpack/commit/d7835fb)
+ lint-staged | 添加 lint-staged，并修改课题10文档 | [a84dff0](https://github.com/luoxue-victor/learn_webpack/commit/a84dff0)
+ logo | 添加logo | [32ff923](https://github.com/luoxue-victor/learn_webpack/commit/32ff923)
+ options-chain | 增加可选链并完善文档 | [b188007](https://github.com/luoxue-victor/learn_webpack/commit/b188007)
+ plugin | 增加课题8 写一个webpack插件 | [0d021ce](https://github.com/luoxue-victor/learn_webpack/commit/0d021ce)
+ prefetch + preload | 增加prefetch跟preload | [80903d3](https://github.com/luoxue-victor/learn_webpack/commit/80903d3)
+ sourcemap | 开启了sourcemap | [5022873](https://github.com/luoxue-victor/learn_webpack/commit/5022873)
+ ssr | 增加ssr配置 | [d4c4b7d](https://github.com/luoxue-victor/learn_webpack/commit/d4c4b7d)
+ stylelint | 新增stylelint功能 | [3d7143a](https://github.com/luoxue-victor/learn_webpack/commit/3d7143a)
+ ts | 测试ts引用ts文件 | [4a47ee1](https://github.com/luoxue-victor/learn_webpack/commit/4a47ee1)
+ tslint | 12课时，tslint配置 | [8b24f6a](https://github.com/luoxue-victor/learn_webpack/commit/8b24f6a)
+ webpack | webpack配置 | [9a1d29c](https://github.com/luoxue-victor/learn_webpack/commit/9a1d29c)
+ webpack5 | 升级webpack5，脚手架实现可以在4/5之间自由切换 | [2f4484c](https://github.com/luoxue-victor/learn_webpack/commit/2f4484c)
+ 你好 | [6e534da](https://github.com/luoxue-victor/learn_webpack/commit/6e534da)
+ asasdasasd | [8f9515f](https://github.com/luoxue-victor/learn_webpack/commit/8f9515f)
+ asd | [d278787](https://github.com/luoxue-victor/learn_webpack/commit/d278787)
+
+
 ### 🐛 Bug 修复
 范围|描述|commitId
 --|--|--
@@ -62,6 +108,12 @@
  webpack5 | 更新 webpack5 文档 | [c9b2f66](https://github.com/luoxue-victor/learn_webpack/commit/c9b2f66)
 
 
+### 📦 持续集成
+范围|描述|commitId
+--|--|--
+ update lock | 更新lock文件 | [bde1e63](https://github.com/luoxue-victor/learn_webpack/commit/bde1e63)
+
+
 范围|描述|commitId
 --|--|--
  Create nodejs.yml | [7268a79](https://github.com/luoxue-victor/learn_webpack/commit/7268a79)
@@ -71,50 +123,4 @@
  Delete .DS_Store | [b9d18cd](https://github.com/luoxue-victor/learn_webpack/commit/b9d18cd)
  dev,build 命令descreiption错误 | [b47f016](https://github.com/luoxue-victor/learn_webpack/commit/b47f016)
  Initial commit | [18fbebf](https://github.com/luoxue-victor/learn_webpack/commit/18fbebf)
-
-
-### 🌟 新功能
-范围|描述|commitId
---|--|--
- 编译 | 提升编译速度，增加了 cache-loader dllPlugin threadLoader | [4d44ad7](https://github.com/luoxue-victor/learn_webpack/commit/4d44ad7)
- 抽离 commander 层 | 修改脚手架二次调用的bug，增加了commander 层 | [b1aa749](https://github.com/luoxue-victor/learn_webpack/commit/b1aa749)
- 多页面 | webpack配置多页面打包 | [86a0418](https://github.com/luoxue-victor/learn_webpack/commit/86a0418)
- 课题2 | 完成基本构建，js、css打包进html，实现dev跟build环境 | [71a6a19](https://github.com/luoxue-victor/learn_webpack/commit/71a6a19)
- 新增loader配置 | 增加ts、css、less、sass、postcss、babel配置 | [53616f8](https://github.com/luoxue-victor/learn_webpack/commit/53616f8)
- 性能优化 | 性能优化1 | [0909b33](https://github.com/luoxue-victor/learn_webpack/commit/0909b33)
- 修改了配置文件 | i feat a config | [382c60c](https://github.com/luoxue-victor/learn_webpack/commit/382c60c)
- alias | 配置别名 第13课时 | [804f932](https://github.com/luoxue-victor/learn_webpack/commit/804f932)
- all | 初始化一个项目 | [336cc13](https://github.com/luoxue-victor/learn_webpack/commit/336cc13)
- asdasdasdas | 你爱哈的 | [ea12f9c](https://github.com/luoxue-victor/learn_webpack/commit/ea12f9c)
- assets | 加载资源 images、svg、media、fonts | [14920e8](https://github.com/luoxue-victor/learn_webpack/commit/14920e8)
- auto readme | 自动生成 readme 文件 | [1e0a526](https://github.com/luoxue-victor/learn_webpack/commit/1e0a526)
- autoprefixer | css 自动添加前缀 | [4e88451](https://github.com/luoxue-victor/learn_webpack/commit/4e88451)
- case-sensitive=paths | 严格区分大小写 | [164b04d](https://github.com/luoxue-victor/learn_webpack/commit/164b04d)
- config | add config  option | [83c9f1e](https://github.com/luoxue-victor/learn_webpack/commit/83c9f1e)
- create readme | 创建readme | [571bfaa](https://github.com/luoxue-victor/learn_webpack/commit/571bfaa)
- daasd | asdasd | [0b6ee85](https://github.com/luoxue-victor/learn_webpack/commit/0b6ee85)
- dashboard and progressbar | 构建时添加仪表盘跟进度条 | [08666da](https://github.com/luoxue-victor/learn_webpack/commit/08666da)
- docs | 整理文档 | [32d578f](https://github.com/luoxue-victor/learn_webpack/commit/32d578f)
- docs | preload | [ee62311](https://github.com/luoxue-victor/learn_webpack/commit/ee62311)
- env | 添加环境变量插件 | [e95e772](https://github.com/luoxue-victor/learn_webpack/commit/e95e772)
- eslint | 增加 eslint，并保存是自动修复 | [6dd3812](https://github.com/luoxue-victor/learn_webpack/commit/6dd3812)
- feat | aaaaa | [73abf42](https://github.com/luoxue-victor/learn_webpack/commit/73abf42)
- feat | asdada | [64090c7](https://github.com/luoxue-victor/learn_webpack/commit/64090c7)
- global-style | 设置全局样式 | [ddfca57](https://github.com/luoxue-victor/learn_webpack/commit/ddfca57)
- init | 项目初始化 | [d7835fb](https://github.com/luoxue-victor/learn_webpack/commit/d7835fb)
- lint-staged | 添加 lint-staged，并修改课题10文档 | [a84dff0](https://github.com/luoxue-victor/learn_webpack/commit/a84dff0)
- logo | 添加logo | [32ff923](https://github.com/luoxue-victor/learn_webpack/commit/32ff923)
- options-chain | 增加可选链并完善文档 | [b188007](https://github.com/luoxue-victor/learn_webpack/commit/b188007)
- plugin | 增加课题8 写一个webpack插件 | [0d021ce](https://github.com/luoxue-victor/learn_webpack/commit/0d021ce)
- prefetch + preload | 增加prefetch跟preload | [80903d3](https://github.com/luoxue-victor/learn_webpack/commit/80903d3)
- sourcemap | 开启了sourcemap | [5022873](https://github.com/luoxue-victor/learn_webpack/commit/5022873)
- ssr | 增加ssr配置 | [d4c4b7d](https://github.com/luoxue-victor/learn_webpack/commit/d4c4b7d)
- stylelint | 新增stylelint功能 | [3d7143a](https://github.com/luoxue-victor/learn_webpack/commit/3d7143a)
- ts | 测试ts引用ts文件 | [4a47ee1](https://github.com/luoxue-victor/learn_webpack/commit/4a47ee1)
- tslint | 12课时，tslint配置 | [8b24f6a](https://github.com/luoxue-victor/learn_webpack/commit/8b24f6a)
- webpack | webpack配置 | [9a1d29c](https://github.com/luoxue-victor/learn_webpack/commit/9a1d29c)
- webpack5 | 升级webpack5，脚手架实现可以在4/5之间自由切换 | [2f4484c](https://github.com/luoxue-victor/learn_webpack/commit/2f4484c)
- 你好 | [6e534da](https://github.com/luoxue-victor/learn_webpack/commit/6e534da)
- asasdasasd | [8f9515f](https://github.com/luoxue-victor/learn_webpack/commit/8f9515f)
- asd | [d278787](https://github.com/luoxue-victor/learn_webpack/commit/d278787)
 
