@@ -47,7 +47,13 @@ module.exports = function lint ({ args = {}, api }) {
 
   const defaultFilesToLint = [
     'src',
+    'config',
+    'cwd',
+    'lib',
+    'packages',
+    'server',
     'tests',
+    'util',
     '*.js',
     '.*.js'
   ]
@@ -65,6 +71,7 @@ module.exports = function lint ({ args = {}, api }) {
   if (!api.invoking) {
     process.cwd = () => cwd
   }
+
   const report = engine.executeOnFiles(files)
   process.cwd = processCwd
 
@@ -113,6 +120,9 @@ module.exports = function lint ({ args = {}, api }) {
 function normalizeConfig (args) {
   const config = {}
   for (const key in args) {
+    if (key === 'env') {
+      continue
+    }
     if (renamedArrayArgs[key]) {
       config[renamedArrayArgs[key]] = args[key].split(',')
     } else if (renamedArgs[key]) {

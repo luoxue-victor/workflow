@@ -112,6 +112,7 @@
 范围|描述|commitId
 --|--|--
  .gitignore | 在gitignore中删除 package-lock | [cc6a6f4](https://github.com/luoxue-victor/learn_webpack/commit/cc6a6f4)
+ node | 添加node 10 12 | [c1c5169](https://github.com/luoxue-victor/learn_webpack/commit/c1c5169)
  update lock | 更新lock文件 | [bde1e63](https://github.com/luoxue-victor/learn_webpack/commit/bde1e63)
 
 

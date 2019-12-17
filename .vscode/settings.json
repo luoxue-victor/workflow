@@ -13,21 +13,21 @@
    * @param validate 在vue中添加错误提示
    */
   "eslint.alwaysShowStatus": true,
-  "eslint.autoFixOnSave": true,
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    {
-      "language": "vue",
-      "autoFix": true
-    }
-  ],
+  // "eslint.autoFixOnSave": true,
+  // "eslint.validate": [
+  //   "javascript",
+  //   "javascriptreact",
+  //   {
+  //     "language": "vue",
+  //     "autoFix": true
+  //   }
+  // ],
   /*
    * @description tslint 配置
    * @param autoFixOnSave 保存时自动修复
    * @param alwaysShowRuleFailuresAsWarnings 所有特征都是用 Warnings
    */
-  "tslint.autoFixOnSave": true,
+  "tslint.autoFixOnSave": false,
   "tslint.alwaysShowRuleFailuresAsWarnings": true,
   /*
    * @description stylelint 配置

@@ -20,7 +20,8 @@ module.exports = {
     wx: true,
     window: true,
     document: true,
-    MY_ENV: true
+    MY_ENV: true,
+    $: true
   },
   parserOptions: {
     parser: '@typescript-eslint/parser'

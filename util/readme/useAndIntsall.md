@@ -39,6 +39,8 @@ webpack-box inspect --rules # 查看所有 loader 列表
 webpack-box inspect --rule babel # 查看指定 loader 配置
 webpack-box inspect --plugins # 查看所有插件列表
 webpack-box inspect --plugin mini-css-extract # 查看指定插件配置
+# --- graphql ---
+webpack-box server:gql # graphql-server
 ```
 
 在 package.json 中使用
