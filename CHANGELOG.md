@@ -15,6 +15,7 @@
  create readme | 修改生成 install 文档标题错误 | [4171dda](https://github.com/luoxue-victor/learn_webpack/commit/4171dda)
  createreadme | 文档生成bug修改 | [2730902](https://github.com/luoxue-victor/learn_webpack/commit/2730902)
  delete | 删除无用代码 | [0831fc9](https://github.com/luoxue-victor/learn_webpack/commit/0831fc9)
+ delete lock | 删除 lock | [979064b](https://github.com/luoxue-victor/learn_webpack/commit/979064b)
  install and use 间距 | install and use 间距 | [94ff06b](https://github.com/luoxue-victor/learn_webpack/commit/94ff06b)
  logo | 修改logo | [e858b74](https://github.com/luoxue-victor/learn_webpack/commit/e858b74)
  merge | 合并master | [065420b](https://github.com/luoxue-victor/learn_webpack/commit/065420b)
