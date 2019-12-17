@@ -25,6 +25,7 @@ module.exports = function (config) {
     output: 'dist',
     publicPath: '/common/',
     port: 8888,
+    mock: true,
     env: {
       MY_ENV: 'my-env'
     },

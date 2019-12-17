@@ -28,6 +28,7 @@
  feat | aaaaa | [73abf42](https://github.com/luoxue-victor/learn_webpack/commit/73abf42)
  feat | asdada | [64090c7](https://github.com/luoxue-victor/learn_webpack/commit/64090c7)
  global-style | 设置全局样式 | [ddfca57](https://github.com/luoxue-victor/learn_webpack/commit/ddfca57)
+ graphql | 增加graphql配置 | [d6dec9a](https://github.com/luoxue-victor/learn_webpack/commit/d6dec9a)
  init | 项目初始化 | [d7835fb](https://github.com/luoxue-victor/learn_webpack/commit/d7835fb)
  lint-staged | 添加 lint-staged，并修改课题10文档 | [a84dff0](https://github.com/luoxue-victor/learn_webpack/commit/a84dff0)
  logo | 添加logo | [32ff923](https://github.com/luoxue-victor/learn_webpack/commit/32ff923)

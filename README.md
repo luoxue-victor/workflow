@@ -43,6 +43,7 @@
 - [课时 19：添加 webpack 配置检查命令](./docs/课时-19.md)
 - [课时 20：添加 prefetch + preload](./docs/课时-20.md)
 - [课时 21：增加 GraphQL Server](./docs/课时-21.md)
+- [课时 21：开启 mock](./docs/课时-22.md)
 
 </details> 
 
@@ -134,6 +135,7 @@ webpack-box server:gql # graphql-server
 - [dashboard 增加仪表盘配置](./config/dashboard.js)
 - [eslint-loader 配置](./config/eslintLoader.js)
 - [提取 manifest](./config/manifest.js)
+- [mock](./config/mock.js)
 - [optimization 优化配置](./config/optimization.js)
 - [样式表配置](./config/style.js)
 - [stylelint 配置](./config/styleLintPlugin.js)
@@ -182,6 +184,7 @@ module.exports = function (config) {
     output: 'dist',
     publicPath: '/common/',
     port: 8888,
+    mock: true,
     env: {
       MY_ENV: 'my-env'
     },

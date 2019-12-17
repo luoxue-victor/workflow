@@ -5,6 +5,7 @@ module.exports = function (options) {
   const WebpackDevServer = require('webpack-dev-server')
   const port = options.port || 8080
   const publicPath = options.publicPath || '/'
+  // const createMockMiddleware = require('../lib/createMockMiddleware')
 
   config.devServer
     .quiet(true)
@@ -13,6 +14,15 @@ module.exports = function (options) {
     .disableHostCheck(true)
     .publicPath(publicPath)
     .clientLogLevel('none')
+    // .before(app => {
+    //   // try {
+    //   //   app.use(createMockMiddleware())
+    //   // } catch (error) {
+    //   //   console.error(error)
+    //   //   process.exit()
+    //   // }
+    //   // require('../server/start')
+    // })
 
   if (typeof options.chainWebpack === 'function') {
     options.chainWebpack(config)
@@ -39,8 +49,11 @@ module.exports = function (options) {
   new Promise(() => {
     compiler.hooks.done.tap('dev', stats => {
       const empty = '    '
-      const common = `App running at:
-      - Local: http://127.0.0.1:${port}${publicPath}\n`
+      const common = `
+    App running at:
+    - dev  at: http://localhost:${port}${publicPath}
+${options.mock ? `    - mock at: http://localhost:${port}/api/users/12` : ''}
+`
       console.log(chalk.cyan('\n' + empty + common))
     })
   })
