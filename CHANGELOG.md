@@ -19,6 +19,7 @@
  install and use 间距 | install and use 间距 | [94ff06b](https://github.com/luoxue-victor/learn_webpack/commit/94ff06b)
  logo | 修改logo | [e858b74](https://github.com/luoxue-victor/learn_webpack/commit/e858b74)
  merge | 合并master | [065420b](https://github.com/luoxue-victor/learn_webpack/commit/065420b)
+ nodejs.yml | 修改action执行命令 | [0e89102](https://github.com/luoxue-victor/learn_webpack/commit/0e89102)
  package | asdasdasdad | [8a4cff1](https://github.com/luoxue-victor/learn_webpack/commit/8a4cff1)
  package.json | 修改 npm run cr 位置 | [242f695](https://github.com/luoxue-victor/learn_webpack/commit/242f695)
  packagejson | 调整生成文档在 commit-msg 钩子内 | [d21b695](https://github.com/luoxue-victor/learn_webpack/commit/d21b695)
