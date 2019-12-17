@@ -43,7 +43,7 @@
 - [课时 19：添加 webpack 配置检查命令](./docs/课时-19.md)
 - [课时 20：添加 prefetch + preload](./docs/课时-20.md)
 - [课时 21：增加 GraphQL Server](./docs/课时-21.md)
-- [课时 21：开启 mock](./docs/课时-22.md)
+- [课时 22：开启 mock](./docs/课时-22.md)
 
 </details> 
 
@@ -178,6 +178,7 @@ module.exports = function (config) {
    * @param {object} env 配置通用变量，可以在 node 跟 web 之间共同使用
    * @param {Boolean} filenameHashing 文件名是否使用 hash，当文件发生变动的时候 filename 才会改变
    * @param {Boolean} css 配置 css
+   * @param {Boolean} mock 开启 mock
    */
   return {
     entry: 'src/main.js',

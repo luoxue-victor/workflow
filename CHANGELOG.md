@@ -1,4 +1,4 @@
-## 1.0.6 (2019-12-17)
+## 1.0.7 (2019-12-17)
 
 ### 🌟 新功能
 范围|描述|commitId
@@ -32,6 +32,7 @@
  init | 项目初始化 | [d7835fb](https://github.com/luoxue-victor/learn_webpack/commit/d7835fb)
  lint-staged | 添加 lint-staged，并修改课题10文档 | [a84dff0](https://github.com/luoxue-victor/learn_webpack/commit/a84dff0)
  logo | 添加logo | [32ff923](https://github.com/luoxue-victor/learn_webpack/commit/32ff923)
+ mock | 增加mock数据功能 | [f0fed9e](https://github.com/luoxue-victor/learn_webpack/commit/f0fed9e)
  options-chain | 增加可选链并完善文档 | [b188007](https://github.com/luoxue-victor/learn_webpack/commit/b188007)
  plugin | 增加课题8 写一个webpack插件 | [0d021ce](https://github.com/luoxue-victor/learn_webpack/commit/0d021ce)
  prefetch + preload | 增加prefetch跟preload | [80903d3](https://github.com/luoxue-victor/learn_webpack/commit/80903d3)
