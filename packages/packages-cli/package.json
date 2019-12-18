@@ -7,7 +7,8 @@
   "description": "各种模块自动化打包",
   "author": "luoxue",
   "main": "index.js",
-  "peerDependencies": {
+  "peerDependencies": {},
+  "dependencies": {
     "@vue/cli-shared-utils": "^4.1.1",
     "boxen": "^4.1.0",
     "chalk": "^3.0.0",

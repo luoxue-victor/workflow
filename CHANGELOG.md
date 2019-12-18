@@ -1,4 +1,17 @@
-## 1.0.8 (2019-12-18)
+## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.0.1...v1.0.9) (2019-12-18)
+## [1.0.1](https://github.com/luoxue-victor/learn_webpack/compare/18fbebf...v1.0.1) (2019-12-18)
+
+范围|描述|commitId
+--|--|--
+ v1.0.1 | [d0a4a41](https://github.com/luoxue-victor/learn_webpack/commit/d0a4a41)
+ Create nodejs.yml | [7268a79](https://github.com/luoxue-victor/learn_webpack/commit/7268a79)
+ Update README.md | [87ef92f](https://github.com/luoxue-victor/learn_webpack/commit/87ef92f)
+ Update 课时-14.md | [6e4c579](https://github.com/luoxue-victor/learn_webpack/commit/6e4c579)
+ Update README.md | [3ebdc06](https://github.com/luoxue-victor/learn_webpack/commit/3ebdc06)
+ Delete .DS_Store | [b9d18cd](https://github.com/luoxue-victor/learn_webpack/commit/b9d18cd)
+ dev,build 命令descreiption错误 | [b47f016](https://github.com/luoxue-victor/learn_webpack/commit/b47f016)
+ Initial commit | [18fbebf](https://github.com/luoxue-victor/learn_webpack/commit/18fbebf)
+
 
 ### 🌟 新功能
 范围|描述|commitId
@@ -30,6 +43,7 @@
  global-style | 设置全局样式 | [ddfca57](https://github.com/luoxue-victor/learn_webpack/commit/ddfca57)
  graphql | 增加graphql配置 | [d6dec9a](https://github.com/luoxue-victor/learn_webpack/commit/d6dec9a)
  init | 项目初始化 | [d7835fb](https://github.com/luoxue-victor/learn_webpack/commit/d7835fb)
+ lerna | 添加lerna进行包管理 | [97dddcb](https://github.com/luoxue-victor/learn_webpack/commit/97dddcb)
  lint-staged | 添加 lint-staged，并修改课题10文档 | [a84dff0](https://github.com/luoxue-victor/learn_webpack/commit/a84dff0)
  logo | 添加logo | [32ff923](https://github.com/luoxue-victor/learn_webpack/commit/32ff923)
  mock | 增加mock数据功能 | [f0fed9e](https://github.com/luoxue-victor/learn_webpack/commit/f0fed9e)
@@ -118,15 +132,4 @@
  .gitignore | 在gitignore中删除 package-lock | [cc6a6f4](https://github.com/luoxue-victor/learn_webpack/commit/cc6a6f4)
  node | 添加node 10 12 | [c1c5169](https://github.com/luoxue-victor/learn_webpack/commit/c1c5169)
  update lock | 更新lock文件 | [bde1e63](https://github.com/luoxue-victor/learn_webpack/commit/bde1e63)
-
-
-范围|描述|commitId
---|--|--
- Create nodejs.yml | [7268a79](https://github.com/luoxue-victor/learn_webpack/commit/7268a79)
- Update README.md | [87ef92f](https://github.com/luoxue-victor/learn_webpack/commit/87ef92f)
- Update 课时-14.md | [6e4c579](https://github.com/luoxue-victor/learn_webpack/commit/6e4c579)
- Update README.md | [3ebdc06](https://github.com/luoxue-victor/learn_webpack/commit/3ebdc06)
- Delete .DS_Store | [b9d18cd](https://github.com/luoxue-victor/learn_webpack/commit/b9d18cd)
- dev,build 命令descreiption错误 | [b47f016](https://github.com/luoxue-victor/learn_webpack/commit/b47f016)
- Initial commit | [18fbebf](https://github.com/luoxue-victor/learn_webpack/commit/18fbebf)
 
