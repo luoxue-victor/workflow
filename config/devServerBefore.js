@@ -1,4 +1,4 @@
-// [mock]
+// [devServer.before 在devServer中添加中间件]
 module.exports = ({
   config,
   options
@@ -6,6 +6,8 @@ module.exports = ({
   return () => {
     if (!options.mock) return
     const createMockMiddleware = require('../lib/createMockMiddleware')
-    config.devServer.before(app => app.use(createMockMiddleware()))
+    config.devServer.before(app => {
+      app.use(createMockMiddleware())
+    })
   }
 }
