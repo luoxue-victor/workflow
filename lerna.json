@@ -1,0 +1,18 @@
+{
+  "npmClient": "npm",
+  "useWorkspaces": true,
+  "version": "1.0.0",
+  "packages": ["packages/packages-cli"],
+  "changelog": {
+    "repo": "jijiang/cli",
+    "labels": {
+      "PR: New Feature": ":rocket: New Features",
+      "PR: Breaking Change": ":boom: Breaking Changes",
+      "PR: Bug Fix": ":bug: Bug Fix",
+      "PR: Documentation": ":memo: Documentation",
+      "PR: Internal": ":house: Internal",
+      "PR: Underlying Tools": ":hammer: Underlying Tools"
+    },
+    "cacheDir": ".changelog"
+  }
+}

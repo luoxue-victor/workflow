@@ -1,8 +1,11 @@
 {
   "name": "webpack-box",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "webpack打包器",
   "main": "index.js",
+  "workspaces": [
+    "packages/packages-cli"
+  ],
   "bin": {
     "webpack-box": "bin/webpack-box.js"
   },
@@ -123,7 +126,9 @@
     "webpack-deep-scope-plugin": "^1.6.2",
     "webpack-dev-server": "^3.9.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "lerna": "^3.15.0"
+  },
   "config": {
     "commitizen": {
       "path": "./node_modules/vue-cli-plugin-commitlint/lib/cz"

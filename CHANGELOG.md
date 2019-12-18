@@ -1,4 +1,4 @@
-## 1.0.7 (2019-12-18)
+## 1.0.8 (2019-12-18)
 
 ### 🌟 新功能
 范围|描述|commitId
@@ -89,6 +89,7 @@
  docs | 修改文档 | [1982613](https://github.com/luoxue-victor/learn_webpack/commit/1982613)
  docs | 修改文档 | [bdc9a97](https://github.com/luoxue-victor/learn_webpack/commit/bdc9a97)
  docs | 修改文档，并发版npm | [76e3e52](https://github.com/luoxue-victor/learn_webpack/commit/76e3e52)
+ docs | 整理文档 | [0caa2c2](https://github.com/luoxue-victor/learn_webpack/commit/0caa2c2)
  docs 20 | 标题修改 | [9192f61](https://github.com/luoxue-victor/learn_webpack/commit/9192f61)
  docs inspect | 增加inspect命令行 | [f8c0a3a](https://github.com/luoxue-victor/learn_webpack/commit/f8c0a3a)
  eslint 文档 | 修改eslint 文档，并添加cwd分层 | [d23329b](https://github.com/luoxue-victor/learn_webpack/commit/d23329b)

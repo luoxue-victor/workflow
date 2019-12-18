@@ -14,7 +14,13 @@ module.exports = {
     'space-before-function-paren': 0,
     'eslint-disable-next-line': 0,
     'no-useless-escape': 0,
-    'one-var': 0
+    'one-var': 0,
+    'no-return-await': 0,
+    'no-prototype-builtins': 0,
+    'prefer-promise-reject-errors': 0,
+    'no-undef': 0,
+    'no-unused-vars': 0,
+    'no-sequences': 0
   },
   globals: {
     wx: true,
