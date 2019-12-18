@@ -1,4 +1,10 @@
 ## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.0.1...v1.0.9) (2019-12-18)
+
+### 🌟 新功能
+范围|描述|commitId
+--|--|--
+ dist | 删除dist | [9600d82](https://github.com/luoxue-victor/learn_webpack/commit/9600d82)
+
 ## [1.0.1](https://github.com/luoxue-victor/learn_webpack/compare/18fbebf...v1.0.1) (2019-12-18)
 
 范围|描述|commitId
