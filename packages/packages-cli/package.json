@@ -1,6 +1,6 @@
 {
   "name": "@jijiang/packages-box",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "bin": {
     "box": "cli/bin/packages-box.js"
   },
@@ -28,6 +28,5 @@
     "validate-npm-package-name": "^3.0.0",
     "vue-jscodeshift-adapter": "^2.0.2",
     "yaml-front-matter": "^4.0.0"
-  },
-  "dependencies": {}
+  }
 }
