@@ -4,13 +4,17 @@
   "description": "webpack打包器",
   "main": "index.js",
   "workspaces": [
-    "packages/packages-cli"
+    "packages/cli",
+    "packages/shared-utils",
+    "packages/cli"
   ],
   "bin": {
     "webpack-box": "bin/webpack-box.js"
   },
   "scripts": {
-    "dev": "webpack-dashboard -- webpack-box dev",
+    "link": "npm link",
+    "dev": "webpack-box dev",
+    "dev:dash": "webpack-dashboard -- webpack-box dev",
     "log": "conventional-changelog --config ./node_modules/vue-cli-plugin-commitlint/lib/log -i CHANGELOG.md -s -r 0",
     "cz": "npm run cr && npm run log && git add . && git cz",
     "cr": "node util/createReadme.js"

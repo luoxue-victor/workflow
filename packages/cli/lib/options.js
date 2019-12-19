@@ -1,15 +1,16 @@
 const fs = require('fs')
 const cloneDeep = require('lodash.clonedeep')
 const { getRcPath } = require('./util/rcPath')
-const { exit } = require('@vue/cli-shared-utils/lib/exit')
-const { error } = require('@vue/cli-shared-utils/lib/logger')
-const { createSchema, validate } = require('@vue/cli-shared-utils/lib/validate')
+const { exit } = require('@pkb/shared-utils/lib/exit')
+const { error } = require('@pkb/shared-utils/lib/logger')
+const { createSchema, validate } = require('@pkb/shared-utils/lib/validate')
 
 const rcPath = exports.rcPath = getRcPath('.vuerc')
 
 const presetSchema = createSchema(joi => joi.object().keys({
   bare: joi.boolean(),
   useConfigFiles: joi.boolean(),
+  // TODO: Use warn for router and vuex once @hapi/joi v16 releases
   router: joi.boolean(),
   routerHistoryMode: joi.boolean(),
   vuex: joi.boolean(),
@@ -19,18 +20,18 @@ const presetSchema = createSchema(joi => joi.object().keys({
 }))
 
 const schema = createSchema(joi => joi.object().keys({
-  latestVersion: joi.string().regex(/^\d+\.\d+\.\d+$/),
+  latestVersion: joi.string().regex(/^\d+\.\d+\.\d+(-(alpha|beta|rc)\.\d+)?$/),
   lastChecked: joi.date().timestamp(),
   packageManager: joi.string().only(['yarn', 'npm', 'pnpm']),
   useTaobaoRegistry: joi.boolean(),
   presets: joi.object().pattern(/^/, presetSchema)
 }))
 
-exports.validatePreset = preset => {}
+exports.validatePreset = preset => validate(preset, presetSchema, msg => {
+  error(`invalid preset options: ${msg}`)
+})
 
 exports.defaultPreset = {
-  router: false,
-  vuex: false,
   useConfigFiles: false,
   cssPreprocessor: undefined,
   plugins: {

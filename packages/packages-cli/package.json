@@ -1,8 +1,8 @@
 {
-  "name": "@jijiang/packages-box",
+  "name": "@pkgbox/cli-plugin-self",
   "version": "1.0.1",
   "bin": {
-    "box": "cli/bin/packages-box.js"
+    "pkg-box": "cli/bin/packages-box.js"
   },
   "description": "各种模块自动化打包",
   "author": "luoxue",

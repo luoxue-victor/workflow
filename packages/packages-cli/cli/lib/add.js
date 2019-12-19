@@ -4,7 +4,6 @@ const {
   semver,
   resolveModule
 } = require('../../cli-shared-utils')
-
 const PackageManager = require('./util/ProjectPackageManager')
 const {
   log,
@@ -27,7 +26,7 @@ async function add(pluginName, options = {}, context = process.cwd()) {
 
   const pm = new PackageManager({ context })
 
-  const cliVersion = require('../../package.json.js').version
+  const cliVersion = require('../../package.json').version
   if (isOfficialPlugin(packageName) && semver.prerelease(cliVersion)) {
     await pm.add(`${packageName}@^${cliVersion}`)
   } else {

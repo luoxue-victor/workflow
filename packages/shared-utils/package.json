@@ -1,0 +1,36 @@
+{
+  "name": "@pkb/shared-utils",
+  "version": "1.0.0",
+  "description": "公共utils",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luoxue-victor/webpack-box.git",
+    "directory": "packages/shared-utils"
+  },
+  "keywords": [
+    "pkb",
+    "cli",
+    "shared-utils"
+  ],
+  "author": "Xue Luo",
+  "license": "MIT",
+  "dependencies": {
+    "@hapi/joi": "^15.0.1",
+    "chalk": "^2.4.2",
+    "execa": "^1.0.0",
+    "launch-editor": "^2.2.1",
+    "lru-cache": "^5.1.1",
+    "node-ipc": "^9.1.1",
+    "open": "^6.3.0",
+    "ora": "^3.4.0",
+    "request": "^2.87.0",
+    "request-promise-native": "^1.0.8",
+    "semver": "^6.1.0",
+    "string.prototype.padstart": "^3.0.0",
+    "strip-ansi": "^6.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

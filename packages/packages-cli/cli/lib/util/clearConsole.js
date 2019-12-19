@@ -51,7 +51,7 @@ exports.generateTitle = async function (checkUpdate) {
 
       try {
         const command = await getInstallationCommand()
-        let name = require('../../package.json.js').name
+        let name = require('../../package.json').name
         if (semver.prerelease(latest)) {
           name += '@next'
         }

@@ -1,43 +1,23 @@
 const fs = require('fs-extra')
 const path = require('path')
-const execa = require('execa')
-const chalk = require('chalk')
-const globby = require('globby')
 const inquirer = require('inquirer')
-const isBinary = require('isbinaryfile')
-const Generator = require('./Generator')
-const { loadOptions } = require('./options')
-const { installDeps } = require('./util/installDeps')
-const normalizeFilePaths = require('./util/normalizeFilePaths')
 const {
+  chalk,
+  execa,
   log,
   error,
-  hasProjectYarn,
-  hasProjectGit,
-  hasProjectPnpm,
   logWithSpinner,
   stopSpinner,
+  hasProjectGit,
   resolvePluginId,
   loadModule
-} = require('@vue/cli-shared-utils')
+} = require('@pkb/shared-utils')
 
-async function readFiles (context) {
-  const files = await globby(['**'], {
-    cwd: context,
-    onlyFiles: true,
-    gitignore: true,
-    ignore: ['**/node_modules/**', '**/.git/**'],
-    dot: true
-  })
-  const res = {}
-  for (const file of files) {
-    const name = path.resolve(context, file)
-    res[file] = isBinary.isBinaryFileSync(name)
-      ? fs.readFileSync(name)
-      : fs.readFileSync(name, 'utf-8')
-  }
-  return normalizeFilePaths(res)
-}
+const Generator = require('./Generator')
+
+const confirmIfGitDirty = require('./util/confirmIfGitDirty')
+const readFiles = require('./util/readFiles')
+const PackageManager = require('./util/ProjectPackageManager')
 
 function getPkg (context) {
   const pkgPath = path.resolve(context, 'package.json')
@@ -51,19 +31,23 @@ function getPkg (context) {
   return pkg
 }
 
-// 开始调用
 async function invoke (pluginName, options = {}, context = process.cwd()) {
+  if (!(await confirmIfGitDirty(context))) {
+    return
+  }
+
   delete options._
   const pkg = getPkg(context)
 
   const findPlugin = deps => {
     if (!deps) return
     let name
-
-    if (deps[(name = `vue-cli-plugin-${pluginName}`)]) {
+    if (deps[(name = `box-cli-plugin-${pluginName}`)]) {
       return name
     }
-
+    if (deps[(name = `@vue/cli-plugin-${pluginName}`)]) {
+      return name
+    }
     if (deps[(name = resolvePluginId(pluginName))]) {
       return name
     }
@@ -71,17 +55,30 @@ async function invoke (pluginName, options = {}, context = process.cwd()) {
 
   const id = findPlugin(pkg.devDependencies) || findPlugin(pkg.dependencies)
 
-  const pluginGenerator = loadModule(`${id}/generator`, context)
-
-  if (!pluginGenerator) {
-    throw new Error(`插件 ${id} 没有 generator`)
+  if (!id) {
+    throw new Error(
+      `Cannot resolve plugin ${chalk.yellow(pluginName)} from package.json. ` +
+        'Did you forget to install it?'
+    )
   }
 
-  let { registry, ...pluginOptions } = options
+  const pluginGenerator = loadModule(`${id}/generator`, context)
+  if (!pluginGenerator) {
+    throw new Error(`Plugin ${id} does not have a generator.`)
+  }
 
-  if (!Object.keys(pluginOptions).length) {
+  // resolve options if no command line options (other than --registry) are passed,
+  // and the plugin contains a prompt module.
+  // eslint-disable-next-line prefer-const
+  let { registry, $inlineOptions, ...pluginOptions } = options
+  if ($inlineOptions) {
+    try {
+      pluginOptions = JSON.parse($inlineOptions)
+    } catch (e) {
+      throw new Error(`Couldn't parse inline options JSON: ${e.message}`)
+    }
+  } else if (!Object.keys(pluginOptions).length) {
     let pluginPrompts = loadModule(`${id}/prompts`, context)
-
     if (pluginPrompts) {
       if (typeof pluginPrompts === 'function') {
         pluginPrompts = pluginPrompts(pkg)
@@ -107,17 +104,20 @@ async function invoke (pluginName, options = {}, context = process.cwd()) {
 
 async function runGenerator (context, plugin, pkg = getPkg(context)) {
   const isTestOrDebug = process.env.VUE_CLI_TEST || process.env.VUE_CLI_DEBUG
-  const createCompleteCbs = []
+  const afterInvokeCbs = []
+  const afterAnyInvokeCbs = []
+
   const generator = new Generator(context, {
     pkg,
     plugins: [plugin],
     files: await readFiles(context),
-    completeCbs: createCompleteCbs,
+    afterInvokeCbs,
+    afterAnyInvokeCbs,
     invoking: true
   })
 
   log()
-  log(`🚀  调用插件 ${plugin.id}...`)
+  log(`🚀  Invoking generator for ${plugin.id}...`)
   await generator.generate({
     extractConfigFiles: true,
     checkExisting: true
@@ -132,25 +132,24 @@ async function runGenerator (context, plugin, pkg = getPkg(context)) {
   if (!isTestOrDebug && depsChanged) {
     log('📦  Installing additional dependencies...')
     log()
-
-    const packageManager =
-      loadOptions().packageManager || (hasProjectYarn(context) ? 'yarn' : hasProjectPnpm(context) ? 'pnpm' : 'npm')
-    await installDeps(context, packageManager, plugin.options && plugin.options.registry)
+    const pm = new PackageManager({ context })
+    await pm.install()
   }
 
-  if (createCompleteCbs.length) {
+  if (afterInvokeCbs.length || afterAnyInvokeCbs.length) {
     logWithSpinner('⚓', 'Running completion hooks...')
-    for (const cb of createCompleteCbs) {
-      console.log('')
+    for (const cb of afterInvokeCbs) {
+      await cb()
+    }
+    for (const cb of afterAnyInvokeCbs) {
       await cb()
     }
     stopSpinner()
     log()
   }
 
-  log(`${chalk.green('✔')}  成功安装插件: ${chalk.cyan(plugin.id)}`)
-
-  if (hasProjectGit(context)) {
+  log(`${chalk.green('✔')}  Successfully invoked generator for plugin: ${chalk.cyan(plugin.id)}`)
+  if (!process.env.VUE_CLI_TEST && hasProjectGit(context)) {
     const { stdout } = await execa('git', [
       'ls-files',
       '--exclude-standard',
@@ -159,7 +158,26 @@ async function runGenerator (context, plugin, pkg = getPkg(context)) {
     ], {
       cwd: context
     })
+    if (stdout.trim()) {
+      log('   The following files have been updated / added:\n')
+      log(
+        chalk.red(
+          stdout
+            .split(/\r?\n/g)
+            .map(line => `     ${line}`)
+            .join('\n')
+        )
+      )
+      log()
+      log(
+        `   You should review these changes with ${chalk.cyan(
+          'git diff'
+        )} and commit them.`
+      )
+      log()
+    }
   }
+
   generator.printExitLogs()
 }
 

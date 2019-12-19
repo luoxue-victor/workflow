@@ -24,7 +24,6 @@ module.exports = function lint ({ args = {}, api }) {
   const { log, done, exit, chalk, loadModule } = require('@vue/cli-shared-utils')
   const { CLIEngine } = loadModule('eslint', cwd, true) || require('eslint')
   const extensions = require('./eslintOptions').extensions(api)
-
   const argsConfig = normalizeConfig(args)
   const config = Object.assign({
     extensions,
@@ -36,12 +35,11 @@ module.exports = function lint ({ args = {}, api }) {
   const noFixWarningsPredicate = (lintResult) => lintResult.severity === 2
   config.fix = config.fix && (noFixWarnings ? noFixWarningsPredicate : true)
 
-  if (!fs.existsSync(api.resolve('.eslintignore')) && !config.ignorePattern) {
-    config.ignorePattern = [
-      '!.*.js',
-      '!{src,tests}/**/.*.js'
-    ]
-  }
+  config.ignorePattern = [
+    '!.*.js',
+    '*/**/node_modules',
+    '!{src,tests}/**/.*.js'
+  ]
 
   const engine = new CLIEngine(config)
 
@@ -76,7 +74,6 @@ module.exports = function lint ({ args = {}, api }) {
   process.cwd = processCwd
 
   const formatter = engine.getFormatter(args.format || 'codeframe')
-
   if (config.fix) {
     CLIEngine.outputFixes(report)
   }
@@ -115,6 +112,8 @@ module.exports = function lint ({ args = {}, api }) {
     }
     exit(1)
   }
+
+  console.log('--------end------')
 }
 
 function normalizeConfig (args) {

@@ -8,7 +8,7 @@ const mergeDeps = require('./util/mergeDeps')
 const runCodemod = require('./util/runCodemod')
 const stringifyJS = require('./util/stringifyJS')
 const ConfigTransform = require('./ConfigTransform')
-const { semver, getPluginLink, toShortPluginId, loadModule } = require('@vue/cli-shared-utils')
+const { semver, getPluginLink, toShortPluginId, loadModule } = require('@pkb/shared-utils')
 
 const isString = val => typeof val === 'string'
 const isFunction = val => typeof val === 'function'
@@ -75,7 +75,7 @@ class GeneratorAPI {
   }
 
   get cliVersion () {
-    return require('../package.json.js').version
+    return require('../package.json').version
   }
 
   assertCliVersion (range) {
@@ -165,7 +165,7 @@ class GeneratorAPI {
       !options.file
     ) {
       if (hasReserved) {
-        const { warn } = require('@vue/cli-shared-utils')
+        const { warn } = require('@pkb/shared-utils')
         warn(`Reserved config transform '${key}'`)
       }
       return
@@ -230,10 +230,14 @@ class GeneratorAPI {
         const data = this._resolveData(additionalData)
         const globby = require('globby')
         const _files = await globby(['**/*'], { cwd: source })
+
         for (const rawPath of _files) {
           const targetPath = rawPath.split('/').map(filename => {
             // dotfiles are ignored when published to npm, therefore in templates
             // we need to use underscore instead (e.g. "_gitignore")
+            if (filename.charAt(0) === '$' && filename.charAt(1) !== '$') {
+              return `${filename.slice(1)}`
+            }
             if (filename.charAt(0) === '_' && filename.charAt(1) !== '_') {
               return `.${filename.slice(1)}`
             }

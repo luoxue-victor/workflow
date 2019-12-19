@@ -75,7 +75,7 @@ class GeneratorAPI {
   }
 
   get cliVersion () {
-    return require('../package.json.js').version
+    return require('../package.json').version
   }
 
   assertCliVersion (range) {

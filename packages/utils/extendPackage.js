@@ -4,7 +4,6 @@ const mergeDeps = require('./mergeDeps')
 const isFunction = val => typeof val === 'function'
 const isObject = val => val && typeof val === 'object'
 const mergeArrayWithDedupe = (a, b) => Array.from(new Set([...a, ...b]))
-
 exports.extendPackage = function extendPackage (pkg, fields) {
   const toMerge = isFunction(fields) ? fields(pkg) : fields
   for (const key in toMerge) {
