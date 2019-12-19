@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-const { chalk, semver } = require('@vue/cli-shared-utils')
+const { chalk, semver } = require('@pkb/shared-utils')
 const didYouMean = require('didyoumean')
 const minimist = require('minimist')
 const program = require('commander')
@@ -10,7 +10,7 @@ didYouMean.threshold = 0.6
 checkNodeVersionForWarning()
 
 program
-  .version(`@jijiang/packages-box ${require('../../package').version}`)
+  .version(`@pkb/cli ${require('../package.json').version}`)
   .usage('<command> [options]')
 
 program
@@ -42,8 +42,8 @@ program
 
 program
   .command('add [plugin] [pluginOptions]')
-  .description('install a plugin and invoke its generator in an already created project')
-  .option('--registry <url>', 'Use specified npm registry when installing dependencies (only for npm)')
+  .description('安装插件并在已创建的项目中调用其生成器')
+  .option('--registry <url>', '安装依赖项时使用指定的npm注册表(仅适用于npm)')
   .allowUnknownOption()
   .action(async (plugin, options = {}) => {
     if (plugin) {
@@ -63,8 +63,8 @@ program
 
 program
   .command('invoke <plugin> [pluginOptions]')
-  .description('invoke the generator of a plugin in an already created project')
-  .option('--registry <url>', 'Use specified npm registry when installing dependencies (only for npm)')
+  .description('安装插件并在已创建的项目中调用其生成器')
+  .option('--registry <url>', '安装依赖项时使用指定的npm注册表(仅适用于npm)')
   .allowUnknownOption()
   .action((plugin) => {
     require('../lib/invoke')(plugin, minimist(process.argv.slice(3)))
@@ -84,26 +84,6 @@ program
   })
 
 program
-  .command('serve [entry]')
-  .description('serve a .js or .vue file in development mode with zero config')
-  .option('-o, --open', 'Open browser')
-  .option('-c, --copy', 'Copy local url to clipboard')
-  .option('-p, --port <port>', 'Port used by the server (default: 8080 or next available port)')
-  .action((entry, cmd) => {
-    loadCommand('serve', '@vue/cli-service-global').serve(entry, cleanArgs(cmd))
-  })
-
-program
-  .command('build [entry]')
-  .description('build a .js or .vue file in production mode with zero config')
-  .option('-t, --target <target>', 'Build target (app | lib | wc | wc-async, default: app)')
-  .option('-n, --name <name>', 'name for lib or web-component mode (default: entry filename)')
-  .option('-d, --dest <dir>', 'output directory (default: dist)')
-  .action((entry, cmd) => {
-    loadCommand('build', '@vue/cli-service-global').build(entry, cleanArgs(cmd))
-  })
-
-program
   .command('ui')
   .description('start and open the vue-cli ui')
   .option('-H, --host <host>', 'Host used for the UI server (default: localhost)')
@@ -114,15 +94,6 @@ program
   .action((cmd) => {
     checkNodeVersion('>=8.6', 'vue ui')
     require('../lib/ui')(cleanArgs(cmd))
-  })
-
-program
-  .command('init <template> <app-name>')
-  .description('generate a project from a remote template (legacy API, requires @vue/cli-init)')
-  .option('-c, --clone', 'Use git clone when fetching remote template')
-  .option('--offline', 'Use cached template')
-  .action(() => {
-    loadCommand('init', '@vue/cli-init')
   })
 
 program
@@ -234,14 +205,10 @@ function camelize(str) {
   return str.replace(/-(\w)/g, (_, c) => c ? c.toUpperCase() : '')
 }
 
-// commander passes the Command object itself as options,
-// extract only actual options into a fresh object.
 function cleanArgs(cmd) {
   const args = {}
   cmd.options.forEach(o => {
     const key = camelize(o.long.replace(/^--/, ''))
-    // if an option is not present and Command has a method with the same name
-    // it should not be copied
     if (typeof cmd[key] !== 'function' && typeof cmd[key] !== 'undefined') {
       args[key] = cmd[key]
     }

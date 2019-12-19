@@ -20,7 +20,7 @@ const {
 
   log,
   warn
-} = require('../@pkb/shared-utils')
+} = require('@pkb/shared-utils')
 
 const { loadOptions } = require('../options')
 const getPackageJson = require('./getPackageJson')

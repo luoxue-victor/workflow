@@ -26,7 +26,7 @@ async function add(pluginName, options = {}, context = process.cwd()) {
 
   const pm = new PackageManager({ context })
 
-  const cliVersion = require('../../package.json').version
+  const cliVersion = require('@pkb/shared-utils/package.json').version
   if (isOfficialPlugin(packageName) && semver.prerelease(cliVersion)) {
     await pm.add(`${packageName}@^${cliVersion}`)
   } else {

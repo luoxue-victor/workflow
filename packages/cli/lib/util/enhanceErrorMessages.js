@@ -1,5 +1,5 @@
 const program = require('commander')
-const { chalk } = require('../@pkb/shared-utils')
+const { chalk } = require('@pkb/shared-utils')
 
 module.exports = (methodName, log) => {
   program.Command.prototype[methodName] = function (...args) {

@@ -10,7 +10,7 @@ module.exports = function loadCommand (commandName, moduleName) {
         return require('import-global')(moduleName)
       } catch (err2) {
         if (isNotFoundError(err2)) {
-          const { chalk, hasYarn, hasPnpm3OrLater } = require('../@pkb/shared-utils')
+          const { chalk, hasYarn, hasPnpm3OrLater } = require('@pkb/shared-utils')
           let installCommand = 'npm install -g'
           if (hasYarn()) {
             installCommand = 'yarn global add'

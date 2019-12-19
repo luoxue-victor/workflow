@@ -4,6 +4,7 @@
 范围|描述|commitId
 --|--|--
  dist | 删除dist | [9600d82](https://github.com/luoxue-victor/learn_webpack/commit/9600d82)
+ packages | 新加cli跟utils包 | [0828922](https://github.com/luoxue-victor/learn_webpack/commit/0828922)
 
 
 ### 🐛 Bug 修复

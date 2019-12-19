@@ -1,4 +1,4 @@
-const { chalk, execa } = require('../@pkb/shared-utils')
+const { chalk, execa } = require('@pkb/shared-utils')
 const EventEmitter = require('events')
 const readline = require('readline')
 

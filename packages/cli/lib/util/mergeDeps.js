@@ -1,4 +1,4 @@
-const { semver, warn } = require('../@pkb/shared-utils')
+const { semver, warn } = require('@pkb/shared-utils')
 
 const tryGetNewerRange = require('./tryGetNewerRange')
 

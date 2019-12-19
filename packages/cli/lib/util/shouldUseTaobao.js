@@ -4,7 +4,7 @@ const {
   request,
 
   hasYarn
-} = require('../@pkb/shared-utils')
+} = require('@pkb/shared-utils')
 const inquirer = require('inquirer')
 const registries = require('./registries')
 const { loadOptions, saveOptions } = require('../options')

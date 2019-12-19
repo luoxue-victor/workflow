@@ -2,10 +2,10 @@ const vuePluginRE = /^(@vue\/|vue-|@[\w-]+(\.)?[\w-]+\/vue-)(cli-)?plugin-/
 const scopeRE = /^@[\w-]+(\.)?[\w-]+\//
 const vueOfficialRE = /^@vue\//
 
-const pbPluginRE = /^(@pkb\/|pb-|@[\w-]+(\.)?[\w-]+\/pb-)(cli-)?plugin-/
+const pbPluginRE = /^(@pkb\/|pk-|@[\w-]+(\.)?[\w-]+\/pk-)(cli-)?plugin-/
 const pbOfficialRE = /^@pkb\//
 
-const officialPlugins = [
+const vueOfficialPlugins = [
   'babel',
   'e2e-cypress',
   'e2e-nightwatch',
@@ -18,6 +18,8 @@ const officialPlugins = [
   'vuex'
 ]
 
+const pkbOfficialPlugins = []
+
 exports.isPlugin = id => vuePluginRE.test(id) || pbPluginRE.test(id)
 
 exports.isOfficialPlugin = id => exports.isPlugin(id) && pbOfficialRE.test(id)
@@ -25,15 +27,15 @@ exports.isOfficialPlugin = id => exports.isPlugin(id) && pbOfficialRE.test(id)
 exports.toShortPluginId = id => id.replace(vuePluginRE, '')
 
 exports.resolvePluginId = id => {
-  // 完整的 id
   if (vuePluginRE.test(id) || pbPluginRE.test(id)) {
     return id
   }
-  // 这块会换成 pb
-  if (officialPlugins.includes(id)) {
+  if (vueOfficialPlugins.includes(id)) {
+    return `@vue/cli-plugin-${id}`
+  }
+  if (pkbOfficialPlugins.includes(id)) {
     return `@pkb/cli-plugin-${id}`
   }
-  // scoped short
   // e.g. @pkb/foo, @pkb/foo
   if (id.charAt(0) === '@') {
     const scopeMatch = id.match(scopeRE)
@@ -43,7 +45,7 @@ exports.resolvePluginId = id => {
       let ii = ''
       if (/^(@pkb)/.test(id)) {
         ii = `${scope}${
-          (scope === '@pkb/' ? '' : 'pb-')
+          (scope === '@pkb/' ? '' : 'pk-')
         }cli-plugin-${shortId}`
       } else {
         ii = id
@@ -51,10 +53,10 @@ exports.resolvePluginId = id => {
       return ii
     }
   }
-  // default short
   // e.g. foo
-  console.log('-----------------', id)
-  return `vue-cli-plugin-${id}`
+  const { spawnSync } = require('child_process')
+  const status = spawnSync('npm', ['view', `pk-cli-plugin-${id}`]).status
+  return `${status === 0 ? 'pk' : 'vue'}-cli-plugin-${id}`
 }
 
 exports.matchesPluginId = (input, full) => {

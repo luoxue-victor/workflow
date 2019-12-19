@@ -1,7 +1,6 @@
-const { findSync } = require('../lib')
+const fs = require('fs')
 const Config = require('webpack-chain')
 const config = new Config()
-const files = findSync('../config')
 const path = require('path')
 const PluginAPI = require('../api/PluginAPI')
 const resolve = (p) => {
@@ -11,13 +10,18 @@ const resolve = (p) => {
 const webpackVersion = require(resolve('node_modules/webpack/package.json')).version
 
 module.exports = (options) => {
-  const map = new Map()
-  files.map(_ => {
-    const name = path.basename(_, '.js')
-    return map.set(name, require(_)({ config, webpackVersion, resolve, options, api: PluginAPI }))
-  })
-
-  map.forEach(v => v())
-
+  const configPath = path.join(__dirname, '..', 'config')
+  const files = fs.readdirSync(configPath)
+  const { getConfigsByName } = require('../util/getLocalConfigByPath')
+  const configs = []
+  files.forEach(fileName => configs.push(require(`${configPath}/${fileName}`)))
+  configs.push(...getConfigsByName('packages', 'chain.config.js'))
+  configs.forEach(c => c({
+    config,
+    webpackVersion,
+    resolve,
+    options,
+    api: PluginAPI
+  })())
   return config
 }

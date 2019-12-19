@@ -3,7 +3,7 @@ const {
   execa,
   warn,
   hasProjectGit
-} = require('../@pkb/shared-utils')
+} = require('@pkb/shared-utils')
 
 module.exports = async function confirmIfGitDirty (context) {
   if (process.env.VUE_CLI_SKIP_DIRTY_GIT_PROMPT || process.env.VUE_CLI_API_MODE) {

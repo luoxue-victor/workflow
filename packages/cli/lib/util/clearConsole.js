@@ -6,7 +6,7 @@ const {
   clearConsole,
   hasYarn,
   hasPnpm3OrLater
-} = require('../@pkb/shared-utils')
+} = require('@pkb/shared-utils')
 
 async function getInstallationCommand () {
   if (hasYarn()) {
@@ -51,7 +51,7 @@ exports.generateTitle = async function (checkUpdate) {
 
       try {
         const command = await getInstallationCommand()
-        let name = require('../../package.json').name
+        let name = require('@pkb/shared-utils/package.json').name
         if (semver.prerelease(latest)) {
           name += '@next'
         }
