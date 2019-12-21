@@ -1,4 +1,5 @@
 import React, { useState, useReducer } from 'react'
+import './index.scss'
 
 const myReducer = (state, action) => {
   console.log(action, 'action')
@@ -14,12 +15,12 @@ const myReducer = (state, action) => {
   }
 }
 
-const arr = [[{ a: 1 }], [{ a: 4 }, { a: 5 }, { a: 6 }], [{ a: 7 }, { a: 8 }]]
+const arr = [[{ a: 1 }], [{ a: 2 }, { a: 3 }, { a: 4 }], [{ a: 5 }, { a: 6 }]]
 const item = arr.map((cur, index) => {
-  return <div key={index.toString()} style={{ margin: '20px', backgroundColor: 'cyan' }}>
+  return <div key={index.toString()} style={{ backgroundColor: 'cyan' }}>
     {
       cur.map((item, idx) => {
-        return <p key={idx.toString()}>{item.a}</p>
+        return <div key={idx.toString()}>{item.a}</div>
       })
     }
   </div>
@@ -33,16 +34,20 @@ export const App = () => {
     return setBtnText(btnText === 'Click me, please' ? 'Thanks, been clicked!' : 'Click me, please')
   }
 
-  return <div>
-    <button onClick={handleClick}>{btnText}</button>
-    <div>
-      <button onClick={() => dispatch({ type: 'countUp', count: state.count + 1 })}>
-                +1
+  return (
+    <div className="box">
+      <button className="btn am amScale" onClick={handleClick}>
+        <span>{btnText}</span>
       </button>
-      <p>Count: {state.count}</p>
+      <div className="btnBox">
+        <div>Count: {state.count}</div>
+        <button className="btn am amScale" onClick={() => dispatch({ type: 'countUp', count: state.count + 1 })}>
+          <span>点我+1</span>
+        </button>
+      </div>
+      <div>
+        {item}
+      </div>
     </div>
-    <div style={{ display: 'flex' }}>
-      {item}
-    </div>
-  </div>
+  )
 }
