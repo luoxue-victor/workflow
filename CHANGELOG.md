@@ -1,4 +1,4 @@
-## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.0.1...v1.0.9) (2019-12-19)
+## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.0.1...v1.0.9) (2019-12-21)
 
 ### 🌟 新功能
 范围|描述|commitId
@@ -11,6 +11,12 @@
 范围|描述|commitId
 --|--|--
  gitignore | 增加dist | [d723459](https://github.com/luoxue-victor/learn_webpack/commit/d723459)
+
+
+### 📦 持续集成
+范围|描述|commitId
+--|--|--
+ cli | 改造脚手架提供，packages内可以直接注册webpack配置跟脚手架命令 | [f340e6f](https://github.com/luoxue-victor/learn_webpack/commit/f340e6f)
 
 ## [1.0.1](https://github.com/luoxue-victor/learn_webpack/compare/18fbebf...v1.0.1) (2019-12-18)
 

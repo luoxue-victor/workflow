@@ -1,4 +1,3 @@
-// 抽离脚手架命令行层
 const fs = require('fs')
 const path = require('path')
 const program = require('commander')
@@ -7,6 +6,7 @@ const { cleanArgs } = require('../lib')
 const boxPath = path.join(process.cwd(), 'box.config.js')
 const chalk = require('chalk')
 const semver = require('semver')
+const commandNames = []
 
 const commandStore = exports.commandStore = []
 let boxConfig = {}
@@ -25,8 +25,23 @@ module.exports.injectCommand = function (cmd) {
   cmd({ program, boxConfig, commandStore, cleanArgs })
 }
 
+module.exports.getAllCommands = function() {
+  const path = require('path')
+  const fs = require('fs')
+  const localCwdPath = path.join(__dirname, '..', 'commands')
+  const localCwdNames = [...fs.readdirSync(localCwdPath)]
+  const cwdFns = []
+  const { getConfigsByName } = require('../util/getLocalConfigByPath')
+  localCwdNames.forEach(name => {
+    const cwdPath = path.join(localCwdPath, name)
+    cwdFns.push(require(cwdPath))
+  })
+  cwdFns.push(...getConfigsByName('packages', 'command.config.js'))
+  return cwdFns
+}
+
 module.exports.commandComplete = function() {
-  // commandValidate()
+  commandValidate()
   parse()
   status = 'done'
 }
@@ -37,7 +52,9 @@ function parse() {
 }
 
 function commandValidate() {
-  if (process.argv[2]) {
+  program.commands.map(_ => commandNames.push(_._name))
+  const commandName = process.argv[2]
+  if (commandName && !commandNames.includes(commandName)) {
     console.log()
     console.log(chalk.red(`  没有找到 ${process.argv[2]} 命令`))
     console.log()

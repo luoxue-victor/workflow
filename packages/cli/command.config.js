@@ -1,7 +1,6 @@
 module.exports = function({ injectCommand }) {
   injectCommand(function({ program }) {
     const chalk = require('chalk')
-
     program
       .command('info')
       .description('打印有关环境的调试信息')
