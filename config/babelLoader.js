@@ -28,7 +28,8 @@ module.exports = ({ config }) => {
       'transform-class-properties',
       '@babel/proposal-object-rest-spread',
       '@babel/plugin-syntax-dynamic-import',
-      '@babel/plugin-proposal-class-properties'
+      '@babel/plugin-proposal-class-properties',
+      ['import', { libraryName: 'antd', style: true }]
     ]
   }
 
