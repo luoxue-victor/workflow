@@ -3,26 +3,35 @@ const fs = require('fs')
 const path = require('path')
 const readmePath = path.join('util', 'readme')
 
-let configCtx = '',
-  docsCtx = ''
-
-configCtx = extraTxt('config', function(firstRow) {
+const configCtx = extraTxt('config', function(firstRow) {
   return firstRow.replace('// ', '')
 })
 
-docsCtx = extraTxt('docs', function(firstRow) {
+const docsCtx = extraTxt('docs', function(firstRow) {
   return `[${firstRow.replace('## ', '')}]`
 })
+
+const packageConfig = extraTxtFromDirWithFilename(
+  'packages',
+  'webpack-chain.config.js',
+  function(firstRow) {
+    return `[${firstRow.replace('// ', '')}]`
+  })
+
+console.log(packageConfig)
 
 function joinCtx () {
   let str = ''
   str += readMdBy('header')
   str += detailTag('所有课题', docsCtx, false)
   str += readMdBy('useAndIntsall')
-  str += detailTag('所有配置', configCtx)
+  str += detailTag('所有配置', configCtx + packageConfig)
+  // str += extraTxtFromDirWithFilename('packages', 'webpack-chain.config.js')
   str += boxConfig()
   return str
 }
+
+// console.log(extraTxtFromDirWithFilename('packages', 'webpack-chain.config.js'))
 
 const ctx = joinCtx()
 
@@ -38,6 +47,22 @@ function detailTag (title, ctx, isOpen = true) {
   <br/>
 \n\n${ctx}
 </details> \n\n`
+}
+
+function extraTxtFromDirWithFilename (dirname, filename, firstRowStrategy) {
+  const dirs = fs.readdirSync(dirname)
+  const dirPath = path.join(process.cwd(), dirname)
+  let ctx = ''
+  dirs.forEach(dir => {
+    const fullFilenamePath = path.join(dirPath, dir, filename)
+    if (fs.existsSync(fullFilenamePath)) {
+      const content = fs.readFileSync(fullFilenamePath).toString()
+      const firstRow = content.split('\n')[0].trim()
+      const title = firstRowStrategy(firstRow)
+      ctx += `- ${title}(./${dirname}/${dir}/${filename})\n`
+    }
+  })
+  return ctx
 }
 
 function extraTxt (dirname, firstRowStrategy) {

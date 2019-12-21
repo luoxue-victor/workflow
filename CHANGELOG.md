@@ -14,18 +14,14 @@
  src/react | 修改样式 | [e990865](https://github.com/luoxue-victor/learn_webpack/commit/e990865)
 
 
-### 🎨 代码样式
-范围|描述|commitId
---|--|--
- src/react | 修改样式 | [e990865](https://github.com/luoxue-victor/learn_webpack/commit/e990865)
-
-
 ### 🐛 Bug 修复
 范围|描述|commitId
 --|--|--
  demo | 修改demo | [86da5a4](https://github.com/luoxue-victor/learn_webpack/commit/86da5a4)
  gitignore | 增加dist | [d723459](https://github.com/luoxue-victor/learn_webpack/commit/d723459)
+ merge | 合并master | [6886aef](https://github.com/luoxue-victor/learn_webpack/commit/6886aef)
  src + packages/react | 调整了文件位置 | [02bcb12](https://github.com/luoxue-victor/learn_webpack/commit/02bcb12)
+ src/react | 增加antd和样式修改 | [1c9b1ab](https://github.com/luoxue-victor/learn_webpack/commit/1c9b1ab)
 
 
 ### 📝 文档
@@ -39,6 +35,11 @@
 --|--|--
  cli | 改造脚手架提供，packages内可以直接注册webpack配置跟脚手架命令 | [f340e6f](https://github.com/luoxue-victor/learn_webpack/commit/f340e6f)
  packages/cli | 修改了脚手架配置 | [578b687](https://github.com/luoxue-victor/learn_webpack/commit/578b687)
+
+
+### 💡 不兼容变更
+
+* **src/react：** less 需要更换版本
 
 ## [1.0.1](https://github.com/luoxue-victor/learn_webpack/compare/18fbebf...v1.0.1) (2019-12-18)
 

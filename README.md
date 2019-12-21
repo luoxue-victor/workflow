@@ -47,6 +47,7 @@
 - [课时 21：增加 GraphQL Server](./docs/课时-21.md)
 - [课时 22：开启 mock](./docs/课时-22.md)
 - [课时 23：编写插件](./docs/课时-23.md)
+- [课时 24：配置 react](./docs/课时-24.md)
 
 </details> 
 
@@ -145,6 +146,8 @@ webpack-box server:gql # graphql-server
 - [设置 style 全局变量](./config/styleResourcesLoader.js)
 - [多线程配置](./config/threadLoader.js)
 - [tslint 配置](./config/tslintPlugin.js)
+- [[cli 配置]](./packages/cli/webpack-chain.config.js)
+- [[react 配置]](./packages/react/webpack-chain.config.js)
 
 </details> 
 
@@ -190,7 +193,7 @@ module.exports = function (config) {
     port: 8888,
     mock: true,
     env: {
-      MY_ENV: 'my-env'
+      REACT: 'react' // 配置 react
     },
     alias: {
       '@': resolve('src'),
@@ -252,8 +255,7 @@ module.exports = function (config) {
         filename: 'index2.html'
       }
     },
-    chainWebpack(config) {
-    }
+    chainWebpack(config) {}
   }
 }
 

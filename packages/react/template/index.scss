@@ -1,28 +1,15 @@
-.box {
+.react-box {
   width: 100%;
   text-align: center;
 }
 
-.logo {
+.react-logo {
   width: 100px;
   height: 100px;
   animation: rotating 5s linear infinite;
 }
 
-.btnBox {
-  width: 100%;
-  text-align: center;
-}
-
-.listBox {
-  width: 90%;
-  border-radius: 4px;
-  overflow: hidden;
-  margin: 0 auto;
-  border: 1px solid #dfdfdf;
-}
-
-@-webkit-keyframes rotating {
+@keyframes rotating {
   0% {
     transform: rotate(0deg);
   }

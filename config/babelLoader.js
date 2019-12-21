@@ -1,29 +1,27 @@
 // [babel-loader 配置]
 module.exports = ({ config }) => {
+  const presets = [
+    ['@babel/typescript'],
+    [
+      '@babel/preset-env',
+      {
+        modules: false,
+        targets: {
+          chrome: 59,
+          edge: 13,
+          firefox: 50,
+          safari: 8
+        }
+      }
+    ]
+  ]
   const babelConf = {
     env: {
       test: {
         plugins: ['@babel/plugin-transform-modules-commonjs']
       }
     },
-    presets: [
-      ['@babel/typescript'],
-      [
-        '@babel/preset-react',
-        {
-          corejs: '3',
-          useBuiltIns: 'usage',
-          loose: true,
-          modules: false,
-          targets: {
-            chrome: 59,
-            edge: 13,
-            firefox: 50,
-            safari: 8
-          }
-        }
-      ]
-    ],
+    presets,
     plugins: [
       'transform-class-properties',
       '@babel/proposal-object-rest-spread',
@@ -39,5 +37,6 @@ module.exports = ({ config }) => {
       .use('babel')
       .loader(require.resolve('babel-loader'))
       .options(babelConf)
+      .after('process-env')
   }
 }

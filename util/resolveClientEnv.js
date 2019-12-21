@@ -1,4 +1,4 @@
-module.exports = function resolveClientEnv (options, raw) {
+module.exports = function resolveClientEnv (options) {
   const env = {}
   if (process.env) {
     Object.keys(process.env).forEach(key => {
@@ -8,6 +8,9 @@ module.exports = function resolveClientEnv (options, raw) {
     })
   }
   if (options.env) {
+    Object.keys(options.env).forEach(key => {
+      process.env[key] = options.env[key]
+    })
     Object.assign(env, options.env)
   }
   return env
