@@ -12,6 +12,7 @@
 范围|描述|commitId
 --|--|--
  gitignore | 增加dist | [d723459](https://github.com/luoxue-victor/learn_webpack/commit/d723459)
+ src + packages/react | 调整了文件位置 | [02bcb12](https://github.com/luoxue-victor/learn_webpack/commit/02bcb12)
 
 
 ### 📦 持续集成
