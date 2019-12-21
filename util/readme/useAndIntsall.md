@@ -41,6 +41,8 @@ webpack-box inspect --plugins # 查看所有插件列表
 webpack-box inspect --plugin mini-css-extract # 查看指定插件配置
 # --- graphql ---
 webpack-box server:gql # graphql-server
+# --- cli 插件 ---
+webpack-box info # 查看项目及系统配置
 ```
 
 在 package.json 中使用

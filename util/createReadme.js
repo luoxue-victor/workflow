@@ -15,7 +15,7 @@ const packageConfig = extraTxtFromDirWithFilename(
   'packages',
   'webpack-chain.config.js',
   function(firstRow) {
-    return `[${firstRow.replace('// ', '')}]`
+    return `${firstRow.replace('// ', '')}`
   })
 
 function joinCtx () {

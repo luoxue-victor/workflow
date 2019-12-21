@@ -21,6 +21,7 @@
  demo | 修改demo | [86da5a4](https://github.com/luoxue-victor/learn_webpack/commit/86da5a4)
  gitignore | 增加dist | [d723459](https://github.com/luoxue-victor/learn_webpack/commit/d723459)
  merge | 合并master | [6886aef](https://github.com/luoxue-victor/learn_webpack/commit/6886aef)
+ react | 重新提交react | [97be6d3](https://github.com/luoxue-victor/learn_webpack/commit/97be6d3)
  src + packages/react | 调整了文件位置 | [02bcb12](https://github.com/luoxue-victor/learn_webpack/commit/02bcb12)
  src/react | 增加antd和样式修改 | [1c9b1ab](https://github.com/luoxue-victor/learn_webpack/commit/1c9b1ab)
 
