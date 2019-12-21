@@ -18,20 +18,15 @@ const packageConfig = extraTxtFromDirWithFilename(
     return `[${firstRow.replace('// ', '')}]`
   })
 
-console.log(packageConfig)
-
 function joinCtx () {
   let str = ''
   str += readMdBy('header')
   str += detailTag('所有课题', docsCtx, false)
   str += readMdBy('useAndIntsall')
   str += detailTag('所有配置', configCtx + packageConfig)
-  // str += extraTxtFromDirWithFilename('packages', 'webpack-chain.config.js')
   str += boxConfig()
   return str
 }
-
-// console.log(extraTxtFromDirWithFilename('packages', 'webpack-chain.config.js'))
 
 const ctx = joinCtx()
 
