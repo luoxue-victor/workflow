@@ -8,6 +8,12 @@
  增加react配置 | [76c0fe1](https://github.com/luoxue-victor/learn_webpack/commit/76c0fe1), closes [#8](https://github.com/luoxue-victor/learn_webpack/issues/8)
 
 
+### 🎨 代码样式
+范围|描述|commitId
+--|--|--
+ src/react | 修改样式 | [e990865](https://github.com/luoxue-victor/learn_webpack/commit/e990865)
+
+
 ### 🐛 Bug 修复
 范围|描述|commitId
 --|--|--
