@@ -17,6 +17,7 @@
 ### 🐛 Bug 修复
 范围|描述|commitId
 --|--|--
+ demo | 修改demo | [86da5a4](https://github.com/luoxue-victor/learn_webpack/commit/86da5a4)
  gitignore | 增加dist | [d723459](https://github.com/luoxue-victor/learn_webpack/commit/d723459)
  src + packages/react | 调整了文件位置 | [02bcb12](https://github.com/luoxue-victor/learn_webpack/commit/02bcb12)
 

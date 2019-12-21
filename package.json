@@ -5,8 +5,7 @@
   "main": "index.js",
   "workspaces": [
     "packages/cli",
-    "packages/shared-utils",
-    "packages/cli"
+    "packages/shared-utils"
   ],
   "bin": {
     "webpack-box": "bin/webpack-box.js"

@@ -11,7 +11,7 @@ module.exports = function({ injectCommand }) {
             System: ['OS', 'CPU'],
             Binaries: ['Node', 'Yarn', 'npm'],
             Browsers: ['Chrome', 'Edge', 'Firefox', 'Safari'],
-            npmPackages: '/**/{*webpack*,*babel*,typescript,*pkb*}',
+            npmPackages: '/**/{*webpack*,*babel*,**typescript**,*pkb*}',
             npmGlobalPackages: ['@pkb/cli']
           },
           {
