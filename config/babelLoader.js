@@ -1,5 +1,5 @@
 // [babel-loader 配置]
-module.exports = ({ config, resolve, tsx }) => {
+module.exports = ({ config }) => {
   const babelConf = {
     env: {
       test: {
@@ -30,12 +30,6 @@ module.exports = ({ config, resolve, tsx }) => {
       '@babel/plugin-syntax-dynamic-import',
       '@babel/plugin-proposal-class-properties'
     ]
-  }
-
-  if (tsx) {
-    babelConf.presets[1].pop()
-    babelConf.presets.push('@babel/preset-react')
-    babelConf.plugins.shift()
   }
 
   const baseRule = config.module.rule('babel').test(/.[jt]sx?$/)
