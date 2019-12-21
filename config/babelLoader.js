@@ -1,10 +1,19 @@
 // [babel-loader 配置]
 module.exports = ({ config, resolve, tsx }) => {
   const babelConf = {
+    env: {
+      test: {
+        plugins: ['@babel/plugin-transform-modules-commonjs']
+      }
+    },
     presets: [
+      ['@babel/typescript'],
       [
-        '@babel/preset-env',
+        '@babel/preset-react',
         {
+          corejs: '3',
+          useBuiltIns: 'usage',
+          loose: true,
           modules: false,
           targets: {
             chrome: 59,
@@ -13,18 +22,13 @@ module.exports = ({ config, resolve, tsx }) => {
             safari: 8
           }
         }
-      ],
-      [
-        '@babel/preset-typescript',
-        {
-          allExtensions: true
-        }
       ]
     ],
     plugins: [
-      '@babel/plugin-transform-typescript',
       'transform-class-properties',
-      '@babel/proposal-object-rest-spread'
+      '@babel/proposal-object-rest-spread',
+      '@babel/plugin-syntax-dynamic-import',
+      '@babel/plugin-proposal-class-properties'
     ]
   }
 

@@ -5,7 +5,7 @@
    * @param formatOnSave 保存时自动修复
    */
   "editor.tabSize": 2,
-  "editor.formatOnSave": true,
+  "editor.formatOnSave": false,
   /*
    * @description eslint 配置
    * @param alwaysShowStatus 配置

@@ -1,5 +1,8 @@
 // import TS from './ts/index.ts'
 import { cube } from '@src/treeShaking'
+import { App } from '../packages/react/index'
+import React from 'react'
+import ReactDom from 'react-dom'
 
 import('@src/ts/index.ts').then(res => {
   console.log(res)
@@ -13,7 +16,7 @@ require('./style/index.scss')
 import('./style/index.postcss')
 require('react')
 const myPubPic = require('./assets/my-pub.jpeg')
-
+ReactDom.render(<App/>, document.getElementById('app'))
 if (process.env.NODE_ENV === 'production') {
   console.log('Welcome to production')
 }

@@ -17,6 +17,7 @@
 范围|描述|commitId
 --|--|--
  cli | 改造脚手架提供，packages内可以直接注册webpack配置跟脚手架命令 | [f340e6f](https://github.com/luoxue-victor/learn_webpack/commit/f340e6f)
+ packages/cli | 修改了脚手架配置 | [578b687](https://github.com/luoxue-victor/learn_webpack/commit/578b687)
 
 ## [1.0.1](https://github.com/luoxue-victor/learn_webpack/compare/18fbebf...v1.0.1) (2019-12-18)
 
