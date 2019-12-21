@@ -46,6 +46,7 @@
 - [课时 20：添加 prefetch + preload](./docs/课时-20.md)
 - [课时 21：增加 GraphQL Server](./docs/课时-21.md)
 - [课时 22：开启 mock](./docs/课时-22.md)
+- [课时 23：编写插件](./docs/课时-23.md)
 
 </details> 
 
