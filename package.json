@@ -37,6 +37,7 @@
     "conventional-changelog-cli": "^2.0.28",
     "husky": "^3.1.0",
     "lerna": "^3.15.0",
+    "lint-staged": "^9.5.0",
     "pk-cli-plugin-react": "^1.0.1",
     "webpack-box": "^1.1.1"
   },
