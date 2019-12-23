@@ -17,5 +17,6 @@
     "eslint-plugin-vue": "^6.0.1",
     "fs-extra": "^8.1.0",
     "globby": "^10.0.1"
-  }
+  },
+  "gitHead": "55a01c105b74a3bd566a50215c977ed2a76732d8"
 }

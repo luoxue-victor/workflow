@@ -1,5 +1,5 @@
 {
-  "name": "@pkb/cli",
+  "name": "kb-cli",
   "version": "1.0.3",
   "bin": {
     "pk": "bin/index.js"
@@ -30,5 +30,5 @@
     "vue-jscodeshift-adapter": "^2.0.2",
     "yaml-front-matter": "^4.0.0"
   },
-  "gitHead": "cb9c2a5154ffc94af8e07d8524367e284aed8eec"
+  "gitHead": "55a01c105b74a3bd566a50215c977ed2a76732d8"
 }
