@@ -1,4 +1,4 @@
-const { done } = require('@vue/cli-shared-utils')
+const { done } = require('@pkb/shared-utils')
 
 module.exports = function lint ({ args = {}, api, silent }) {
   const cwd = api.resolve('.')
