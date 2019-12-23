@@ -1,0 +1,14 @@
+{
+  "name": "pk-cli-plugin-stylelint",
+  "version": "1.0.0",
+  "description": "stylelint",
+  "author": "luoxue",
+  "main": "index.js",
+  "dependencies": {
+    "chalk": "^3.0.0",
+    "stylelint": "^12.0.0",
+    "stylelint-codeframe-formatter": "^1.0.4",
+    "stylelint-config-standard": "^19.0.0",
+    "stylelint-webpack-plugin": "^1.1.2"
+  }
+}

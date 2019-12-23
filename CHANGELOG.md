@@ -22,6 +22,7 @@
 ### 🐛 Bug 修复
 范围|描述|commitId
 --|--|--
+ commitlint | 添加commitlint | [e4121e8](https://github.com/luoxue-victor/learn_webpack/commit/e4121e8)
  demo | 修改demo | [86da5a4](https://github.com/luoxue-victor/learn_webpack/commit/86da5a4)
  gitignore | 增加dist | [d723459](https://github.com/luoxue-victor/learn_webpack/commit/d723459)
  husky | 添加 husky | [6ba2389](https://github.com/luoxue-victor/learn_webpack/commit/6ba2389)

@@ -1,3 +1,3 @@
 module.exports = function (args, api) {
-  require(`../../${args.name}/lint`)({ args, api })
+  require(`pk-cli-plugin-${args.name}/lint`)({ args, api })
 }

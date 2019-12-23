@@ -1,4 +1,3 @@
-const fs = require('fs')
 const globby = require('globby')
 
 const renamedArrayArgs = {
