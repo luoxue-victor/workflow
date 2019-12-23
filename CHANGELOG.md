@@ -3,6 +3,7 @@
 ### 🌟 新功能
 范围|描述|commitId
 --|--|--
+ packages/webpack-box | 将webpack配置抽离出来 | [6ed90aa](https://github.com/luoxue-victor/learn_webpack/commit/6ed90aa)
  react | 增加react并规范了目录 | [0eee296](https://github.com/luoxue-victor/learn_webpack/commit/0eee296)
  增加react配置 | [76c0fe1](https://github.com/luoxue-victor/learn_webpack/commit/76c0fe1), closes [#8](https://github.com/luoxue-victor/learn_webpack/issues/8)
  dist | 删除dist | [9600d82](https://github.com/luoxue-victor/learn_webpack/commit/9600d82)

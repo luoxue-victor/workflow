@@ -13,7 +13,7 @@
   "scripts": {
     "dev": "webpack-box dev",
     "build": "webpack-box build",
-    "info": "webpack-box info",
+    "info": "pk info",
     "dev:dash": "webpack-dashboard -- webpack-box dev",
     "log": "conventional-changelog --config ./node_modules/vue-cli-plugin-commitlint/lib/log -i CHANGELOG.md -s -r 0",
     "cz": "npm run cr && npm run log && git add . && git cz",

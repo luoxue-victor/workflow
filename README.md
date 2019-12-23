@@ -56,14 +56,26 @@
 <details open=“open”>
  <summary>点击关闭/打开安装</summary><br/>
 
+#### 脚手架安装及使用
+
+脚手架主要针对所有项目的管理，甚至可以针对任何非本工程的项目使用
+
 ```bash
 # 全局安装
-npm i -g webpack-box # 全局安装使用
+npm i -g @pkb/cli # 全局安装使用
 
-# 本地调试
-git clone https://github.com/luoxue-victor/webpack-box.git
-cd packages/webpack-box
-npm link # 建立软连接，可以使用 webpack-box 命令
+pk create project-name # 创建项目（待完善）
+pk add <plugin> # 安装插件
+pk info # 查看项目及系统配置
+```
+
+#### webpack 配置安装及开发
+
+`webpack-box` 针对某个项目使用，可以在本地 `npm script` 内使用，也可以全局使用
+
+```bash
+npm i webpack-box -D # 本地安装
+npm i webpack-box -g # 全局安装
 ```
 
 </details>
@@ -97,20 +109,16 @@ webpack-box inspect --plugins # 查看所有插件列表
 webpack-box inspect --plugin mini-css-extract # 查看指定插件配置
 # --- graphql ---
 webpack-box server:gql # graphql-server
-# --- cli 插件 ---
-webpack-box info # 查看项目及系统配置
 ```
 
 在 package.json 中使用
 
-```json
+```bash
 {
   "scripts": {
     "dev": "webpack-box dev",
     "build": "webpack-box build",
-    "dll": "webpack-box dll",
-    "build:ssr": "webpack-box build:ssr",
-    "ssr:server": "webpack-box ssr:server"
+    ...
   }
 }
 ```
@@ -151,7 +159,6 @@ webpack-box info # 查看项目及系统配置
 - [设置 style 全局变量](./packages/webpack-box/config/styleResourcesLoader.js)
 - [多线程配置](./packages/webpack-box/config/threadLoader.js)
 - [tslint 配置](./packages/webpack-box/config/tslintPlugin.js)
-- [cli 配置](./packages/cli/webpack-chain.config.js)
 - [react 配置](./packages/react/webpack-chain.config.js)
 
 </details> 

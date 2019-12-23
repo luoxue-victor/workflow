@@ -129,23 +129,23 @@ program
 
 program
   .command('info')
-  .description('print debugging information about your environment')
-  .action((cmd) => {
-    console.log(chalk.bold('\nEnvironment Info:'))
+  .description('打印有关环境的调试信息')
+  .action(() => {
+    console.log(chalk.cyanBright('\n 正在搜检环境信息:'))
     require('envinfo').run(
       {
         System: ['OS', 'CPU'],
         Binaries: ['Node', 'Yarn', 'npm'],
         Browsers: ['Chrome', 'Edge', 'Firefox', 'Safari'],
-        npmPackages: '/**/{typescript,*vue*,@vue/*/}',
-        npmGlobalPackages: ['@vue/cli']
+        npmPackages: '/**/{*webpack*,*babel*,**typescript**,*pkb*}',
+        npmGlobalPackages: ['@pkb/cli']
       },
       {
         showNotFound: true,
         duplicates: true,
         fullTree: true
       }
-    ).then(console.log)
+    ).then(info => console.log(chalk.greenBright(info)))
   })
 
 // output help information on unknown commands

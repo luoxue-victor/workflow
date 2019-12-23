@@ -2,7 +2,7 @@
   "name": "@pkb/cli",
   "version": "1.0.1",
   "bin": {
-    "pkb": "bin/index.js"
+    "pk": "bin/index.js"
   },
   "description": "各种模块自动化打包脚手架",
   "author": "luoxue",
