@@ -25,6 +25,7 @@
  demo | 修改demo | [86da5a4](https://github.com/luoxue-victor/learn_webpack/commit/86da5a4)
  gitignore | 增加dist | [d723459](https://github.com/luoxue-victor/learn_webpack/commit/d723459)
  husky | 添加 husky | [6ba2389](https://github.com/luoxue-victor/learn_webpack/commit/6ba2389)
+ lint-staged | lint-staged | [7f4ac87](https://github.com/luoxue-victor/learn_webpack/commit/7f4ac87)
  lints | 修复lints bug | [c0696ff](https://github.com/luoxue-victor/learn_webpack/commit/c0696ff)
  merge | 合并master | [6886aef](https://github.com/luoxue-victor/learn_webpack/commit/6886aef)
  react | 重新提交react | [97be6d3](https://github.com/luoxue-victor/learn_webpack/commit/97be6d3)

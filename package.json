@@ -3,33 +3,17 @@
   "version": "1.0.9",
   "private": true,
   "description": "webpack打包器",
-  "main": "index.js",
-  "workspaces": [
-    "packages/cli",
-    "packages/shared-utils",
-    "packages/webpack-box",
-    "packages/react"
-  ],
-  "scripts": {
-    "dev": "webpack-box dev",
-    "build": "webpack-box build",
-    "info": "pk info",
-    "dev:dash": "webpack-dashboard -- webpack-box dev",
-    "log": "conventional-changelog --config ./node_modules/vue-cli-plugin-commitlint/lib/log -i CHANGELOG.md -s -r 0",
-    "cz": "npm run cr && npm run log && git add . && git cz",
-    "cr": "node tools/readme"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/luoxue-victor/learn_webpack.git"
-  },
   "author": "jijiang",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/luoxue-victor/learn_webpack/issues"
+  "scripts": {
+    "build": "webpack-box build",
+    "cr": "node tools/readme",
+    "cz": "npm run log && git add . && git cz",
+    "dev": "webpack-box dev",
+    "dev:dash": "webpack-dashboard -- webpack-box dev",
+    "info": "pk info",
+    "log": "conventional-changelog --config ./node_modules/vue-cli-plugin-commitlint/lib/log -i CHANGELOG.md -s -r 0"
   },
-  "sideEffects": true,
-  "homepage": "https://github.com/luoxue-victor/learn_webpack#readme",
+  "main": "index.js",
   "devDependencies": {
     "@commitlint/config-conventional": "^8.2.0",
     "commitizen": "^4.0.3",
@@ -39,19 +23,25 @@
     "lerna": "^3.15.0",
     "lint-staged": "^9.5.0",
     "pk-cli-plugin-react": "^1.0.1",
+    "vue-cli-plugin-commitlint": "^1.0.10",
     "webpack-box": "^1.1.2"
+  },
+  "bugs": {
+    "url": "https://github.com/luoxue-victor/learn_webpack/issues"
   },
   "config": {
     "commitizen": {
       "path": "./node_modules/vue-cli-plugin-commitlint/lib/cz"
     }
   },
+  "homepage": "https://github.com/luoxue-victor/learn_webpack#readme",
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
+  "license": "ISC",
   "lint-staged": {
     "*.{vue,htm,html,css,sss,less,scss}": [
       "webpack-box lint stylelint",
@@ -65,5 +55,16 @@
       "webpack-box lint eslint",
       "git add"
     ]
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luoxue-victor/learn_webpack.git"
+  },
+  "sideEffects": true,
+  "workspaces": [
+    "packages/cli",
+    "packages/shared-utils",
+    "packages/webpack-box",
+    "packages/react"
+  ]
 }
