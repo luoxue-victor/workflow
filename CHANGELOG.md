@@ -1,4 +1,11 @@
-## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.0.1...v1.0.9) (2019-12-23)
+## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.0.2...v1.0.9) (2019-12-23)
+## [1.0.2](https://github.com/luoxue-victor/learn_webpack/compare/v1.0.1...v1.0.2) (2019-12-23)
+
+范围|描述|commitId
+--|--|--
+ v1.0.2 | [cb9c2a5](https://github.com/luoxue-victor/learn_webpack/commit/cb9c2a5)
+ :speech_balloon: 添加注释 | [2c2586d](https://github.com/luoxue-victor/learn_webpack/commit/2c2586d)
+
 
 ### 🌟 新功能
 范围|描述|commitId
@@ -13,6 +20,12 @@
  增加react配置 | [76c0fe1](https://github.com/luoxue-victor/learn_webpack/commit/76c0fe1), closes [#8](https://github.com/luoxue-victor/learn_webpack/issues/8)
 
 
+### 🎨 代码样式
+范围|描述|commitId
+--|--|--
+ src/react | 修改样式 | [e990865](https://github.com/luoxue-victor/learn_webpack/commit/e990865)
+
+
 ### 🐛 Bug 修复
 范围|描述|commitId
 --|--|--
@@ -25,22 +38,12 @@
  lints | 修复lints | [6cf9c1e](https://github.com/luoxue-victor/learn_webpack/commit/6cf9c1e)
  lints | 修复lints | [9693f79](https://github.com/luoxue-victor/learn_webpack/commit/9693f79)
  lints | 修复lints bug | [c0696ff](https://github.com/luoxue-victor/learn_webpack/commit/c0696ff)
+ merge | 合并代码，并为 .idea 添加 ignore | [0927b78](https://github.com/luoxue-victor/learn_webpack/commit/0927b78)
  merge | 合并master | [6886aef](https://github.com/luoxue-victor/learn_webpack/commit/6886aef)
  react | 重新提交react | [97be6d3](https://github.com/luoxue-victor/learn_webpack/commit/97be6d3)
  src + packages/react | 调整了文件位置 | [02bcb12](https://github.com/luoxue-victor/learn_webpack/commit/02bcb12)
  src/react | 增加antd和样式修改 | [1c9b1ab](https://github.com/luoxue-victor/learn_webpack/commit/1c9b1ab)
  webpack-box | 升级版本 | [bb4f7ac](https://github.com/luoxue-victor/learn_webpack/commit/bb4f7ac)
-
-
-范围|描述|commitId
---|--|--
- :speech_balloon: 添加注释 | [2c2586d](https://github.com/luoxue-victor/learn_webpack/commit/2c2586d)
-
-
-### 🎨 代码样式
-范围|描述|commitId
---|--|--
- src/react | 修改样式 | [e990865](https://github.com/luoxue-victor/learn_webpack/commit/e990865)
 
 
 ### 📝 文档

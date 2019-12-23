@@ -100,5 +100,6 @@
     "webpack-dashboard": "^3.2.0",
     "webpack-deep-scope-plugin": "^1.6.2",
     "webpack-dev-server": "^3.9.0"
-  }
+  },
+  "gitHead": "cb9c2a5154ffc94af8e07d8524367e284aed8eec"
 }

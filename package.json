@@ -4,6 +4,15 @@
   "private": true,
   "description": "webpack打包器",
   "author": "jijiang",
+  "workspaces": [
+    "packages/cli",
+    "packages/shared-utils",
+    "packages/webpack-box",
+    "packages/react",
+    "packages/eslint",
+    "packages/tslint",
+    "packages/stylelint"
+  ],
   "scripts": {
     "es": "webpack-box lint eslint",
     "build": "webpack-box build",
@@ -61,11 +70,5 @@
     "type": "git",
     "url": "git+https://github.com/luoxue-victor/learn_webpack.git"
   },
-  "sideEffects": true,
-  "workspaces": [
-    "packages/cli",
-    "packages/shared-utils",
-    "packages/webpack-box",
-    "packages/react"
-  ]
+  "sideEffects": true
 }

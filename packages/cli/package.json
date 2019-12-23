@@ -29,5 +29,6 @@
     "validate-npm-package-name": "^3.0.0",
     "vue-jscodeshift-adapter": "^2.0.2",
     "yaml-front-matter": "^4.0.0"
-  }
+  },
+  "gitHead": "cb9c2a5154ffc94af8e07d8524367e284aed8eec"
 }
