@@ -1,6 +1,6 @@
 {
   "name": "kb-cli",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "bin": {
     "pk": "bin/index.js"
   },
@@ -8,7 +8,7 @@
   "author": "luoxue",
   "main": "index.js",
   "dependencies": {
-    "@pkb/shared-utils": "^1.0.3",
+    "@pkb/shared-utils": "^1.0.4",
     "boxen": "^4.1.0",
     "chalk": "^3.0.0",
     "commander": "^4.0.1",

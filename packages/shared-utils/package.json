@@ -1,6 +1,6 @@
 {
   "name": "@pkb/shared-utils",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "公共utils",
   "main": "index.js",
   "repository": {

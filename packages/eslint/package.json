@@ -1,11 +1,11 @@
 {
   "name": "pk-cli-plugin-eslint",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "eslint",
   "author": "luoxue",
   "main": "index.js",
   "dependencies": {
-    "@pkb/shared-utils": "^1.0.3",
+    "@pkb/shared-utils": "^1.0.4",
     "@typescript-eslint/parser": "^2.10.0",
     "eslint": "^6.8.0",
     "eslint-config-standard": "^14.1.0",

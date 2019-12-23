@@ -1,11 +1,11 @@
 {
   "name": "pk-cli-plugin-tslint",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "tslint",
   "author": "luoxue",
   "main": "index.js",
   "dependencies": {
-    "@pkb/shared-utils": "^1.0.3",
+    "@pkb/shared-utils": "^1.0.4",
     "globby": "^10.0.1",
     "tslint": "^5.20.1",
     "typescript": "^3.7.4",
