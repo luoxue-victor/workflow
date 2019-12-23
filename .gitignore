@@ -1,3 +1,5 @@
 node_modules
 dll
 dist
+.idea
+.vscode

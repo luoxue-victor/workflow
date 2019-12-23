@@ -13,17 +13,12 @@
  增加react配置 | [76c0fe1](https://github.com/luoxue-victor/learn_webpack/commit/76c0fe1), closes [#8](https://github.com/luoxue-victor/learn_webpack/issues/8)
 
 
-### 🎨 代码样式
-范围|描述|commitId
---|--|--
- src/react | 修改样式 | [e990865](https://github.com/luoxue-victor/learn_webpack/commit/e990865)
-
-
 ### 🐛 Bug 修复
 范围|描述|commitId
 --|--|--
  commitlint | 添加commitlint | [e4121e8](https://github.com/luoxue-victor/learn_webpack/commit/e4121e8)
  demo | 修改demo | [86da5a4](https://github.com/luoxue-victor/learn_webpack/commit/86da5a4)
+ fix | lints | [4b3d56f](https://github.com/luoxue-victor/learn_webpack/commit/4b3d56f)
  gitignore | 增加dist | [d723459](https://github.com/luoxue-victor/learn_webpack/commit/d723459)
  husky | 添加 husky | [6ba2389](https://github.com/luoxue-victor/learn_webpack/commit/6ba2389)
  lint-staged | lint-staged | [7f4ac87](https://github.com/luoxue-victor/learn_webpack/commit/7f4ac87)
@@ -35,6 +30,17 @@
  src + packages/react | 调整了文件位置 | [02bcb12](https://github.com/luoxue-victor/learn_webpack/commit/02bcb12)
  src/react | 增加antd和样式修改 | [1c9b1ab](https://github.com/luoxue-victor/learn_webpack/commit/1c9b1ab)
  webpack-box | 升级版本 | [bb4f7ac](https://github.com/luoxue-victor/learn_webpack/commit/bb4f7ac)
+
+
+范围|描述|commitId
+--|--|--
+ :speech_balloon: 添加注释 | [2c2586d](https://github.com/luoxue-victor/learn_webpack/commit/2c2586d)
+
+
+### 🎨 代码样式
+范围|描述|commitId
+--|--|--
+ src/react | 修改样式 | [e990865](https://github.com/luoxue-victor/learn_webpack/commit/e990865)
 
 
 ### 📝 文档
