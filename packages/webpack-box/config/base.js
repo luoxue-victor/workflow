@@ -9,7 +9,7 @@ module.exports = ({ config, webpackVersion, resolve, options }) => {
     output = `${output}/${name}`
     entry = options.pages[name].entry
   }
-  const isV5 = parseInt(webpackVersion) >= 5;
+  const isV5 = parseInt(webpackVersion) >= 5
   return () => {
     config
       // 入口名称
