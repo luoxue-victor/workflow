@@ -15,7 +15,7 @@ module.exports = (options) => {
   const { getConfigsByName } = require('../util/getLocalConfigByPath')
   const configs = []
   files.forEach(fileName => configs.push(require(`${configPath}/${fileName}`)))
-  configs.push(...getConfigsByName('packages', 'webpack-chain.config.js'))
+  // configs.push(...getConfigsByName('packages', 'webpack-chain.config.js'))
   configs.forEach(c => c({
     config,
     webpackVersion,

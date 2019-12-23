@@ -1,0 +1,13 @@
+{
+  "name": "pk-cli-plugin-react",
+  "version": "1.0.1",
+  "description": "各种模块自动化打包脚手架",
+  "author": "luoxue",
+  "main": "index.js",
+  "dependencies": {
+    "@babel/plugin-transform-react-jsx": "^7.7.4",
+    "@babel/preset-react": "^7.7.4",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  }
+}

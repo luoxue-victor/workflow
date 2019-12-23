@@ -36,7 +36,7 @@ module.exports.getAllCommands = function() {
     const cwdPath = path.join(localCwdPath, name)
     cwdFns.push(require(cwdPath))
   })
-  cwdFns.push(...getConfigsByName('packages', 'command.config.js'))
+  // cwdFns.push(...getConfigsByName('packages', 'command.config.js'))
   return cwdFns
 }
 

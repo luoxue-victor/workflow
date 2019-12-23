@@ -5,7 +5,7 @@ const {
   commandComplete
 } = require('../api/CommandAPI')
 const PluginAPI = require('../api/PluginAPI')
-
+console.log('-------- global webpack-box --------')
 // 注册命令行
 getAllCommands().forEach(cwd => {
   cwd({ injectCommand, api: PluginAPI })

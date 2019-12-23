@@ -5,7 +5,6 @@ module.exports = function (options) {
   const WebpackDevServer = require('webpack-dev-server')
   const port = options.port || 8080
   const publicPath = options.publicPath || '/'
-  // const createMockMiddleware = require('../lib/createMockMiddleware')
 
   config.devServer
     .quiet(true)
@@ -14,15 +13,6 @@ module.exports = function (options) {
     .disableHostCheck(true)
     .publicPath(publicPath)
     .clientLogLevel('none')
-    // .before(app => {
-    //   // try {
-    //   //   app.use(createMockMiddleware())
-    //   // } catch (error) {
-    //   //   console.error(error)
-    //   //   process.exit()
-    //   // }
-    //   // require('../server/start')
-    // })
 
   if (typeof options.chainWebpack === 'function') {
     options.chainWebpack(config)

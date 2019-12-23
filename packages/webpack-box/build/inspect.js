@@ -1,6 +1,6 @@
 module.exports = function (args, api) {
   const chalk = require('chalk')
-  const { get } = require('@vue/cli-shared-utils')
+  const { get } = require('@pkb/shared-utils')
   const { toString } = require('webpack-chain')
   const { highlight } = require('cli-highlight')
   const configByBox = require(api.resolve('box.config.js'))()

@@ -15,7 +15,7 @@ const {
   resolvePluginId,
   log,
   warn
-} = require('@vue/cli-shared-utils')
+} = require('@pkb/shared-utils')
 
 const getPackageJson = require('./getPackageJson')
 const { executeCommand } = require('./executeCommand')

@@ -1,7 +1,6 @@
 // [react 配置]
 module.exports = ({ config }) => {
   return () => {
-    if (!process.env.REACT) return
     const baseRule = config.module.rule('babel')
     baseRule
       .use('babel')

@@ -2,7 +2,7 @@ const vuePluginRE = /^(@vue\/|vue-|@[\w-]+(\.)?[\w-]+\/vue-)(cli-)?plugin-/
 const scopeRE = /^@[\w-]+(\.)?[\w-]+\//
 const vueOfficialRE = /^@vue\//
 
-const pbPluginRE = /^(@pkb\/|pk-|@[\w-]+(\.)?[\w-]+\/pk-)(cli-)?plugin-/
+const pbPluginRE = exports.pbPluginRE = /^(@pkb\/|pk-|@[\w-]+(\.)?[\w-]+\/pk-)(cli-)?plugin-/
 const pbOfficialRE = /^@pkb\//
 
 const vueOfficialPlugins = [

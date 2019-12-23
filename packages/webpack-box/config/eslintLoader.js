@@ -7,7 +7,7 @@ module.exports = ({ config, options: { eslint: { lintOnSave = false, extensions 
     if (!lintOnSave) return
     const path = require('path')
     const cwd = api.getCwd()
-    const { resolveModule, loadModule } = require('@vue/cli-shared-utils')
+    const { resolveModule, loadModule } = require('@pkb/shared-utils')
     const allWarnings = lintOnSave === true || lintOnSave === 'warning'
     const allErrors = lintOnSave === 'error'
 

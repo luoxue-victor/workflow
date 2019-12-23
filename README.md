@@ -59,7 +59,10 @@
 ```bash
 # 全局安装
 npm i -g webpack-box # 全局安装使用
+
 # 本地调试
+git clone https://github.com/luoxue-victor/webpack-box.git
+cd packages/webpack-box
 npm link # 建立软连接，可以使用 webpack-box 命令
 ```
 
@@ -122,32 +125,32 @@ webpack-box info # 查看项目及系统配置
   <br/>
 
 
-- [打包分析](./config/BundleAnalyzerPlugin.js)
-- [开启gzip](./config/CompressionWebpackPlugin.js)
-- [dll-plugin 配置](./config/DllPlugin.js)
-- [EnvironmentPlugin 定义通用变量](./config/EnvironmentPlugin.js)
-- [fork-ts-checher 检查ts类型](./config/ForkTsChecker.js)
-- [friendly-errors-webpack-plugin 友好错误提示](./config/FriendlyErrorsWebpackPlugin.js)
-- [html-webpack-plugin 生成html](./config/HtmlWebpackPlugin.js)
-- [mini-css-extract-plugin 配置](./config/MiniCssExtractPlugin.js)
-- [PreloadWebpackPlugin](./config/PreloadWebpackPlugin.js)
-- [ProgressBarPlugin 构建时添加进度条配置](./config/ProgressBarPlugin.js)
-- [别名配置](./config/alias.js)
-- [加载资源 images、svg、media、fonts](./config/assets.js)
-- [babel-loader 配置](./config/babelLoader.js)
-- [基础配置](./config/base.js)
-- [cache-loader 配置（webpack 5 弃用）](./config/cacheLoader.js)
-- [CaseSensitivePaths 严格区分大小写](./config/caseSensitivePaths.js)
-- [dashboard 增加仪表盘配置](./config/dashboard.js)
-- [devServer.before 在devServer中添加中间件](./config/devServerBefore.js)
-- [eslint-loader 配置](./config/eslintLoader.js)
-- [提取 manifest](./config/manifest.js)
-- [optimization 优化配置](./config/optimization.js)
-- [样式表配置](./config/style.js)
-- [stylelint 配置](./config/styleLintPlugin.js)
-- [设置 style 全局变量](./config/styleResourcesLoader.js)
-- [多线程配置](./config/threadLoader.js)
-- [tslint 配置](./config/tslintPlugin.js)
+- [打包分析](./packages/webpack-box/config/BundleAnalyzerPlugin.js)
+- [开启gzip](./packages/webpack-box/config/CompressionWebpackPlugin.js)
+- [dll-plugin 配置](./packages/webpack-box/config/DllPlugin.js)
+- [EnvironmentPlugin 定义通用变量](./packages/webpack-box/config/EnvironmentPlugin.js)
+- [fork-ts-checher 检查ts类型](./packages/webpack-box/config/ForkTsChecker.js)
+- [friendly-errors-webpack-plugin 友好错误提示](./packages/webpack-box/config/FriendlyErrorsWebpackPlugin.js)
+- [html-webpack-plugin 生成html](./packages/webpack-box/config/HtmlWebpackPlugin.js)
+- [mini-css-extract-plugin 配置](./packages/webpack-box/config/MiniCssExtractPlugin.js)
+- [PreloadWebpackPlugin](./packages/webpack-box/config/PreloadWebpackPlugin.js)
+- [ProgressBarPlugin 构建时添加进度条配置](./packages/webpack-box/config/ProgressBarPlugin.js)
+- [别名配置](./packages/webpack-box/config/alias.js)
+- [加载资源 images、svg、media、fonts](./packages/webpack-box/config/assets.js)
+- [babel-loader 配置](./packages/webpack-box/config/babelLoader.js)
+- [基础配置](./packages/webpack-box/config/base.js)
+- [cache-loader 配置（webpack 5 弃用）](./packages/webpack-box/config/cacheLoader.js)
+- [CaseSensitivePaths 严格区分大小写](./packages/webpack-box/config/caseSensitivePaths.js)
+- [dashboard 增加仪表盘配置](./packages/webpack-box/config/dashboard.js)
+- [devServer.before 在devServer中添加中间件](./packages/webpack-box/config/devServerBefore.js)
+- [eslint-loader 配置](./packages/webpack-box/config/eslintLoader.js)
+- [提取 manifest](./packages/webpack-box/config/manifest.js)
+- [optimization 优化配置](./packages/webpack-box/config/optimization.js)
+- [样式表配置](./packages/webpack-box/config/style.js)
+- [stylelint 配置](./packages/webpack-box/config/styleLintPlugin.js)
+- [设置 style 全局变量](./packages/webpack-box/config/styleResourcesLoader.js)
+- [多线程配置](./packages/webpack-box/config/threadLoader.js)
+- [tslint 配置](./packages/webpack-box/config/tslintPlugin.js)
 - [cli 配置](./packages/cli/webpack-chain.config.js)
 - [react 配置](./packages/react/webpack-chain.config.js)
 
@@ -192,7 +195,7 @@ module.exports = function (config) {
     entry: 'src/main.js',
     output: 'dist',
     publicPath: '/common/',
-    port: 8888,
+    port: 8889,
     mock: true,
     env: {
       REACT: 'react' // 配置 react
