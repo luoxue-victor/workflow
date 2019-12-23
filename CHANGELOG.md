@@ -9,6 +9,7 @@
  packages/webpack-box | 将webpack配置抽离出来 | [6ed90aa](https://github.com/luoxue-victor/learn_webpack/commit/6ed90aa)
  react | 增加react并规范了目录 | [0eee296](https://github.com/luoxue-victor/learn_webpack/commit/0eee296)
  test | 测试 eslint | [2a418b9](https://github.com/luoxue-victor/learn_webpack/commit/2a418b9)
+ test2 | 测试 lint-staged | [054e0f9](https://github.com/luoxue-victor/learn_webpack/commit/054e0f9)
  增加react配置 | [76c0fe1](https://github.com/luoxue-victor/learn_webpack/commit/76c0fe1), closes [#8](https://github.com/luoxue-victor/learn_webpack/issues/8)
 
 
