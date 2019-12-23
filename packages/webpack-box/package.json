@@ -71,7 +71,6 @@
     "graphql-server-koa": "^1.4.1",
     "hash-sum": "^2.0.0",
     "html-webpack-plugin": "^3.2.0",
-    "husky": "^3.1.0",
     "koa": "^2.11.0",
     "koa-bodyparser": "^4.2.1",
     "koa-router": "^7.4.0",
