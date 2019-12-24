@@ -1,6 +1,6 @@
 {
-  "name": "pk-cli-plugin-tslint",
-  "version": "1.2.2",
+  "name": "@pkb/plugin-tslint",
+  "version": "1.0.0",
   "description": "tslint",
   "author": "luoxue",
   "main": "index.js",

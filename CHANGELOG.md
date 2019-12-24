@@ -1,4 +1,16 @@
-## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.1...v1.0.9) (2019-12-24)
+## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.2...v1.0.9) (2019-12-24)
+## [1.2.2](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.1...v1.2.2) (2019-12-24)
+
+范围|描述|commitId
+--|--|--
+ v1.2.2 | [5bac953](https://github.com/luoxue-victor/learn_webpack/commit/5bac953)
+
+
+### 🌟 新功能
+范围|描述|commitId
+--|--|--
+ package | 读取 package.json 中插件，并使用其webpack配置 | [889c2cc](https://github.com/luoxue-victor/learn_webpack/commit/889c2cc)
+
 ## [1.2.1](https://github.com/luoxue-victor/learn_webpack/compare/v1.0.5...v1.2.1) (2019-12-24)
 
 范围|描述|commitId
