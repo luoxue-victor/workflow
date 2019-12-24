@@ -2,25 +2,19 @@
   "name": "box",
   "version": "1.0.9",
   "private": true,
-  "description": "webpack打包器",
+  "description": "前端项目最佳实践集合",
   "author": "jijiang",
   "workspaces": [
-    "packages/cli",
-    "packages/shared-utils",
-    "packages/webpack-box",
-    "packages/react",
-    "packages/eslint",
-    "packages/tslint",
-    "packages/stylelint"
+    "packages/*"
   ],
   "scripts": {
-    "es": "webpack-box lint eslint",
-    "build": "webpack-box build",
-    "cr": "node tools/readme",
-    "cz": "npm run log && git add . && git cz",
     "dev": "webpack-box dev",
     "dev:dash": "webpack-dashboard -- webpack-box dev",
+    "build": "webpack-box build",
     "info": "pk info",
+    "eslint": "webpack-box lint eslint",
+    "cr": "node tools/readme",
+    "cz": "npm run log && git add . && git cz",
     "log": "conventional-changelog --config ./node_modules/vue-cli-plugin-commitlint/lib/log -i CHANGELOG.md -s -r 0"
   },
   "main": "index.js",
@@ -34,6 +28,7 @@
     "lint-staged": "^9.5.0",
     "pk-cli-plugin-react": "^1.0.1",
     "vue-cli-plugin-commitlint": "^1.0.10",
+    "@pkb/cli": "^1.0.4",
     "webpack-box": "^1.1.3"
   },
   "bugs": {

@@ -2,9 +2,9 @@ const vuePluginRE = /^(@vue\/|vue-|@[\w-]+(\.)?[\w-]+\/vue-)(cli-)?plugin-/
 const scopeRE = /^@[\w-]+(\.)?[\w-]+\//
 const vueOfficialRE = /^@vue\//
 
-const pbPluginRE = exports.pbPluginRE = /^(@pkb\/|pk-|@[\w-]+(\.)?[\w-]+\/pk-)(cli-)?plugin-/
+const pkPluginRE = exports.pkPluginRE = /^(@pkb\/|pk-|@[\w-]+(\.)?[\w-]+\/pk-)(cli-)?plugin-/
 const pbOfficialRE = /^@pkb\//
-
+const path = require('path')
 const vueOfficialPlugins = [
   'babel',
   'e2e-cypress',
@@ -20,14 +20,23 @@ const vueOfficialPlugins = [
 
 const pkbOfficialPlugins = []
 
-exports.isPlugin = id => vuePluginRE.test(id) || pbPluginRE.test(id)
+exports.isPlugin = id => vuePluginRE.test(id) || pkPluginRE.test(id)
 
 exports.isOfficialPlugin = id => exports.isPlugin(id) && pbOfficialRE.test(id)
 
 exports.toShortPluginId = id => id.replace(vuePluginRE, '')
 
+exports.getAllPluginIdOfPackageJson = () => {
+  const pkgJsonPath = path.join(process.cwd(), 'package.json')
+  const deps = {}
+  const plugins = []
+  const pkg = require(pkgJsonPath)
+  Object.assign(deps, pkg.devDependencies || {}, pkg.dependencies || {})
+  Object.keys(deps).forEach(dep => pkPluginRE.test(dep) && plugins.push(dep))
+}
+
 exports.resolvePluginId = id => {
-  if (vuePluginRE.test(id) || pbPluginRE.test(id)) {
+  if (vuePluginRE.test(id) || pkPluginRE.test(id)) {
     return id
   }
   if (vueOfficialPlugins.includes(id)) {

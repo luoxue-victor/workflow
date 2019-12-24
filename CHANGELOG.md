@@ -1,4 +1,16 @@
-## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.0.3...v1.0.9) (2019-12-23)
+## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.0.4...v1.0.9) (2019-12-24)
+## [1.0.4](https://github.com/luoxue-victor/learn_webpack/compare/v1.0.3...v1.0.4) (2019-12-23)
+
+范围|描述|commitId
+--|--|--
+ v1.0.4 | [fa6d07b](https://github.com/luoxue-victor/learn_webpack/commit/fa6d07b)
+
+
+### 🐛 Bug 修复
+范围|描述|commitId
+--|--|--
+ style | lints | [b7e423c](https://github.com/luoxue-victor/learn_webpack/commit/b7e423c)
+
 ## [1.0.3](https://github.com/luoxue-victor/learn_webpack/compare/v1.0.2...v1.0.3) (2019-12-23)
 
 范围|描述|commitId

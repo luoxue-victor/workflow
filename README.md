@@ -16,13 +16,11 @@
 
 [点击查看接下来的项目计划](https://github.com/luoxue-victor/webpack-box/projects/1)
 
-
 ### 所有课题
 
 <details >
   <summary>点击关闭/打开所有课题</summary> 
   <br/>
-
 
 - [课题 01：初探 webpack](./docs/课时-01.md)
 - [课题 02：搭建可插拔的开发环境跟生产环境](./docs/课时-02.md)
@@ -49,7 +47,7 @@
 - [课时 23：编写插件](./docs/课时-23.md)
 - [课时 24：配置 react](./docs/课时-24.md)
 
-</details> 
+</details>
 
 ### 安装
 
@@ -125,21 +123,19 @@ webpack-box server:gql # graphql-server
 
 </details>
 
-
 ### 所有配置
 
 <details open=“open”>
   <summary>点击关闭/打开所有配置</summary> 
   <br/>
 
-
 - [打包分析](./packages/webpack-box/config/BundleAnalyzerPlugin.js)
-- [开启gzip](./packages/webpack-box/config/CompressionWebpackPlugin.js)
+- [开启 gzip](./packages/webpack-box/config/CompressionWebpackPlugin.js)
 - [dll-plugin 配置](./packages/webpack-box/config/DllPlugin.js)
 - [EnvironmentPlugin 定义通用变量](./packages/webpack-box/config/EnvironmentPlugin.js)
-- [fork-ts-checher 检查ts类型](./packages/webpack-box/config/ForkTsChecker.js)
+- [fork-ts-checher 检查 ts 类型](./packages/webpack-box/config/ForkTsChecker.js)
 - [friendly-errors-webpack-plugin 友好错误提示](./packages/webpack-box/config/FriendlyErrorsWebpackPlugin.js)
-- [html-webpack-plugin 生成html](./packages/webpack-box/config/HtmlWebpackPlugin.js)
+- [html-webpack-plugin 生成 html](./packages/webpack-box/config/HtmlWebpackPlugin.js)
 - [mini-css-extract-plugin 配置](./packages/webpack-box/config/MiniCssExtractPlugin.js)
 - [PreloadWebpackPlugin](./packages/webpack-box/config/PreloadWebpackPlugin.js)
 - [ProgressBarPlugin 构建时添加进度条配置](./packages/webpack-box/config/ProgressBarPlugin.js)
@@ -150,7 +146,7 @@ webpack-box server:gql # graphql-server
 - [cache-loader 配置（webpack 5 弃用）](./packages/webpack-box/config/cacheLoader.js)
 - [CaseSensitivePaths 严格区分大小写](./packages/webpack-box/config/caseSensitivePaths.js)
 - [dashboard 增加仪表盘配置](./packages/webpack-box/config/dashboard.js)
-- [devServer.before 在devServer中添加中间件](./packages/webpack-box/config/devServerBefore.js)
+- [devServer.before 在 devServer 中添加中间件](./packages/webpack-box/config/devServerBefore.js)
 - [eslint-loader 配置](./packages/webpack-box/config/eslintLoader.js)
 - [提取 manifest](./packages/webpack-box/config/manifest.js)
 - [optimization 优化配置](./packages/webpack-box/config/optimization.js)
@@ -161,9 +157,7 @@ webpack-box server:gql # graphql-server
 - [tslint 配置](./packages/webpack-box/config/tslintPlugin.js)
 - [react 配置](./packages/react/webpack-chain.config.js)
 
-</details> 
-
-
+</details>
 
 ### 扩展配置
 
@@ -173,14 +167,14 @@ webpack-box server:gql # graphql-server
 在根目录下添加 `box.config.js`，即可配置使用
 
 box.config.js
-  
+
 ```js
-const path = require('path')
-function resolve (dir) {
-  return path.join(process.cwd(), dir)
+const path = require("path");
+function resolve(dir) {
+  return path.join(process.cwd(), dir);
 }
 
-module.exports = function (config) {
+module.exports = function(config) {
   /**
    * @param {object} dll 开启差分包
    * @param {object} pages 多页面配置 通过 box run/build index 来使用
@@ -199,28 +193,24 @@ module.exports = function (config) {
    * @param {Boolean} mock 开启 mock
    */
   return {
-    entry: 'src/main.js',
-    output: 'dist',
-    publicPath: '/common/',
+    entry: "src/main.js",
+    output: "dist",
+    publicPath: "/common/",
     port: 8889,
     mock: true,
     env: {
-      REACT: 'react' // 配置 react
+      REACT: "react" // 配置 react
     },
     alias: {
-      '@': resolve('src'),
-      '@src': resolve('src')
+      "@": resolve("src"),
+      "@src": resolve("src")
     },
     resources: {
       less: {
-        patterns: [
-          path.resolve(__dirname, './src/global/*.less')
-        ]
+        patterns: [path.resolve(__dirname, "./src/global/*.less")]
       },
       scss: {
-        patterns: [
-          path.resolve(__dirname, './src/global/*.scss')
-        ]
+        patterns: [path.resolve(__dirname, "./src/global/*.scss")]
       }
     },
     css: {
@@ -229,7 +219,7 @@ module.exports = function (config) {
         css: {},
         less: {
           globalVars: {
-            gray: '#ccc'
+            gray: "#ccc"
           }
         },
         sass: {},
@@ -242,7 +232,7 @@ module.exports = function (config) {
     filenameHashing: true,
     eslint: {
       lintOnSave: true, // 开启运行时检测
-      extensions: ['js', 'jsx', 'vue'] // 默认 ['js', 'jsx']
+      extensions: ["js", "jsx", "vue"] // 默认 ['js', 'jsx']
     },
     tslint: {
       lintOnSave: true, // 开启运行时检测
@@ -257,21 +247,19 @@ module.exports = function (config) {
     // },
     pages: {
       index: {
-        entry: 'src/main.js',
-        template: 'public/index.html',
-        filename: 'index.html'
+        entry: "src/main.js",
+        template: "public/index.html",
+        filename: "index.html"
       },
       index2: {
-        entry: 'src/main.js',
-        template: 'public/index2.html',
-        filename: 'index2.html'
+        entry: "src/main.js",
+        template: "public/index2.html",
+        filename: "index2.html"
       }
     },
     chainWebpack(config) {}
-  }
-}
-
+  };
+};
 ```
 
-</details>  
-
+</details>
