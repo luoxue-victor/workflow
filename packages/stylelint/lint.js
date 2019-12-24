@@ -58,7 +58,7 @@ module.exports = async function lint({ api, args = {}, pluginOptions = {} }) {
       if (typeof pluginOptions.formatter !== 'function') {
         console.log(format(
           chalk`{bgYellow.black  WARN }`,
-          chalk`${e.toString()}\n{yellow Invalid formatter}`
+          chalk`${e.toString()}\n{黄色的无效的格式化程序}`
         ))
       }
     }
