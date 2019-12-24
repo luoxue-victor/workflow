@@ -1,4 +1,16 @@
-## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.0.4...v1.0.9) (2019-12-24)
+## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.0.5...v1.0.9) (2019-12-24)
+## [1.0.5](https://github.com/luoxue-victor/learn_webpack/compare/v1.0.4...v1.0.5) (2019-12-24)
+
+范围|描述|commitId
+--|--|--
+ v1.0.5 | [1c9bcfb](https://github.com/luoxue-victor/learn_webpack/commit/1c9bcfb)
+
+
+### 🌟 新功能
+范围|描述|commitId
+--|--|--
+ shared-utils | 增加获取所有id的方法 | [110ff62](https://github.com/luoxue-victor/learn_webpack/commit/110ff62)
+
 ## [1.0.4](https://github.com/luoxue-victor/learn_webpack/compare/v1.0.3...v1.0.4) (2019-12-23)
 
 范围|描述|commitId
