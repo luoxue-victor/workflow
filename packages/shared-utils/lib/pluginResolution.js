@@ -32,7 +32,10 @@ exports.getAllPluginIdOfPackageJson = () => {
   const plugins = []
   const pkg = require(pkgJsonPath)
   Object.assign(deps, pkg.devDependencies || {}, pkg.dependencies || {})
-  Object.keys(deps).forEach(dep => pkPluginRE.test(dep) && plugins.push(dep))
+  Object.keys(deps).forEach(dep => {
+    pkPluginRE.test(dep) && plugins.push(dep)
+  })
+  return plugins
 }
 
 exports.resolvePluginId = id => {

@@ -8,14 +8,23 @@ const resolve = (p) => {
 }
 
 const webpackVersion = require(resolve('node_modules/webpack/package.json')).version
-
 module.exports = (options) => {
   const configPath = path.join(__dirname, '..', 'config')
   const files = fs.readdirSync(configPath)
-  const { getConfigsByName } = require('../util/getLocalConfigByPath')
+  const { getAllPluginIdOfPackageJson } = require('@pkb/shared-utils')
   const configs = []
   files.forEach(fileName => configs.push(require(`${configPath}/${fileName}`)))
-  // configs.push(...getConfigsByName('packages', 'webpack-chain.config.js'))
+
+  getAllPluginIdOfPackageJson().forEach(id => {
+    const pluginWebpackChainPath = `${id}/webpack-chain.config.js`
+    try {
+      const config = require(pluginWebpackChainPath)
+      configs.push(config)
+    } catch (error) {
+      console.log(error)
+    }
+  })
+
   configs.forEach(c => c({
     config,
     webpackVersion,
@@ -23,5 +32,6 @@ module.exports = (options) => {
     options,
     api: PluginAPI
   })())
+
   return config
 }

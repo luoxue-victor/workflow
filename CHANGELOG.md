@@ -1,9 +1,16 @@
-## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.0.5...v1.0.9) (2019-12-24)
+## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.1...v1.0.9) (2019-12-24)
+## [1.2.1](https://github.com/luoxue-victor/learn_webpack/compare/v1.0.5...v1.2.1) (2019-12-24)
+
+范围|描述|commitId
+--|--|--
+ v1.2.1 | [9ad9441](https://github.com/luoxue-victor/learn_webpack/commit/9ad9441)
+
 
 ### 🐛 Bug 修复
 范围|描述|commitId
 --|--|--
  1.2.0 | 版本升级 | [738d52a](https://github.com/luoxue-victor/learn_webpack/commit/738d52a)
+ stylelint | 黄色的无效的格式化程序 | [c4a96ed](https://github.com/luoxue-victor/learn_webpack/commit/c4a96ed)
 
 ## [1.0.5](https://github.com/luoxue-victor/learn_webpack/compare/v1.0.4...v1.0.5) (2019-12-24)
 
