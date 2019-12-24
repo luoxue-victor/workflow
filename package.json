@@ -19,7 +19,7 @@
   },
   "main": "index.js",
   "devDependencies": {
-    "@pkb/plugin-react": "^1.2.2",
+    "@pkb/plugin-react": "^1.2.3",
     "webpack-box": "^1.2.2",
     "@pkb/cli": "^1.2.2",
     "@commitlint/config-conventional": "^8.2.0",

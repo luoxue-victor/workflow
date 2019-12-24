@@ -1,4 +1,16 @@
-## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.2...v1.0.9) (2019-12-24)
+## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.3...v1.0.9) (2019-12-24)
+## [1.2.3](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.2...v1.2.3) (2019-12-24)
+
+范围|描述|commitId
+--|--|--
+ v1.2.3 | [94524bf](https://github.com/luoxue-victor/learn_webpack/commit/94524bf)
+
+
+### 🌟 新功能
+范围|描述|commitId
+--|--|--
+ scope | 为所有插件添加npm作用域 | [5dc1ad6](https://github.com/luoxue-victor/learn_webpack/commit/5dc1ad6)
+
 ## [1.2.2](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.1...v1.2.2) (2019-12-24)
 
 范围|描述|commitId
