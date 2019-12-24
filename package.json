@@ -14,7 +14,7 @@
     "info": "pk info",
     "eslint": "webpack-box lint eslint",
     "cr": "node tools/create-readme",
-    "cz": "npm run log && git add . && git cz",
+    "cz": "npm run cr && npm run log && git add . && git cz",
     "log": "conventional-changelog --config ./node_modules/vue-cli-plugin-commitlint/lib/log -i CHANGELOG.md -s -r 0"
   },
   "main": "index.js",
