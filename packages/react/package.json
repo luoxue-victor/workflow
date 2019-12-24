@@ -1,6 +1,6 @@
 {
   "name": "pk-cli-plugin-react",
-  "version": "1.0.5",
+  "version": "1.2.1",
   "description": "各种模块自动化打包脚手架",
   "author": "luoxue",
   "main": "index.js",

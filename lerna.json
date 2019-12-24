@@ -1,8 +1,10 @@
 {
   "npmClient": "npm",
   "useWorkspaces": true,
-  "version": "1.2.0",
-  "packages": ["packages/packages-cli"],
+  "version": "1.2.1",
+  "packages": [
+    "packages/packages-cli"
+  ],
   "changelog": {
     "repo": "jijiang/cli",
     "labels": {
