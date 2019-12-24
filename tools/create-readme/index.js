@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 const fs = require('fs')
 const path = require('path')
-const readmePath = path.join('tools', 'readme')
+const readmePath = path.join('tools', 'create-readme')
 console.log('--- 创建readme ---')
 const configCtx = extraTxt('packages/webpack-box/config', function(firstRow) {
   return firstRow.replace('// ', '')
@@ -25,6 +25,7 @@ function joinCtx () {
   str += readMdBy('useAndIntsall')
   str += detailTag('所有配置', configCtx + packageConfig)
   str += boxConfig()
+  str += '\n' + fs.readFileSync(path.join(__dirname, 'contributors.md')).toString()
   return str
 }
 
