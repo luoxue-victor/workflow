@@ -8,7 +8,7 @@
 ### 📝 文档
 范围|描述|commitId
 --|--|--
- 贡献者 | 贡献者名单| [f973cae](https://github.com/luoxue-victor/learn_webpack/commit/f973cae) 开发 | 开发文档| [c04320d](https://github.com/luoxue-victor/learn_webpack/commit/c04320d) readme | 贡献者名单| [19dd193](https://github.com/luoxue-victor/learn_webpack/commit/19dd193)
+ 贡献者 | 贡献者名单| [f973cae](https://github.com/luoxue-victor/learn_webpack/commit/f973cae) 开发 | 开发文档| [c04320d](https://github.com/luoxue-victor/learn_webpack/commit/c04320d) readme | 贡献者名单| [19dd193](https://github.com/luoxue-victor/learn_webpack/commit/19dd193) readme | 开发指南| [7021d5d](https://github.com/luoxue-victor/learn_webpack/commit/7021d5d)
 ## [1.2.3](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.2...v1.2.3) (2019-12-24)
 
 范围|描述|commitId
