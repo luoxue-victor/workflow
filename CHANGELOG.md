@@ -1,4 +1,9 @@
 ## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.7...v1.0.9) (2019-12-25)
+
+### 🌟 新功能
+范围|描述|commitId
+--|--|--
+ 26 | 课时26文档| [5e022b5](https://github.com/luoxue-victor/learn_webpack/commit/5e022b5)
 ## [1.2.7](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.6...v1.2.7) (2019-12-25)
 
 范围|描述|commitId
