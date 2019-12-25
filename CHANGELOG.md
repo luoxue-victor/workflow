@@ -1,4 +1,14 @@
-## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.4...v1.0.9) (2019-12-25)
+## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.5...v1.0.9) (2019-12-25)
+## [1.2.5](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.4...v1.2.5) (2019-12-25)
+
+范围|描述|commitId
+--|--|--
+ - | v1.2.5| [593203e](https://github.com/luoxue-victor/learn_webpack/commit/593203e)
+
+### 🌟 新功能
+范围|描述|commitId
+--|--|--
+ version | 升级插件版本| [66cdd73](https://github.com/luoxue-victor/learn_webpack/commit/66cdd73)
 ## [1.2.4](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.3...v1.2.4) (2019-12-25)
 
 范围|描述|commitId

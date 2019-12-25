@@ -42,7 +42,7 @@ module.exports.getAllCommands = function() {
     const command = `${id}/command.config.js`
     try {
       const cwd = require(command)
-      cwdFns.push(require(cwd))
+      cwdFns.push(cwd)
     } catch (error) {
       console.log(`没有 ${command}`)
     }

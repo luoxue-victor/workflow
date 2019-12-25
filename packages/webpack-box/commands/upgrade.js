@@ -1,12 +1,12 @@
-module.exports = function({ cliName, injectCommand }) {
+module.exports = function({ injectCommand }) {
   injectCommand(function({ program, cleanArgs, boxConfig }) {
     program
-      .command(`${cliName} <v>`)
+      .command('upgrade <v>')
       .description('webpack版本，输入 4 或 5 ')
       .action(async (name, cmd) => {
         const options = cleanArgs(cmd)
         const args = Object.assign(options, { name }, boxConfig)
-        require(`../build/${cliName}`)(args)
+        require('../build/upgrade')(args)
       })
   })
 }
