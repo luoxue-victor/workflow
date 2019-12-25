@@ -1,9 +1,9 @@
-## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.3...v1.0.9) (2019-12-24)
+## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.3...v1.0.9) (2019-12-25)
 
 ### 🐛 Bug 修复
 范围|描述|commitId
 --|--|--
- package | 升级插件版本| [dea53d5](https://github.com/luoxue-victor/learn_webpack/commit/dea53d5)
+ package | 升级插件版本| [dea53d5](https://github.com/luoxue-victor/learn_webpack/commit/dea53d5) webpack-box | 降低复杂度| [907ef27](https://github.com/luoxue-victor/learn_webpack/commit/907ef27)
 
 ### 📝 文档
 范围|描述|commitId

@@ -1,8 +1,6 @@
 // [eslint-loader 配置]
 module.exports = ({ config, options: { eslint: { lintOnSave = false, extensions } }, api }) => {
-  const path = require('path')
-  const eslintOptionsPath = path.join('..', 'packages', 'eslint', 'eslintOptions')
-  extensions = extensions || require(eslintOptionsPath).extensions(api)
+  extensions = extensions || require('./eslintOptions').extensions(api)
   return () => {
     if (!lintOnSave) return
     const path = require('path')

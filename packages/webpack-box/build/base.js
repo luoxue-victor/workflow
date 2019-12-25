@@ -21,7 +21,7 @@ module.exports = (options) => {
       const config = require(pluginWebpackChainPath)
       configs.push(config)
     } catch (error) {
-      console.log(error)
+      console.log(`没有 ${pluginWebpackChainPath}`)
     }
   })
 

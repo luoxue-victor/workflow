@@ -154,15 +154,15 @@ webpack-box server:gql # graphql-server
 - [CaseSensitivePaths 严格区分大小写](./packages/webpack-box/config/caseSensitivePaths.js)
 - [dashboard 增加仪表盘配置](./packages/webpack-box/config/dashboard.js)
 - [devServer.before 在devServer中添加中间件](./packages/webpack-box/config/devServerBefore.js)
-- [eslint-loader 配置](./packages/webpack-box/config/eslintLoader.js)
 - [提取 manifest](./packages/webpack-box/config/manifest.js)
 - [optimization 优化配置](./packages/webpack-box/config/optimization.js)
 - [样式表配置](./packages/webpack-box/config/style.js)
-- [stylelint 配置](./packages/webpack-box/config/styleLintPlugin.js)
 - [设置 style 全局变量](./packages/webpack-box/config/styleResourcesLoader.js)
 - [多线程配置](./packages/webpack-box/config/threadLoader.js)
 - [tslint 配置](./packages/webpack-box/config/tslintPlugin.js)
+- [eslint-loader 配置](./packages/eslint/webpack-chain.config.js)
 - [react 配置](./packages/react/webpack-chain.config.js)
+- [stylelint 配置](./packages/stylelint/webpack-chain.config.js)
 
 </details> 
 

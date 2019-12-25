@@ -31,12 +31,22 @@ module.exports.getAllCommands = function() {
   const localCwdPath = path.join(__dirname, '..', 'commands')
   const localCwdNames = [...fs.readdirSync(localCwdPath)]
   const cwdFns = []
-  const { getConfigsByName } = require('../util/getLocalConfigByPath')
   localCwdNames.forEach(name => {
     const cwdPath = path.join(localCwdPath, name)
     cwdFns.push(require(cwdPath))
   })
-  // cwdFns.push(...getConfigsByName('packages', 'command.config.js'))
+
+  const { getAllPluginIdOfPackageJson } = require('@pkb/shared-utils')
+
+  getAllPluginIdOfPackageJson().forEach(id => {
+    const command = `${id}/command.config.js`
+    try {
+      const cwd = require(command)
+      cwdFns.push(require(cwd))
+    } catch (error) {
+      console.log(`没有 ${command}`)
+    }
+  })
   return cwdFns
 }
 
