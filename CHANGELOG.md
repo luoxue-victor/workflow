@@ -1,4 +1,14 @@
-## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.5...v1.0.9) (2019-12-25)
+## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.6...v1.0.9) (2019-12-25)
+## [1.2.6](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.5...v1.2.6) (2019-12-25)
+
+范围|描述|commitId
+--|--|--
+ - | v1.2.6| [154d425](https://github.com/luoxue-victor/learn_webpack/commit/154d425)
+
+### 🐛 Bug 修复
+范围|描述|commitId
+--|--|--
+ command | 注入插件command的bug修改| [c76d6ee](https://github.com/luoxue-victor/learn_webpack/commit/c76d6ee)
 ## [1.2.5](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.4...v1.2.5) (2019-12-25)
 
 范围|描述|commitId
