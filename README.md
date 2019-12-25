@@ -75,7 +75,7 @@
 <details open=“open”>
  <summary>点击关闭/打开安装</summary><br/>
 
-#### 脚手架安装及使用
+#### 1. 全局脚手架安装及使用
 
 脚手架主要针对所有项目的管理，甚至可以针对任何非本工程的项目使用
 
@@ -88,7 +88,7 @@ pk add <plugin> # 安装插件
 pk info # 查看项目及系统配置
 ```
 
-#### webpack 配置安装及开发
+#### 2. webpack-box 配置安装及开发
 
 `webpack-box` 针对某个项目使用，可以在本地 `npm script` 内使用，也可以全局使用
 
@@ -106,6 +106,7 @@ npm i webpack-box -g # 全局安装
 
 ```bash
 # --- 项目构建 ---
+# npm i -D @pkb/plugin-eslint
 webpack-box dev   # 开发环境
 webpack-box build # 生产环境
 webpack-box dll   # 编译差分包
@@ -124,10 +125,13 @@ webpack-box inspect --plugins # 查看所有插件列表
 webpack-box inspect --plugin mini-css-extract # 查看指定插件配置
 # --- graphql ---
 webpack-box server:gql # graphql-server
-# --- 插件命令 ---
-webpack-box eslint # 自动修复 eslint 错误，需安装 @pkb/plugin-eslint 插件
-webpack-box tslint # 自动修复 tslint 错误，需安装 @pkb/plugin-tslint 插件
-webpack-box stylelint # 自动修复 stylelint 错误，需安装 @pkb/plugin-stylelint 插件
+# --- 插件命令及安装 ---
+# npm i -D @pkb/plugin-eslint
+webpack-box eslint # 自动修复 eslint 错误
+# npm i -D @pkb/plugin-tslint
+webpack-box tslint # 自动修复 tslint 错误
+# npm i -D @pkb/plugin-stylelint
+webpack-box stylelint # 自动修复 stylelint 错误
 ```
 
 在 package.json 中使用
