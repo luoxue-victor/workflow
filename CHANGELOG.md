@@ -1,9 +1,19 @@
-## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.7...v1.0.9) (2019-12-25)
+## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.8...v1.0.9) (2019-12-25)
+## [1.2.8](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.7...v1.2.8) (2019-12-25)
+
+范围|描述|commitId
+--|--|--
+ - | v1.2.8| [0c8a592](https://github.com/luoxue-victor/learn_webpack/commit/0c8a592)
 
 ### 🌟 新功能
 范围|描述|commitId
 --|--|--
  26 | 课时26文档| [5e022b5](https://github.com/luoxue-victor/learn_webpack/commit/5e022b5)
+
+### 📝 文档
+范围|描述|commitId
+--|--|--
+ 插件编写readme | 所有插件编写readme + 插件市场| [f95ee09](https://github.com/luoxue-victor/learn_webpack/commit/f95ee09)
 ## [1.2.7](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.6...v1.2.7) (2019-12-25)
 
 范围|描述|commitId

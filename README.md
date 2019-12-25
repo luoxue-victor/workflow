@@ -4,7 +4,24 @@
 
 ![logo](public/asset/logo-mini2.png)
 
+[![npm][npm]][github-url]
+[![node][node]][node-url]
+
+[![star][star]][github-url]
+[![issue][issue]][github-url]
+[![forks][forks]][github-url]
+[![downloads][downloads]][github-url]
+
 ### <strong>webpack-box</strong>
+
+[node]: https://img.shields.io/node/v/webpack.svg
+[node-url]: https://nodejs.org
+[github-url]: https://github.com/luoxue-victor/webpack-box
+[downloads]: https://img.shields.io/npm/dt/webpack-box.svg?style=flat-square
+[npm]: https://img.shields.io/npm/v/webpack.svg
+[issue]: https://img.shields.io/github/issues/luoxue-victor/webpack-box
+[forks]: https://img.shields.io/github/forks/luoxue-victor/webpack-box
+[star]: https://img.shields.io/github/stars/luoxue-victor/webpack-box
 
 </div>
 
