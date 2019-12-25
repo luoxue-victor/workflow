@@ -14,7 +14,7 @@ module.exports = (options) => {
   const { getAllPluginIdOfPackageJson } = require('@pkb/shared-utils')
   const configs = []
   files.forEach(fileName => configs.push(require(`${configPath}/${fileName}`)))
-
+  // 读取插件中的配置
   getAllPluginIdOfPackageJson().forEach(id => {
     const pluginWebpackChainPath = `${id}/webpack-chain.config.js`
     try {

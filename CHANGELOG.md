@@ -1,4 +1,14 @@
-## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.3...v1.0.9) (2019-12-25)
+## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.4...v1.0.9) (2019-12-25)
+## [1.2.4](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.3...v1.2.4) (2019-12-25)
+
+范围|描述|commitId
+--|--|--
+ - | v1.2.4| [108355e](https://github.com/luoxue-victor/learn_webpack/commit/108355e)
+
+### 🌟 新功能
+范围|描述|commitId
+--|--|--
+ lints | lints 插件在webpack-box中剥离出来| [2f9e97c](https://github.com/luoxue-victor/learn_webpack/commit/2f9e97c)
 
 ### 🐛 Bug 修复
 范围|描述|commitId
