@@ -1,9 +1,14 @@
-## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.8...v1.0.9) (2019-12-25)
+## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.9...v1.0.9) (2019-12-25)
+## [1.2.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.8...v1.2.9) (2019-12-25)
+
+范围|描述|commitId
+--|--|--
+ - | v1.2.9| [6672864](https://github.com/luoxue-victor/learn_webpack/commit/6672864)
 
 ### 🐛 Bug 修复
 范围|描述|commitId
 --|--|--
- readme | 多余注释| [837da71](https://github.com/luoxue-victor/learn_webpack/commit/837da71)
+ readme | 多余注释| [837da71](https://github.com/luoxue-victor/learn_webpack/commit/837da71) resovle ts | extensions ts 忘加 . 导致解析ts文件失败| [d89c73f](https://github.com/luoxue-victor/learn_webpack/commit/d89c73f)
 
 ### 📝 文档
 范围|描述|commitId

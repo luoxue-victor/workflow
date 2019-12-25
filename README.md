@@ -33,7 +33,7 @@
 
 本项目诚邀所有共建者，一起来完善，无论你提供了多少的代码都可以被展示在贡献者名单内！
 
-[项目计划](https://github.com/luoxue-victor/webpack-box/projects/1) | [开发指南](./docs/课时-25.md) | [插件市场](./docs/课时-26.md)
+[项目计划](https://github.com/luoxue-victor/webpack-box/projects/1) | [开发指南](./docs/课时-25.md) | [插件市场](https://www.npmjs.com/search?q=%40pkb)
 
 
 ### 所有课题

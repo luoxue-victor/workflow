@@ -32,7 +32,7 @@
     "lerna": "^3.15.0",
     "lint-staged": "^9.5.0",
     "vue-cli-plugin-commitlint": "^1.0.10",
-    "webpack-box": "^1.2.6"
+    "webpack-box": "^1.2.9"
   },
   "bugs": {
     "url": "https://github.com/luoxue-victor/learn_webpack/issues"
