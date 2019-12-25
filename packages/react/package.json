@@ -1,6 +1,6 @@
 {
   "name": "@pkb/plugin-react",
-  "version": "1.2.3",
+  "version": "1.2.8",
   "description": "各种模块自动化打包脚手架",
   "author": "luoxue",
   "main": "index.js",
