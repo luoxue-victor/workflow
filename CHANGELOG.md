@@ -1,4 +1,9 @@
 ## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.8...v1.0.9) (2019-12-25)
+
+### 📝 文档
+范围|描述|commitId
+--|--|--
+ readme | 增加shields| [9f8564b](https://github.com/luoxue-victor/learn_webpack/commit/9f8564b)
 ## [1.2.8](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.7...v1.2.8) (2019-12-25)
 
 范围|描述|commitId
