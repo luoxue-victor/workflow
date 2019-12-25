@@ -1,11 +1,11 @@
 {
   "name": "@pkb/plugin-eslint",
-  "version": "1.2.8",
+  "version": "1.2.10",
   "description": "webpack-box 插件，配置 eslint 及修复",
   "author": "luoxue",
   "main": "index.js",
   "dependencies": {
-    "@pkb/shared-utils": "^1.2.8",
+    "@pkb/shared-utils": "^1.2.10",
     "@typescript-eslint/parser": "^2.10.0",
     "eslint": "^6.8.0",
     "eslint-config-standard": "^14.1.0",
