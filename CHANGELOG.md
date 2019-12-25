@@ -1,4 +1,9 @@
 ## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.9...v1.0.9) (2019-12-25)
+
+### 📝 文档
+范围|描述|commitId
+--|--|--
+ readme | 插件市场链接指向npm| [ba02442](https://github.com/luoxue-victor/learn_webpack/commit/ba02442)
 ## [1.2.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.8...v1.2.9) (2019-12-25)
 
 范围|描述|commitId

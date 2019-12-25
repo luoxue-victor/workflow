@@ -1,7 +1,7 @@
 {
   "name": "@pkb/plugin-eslint",
   "version": "1.2.8",
-  "description": "eslint",
+  "description": "webpack-box 插件，配置 eslint 及修复",
   "author": "luoxue",
   "main": "index.js",
   "dependencies": {

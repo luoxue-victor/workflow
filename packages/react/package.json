@@ -1,7 +1,7 @@
 {
   "name": "@pkb/plugin-react",
   "version": "1.2.8",
-  "description": "各种模块自动化打包脚手架",
+  "description": "webpack-box 插件，配置react",
   "author": "luoxue",
   "main": "index.js",
   "dependencies": {
