@@ -10,7 +10,8 @@
 [![star][star]][github-url]
 [![issue][issue]][issue-url]
 [![forks][forks]][github-url]
-[![downloads][downloads]][npm-url]
+
+<!-- [![downloads][downloads]][npm-url] -->
 
 ### <strong>webpack-box</strong>
 
@@ -19,7 +20,7 @@
 [node]: https://img.shields.io/node/v/webpack.svg
 [node-url]: https://nodejs.org
 [github-url]: https://github.com/luoxue-victor/webpack-box
-[downloads]: https://img.shields.io/npm/dt/webpack-box.svg?style=flat-square
+[downloads]: https://img.shields.io/npm/dt/@pkb/webpack-box.svg?style=flat-square
 [npm]: https://img.shields.io/npm/v/webpack.svg
 [issue]: https://img.shields.io/github/issues/luoxue-victor/webpack-box
 [forks]: https://img.shields.io/github/forks/luoxue-victor/webpack-box

@@ -21,8 +21,8 @@ pk info # 查看项目及系统配置
 `webpack-box` 针对某个项目使用，可以在本地 `npm script` 内使用，也可以全局使用
 
 ```bash
-npm i webpack-box -D # 本地安装
-npm i webpack-box -g # 全局安装
+npm i @pkb/webpack-box -D # 本地安装
+npm i @pkb/webpack-box -g # 全局安装
 ```
 
 </details>

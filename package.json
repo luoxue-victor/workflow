@@ -20,19 +20,19 @@
   "main": "index.js",
   "devDependencies": {
     "@commitlint/config-conventional": "^8.2.0",
-    "@pkb/cli": "^1.2.2",
-    "@pkb/plugin-eslint": "^1.2.7",
-    "@pkb/plugin-react": "^1.2.3",
-    "@pkb/plugin-stylelint": "^1.2.7",
-    "@pkb/plugin-tslint": "^1.2.7",
+    "@pkb/webpack-box": "^1.2.10",
+    "@pkb/cli": "^1.2.10",
+    "@pkb/plugin-eslint": "^1.2.10",
+    "@pkb/plugin-react": "^1.2.10",
+    "@pkb/plugin-stylelint": "^1.2.10",
+    "@pkb/plugin-tslint": "^1.2.10",
     "commitizen": "^4.0.3",
     "commitlint": "^8.2.0",
     "conventional-changelog-cli": "^2.0.28",
     "husky": "^3.1.0",
     "lerna": "^3.15.0",
     "lint-staged": "^9.5.0",
-    "vue-cli-plugin-commitlint": "^1.0.10",
-    "webpack-box": "^1.2.9"
+    "vue-cli-plugin-commitlint": "^1.0.10"
   },
   "bugs": {
     "url": "https://github.com/luoxue-victor/learn_webpack/issues"
