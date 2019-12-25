@@ -27,7 +27,7 @@
    * @param autoFixOnSave 保存时自动修复
    * @param alwaysShowRuleFailuresAsWarnings 所有特征都是用 Warnings
    */
-  "tslint.autoFixOnSave": false,
+  "tslint.autoFixOnSave": true,
   "tslint.alwaysShowRuleFailuresAsWarnings": true,
   /*
    * @description stylelint 配置

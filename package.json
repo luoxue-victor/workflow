@@ -12,7 +12,7 @@
     "dev:dash": "webpack-dashboard -- webpack-box dev",
     "build": "webpack-box build",
     "info": "pk info",
-    "lint": "webpack-box eslint",
+    "lint": "webpack-box tslint",
     "cr": "node tools/create-readme",
     "cz": "npm run cr && npm run log && git add . && git cz",
     "log": "conventional-changelog --config ./node_modules/vue-cli-plugin-commitlint/lib/log -i CHANGELOG.md -s -r 0"
@@ -21,10 +21,10 @@
   "devDependencies": {
     "@commitlint/config-conventional": "^8.2.0",
     "@pkb/cli": "^1.2.2",
-    "@pkb/plugin-eslint": "^1.2.5",
+    "@pkb/plugin-eslint": "^1.2.7",
     "@pkb/plugin-react": "^1.2.3",
-    "@pkb/plugin-stylelint": "^1.2.5",
-    "@pkb/plugin-tslint": "^1.2.5",
+    "@pkb/plugin-stylelint": "^1.2.7",
+    "@pkb/plugin-tslint": "^1.2.7",
     "commitizen": "^4.0.3",
     "commitlint": "^8.2.0",
     "conventional-changelog-cli": "^2.0.28",
@@ -52,15 +52,15 @@
   "license": "ISC",
   "lint-staged": {
     "*.{vue,htm,html,css,sss,less,scss}": [
-      "webpack-box lint stylelint",
+      "webpack-box stylelint",
       "git add"
     ],
     "*.{ts,tsx}": [
-      "webpack-box lint tslint",
+      "webpack-box tslint",
       "git add"
     ],
     "*.{js,jsx}": [
-      "webpack-box lint eslint",
+      "webpack-box eslint",
       "git add"
     ]
   },
