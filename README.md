@@ -106,7 +106,6 @@ npm i webpack-box -g # 全局安装
 
 ```bash
 # --- 项目构建 ---
-# npm i -D @pkb/plugin-eslint
 webpack-box dev   # 开发环境
 webpack-box build # 生产环境
 webpack-box dll   # 编译差分包

@@ -3,7 +3,7 @@
 ### 📝 文档
 范围|描述|commitId
 --|--|--
- readme | 增加shields| [9f8564b](https://github.com/luoxue-victor/learn_webpack/commit/9f8564b) readme | 整理readme插件部分说明| [ce6fcb3](https://github.com/luoxue-victor/learn_webpack/commit/ce6fcb3)
+ readme | 修改readme说明及配置| [c910a19](https://github.com/luoxue-victor/learn_webpack/commit/c910a19) readme | 增加shields| [9f8564b](https://github.com/luoxue-victor/learn_webpack/commit/9f8564b) readme | 整理readme插件部分说明| [ce6fcb3](https://github.com/luoxue-victor/learn_webpack/commit/ce6fcb3)
 ## [1.2.8](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.7...v1.2.8) (2019-12-25)
 
 范围|描述|commitId
