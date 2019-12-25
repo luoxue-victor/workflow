@@ -8,12 +8,14 @@
 [![node][node]][node-url]
 
 [![star][star]][github-url]
-[![issue][issue]][github-url]
+[![issue][issue]][issue-url]
 [![forks][forks]][github-url]
-[![downloads][downloads]][github-url]
+[![downloads][downloads]][npm-url]
 
 ### <strong>webpack-box</strong>
 
+[npm-url]: https://www.npmjs.com/package/webpack-box
+[issue-url]: https://github.com/luoxue-victor/webpack-box/issues
 [node]: https://img.shields.io/node/v/webpack.svg
 [node-url]: https://nodejs.org
 [github-url]: https://github.com/luoxue-victor/webpack-box

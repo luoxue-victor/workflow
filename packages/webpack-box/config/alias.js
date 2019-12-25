@@ -7,7 +7,7 @@ module.exports = ({ config, options, resolve }) => {
     const dirs = fs.readdirSync(resolve('src'))
     let aliasConfig = config.resolve
       .extensions
-      .merge(['.mjs', '.js', '.jsx', '.vue', 'ts', '.json', '.wasm'])
+      .merge(['.mjs', '.js', '.jsx', '.vue', '.ts', '.tsx', '.json', '.wasm'])
       .end()
       .alias
     dirs.forEach(v => {

@@ -1,4 +1,4 @@
-import Foo from '@src/typescript/Foo'
+import Foo from './Foo'
 
 new Foo()
 
