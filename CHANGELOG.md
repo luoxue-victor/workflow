@@ -1,4 +1,10 @@
-## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.10...v1.0.9) (2019-12-25)
+## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.10...v1.0.9) (2019-12-26)
+
+### 📝 文档
+范围|描述|commitId
+--|--|--
+ readme | webpack-box 替换成 [@pkb](https://github.com/pkb)/webpack-box | [16f85f3](https://github.com/luoxue-victor/learn_webpack/commit/16f85f3)
+
 ## [1.2.10](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.9...v1.2.10) (2019-12-25)
 
 范围|描述|commitId
