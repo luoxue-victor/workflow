@@ -44,7 +44,43 @@ module.exports = function (options) {
     - dev  at: http://localhost:${port}${publicPath}
 ${options.mock ? `    - mock at: http://localhost:${port}/api/users/12` : ''}
 `
+      docker()
       console.log(chalk.cyan('\n' + empty + common))
     })
   })
+}
+
+function docker () {
+  try {
+    const getDockerHost = require('get-docker-host')
+    const isInDocker = require('is-in-docker')
+
+    const checkDocker = () => {
+      return new Promise((resolve, reject) => {
+        if (isInDocker()) {
+          getDockerHost((error, result) => {
+            if (result) {
+              resolve(result)
+            } else {
+              reject(error)
+            }
+          })
+        } else {
+          resolve(null)
+        }
+      })
+    }
+
+    checkDocker().then((addr) => {
+      if (addr) {
+        console.log('Docker host is ' + addr)
+      } else {
+        console.log('Not in Docker')
+      }
+    }).catch((error) => {
+      console.log('Could not find Docker host: ' + error)
+    })
+  } catch (error) {
+    console.error(error)
+  }
 }

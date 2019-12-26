@@ -3,6 +3,7 @@
 ### 📝 文档
 范围|描述|commitId
 --|--|--
+ readme | 整理readme文档header部分 | [8f684af](https://github.com/luoxue-victor/learn_webpack/commit/8f684af)
  readme | webpack-box 替换成 [@pkb](https://github.com/pkb)/webpack-box | [16f85f3](https://github.com/luoxue-victor/learn_webpack/commit/16f85f3)
 
 ## [1.2.10](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.9...v1.2.10) (2019-12-25)
