@@ -21,6 +21,8 @@
   "sideEffects": true,
   "homepage": "https://github.com/luoxue-victor/learn_webpack#readme",
   "dependencies": {
+    "get-docker-host": "^1.0.3",
+    "is-in-docker": "^0.1.2",
     "@babel/cli": "^7.6.0",
     "@babel/core": "^7.6.0",
     "@babel/plugin-proposal-class-properties": "^7.7.4",

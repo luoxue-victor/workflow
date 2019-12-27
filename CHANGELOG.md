@@ -1,4 +1,16 @@
-## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.10...v1.0.9) (2019-12-26)
+## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.11...v1.0.9) (2019-12-27)
+## [1.2.11](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.10...v1.2.11) (2019-12-26)
+
+范围|描述|commitId
+--|--|--
+ v1.2.11 | [6be2344](https://github.com/luoxue-victor/learn_webpack/commit/6be2344)
+
+
+### 🌟 新功能
+范围|描述|commitId
+--|--|--
+ docker | 增加docker | [f610dc7](https://github.com/luoxue-victor/learn_webpack/commit/f610dc7)
+
 
 ### 📝 文档
 范围|描述|commitId
