@@ -1,6 +1,6 @@
 {
   "name": "@pkb/webpack-box",
-  "version": "1.2.11",
+  "version": "1.2.12",
   "description": "一个开箱即用的 webpack 打包器配置",
   "main": "index.js",
   "bin": {
@@ -21,8 +21,6 @@
   "sideEffects": true,
   "homepage": "https://github.com/luoxue-victor/learn_webpack#readme",
   "dependencies": {
-    "get-docker-host": "^1.0.3",
-    "is-in-docker": "^0.1.2",
     "@babel/cli": "^7.6.0",
     "@babel/core": "^7.6.0",
     "@babel/plugin-proposal-class-properties": "^7.7.4",
@@ -60,10 +58,12 @@
     "fork-ts-checker-webpack-plugin": "^3.1.0",
     "friendly-errors-webpack-plugin": "^1.7.0",
     "fs-extra": "^8.1.0",
+    "get-docker-host": "^1.0.3",
     "graphql": "^14.5.8",
     "graphql-server-koa": "^1.4.1",
     "hash-sum": "^2.0.0",
     "html-webpack-plugin": "^3.2.0",
+    "is-in-docker": "^0.1.2",
     "koa": "^2.11.0",
     "koa-bodyparser": "^4.2.1",
     "koa-router": "^7.4.0",
