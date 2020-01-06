@@ -1,4 +1,4 @@
-## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.0.1...v1.0.9) (2019-12-30)
+## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.0.1...v1.0.9) (2020-01-06)
 
 ### 🌟 新功能
 范围|描述|commitId
@@ -104,6 +104,12 @@
  v1.0.3 | [55a01c1](https://github.com/luoxue-victor/learn_webpack/commit/55a01c1)
  v1.0.2 | [cb9c2a5](https://github.com/luoxue-victor/learn_webpack/commit/cb9c2a5)
  :speech_balloon: 添加注释 | [2c2586d](https://github.com/luoxue-victor/learn_webpack/commit/2c2586d)
+
+
+### chore
+范围|描述|commitId
+--|--|--
+ 合并代码 | [dfdc68f](https://github.com/luoxue-victor/learn_webpack/commit/dfdc68f)
 
 
 ### 💡 不兼容变更
