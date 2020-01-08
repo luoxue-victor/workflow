@@ -14,7 +14,7 @@
     "dev:docker": "docker run -v \"$(PWD)\":/usr/src/webpack-box/ docker-webpack-box npm run dev",
     "build:docker": "docker build -t docker-webpack-box .",
     "info": "pk info",
-    "test": "jest",
+    "test": "jest --color --config jest.config.js",
     "lint": "webpack-box tslint",
     "cr": "node tools/create-readme",
     "cz": "npm run cr && npm run log && git add . && git cz",
@@ -80,24 +80,5 @@
     "url": "git+https://github.com/luoxue-victor/learn_webpack.git"
   },
   "sideEffects": true,
-  "dependencies": {},
-  "jest": {
-    "moduleFileExtensions": [
-      "js",
-      "jsx"
-    ],
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ],
-    "modulePaths": [
-      "<rootDir>/packages/react"
-    ],
-    "moduleNameMapper": {
-      "\\.(css|less|scss|sss|styl)$": "<rootDir>/node_modules/jest-css-modules"
-    },
-    "testPathIgnorePatterns": [
-      "/node_modules/"
-    ],
-    "collectCoverage": false
-  }
+  "dependencies": {}
 }
