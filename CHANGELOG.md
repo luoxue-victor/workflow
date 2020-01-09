@@ -1,9 +1,15 @@
-## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.12...v1.0.9) (2020-01-08)
+## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.12...v1.0.9) (2020-01-09)
 
 ### 🌟 新功能
 范围|描述|commitId
 --|--|--
  / | 增加jest单元测试 | [9ecaee8](https://github.com/luoxue-victor/learn_webpack/commit/9ecaee8), closes [#9](https://github.com/luoxue-victor/learn_webpack/issues/9)
+
+
+### 🚀 性能优化
+范围|描述|commitId
+--|--|--
+ / | 更改jest单元测试配置 | [4aadd64](https://github.com/luoxue-victor/learn_webpack/commit/4aadd64)
 
 
 ### chore

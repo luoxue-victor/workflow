@@ -30,6 +30,7 @@
     "@pkb/plugin-stylelint": "^1.2.10",
     "@pkb/plugin-tslint": "^1.2.10",
     "@pkb/webpack-box": "^1.2.11",
+    "@sentry/browser": "^5.11.0",
     "babel-jest": "^24.9.0",
     "commitizen": "^4.0.3",
     "commitlint": "^8.2.0",
