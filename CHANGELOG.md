@@ -1,4 +1,10 @@
 ## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.13...v1.0.9) (2020-01-11)
+
+### 🐛 Bug 修复
+范围|描述|commitId
+--|--|--
+ eslint | 测试eslint | [982688a](https://github.com/luoxue-victor/learn_webpack/commit/982688a)
+
 ## [1.2.13](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.12...v1.2.13) (2020-01-11)
 
 范围|描述|commitId
