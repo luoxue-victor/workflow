@@ -1,6 +1,6 @@
 {
   "name": "@pkb/webpack-box",
-  "version": "1.2.12",
+  "version": "1.2.13",
   "description": "一个开箱即用的 webpack 打包器配置",
   "main": "index.js",
   "bin": {
