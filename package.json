@@ -71,7 +71,11 @@
       "webpack-box tslint",
       "git add"
     ],
-    "**.{js,jsx}": [
+    "*.{js,jsx}": [
+      "webpack-box eslint",
+      "git add"
+    ],
+    "packages/**/*.{js,jsx}": [
       "webpack-box eslint",
       "git add"
     ]
