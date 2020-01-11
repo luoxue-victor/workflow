@@ -1,4 +1,10 @@
 ## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.12...v1.0.9) (2020-01-11)
+
+### 📝 文档
+范围|描述|commitId
+--|--|--
+ changlog | 修改changelog | [4a8da45](https://github.com/luoxue-victor/learn_webpack/commit/4a8da45)
+
 ## [1.2.12](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.11...v1.2.12) (2019-12-27)
 
 范围|描述|commitId
