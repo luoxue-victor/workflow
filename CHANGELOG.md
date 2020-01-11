@@ -1,10 +1,22 @@
-## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.12...v1.0.9) (2020-01-11)
+## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.13...v1.0.9) (2020-01-11)
+## [1.2.13](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.12...v1.2.13) (2020-01-11)
+
+范围|描述|commitId
+--|--|--
+ v1.2.13 | [e317bc7](https://github.com/luoxue-victor/learn_webpack/commit/e317bc7)
+
 
 ### 🌟 新功能
 范围|描述|commitId
 --|--|--
  / | 增加jest单元测试 | [9ecaee8](https://github.com/luoxue-victor/learn_webpack/commit/9ecaee8), closes [#9](https://github.com/luoxue-victor/learn_webpack/issues/9)
  packages/react | Sentry错误监控 | [b417e40](https://github.com/luoxue-victor/learn_webpack/commit/b417e40), closes [#22](https://github.com/luoxue-victor/learn_webpack/issues/22)
+
+
+### 🐛 Bug 修复
+范围|描述|commitId
+--|--|--
+ webpack-box cleanArgs | 修改 webpack-box cleanArgs | [b58ccc5](https://github.com/luoxue-victor/learn_webpack/commit/b58ccc5)
 
 
 ### 📝 文档
