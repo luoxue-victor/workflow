@@ -15,7 +15,6 @@
     "build:docker": "docker build -t docker-webpack-box .",
     "info": "pk info",
     "test": "jest --color --config jest.config.js",
-    "lint": "webpack-box tslint",
     "cr": "node tools/create-readme",
     "cz": "npm run cr && npm run log && git add . && git cz",
     "log": "conventional-changelog --config ./node_modules/vue-cli-plugin-commitlint/lib/log -i CHANGELOG.md -s -r 0"

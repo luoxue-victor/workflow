@@ -5,6 +5,7 @@
 --|--|--
  eslint | 测试eslint | [982688a](https://github.com/luoxue-victor/learn_webpack/commit/982688a)
  eslint | test | [e9b27a0](https://github.com/luoxue-victor/learn_webpack/commit/e9b27a0)
+ test | eslint | [de72f2e](https://github.com/luoxue-victor/learn_webpack/commit/de72f2e)
  test | eslint | [d75c7fb](https://github.com/luoxue-victor/learn_webpack/commit/d75c7fb)
 
 ## [1.2.13](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.12...v1.2.13) (2020-01-11)

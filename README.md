@@ -1,10 +1,10 @@
 <div align="center">
 
-# webpack 工程师的自我修养
+# 制定你自己的前端工作流
 
 ![logo](public/asset/logo-mini2.png)
 
-### <strong>webpack-box</strong>
+### <strong>fe-workflow</strong>
 
 [![npm][npm]][github-url]
 [![node][node]][node-url]
@@ -17,14 +17,23 @@
 
 </div>
 
-### 为什么使用 webpack-box？
+## 为什么使用 fe-workflow？
+
+本项目经多多次迭代，终于迎来了第三次革命。以 `@pkb/cli` 脚手架为根本，创建/配置项目，以 `webpack-box` 为服务，打包/运行项目。以 `workflow-ui` 为平台，构建工作流。
+
+### @pkb/cli 脚手架
+
+`@pkb/cli` 为本项目的脚手架，可用来生成项目、添加插件、检查项目配置、升级更新等等，主要的功能就是对整体项目的管理。
+
+### webpack-box 服务
 
 1. webpack-box 是一个对 webpack 进行了封装的开箱即用的项目。集成了 webpack 的各种优化，配置了 webpack 常用到的 loader 和 plugin，原则上您不需要做任何配置就可以使用。
 2. webpack-box 使用 webpack-chain 的方式进行的配置，您可以更加灵活的对 webpack 中的配置进行修改。
 3. webpack-box 支持插件配置，您可以使用插件管理项目配置，可以多项目复用
 4. 您也可以当作参考手册，来这里找到任何想要的 webpack 配置
 5. 如果想要从头系统学习，可以切换到不同分支上，我把每课时的内容都分别切成了不同的分支，您可以在这些分支上自由尝试
-6. 本项目诚邀所有共建者，一起来完善，无论你提供了多少的代码都可以被展示在贡献者名单内！
+
+#### 本项目诚邀所有共建者，一起来完善，无论你提供了多少的代码都可以被展示在贡献者名单内！
 
 ### 开发&学习
 
