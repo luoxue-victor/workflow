@@ -22,7 +22,7 @@
   "main": "index.js",
   "devDependencies": {
     "@commitlint/config-conventional": "^8.2.0",
-    "@pkb/webpack-box": "^1.2.11",
+    "@pkb/webpack-box": "^1.2.12",
     "@pkb/cli": "^1.2.10",
     "@pkb/plugin-eslint": "^1.2.10",
     "@pkb/plugin-react": "^1.2.10",
