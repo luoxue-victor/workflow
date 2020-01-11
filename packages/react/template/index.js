@@ -12,4 +12,4 @@ dsn && Sentry.init({
   dsn
 })
 
-ReactDom.render(<App/>, document.getElementById('app'));
+ReactDom.render(<App/>, document.getElementById('app'))
