@@ -1,4 +1,4 @@
-## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.13...v1.0.9) (2020-01-11)
+## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.13...v1.0.9) (2020-01-12)
 
 ### 🐛 Bug 修复
 范围|描述|commitId
@@ -7,6 +7,12 @@
  eslint | test | [e9b27a0](https://github.com/luoxue-victor/learn_webpack/commit/e9b27a0)
  test | eslint | [de72f2e](https://github.com/luoxue-victor/learn_webpack/commit/de72f2e)
  test | eslint | [d75c7fb](https://github.com/luoxue-victor/learn_webpack/commit/d75c7fb)
+
+
+### 📝 文档
+范围|描述|commitId
+--|--|--
+ readme | 本项目第三次革命 | [c22ab63](https://github.com/luoxue-victor/learn_webpack/commit/c22ab63)
 
 ## [1.2.13](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.12...v1.2.13) (2020-01-11)
 
