@@ -10,7 +10,6 @@ const PackageManager = require('./util/ProjectPackageManager')
 const { clearConsole } = require('./util/clearConsole')
 const PromptModuleAPI = require('./PromptModuleAPI')
 const writeFileTree = require('./util/writeFileTree')
-const loadLocalPreset = require('./util/loadLocalPreset')
 const loadRemotePreset = require('./util/loadRemotePreset')
 const generateReadme = require('./util/generateReadme')
 
@@ -67,26 +66,9 @@ module.exports = class Creator extends EventEmitter {
     const { run, name, context, afterInvokeCbs, afterAnyInvokeCbs } = this
 
     if (!preset) {
-      if (cliOptions.preset) {
-        // vue create foo --preset bar
-        preset = await this.resolvePreset(cliOptions.preset, cliOptions.clone)
-      } else if (cliOptions.default) {
-        // vue create foo --default
-        preset = defaults.presets.default
-      } else if (cliOptions.inlinePreset) {
-        // vue create foo --inlinePreset {...}
-        try {
-          preset = JSON.parse(cliOptions.inlinePreset)
-        } catch (e) {
-          error(`CLI内联预置不是有效的JSON: ${cliOptions.inlinePreset}`)
-          exit(1)
-        }
-      } else {
-        preset = await this.promptAndResolvePreset()
-      }
+      preset = await this.promptAndResolvePreset()
     }
 
-    // clone before mutating
     preset = cloneDeep(preset)
 
     const packageManager = (
@@ -144,12 +126,6 @@ module.exports = class Creator extends EventEmitter {
     log('⚙  初始化插件. 可能需要等一会...')
     log()
     this.emit('creation', { event: 'plugins-install' })
-
-    if (isTestOrDebug && !process.env.VUE_CLI_TEST_DO_INSTALL_PLUGIN) {
-      await require('./util/setupDevProject')(context)
-    } else {
-      await pm.install()
-    }
 
     // run generator
     log('🚀  创建中...')
@@ -284,8 +260,6 @@ module.exports = class Creator extends EventEmitter {
 
     if (name in savedPresets) {
       preset = savedPresets[name]
-    } else if (name.endsWith('.json') || /^\./.test(name) || path.isAbsolute(name)) {
-      preset = await loadLocalPreset(path.resolve(name))
     } else if (name.includes('/')) {
       logWithSpinner(`Fetching remote preset ${chalk.cyan(name)}...`)
       this.emit('creation', { event: 'fetch-remote-preset' })
