@@ -8,7 +8,7 @@ const mergeDeps = require('./util/mergeDeps')
 const runCodemod = require('./util/runCodemod')
 const stringifyJS = require('./util/stringifyJS')
 const ConfigTransform = require('./ConfigTransform')
-const { semver, getPluginLink, toShortPluginId, loadModule } = require('@pkb/shared-utils')
+const { semver, toShortPluginId, loadModule } = require('@pkb/shared-utils')
 
 const isString = val => typeof val === 'string'
 const isFunction = val => typeof val === 'function'
@@ -28,15 +28,11 @@ class GeneratorAPI {
     this.options = options
     this.rootOptions = rootOptions
 
-    /* eslint-disable no-shadow */
     this.pluginsData = generator.plugins
       .filter(({ id }) => id !== '@vue/cli-service')
       .map(({ id }) => ({
-        name: toShortPluginId(id),
-        link: getPluginLink(id)
+        name: toShortPluginId(id)
       }))
-    /* eslint-enable no-shadow */
-
     this._entryFile = undefined
   }
 

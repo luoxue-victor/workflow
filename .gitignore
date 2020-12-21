@@ -4,3 +4,4 @@ dist
 .idea
 .vscode
 coverage
+package-lock.json

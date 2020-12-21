@@ -1,3 +1,19 @@
+const oriRequie = require
+
+// eslint-disable-next-line
+require = (path) => {
+  if (/^[@pkb]/.test(path)) {
+    const name = path.replace('@pkb/', '')
+    try {
+      return oriRequie(`../../${name}`)
+    } catch (error) {
+      oriRequie(path)
+    }
+  }
+
+  return oriRequie(path)
+}
+
 const invoke = require('./invoke')
 const {
   chalk,
@@ -19,6 +35,8 @@ async function add(pluginName, options = {}, context = process.cwd()) {
   }
 
   const packageName = resolvePluginId(pluginName)
+
+  console.log(packageName)
 
   log()
   log(`📦  正在安装 ${chalk.cyan(packageName)}...`)

@@ -1,11 +1,3 @@
-/**
- * Copyright (c) 2015-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file at
- * https://github.com/facebook/create-react-app/blob/master/LICENSE
- */
-
 const open = require('open')
 const execa = require('execa')
 const chalk = require('chalk')

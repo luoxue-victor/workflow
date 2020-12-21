@@ -66,8 +66,3 @@ exports.clearConsole = title => {
     }
   }
 }
-
-// silent all logs except errors during tests and keep record
-if (process.env.VUE_CLI_TEST) {
-  require('./_silence')('logs', exports)
-}

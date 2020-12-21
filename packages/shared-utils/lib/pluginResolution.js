@@ -1,26 +1,16 @@
-const vuePluginRE = /^(@vue\/|vue-|@[\w-]+(\.)?[\w-]+\/vue-)(cli-)?plugin-/
 const scopeRE = /^@[\w-]+(\.)?[\w-]+\//
-const vueOfficialRE = /^@vue\//
-
 const pkPluginRE = exports.pkPluginRE = /^(@pkb\/|pk-|@[\w-]+(\.)?[\w-]+\/pk-)(cli-)?plugin-/
 const pbOfficialRE = /^@pkb\//
 const path = require('path')
-const vueOfficialPlugins = [
-  'babel',
-  'e2e-cypress',
-  'e2e-nightwatch',
+
+const pkbOfficialPlugins = [
+  'cli',
   'eslint',
-  'pwa',
-  'router',
-  'typescript',
-  'unit-jest',
-  'unit-mocha',
-  'vuex'
+  'react',
+  'tslint'
 ]
 
-const pkbOfficialPlugins = []
-
-exports.isPlugin = id => vuePluginRE.test(id) || pkPluginRE.test(id)
+exports.isPlugin = id => pkPluginRE.test(id)
 
 exports.isOfficialPlugin = id => exports.isPlugin(id) && pbOfficialRE.test(id)
 
@@ -39,16 +29,13 @@ exports.getAllPluginIdOfPackageJson = () => {
 }
 
 exports.resolvePluginId = id => {
-  if (vuePluginRE.test(id) || pkPluginRE.test(id)) {
+  if (pkPluginRE.test(id)) {
     return id
   }
-  if (vueOfficialPlugins.includes(id)) {
-    return `@vue/cli-plugin-${id}`
-  }
   if (pkbOfficialPlugins.includes(id)) {
-    return `@pkb/cli-plugin-${id}`
+    return `@pkb/plugin-${id}`
   }
-  // e.g. @pkb/foo, @pkb/foo
+
   if (id.charAt(0) === '@') {
     const scopeMatch = id.match(scopeRE)
     if (scopeMatch) {
@@ -65,10 +52,8 @@ exports.resolvePluginId = id => {
       return ii
     }
   }
-  // e.g. foo
-  const { spawnSync } = require('child_process')
-  const status = spawnSync('npm', ['view', `pk-cli-plugin-${id}`]).status
-  return `${status === 0 ? 'pk' : 'vue'}-cli-plugin-${id}`
+
+  return `pk-cli-plugin-${id}`
 }
 
 exports.matchesPluginId = (input, full) => {
@@ -80,22 +65,5 @@ exports.matchesPluginId = (input, full) => {
     short === input ||
     // input is short with scope
     short === input.replace(scopeRE, '')
-  )
-}
-
-exports.getPluginLink = id => {
-  if (vueOfficialRE.test(id)) {
-    return `https://github.com/luoxue-victor/webpack-box/tree/master/packages/cli-plugin-${
-      exports.toShortPluginId(id)
-    }`
-  }
-  let pkg = {}
-  try {
-    pkg = require(`${id}/package.json`)
-  } catch (e) {}
-  return (
-    pkg.homepage ||
-    (pkg.repository && pkg.repository.url) ||
-    `https://www.npmjs.com/package/${id.replace('/', '%2F')}`
   )
 }
