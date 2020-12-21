@@ -1,6 +1,6 @@
 {
   "name": "@pkb/cli",
-  "version": "1.2.15",
+  "version": "1.2.16",
   "bin": {
     "pk": "bin/index.js"
   },
@@ -8,7 +8,7 @@
   "author": "luoxue",
   "main": "index.js",
   "dependencies": {
-    "@pkb/shared-utils": "^1.2.10",
+    "@pkb/shared-utils": "^1.2.16",
     "boxen": "^4.1.0",
     "chalk": "^3.0.0",
     "commander": "^4.0.1",
