@@ -1,4 +1,10 @@
-## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.13...v1.0.9) (2020-12-21)
+## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.14...v1.0.9) (2020-12-21)
+## [1.2.14](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.13...v1.2.14) (2020-12-21)
+
+范围|描述|commitId
+--|--|--
+ v1.2.14 | [3105af2](https://github.com/luoxue-victor/learn_webpack/commit/3105af2)
+
 
 ### 🐛 Bug 修复
 范围|描述|commitId
@@ -20,6 +26,12 @@
 范围|描述|commitId
 --|--|--
  / | 增加不同IDE代码格式问题 | [521a355](https://github.com/luoxue-victor/learn_webpack/commit/521a355)
+
+
+### 🔨 代码重构
+范围|描述|commitId
+--|--|--
+ cli | cli 瘦身 | [151c787](https://github.com/luoxue-victor/learn_webpack/commit/151c787)
 
 
 ### chore
