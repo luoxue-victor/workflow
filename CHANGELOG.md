@@ -1,4 +1,16 @@
-## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.14...v1.0.9) (2020-12-21)
+## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.15...v1.0.9) (2020-12-21)
+## [1.2.15](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.14...v1.2.15) (2020-12-21)
+
+范围|描述|commitId
+--|--|--
+ v1.2.15 | [edee920](https://github.com/luoxue-victor/learn_webpack/commit/edee920)
+
+
+### 🔨 代码重构
+范围|描述|commitId
+--|--|--
+ version | 提交版本号 1.2.14 | [8a8da46](https://github.com/luoxue-victor/learn_webpack/commit/8a8da46)
+
 ## [1.2.14](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.13...v1.2.14) (2020-12-21)
 
 范围|描述|commitId
