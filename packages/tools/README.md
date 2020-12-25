@@ -1,5 +1,9 @@
 ## node 工具
 
+```sh
+npm i -g @pkb/tools
+```
+
 ### 提交 commit
 
 命令行
