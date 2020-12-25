@@ -1,4 +1,10 @@
 ## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.3.0...v1.0.9) (2020-12-25)
+
+### 📝 文档
+范围|描述|commitId
+--|--|--
+ tools | 修改文档 | [47c7a7a](https://github.com/luoxue-victor/learn_webpack/commit/47c7a7a)
+
 # [1.3.0](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.18...v1.3.0) (2020-12-25)
 
 范围|描述|commitId

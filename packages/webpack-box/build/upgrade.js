@@ -27,8 +27,8 @@ module.exports = function (options) {
     console.log()
     if (v === '5') {
       return {
-        'html-webpack-plugin': '^4.0.0-beta.11',
-        webpack: '^5.0.0-beta.9'
+        'html-webpack-plugin': '^4.5.0',
+        webpack: '^5.11.0'
       }
     } else {
       return {
