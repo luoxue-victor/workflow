@@ -1,4 +1,10 @@
 ## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.16...v1.0.9) (2020-12-25)
+
+### 🌟 新功能
+范围|描述|commitId
+--|--|--
+ tools | 增加node tools | [427c1d1](https://github.com/luoxue-victor/learn_webpack/commit/427c1d1)
+
 ## [1.2.16](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.15...v1.2.16) (2020-12-21)
 
 范围|描述|commitId
