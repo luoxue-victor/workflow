@@ -1,6 +1,6 @@
 {
   "name": "@pkb/tools",
-  "version": "1.2.18",
+  "version": "1.2.19",
   "bin": {
     "tls": "bin/index.js"
   },
@@ -30,5 +30,5 @@
     "vue-jscodeshift-adapter": "^2.0.2",
     "yaml-front-matter": "^4.0.0"
   },
-  "gitHead": "3105af2c4b0b9c65d9e6cc9e00b8f12333964312"
+  "gitHead": "9c0313c0f8ad7aa891cdf284d78188d9232ab453"
 }

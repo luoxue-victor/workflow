@@ -1,9 +1,21 @@
-## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.16...v1.0.9) (2020-12-25)
+## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.18...v1.0.9) (2020-12-25)
+## [1.2.18](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.16...v1.2.18) (2020-12-25)
+
+范围|描述|commitId
+--|--|--
+ v1.2.18 | [9c0313c](https://github.com/luoxue-victor/learn_webpack/commit/9c0313c)
+
 
 ### 🌟 新功能
 范围|描述|commitId
 --|--|--
  tools | 增加node tools | [427c1d1](https://github.com/luoxue-victor/learn_webpack/commit/427c1d1)
+
+
+### 🐛 Bug 修复
+范围|描述|commitId
+--|--|--
+ tools | 添加gitignore | [95b7fdd](https://github.com/luoxue-victor/learn_webpack/commit/95b7fdd)
 
 ## [1.2.16](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.15...v1.2.16) (2020-12-21)
 
