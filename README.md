@@ -267,7 +267,7 @@ module.exports = function (config) {
     entry: 'src/main.js',
     output: 'dist',
     publicPath: '/common/',
-    port: 9000,
+    port: 9001,
     mock: true,
     env: {
       REACT: 'react' // 配置 react

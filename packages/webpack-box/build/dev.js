@@ -1,3 +1,5 @@
+const { tryUsePort } = require('@pkb/tools/util/checkPort')
+
 module.exports = function (options) {
   const config = require('./base')(options)
   const webpack = require('webpack')
@@ -33,19 +35,23 @@ module.exports = function (options) {
       })
     })
   })
-  // 监听端口
-  server.listen(port)
 
-  new Promise(() => {
-    compiler.hooks.done.tap('dev', stats => {
-      const empty = '    '
-      const common = `
-    App running at:
-    - dev  at: http://localhost:${port}${publicPath}
-${options.mock ? `    - mock at: http://localhost:${port}/api/users/12` : ''}
-`
-      docker()
-      console.log(chalk.cyan('\n' + empty + common))
+  // 监听端口
+  tryUsePort(port, function (port) {
+    console.log(port + ' ====端口：' + port + '可用====\n')
+    server.listen(port)
+
+    new Promise(() => {
+      compiler.hooks.done.tap('dev', stats => {
+        const empty = '    '
+        const common = `
+      App running at:
+      - dev  at: http://localhost:${port}${publicPath}
+  ${options.mock ? `    - mock at: http://localhost:${port}/api/users/12` : ''}
+  `
+        docker()
+        console.log(chalk.cyan('\n' + empty + common))
+      })
     })
   })
 }

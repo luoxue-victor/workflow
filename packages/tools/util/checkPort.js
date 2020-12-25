@@ -21,7 +21,7 @@ function tryUsePort (port, _portAvailableCallback) {
     _portAvailableCallback(port)
   }).catch(() => {
     console.log(port + '被占用')
-    port += 10
+    port += 1
     tryUsePort(port, _portAvailableCallback)
   })
 }

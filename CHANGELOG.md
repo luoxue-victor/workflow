@@ -1,4 +1,16 @@
-## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.3.1...v1.0.9) (2020-12-25)
+## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.3.2...v1.0.9) (2020-12-25)
+## [1.3.2](https://github.com/luoxue-victor/learn_webpack/compare/v1.3.1...v1.3.2) (2020-12-25)
+
+范围|描述|commitId
+--|--|--
+ v1.3.2 | [fadee3e](https://github.com/luoxue-victor/learn_webpack/commit/fadee3e)
+
+
+### 🐛 Bug 修复
+范围|描述|commitId
+--|--|--
+ webpack-box | 升级webpack5 | [a5b3a59](https://github.com/luoxue-victor/learn_webpack/commit/a5b3a59)
+
 ## [1.3.1](https://github.com/luoxue-victor/learn_webpack/compare/v1.3.0...v1.3.1) (2020-12-25)
 
 范围|描述|commitId
