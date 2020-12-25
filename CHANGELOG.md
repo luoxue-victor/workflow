@@ -1,4 +1,16 @@
-## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.3.0...v1.0.9) (2020-12-25)
+## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.3.1...v1.0.9) (2020-12-25)
+## [1.3.1](https://github.com/luoxue-victor/learn_webpack/compare/v1.3.0...v1.3.1) (2020-12-25)
+
+范围|描述|commitId
+--|--|--
+ v1.3.1 | [f3c56d9](https://github.com/luoxue-victor/learn_webpack/commit/f3c56d9)
+
+
+### 🌟 新功能
+范围|描述|commitId
+--|--|--
+ webpack-box | 切换webpack版本为5 | [71c4a0d](https://github.com/luoxue-victor/learn_webpack/commit/71c4a0d)
+
 
 ### 📝 文档
 范围|描述|commitId

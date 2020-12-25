@@ -29,9 +29,9 @@ module.exports = ({ config, webpackVersion, resolve, options }) => {
       .filename(`js/${options.filenameHashing ? `[name]${isV5 ? '.[contenthash:8]' : ''}` : ''}.bundle.js`)
       .publicPath(publicPath)
 
-    if (isV5) {
-      config.output.set('ecmaVersion', 6)
-    }
+    // if (isV5) {
+    //   config.output.set('ecmaVersion', 6)
+    // }
     config.devtool('cheap-source-map')
   }
 }
