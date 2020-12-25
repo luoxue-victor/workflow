@@ -1,3 +1,9 @@
+/**
+ * 添加插件
+ * @use
+ * pk add <paluginName>
+ */
+
 const oriRequie = require
 
 // eslint-disable-next-line
@@ -14,6 +20,7 @@ require = (path) => {
   return oriRequie(path)
 }
 
+// -------------以上为本地调试，修改了 require-------------------
 const invoke = require('./invoke')
 const {
   chalk,

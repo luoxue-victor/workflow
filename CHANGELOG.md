@@ -1,8 +1,15 @@
-## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.15...v1.0.9) (2020-12-21)
+## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.16...v1.0.9) (2020-12-25)
+## [1.2.16](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.15...v1.2.16) (2020-12-21)
+
+范围|描述|commitId
+--|--|--
+ v1.2.16 | [4f253e3](https://github.com/luoxue-victor/learn_webpack/commit/4f253e3)
+
 
 ### 🌟 新功能
 范围|描述|commitId
 --|--|--
+ add.js | cli 添加本地调试 | [858b1ec](https://github.com/luoxue-victor/learn_webpack/commit/858b1ec)
  cli | 瘦身~~~ | [2ce390b](https://github.com/luoxue-victor/learn_webpack/commit/2ce390b)
 
 ## [1.2.15](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.14...v1.2.15) (2020-12-21)

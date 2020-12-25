@@ -1,0 +1,34 @@
+{
+  "name": "@pkb/tools",
+  "version": "1.0.0",
+  "bin": {
+    "tls": "bin/index.js"
+  },
+  "description": "tools 是 node 的工具集",
+  "author": "luoxue",
+  "main": "index.js",
+  "dependencies": {
+    "@pkb/shared-utils": "^1.2.16",
+    "boxen": "^4.1.0",
+    "chalk": "^3.0.0",
+    "commander": "^4.0.1",
+    "debug": "^4.1.1",
+    "deepmerge": "^4.2.2",
+    "didyoumean": "^1.2.1",
+    "ejs": "^3.0.1",
+    "envinfo": "^7.5.0",
+    "execa": "^3.4.0",
+    "fs-extra": "^8.1.0",
+    "globby": "^10.0.1",
+    "inquirer": "^7.0.0",
+    "isbinaryfile": "^4.0.2",
+    "jscodeshift": "^0.6.4",
+    "lodash.clonedeep": "^4.5.0",
+    "resolve": "^1.13.1",
+    "semver": "^6.3.0",
+    "validate-npm-package-name": "^3.0.0",
+    "vue-jscodeshift-adapter": "^2.0.2",
+    "yaml-front-matter": "^4.0.0"
+  },
+  "gitHead": "3105af2c4b0b9c65d9e6cc9e00b8f12333964312"
+}

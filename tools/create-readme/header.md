@@ -4,7 +4,7 @@
 
 ![logo](public/asset/logo-mini2.png)
 
-### <strong>fe-workflow</strong>
+### <strong>workflow</strong>
 
 [![npm][npm]][github-url]
 [![node][node]][node-url]
@@ -17,11 +17,11 @@
 
 </div>
 
-## 为什么使用 fe-workflow？
+## 为什么使用 workflow？
 
-本项目经多多次迭代，终于迎来了第三次革命。以 `@pkb/cli` 脚手架为根本，创建/配置项目，以 `webpack-box` 为服务，打包/运行项目。以 `workflow-ui` 为平台，构建工作流。
+本项目经多多次迭代，终于迎来了第三次革命。以 `@pkb/cli` 脚手架为根本，创建/配置项目，以 `webpack-box` 为服务，打包/运行项目。以 `workflow-ui` 为平台，构建工作流。另增加 node 工具命令行，让您可以更方便使用工具。
 
-### fe-workflow 有哪些优势
+### workflow 有哪些优势
 
 - 📦 使用了目前最流行的打包工具 webpack，且使用 webpack-chain 进行 webpack 配置
 - 🏈 约定式目录
@@ -36,6 +36,7 @@
 - 🏠 监控（性能监控、异常错误监控）
 - 🌴 界面化管理项目（待完成）
 - 🍎 可扩展
+- 🔧 node 工具
 
 ### @pkb/cli 脚手架
 
@@ -48,7 +49,9 @@
 3. 您也可以当作参考手册，来这里找到任何想要的 webpack 配置
 4. 如果想要从头系统学习，可以切换到不同分支上，我把每课时的内容都分别切成了不同的分支，您可以在这些分支上自由尝试
 
-#### 本项目诚邀所有共建者，一起来完善，无论你提供了多少的代码都可以被展示在贡献者名单内！
+### node 工具集
+
+- [node 工具](./packages/tools/README.md)
 
 ### 开发&学习
 
