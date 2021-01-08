@@ -78,7 +78,7 @@
 
 ### 所有课题
 
-<details >
+<details open=“open”>
   <summary>点击关闭/打开所有课题</summary> 
   <br/>
 

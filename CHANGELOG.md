@@ -1,4 +1,16 @@
-## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.3.2...v1.0.9) (2020-12-25)
+## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.3.3...v1.0.9) (2021-01-08)
+## [1.3.3](https://github.com/luoxue-victor/learn_webpack/compare/v1.3.2...v1.3.3) (2020-12-25)
+
+范围|描述|commitId
+--|--|--
+ v1.3.3 | [d46e9c8](https://github.com/luoxue-victor/learn_webpack/commit/d46e9c8)
+
+
+### 🌟 新功能
+范围|描述|commitId
+--|--|--
+ webpack-box | 端口号被占用自动增加 | [c899db0](https://github.com/luoxue-victor/learn_webpack/commit/c899db0)
+
 ## [1.3.2](https://github.com/luoxue-victor/learn_webpack/compare/v1.3.1...v1.3.2) (2020-12-25)
 
 范围|描述|commitId
