@@ -2,7 +2,7 @@
   "name": "box",
   "version": "1.0.9",
   "private": true,
-  "description": "前端项目最佳实践集合",
+  "description": "构建你的工作流",
   "author": "jijiang",
   "workspaces": [
     "packages/*"
