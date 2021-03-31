@@ -1,0 +1,10 @@
+{
+  "name": "rollup-box",
+  "version": "1.2.16",
+  "description": "使用 rollup 打包",
+  "author": "luoxue",
+  "main": "index.js",
+  "bin": {
+    "rollup-box": "bin/index.js"
+  }
+}

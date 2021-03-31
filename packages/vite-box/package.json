@@ -1,0 +1,10 @@
+{
+  "name": "vite-box",
+  "version": "1.2.16",
+  "description": "使用 vite 打包",
+  "author": "luoxue",
+  "main": "index.js",
+  "bin": {
+    "vite-box": "bin/index.js"
+  }
+}

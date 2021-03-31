@@ -4,7 +4,7 @@
   "bin": {
     "pk": "bin/index.js"
   },
-  "description": "webpack-box 全局脚手架，用于全局操作项目，项目配置检查、生成项目、添加插件等等",
+  "description": "全局脚手架，用于全局操作项目，项目配置检查、生成项目、添加插件等等",
   "author": "luoxue",
   "main": "index.js",
   "dependencies": {

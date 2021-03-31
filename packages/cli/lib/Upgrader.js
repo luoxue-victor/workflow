@@ -4,17 +4,13 @@ const {
   chalk,
   execa,
   semver,
-
   log,
   done,
-
   logWithSpinner,
   stopSpinner,
-
   isPlugin,
   resolvePluginId,
   loadModule,
-
   hasProjectGit
 } = require('@pkb/shared-utils')
 
@@ -130,7 +126,6 @@ module.exports = class Upgrader {
 
     log(`🚀  Running migrator of ${packageName}`)
     await migrator.generate({
-      extractConfigFiles: true,
       checkExisting: true
     })
 

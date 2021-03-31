@@ -1,7 +1,7 @@
 {
   "name": "@pkb/plugin-react",
   "version": "1.2.15",
-  "description": "webpack-box 插件，配置react",
+  "description": "pk 插件，配置react",
   "author": "luoxue",
   "main": "index.js",
   "dependencies": {

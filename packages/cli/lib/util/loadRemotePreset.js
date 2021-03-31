@@ -7,8 +7,6 @@ module.exports = async function fetchRemotePreset (name, clone) {
   const download = require('download-git-repo')
   const tmpdir = path.join(os.tmpdir(), 'vue-cli')
 
-  // clone will fail if tmpdir already exists
-  // https://github.com/flipxfx/download-git-repo/issues/41
   if (clone) {
     await fs.remove(tmpdir)
   }

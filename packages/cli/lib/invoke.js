@@ -119,7 +119,6 @@ async function runGenerator (context, plugin, pkg = getPkg(context)) {
   log()
   log(`🚀  Invoking generator for ${plugin.id}...`)
   await generator.generate({
-    extractConfigFiles: true,
     checkExisting: true
   })
 

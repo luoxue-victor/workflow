@@ -14,28 +14,9 @@ program
 
 program
   .command('create <app-name>')
-  .description('create a new project powered by vue-cli-service')
-  .option('-p, --preset <presetName>', 'Skip prompts and use saved or remote preset')
-  .option('-d, --default', 'Skip prompts and use default preset')
-  .option('-i, --inlinePreset <json>', 'Skip prompts and use inline JSON string as preset')
-  .option('-m, --packageManager <command>', 'Use specified npm client when installing dependencies')
-  .option('-r, --registry <url>', 'Use specified npm registry when installing dependencies (only for npm)')
-  .option('-g, --git [message]', 'Force git initialization with initial commit message')
-  .option('-n, --no-git', 'Skip git initialization')
-  .option('-f, --force', 'Overwrite target directory if it exists')
-  .option('-c, --clone', 'Use git clone when fetching remote preset')
-  .option('-x, --proxy', 'Use specified proxy when creating project')
-  .option('-b, --bare', 'Scaffold project without beginner instructions')
-  .option('--skipGetStarted', 'Skip displaying "Get started" instructions')
+  .description('创建一个项目')
   .action((name, cmd) => {
     const options = cleanArgs(cmd)
-
-    if (minimist(process.argv.slice(3))._.length > 1) {
-      console.log(chalk.yellow('\n Info: You provided more than one argument. The first one will be used as the app\'s name, the rest are ignored.'))
-    }
-    if (process.argv.includes('-g') || process.argv.includes('--git')) {
-      options.forceGit = true
-    }
     require('../lib/create')(name, options)
   })
 
@@ -93,26 +74,6 @@ program
   .action((cmd) => {
     checkNodeVersion('>=8.6', 'vue ui')
     require('../lib/ui')(cleanArgs(cmd))
-  })
-
-program
-  .command('config [value]')
-  .description('inspect and modify the config')
-  .option('-g, --get <path>', 'get value from option')
-  .option('-s, --set <path> <value>', 'set option value')
-  .option('-d, --delete <path>', 'delete option from config')
-  .option('-e, --edit', 'open config with default editor')
-  .option('--json', 'outputs JSON result only')
-  .action((value, cmd) => {
-    require('../lib/config')(value, cleanArgs(cmd))
-  })
-
-program
-  .command('outdated')
-  .description('(experimental) check for outdated vue cli service / plugins')
-  .option('--next', 'Also check for alpha / beta / rc versions when upgrading')
-  .action((cmd) => {
-    require('../lib/outdated')(cleanArgs(cmd))
   })
 
 program

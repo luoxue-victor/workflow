@@ -1,5 +1,4 @@
 const ejs = require('ejs')
-const debug = require('debug')
 const GeneratorAPI = require('./GeneratorAPI')
 const PackageManager = require('./util/ProjectPackageManager')
 const sortObject = require('./util/sortObject')
@@ -9,15 +8,13 @@ const normalizeFilePaths = require('./util/normalizeFilePaths')
 const runCodemod = require('./util/runCodemod')
 const {
   semver,
-
   isPlugin,
   toShortPluginId,
   matchesPluginId,
-
   loadModule
 } = require('@pkb/shared-utils')
-const ConfigTransform = require('./ConfigTransform')
 
+const ConfigTransform = require('./ConfigTransform')
 const logger = require('@pkb/shared-utils/lib/logger')
 const logTypes = {
   log: logger.log,
@@ -25,38 +22,6 @@ const logTypes = {
   done: logger.done,
   warn: logger.warn,
   error: logger.error
-}
-
-const defaultConfigTransforms = {
-  babel: new ConfigTransform({
-    file: {
-      js: ['babel.config.js']
-    }
-  }),
-  postcss: new ConfigTransform({
-    file: {
-      js: ['postcss.config.js'],
-      json: ['.postcssrc.json', '.postcssrc'],
-      yaml: ['.postcssrc.yaml', '.postcssrc.yml']
-    }
-  }),
-  eslintConfig: new ConfigTransform({
-    file: {
-      js: ['.eslintrc.js'],
-      json: ['.eslintrc', '.eslintrc.json'],
-      yaml: ['.eslintrc.yaml', '.eslintrc.yml']
-    }
-  }),
-  jest: new ConfigTransform({
-    file: {
-      js: ['jest.config.js']
-    }
-  }),
-  browserslist: new ConfigTransform({
-    file: {
-      lines: ['.browserslistrc']
-    }
-  })
 }
 
 const reservedConfigTransforms = {
@@ -90,24 +55,18 @@ module.exports = class Generator {
     this.pm = new PackageManager({ context })
     this.imports = {}
     this.rootOptions = {}
-    // we don't load the passed afterInvokes yet because we want to ignore them from other plugins
     this.passedAfterInvokeCbs = afterInvokeCbs
     this.afterInvokeCbs = []
     this.afterAnyInvokeCbs = afterAnyInvokeCbs
     this.configTransforms = {}
-    this.defaultConfigTransforms = defaultConfigTransforms
     this.reservedConfigTransforms = reservedConfigTransforms
     this.invoking = invoking
-    // for conflict resolution
     this.depSources = {}
-    // virtual file tree
     this.files = files
     this.fileMiddlewares = []
     this.postProcessFilesCbs = []
-    // exit messages
     this.exitLogs = []
 
-    // load all the other plugins
     this.allPluginIds = Object.keys(this.pkg.dependencies || {})
       .concat(Object.keys(this.pkg.devDependencies || {}))
       .filter(isPlugin)
@@ -123,7 +82,6 @@ module.exports = class Generator {
   async initPlugins () {
     const { rootOptions, invoking } = this
     const pluginIds = this.plugins.map(p => p.id)
-    // apply hooks from all plugins
     for (const id of this.allPluginIds) {
       const api = new GeneratorAPI(id, this, {}, rootOptions)
       const pluginGenerator = loadModule(`${id}/generator`, this.context)
@@ -133,8 +91,6 @@ module.exports = class Generator {
       }
     }
 
-    // We are doing save/load to make the hook order deterministic
-    // save "any" hooks
     const afterAnyInvokeCbsFromPlugins = this.afterAnyInvokeCbs
 
     // reset hooks
@@ -161,15 +117,12 @@ module.exports = class Generator {
   }
 
   async generate ({
-    extractConfigFiles = false,
     checkExisting = false
   } = {}) {
     await this.initPlugins()
 
     // save the file system before applying plugin for comparison
     const initialFiles = Object.assign({}, this.files)
-    // extract configs from package.json into dedicated files.
-    this.extractConfigFiles(extractConfigFiles, checkExisting)
     // wait for file resolve
     await this.resolveFiles()
     // set package.json
@@ -177,48 +130,6 @@ module.exports = class Generator {
     this.files['package.json'] = JSON.stringify(this.pkg, null, 2) + '\n'
     // write/update file tree to disk
     await writeFileTree(this.context, this.files, initialFiles)
-  }
-
-  extractConfigFiles (extractAll, checkExisting) {
-    const configTransforms = Object.assign({},
-      defaultConfigTransforms,
-      this.configTransforms,
-      reservedConfigTransforms
-    )
-    const extract = key => {
-      if (
-        configTransforms[key] &&
-        this.pkg[key] &&
-        // do not extract if the field exists in original package.json
-        !this.originalPkg[key]
-      ) {
-        const value = this.pkg[key]
-        const configTransform = configTransforms[key]
-        const res = configTransform.transform(
-          value,
-          checkExisting,
-          this.files,
-          this.context
-        )
-        const { content, filename } = res
-        this.files[filename] = ensureEOL(content)
-        delete this.pkg[key]
-      }
-    }
-    if (extractAll) {
-      for (const key in this.pkg) {
-        extract(key)
-      }
-    } else {
-      if (!process.env.VUE_CLI_TEST) {
-        // by default, always extract vue.config.js
-        extract('vue')
-      }
-      // always extract babel.config.js as this is the only way to apply
-      // project-wide configuration even to dependencies.
-      // TODO: this can be removed when Babel supports root: true in package.json
-      extract('babel')
-    }
   }
 
   sortPkg () {
@@ -250,16 +161,12 @@ module.exports = class Generator {
       'dependencies',
       'devDependencies',
       'peerDependencies',
-      'vue',
       'babel',
       'eslintConfig',
       'prettier',
       'postcss',
-      'browserslist',
-      'jest'
+      'browserslist'
     ])
-
-    debug('vue:cli-pkg')(this.pkg)
   }
 
   async resolveFiles () {
@@ -298,7 +205,6 @@ module.exports = class Generator {
     for (const postProcess of this.postProcessFilesCbs) {
       await postProcess(files)
     }
-    debug('vue:cli-files')(this.files)
   }
 
   hasPlugin (_id, _version) {

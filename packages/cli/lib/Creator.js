@@ -1,10 +1,8 @@
-const path = require('path')
 const debug = require('debug')
 const inquirer = require('inquirer')
 const EventEmitter = require('events')
 const Generator = require('./Generator')
 const cloneDeep = require('lodash.clonedeep')
-const sortObject = require('./util/sortObject')
 const getVersions = require('./util/getVersions')
 const PackageManager = require('./util/ProjectPackageManager')
 const { clearConsole } = require('./util/clearConsole')
@@ -30,15 +28,12 @@ const {
   logWithSpinner,
   stopSpinner,
   hasGit,
-  hasProjectGit,
   hasYarn,
   hasPnpm3OrLater,
   hasPnpmVersionOrLater,
   exit,
   loadModule
 } = require('@pkb/shared-utils')
-
-const isManualMode = answers => answers.preset === '__manual__'
 
 module.exports = class Creator extends EventEmitter {
   constructor (name, context, promptModules) {
@@ -103,7 +98,6 @@ module.exports = class Creator extends EventEmitter {
         return
       }
 
-      // 此处需要兼容 mark
       pkg.devDependencies[dep] = (
         preset.plugins[dep].version ||
         ((/^@vue/.test(dep)) ? `^${latestMinor}` : 'latest')
@@ -121,7 +115,6 @@ module.exports = class Creator extends EventEmitter {
       await run('git init')
     }
 
-    // install plugins
     stopSpinner()
     log('⚙  初始化插件. 可能需要等一会...')
     log()
@@ -136,10 +129,6 @@ module.exports = class Creator extends EventEmitter {
       plugins,
       afterInvokeCbs,
       afterAnyInvokeCbs
-    })
-
-    await generator.generate({
-      extractConfigFiles: preset.useConfigFiles
     })
 
     // install additional deps (injected by generators)
@@ -239,18 +228,10 @@ module.exports = class Creator extends EventEmitter {
     let preset
     if (answers.preset && answers.preset !== '__manual__') {
       preset = await this.resolvePreset(answers.preset)
-    } else {
-      preset = {
-        useConfigFiles: answers.useConfigFiles === 'files',
-        plugins: {}
-      }
-      answers.features = answers.features || []
-      this.promptCompleteCbs.forEach(cb => cb(answers, preset))
     }
 
     validatePreset(preset)
 
-    debug('vue-cli:preset')(preset)
     return preset
   }
 
@@ -273,10 +254,10 @@ module.exports = class Creator extends EventEmitter {
       }
     }
 
-    // use default preset if user has not overwritten it
     if (name === 'default' && !preset) {
       preset = defaults.presets.default
     }
+
     if (!preset) {
       error(`preset "${name}" not found.`)
       const presets = Object.keys(savedPresets)
@@ -285,17 +266,14 @@ module.exports = class Creator extends EventEmitter {
         log(`available presets:\n${presets.join('\n')}`)
       } else {
         log('you don\'t seem to have any saved preset.')
-        log('run vue-cli in manual mode to create a preset.')
       }
       exit(1)
     }
+
     return preset
   }
 
-  // { id: options } => [{ id, apply, options }]
   async resolvePlugins (rawPlugins) {
-    // ensure cli-service is invoked first
-    rawPlugins = sortObject(rawPlugins, ['@vue/cli-service'], true)
     const plugins = []
     for (const id of Object.keys(rawPlugins)) {
       const apply = loadModule(`${id}/generator`, this.context) || (() => {})
@@ -325,17 +303,23 @@ module.exports = class Creator extends EventEmitter {
       message: '您要创建的项目是哪种类型:',
       choices: [
         {
+          name: 'webpack',
+          value: 'webpack',
+          message: '大型框架[使用 webpack 打包]'
+        },
+        {
           name: 'rollup',
           value: 'rollup',
           message: '小型库[使用 rollup 打包]'
         },
         {
-          name: 'webpack',
-          value: 'webpack',
-          message: '大型框架[使用 webpack 打包]'
+          name: 'vite',
+          value: 'vite',
+          message: '快速编译[使用 vite 打包]'
         }
       ]
     }
+
     const featurePrompt = {
       name: 'features',
       type: 'checkbox',
@@ -343,6 +327,7 @@ module.exports = class Creator extends EventEmitter {
       choices: [],
       pageSize: 10
     }
+
     return {
       presetPrompt,
       featurePrompt
@@ -350,24 +335,7 @@ module.exports = class Creator extends EventEmitter {
   }
 
   resolveOutroPrompts () {
-    const outroPrompts = [
-      {
-        name: 'useConfigFiles',
-        type: 'list',
-        when: true,
-        message: '你更喜欢将Babel, ESLint等的配置放在哪里?',
-        choices: [
-          {
-            name: '在专用的配置文件中',
-            value: 'files'
-          },
-          {
-            name: '在 package.json 中',
-            value: 'pkg'
-          }
-        ]
-      }
-    ]
+    const outroPrompts = []
 
     const savedOptions = loadOptions()
     if (!savedOptions.packageManager && (hasYarn() || hasPnpm3OrLater())) {
@@ -413,22 +381,13 @@ module.exports = class Creator extends EventEmitter {
       ...this.injectedPrompts,
       ...this.outroPrompts
     ]
-    debug('vue-cli:prompts')(prompts)
     return prompts
   }
 
-  shouldInitGit (cliOptions) {
+  shouldInitGit () {
     if (!hasGit()) {
       return false
     }
-    // --git
-    if (cliOptions.forceGit) {
-      return true
-    }
-    // --no-git
-    if (cliOptions.git === false || cliOptions.git === 'false') {
-      return false
-    }
-    return !hasProjectGit(this.context)
+    return true
   }
 }
