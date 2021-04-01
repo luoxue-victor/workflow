@@ -1,6 +1,6 @@
 {
   "name": "vite-box",
-  "version": "1.2.16",
+  "version": "1.4.0",
   "description": "使用 vite 打包",
   "author": "luoxue",
   "main": "index.js",
