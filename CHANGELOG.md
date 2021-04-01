@@ -1,4 +1,16 @@
-## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.4.1...v1.0.9) (2021-04-01)
+## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.4.2...v1.0.9) (2021-04-01)
+## [1.4.2](https://github.com/luoxue-victor/learn_webpack/compare/v1.4.1...v1.4.2) (2021-04-01)
+
+范围|描述|commitId
+--|--|--
+ - | v1.4.2 | [6597703](https://github.com/luoxue-victor/learn_webpack/commit/6597703)
+
+
+### 📦 持续集成
+范围|描述|commitId
+--|--|--
+ packge.json | 升级包版本 | [4a3dcab](https://github.com/luoxue-victor/learn_webpack/commit/4a3dcab)
+
 ## [1.4.1](https://github.com/luoxue-victor/learn_webpack/compare/v1.4.0...v1.4.1) (2021-04-01)
 
 范围|描述|commitId

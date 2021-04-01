@@ -28,7 +28,8 @@
     "semver": "^6.3.0",
     "validate-npm-package-name": "^3.0.0",
     "vue-jscodeshift-adapter": "^2.0.2",
-    "yaml-front-matter": "^4.0.0"
+    "yaml-front-matter": "^4.0.0",
+    "npm-check-updates": "^11.3.0"
   },
   "gitHead": "9c0313c0f8ad7aa891cdf284d78188d9232ab453"
 }

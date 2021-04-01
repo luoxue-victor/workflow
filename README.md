@@ -129,6 +129,7 @@ npm i -g @pkb/cli # 全局安装使用
 pk create <project-name> # 创建项目（待完善）
 pk add <plugin> # 安装插件
 pk info # 查看项目及系统配置
+pk upgrade [filter] # 检查升级 npm 版本
 ```
 
 #### 2. webpack-box 配置安装及开发

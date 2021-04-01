@@ -21,11 +21,12 @@ program
   })
 
 program
-  .command('update')
+  .command('upgrade [filter]')
   .description('更新项目依赖')
-  .action((cmd) => {
+  .action((filter, cmd) => {
     const options = cleanArgs(cmd)
-    require('../lib/update')(options)
+    options.filter = filter
+    require('../lib/upgrade')(options)
   })
 
 program
