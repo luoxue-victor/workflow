@@ -85,6 +85,9 @@
   },
   "sideEffects": true,
   "dependencies": {
+    "compression-webpack-plugin": "^7.1.2",
+    "html-webpack-plugin": "^5.3.1",
+    "webpack-chain": "^6.5.1",
     "webpack-dev-server": "^3.11.0"
   }
 }

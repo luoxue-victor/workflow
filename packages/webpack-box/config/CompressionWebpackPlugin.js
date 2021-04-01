@@ -6,8 +6,8 @@ module.exports = ({ config }) => {
     config.plugin('CompressionWebpackPlugin')
       .use(CompressionWebpackPlugin, [{
         algorithm: 'gzip',
+        threshold: 8192,
         test: /\.js(\?.*)?$/i,
-        // threshold: 10240,
         minRatio: 0.8
       }])
   }

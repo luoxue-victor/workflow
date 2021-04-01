@@ -22,9 +22,22 @@ module.exports = function (config) {
    * @param {Boolean} mock 开启 mock
    */
   return {
-    entry: 'src/main.js',
-    output: 'dist',
-    publicPath: '/common/',
+    pages: {
+      index: {
+        entry: 'src/main.js',
+        template: 'public/index.html',
+        filename: 'index.html',
+        publicPath: './',
+        output: 'dist1'
+      },
+      index2: {
+        entry: 'src/main.js',
+        template: 'public/index2.html',
+        filename: 'index2.html',
+        publicPath: './',
+        output: 'dist2'
+      }
+    },
     port: 9001,
     mock: true,
     env: {
@@ -78,18 +91,6 @@ module.exports = function (config) {
     // dll: {
     //   venders: ['react']
     // },
-    pages: {
-      index: {
-        entry: 'src/main.js',
-        template: 'public/index.html',
-        filename: 'index.html'
-      },
-      index2: {
-        entry: 'src/main.js',
-        template: 'public/index2.html',
-        filename: 'index2.html'
-      }
-    },
     chainWebpack(config) {}
   }
 }

@@ -1,14 +1,11 @@
 // [基础配置]
 module.exports = ({ config, webpackVersion, resolve, options }) => {
-  let name = 'app'
-  let entry = options.entry || 'src/main.js'
-  let output = options.output || 'dist'
-  const publicPath = options.publicPath || '/'
-  if (options.name) {
-    name = options.name
-    output = `${output}/${name}`
-    entry = options.pages[name].entry
-  }
+  const name = options.name || 'app'
+  const pageConfig = options.pages[name]
+  const output = `${pageConfig.output || 'dist'}/${name}`
+  const publicPath = pageConfig.publicPath || '/'
+  const entry = pageConfig.entry || 'src/main.js'
+
   const isV5 = parseInt(webpackVersion) >= 5
   return () => {
     config

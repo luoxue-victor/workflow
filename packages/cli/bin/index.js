@@ -51,43 +51,6 @@ program
   })
 
 program
-  .command('inspect [paths...]')
-  .description('inspect the webpack config in a project with vue-cli-service')
-  .option('--mode <mode>')
-  .option('--rule <ruleName>', 'inspect a specific module rule')
-  .option('--plugin <pluginName>', 'inspect a specific plugin')
-  .option('--rules', 'list all module rule names')
-  .option('--plugins', 'list all plugin names')
-  .option('-v --verbose', 'Show full function definitions in output')
-  .action((paths, cmd) => {
-    require('../lib/inspect')(paths, cleanArgs(cmd))
-  })
-
-program
-  .command('ui')
-  .description('start and open the vue-cli ui')
-  .option('-H, --host <host>', 'Host used for the UI server (default: localhost)')
-  .option('-p, --port <port>', 'Port used for the UI server (by default search for available port)')
-  .option('-D, --dev', 'Run in dev mode')
-  .option('--quiet', 'Don\'t output starting messages')
-  .option('--headless', 'Don\'t open browser on start and output port')
-  .action((cmd) => {
-    checkNodeVersion('>=8.6', 'vue ui')
-    require('../lib/ui')(cleanArgs(cmd))
-  })
-
-program
-  .command('upgrade [plugin-name]')
-  .description('(experimental) upgrade vue cli service / plugins')
-  .option('-t, --to <version>', 'upgrade <package-name> to a version that is not latest')
-  .option('-r, --registry <url>', 'Use specified npm registry when installing dependencies')
-  .option('--all', 'Upgrade all plugins')
-  .option('--next', 'Also check for alpha / beta / rc versions when upgrading')
-  .action((packageName, cmd) => {
-    require('../lib/upgrade')(packageName, cleanArgs(cmd))
-  })
-
-program
   .command('info')
   .description('打印有关环境的调试信息')
   .action(() => {
