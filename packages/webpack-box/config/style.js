@@ -1,7 +1,6 @@
 // [样式表配置]
 module.exports = ({ config, options = {} }) => {
   const rootOptions = options
-  const isProd = process.env.NODE_ENV === 'production'
   const getAssetPath = require('../util/getAssetPath')
   const {
     sourceMap = false,

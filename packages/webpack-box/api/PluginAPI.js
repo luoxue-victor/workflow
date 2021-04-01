@@ -10,7 +10,6 @@ exports.genCacheConfig = function (id, partialIdentifier, configFiles = []) {
     'cli-service': require('../package.json').version,
     'cache-loader': require('cache-loader/package.json').version,
     env: process.env.NODE_ENV,
-    test: !!process.env.VUE_CLI_TEST,
     config: []
   }
 

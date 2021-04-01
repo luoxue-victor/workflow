@@ -1,3 +1,5 @@
+const chalk = require('chalk')
+
 module.exports = function({ injectCommand }) {
   injectCommand(function({ program, cleanArgs, boxConfig }) {
     program
@@ -8,15 +10,16 @@ module.exports = function({ injectCommand }) {
       .action(async (name, cmd) => {
         const options = cleanArgs(cmd)
         const args = Object.assign(options, { name }, boxConfig)
-        process.env.NODE_ENV = 'production'
         if (!name && boxConfig.pages) {
-          args.clear = true
-          Object.keys(boxConfig.pages).forEach(page => {
-            args.name = page
-            require('../build/build')(args)
-          })
-        } else {
-          require('../build/build')(args)
+          const pagesName = Object.keys(boxConfig.pages)
+
+          for (let index = 0; index < pagesName.length; index++) {
+            args.name = pagesName[index]
+            console.log()
+            console.log(chalk.cyan(`开始构建 --> ${args.name}页面`))
+            console.log()
+            await require('../build/build')(args)
+          }
         }
       })
   })

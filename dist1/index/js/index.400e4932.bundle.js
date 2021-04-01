@@ -1,4 +1,4 @@
-(self["webpackChunkbox"] = self["webpackChunkbox"] || []).push([["index2"],{
+(self["webpackChunkbox"] = self["webpackChunkbox"] || []).push([["index"],{
 
 /***/ "./packages/react/template/demo.js":
 /*!*****************************************!*\
@@ -8,11 +8,10 @@
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "App": () => /* binding */ App
+/* harmony export */   "App": () => (/* binding */ App)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index.scss */ "./packages/react/template/index.scss");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_1__);
 
  // React Demo
 
@@ -92,7 +91,7 @@ if (true) {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => /* binding */ Foo
+/* harmony export */   "default": () => (/* binding */ Foo)
 /* harmony export */ });
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -115,7 +114,7 @@ var Foo = function Foo() {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => /* binding */ Bar
+/* harmony export */   "default": () => (/* binding */ Bar)
 /* harmony export */ });
 /* harmony import */ var _Foo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Foo */ "./src/typescript/Foo.ts");
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -140,10 +139,19 @@ var Bar = function Bar() {
   \********************************************/
 /***/ (() => {
 
+"use strict";
 // extracted by mini-css-extract-plugin
+
 
 /***/ })
 
 },
-0,[["./src/main.js","manifest","chunk-vendors"]]]);
-//# sourceMappingURL=index2.e7a68bc1.bundle.js.map
+/******/ __webpack_require__ => { // webpackRuntimeModules
+/******/ "use strict";
+/******/ 
+/******/ var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
+/******/ __webpack_require__.O(0, ["chunk-vendors"], () => (__webpack_exec__("./src/main.js")));
+/******/ var __webpack_exports__ = __webpack_require__.O();
+/******/ }
+]);
+//# sourceMappingURL=index.400e4932.bundle.js.map

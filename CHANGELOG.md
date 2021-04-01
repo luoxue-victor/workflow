@@ -1,9 +1,21 @@
-## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.3.3...v1.0.9) (2021-04-01)
+## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.4.0...v1.0.9) (2021-04-01)
+# [1.4.0](https://github.com/luoxue-victor/learn_webpack/compare/v1.3.3...v1.4.0) (2021-04-01)
+
+范围|描述|commitId
+--|--|--
+ v1.4.0 | [cf2072f](https://github.com/luoxue-victor/learn_webpack/commit/cf2072f)
+
 
 ### 🌟 新功能
 范围|描述|commitId
 --|--|--
  优化cli | [4eff3f3](https://github.com/luoxue-victor/learn_webpack/commit/4eff3f3)
+
+
+### 🐛 Bug 修复
+范围|描述|commitId
+--|--|--
+ webpack-box | 修改 dev 跟 build 多页面指令错误 | [edab8a7](https://github.com/luoxue-victor/learn_webpack/commit/edab8a7)
 
 
 ### 📝 文档
