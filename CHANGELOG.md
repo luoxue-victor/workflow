@@ -1,4 +1,16 @@
-## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.4.2...v1.0.9) (2021-04-01)
+## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.4.3...v1.0.9) (2021-04-01)
+## [1.4.3](https://github.com/luoxue-victor/learn_webpack/compare/v1.4.2...v1.4.3) (2021-04-01)
+
+范围|描述|commitId
+--|--|--
+ - | v1.4.3 | [673b08e](https://github.com/luoxue-victor/learn_webpack/commit/673b08e)
+
+
+### 🌟 新功能
+范围|描述|commitId
+--|--|--
+ upgrade | npm更新功能 | [45dd399](https://github.com/luoxue-victor/learn_webpack/commit/45dd399)
+
 ## [1.4.2](https://github.com/luoxue-victor/learn_webpack/compare/v1.4.1...v1.4.2) (2021-04-01)
 
 范围|描述|commitId

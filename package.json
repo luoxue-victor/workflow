@@ -23,7 +23,7 @@
   "devDependencies": {
     "@babel/preset-typescript": "^7.13.0",
     "@commitlint/config-conventional": "^12.0.1",
-    "@pkb/cli": "^1.4.2",
+    "@pkb/cli": "^1.4.3",
     "@pkb/plugin-eslint": "^1.2.16",
     "@pkb/plugin-react": "^1.4.0",
     "@pkb/plugin-stylelint": "^1.2.10",
@@ -85,7 +85,6 @@
   },
   "sideEffects": true,
   "dependencies": {
-    "npm-check-updates": "^11.3.0",
     "right-pad": "^1.0.1"
   }
 }
