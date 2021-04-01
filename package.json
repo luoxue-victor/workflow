@@ -21,29 +21,29 @@
   },
   "main": "index.js",
   "devDependencies": {
-    "@babel/preset-typescript": "^7.7.7",
-    "@commitlint/config-conventional": "^8.2.0",
+    "@babel/preset-typescript": "^7.13.0",
+    "@commitlint/config-conventional": "^12.0.1",
     "@pkb/cli": "^1.4.0",
-    "@pkb/plugin-eslint": "^1.2.15",
-    "@pkb/plugin-react": "^1.2.15",
+    "@pkb/plugin-eslint": "^1.2.16",
+    "@pkb/plugin-react": "^1.4.0",
     "@pkb/plugin-stylelint": "^1.2.10",
-    "@pkb/plugin-tslint": "^1.2.10",
-    "@pkb/webpack-box": "^1.4.0",
-    "@sentry/browser": "^5.11.0",
-    "babel-jest": "^24.9.0",
-    "commitizen": "^4.0.3",
-    "commitlint": "^8.2.0",
-    "conventional-changelog-cli": "^2.0.28",
+    "@pkb/plugin-tslint": "^1.2.16",
+    "@pkb/webpack-box": "^1.4.1",
+    "@sentry/browser": "^6.2.4",
+    "babel-jest": "^26.6.3",
+    "commitizen": "^4.2.3",
+    "commitlint": "^12.0.1",
+    "conventional-changelog-cli": "^2.1.1",
     "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.2",
-    "enzyme-to-json": "^3.4.3",
-    "husky": "^3.1.0",
-    "jest": "^24.9.0",
+    "enzyme-adapter-react-16": "^1.15.6",
+    "enzyme-to-json": "^3.6.1",
+    "husky": "^6.0.0",
+    "jest": "^26.6.3",
     "jest-css-modules": "^2.1.0",
-    "lerna": "^3.15.0",
-    "lint-staged": "^9.5.0",
-    "react-test-renderer": "^16.12.0",
-    "vue-cli-plugin-commitlint": "^1.0.10"
+    "lerna": "^4.0.0",
+    "lint-staged": "^10.5.4",
+    "react-test-renderer": "^17.0.2",
+    "vue-cli-plugin-commitlint": "^1.0.12"
   },
   "bugs": {
     "url": "https://github.com/luoxue-victor/learn_webpack/issues"
@@ -85,9 +85,6 @@
   },
   "sideEffects": true,
   "dependencies": {
-    "compression-webpack-plugin": "^7.1.2",
-    "html-webpack-plugin": "^5.3.1",
-    "webpack-chain": "^6.5.1",
-    "webpack-dev-server": "^3.11.0"
+    "right-pad": "^1.0.1"
   }
 }

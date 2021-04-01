@@ -11,14 +11,12 @@
 /* harmony export */   "BrowserBackend": () => (/* binding */ BrowserBackend)
 /* harmony export */ });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _sentry_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @sentry/core */ "./node_modules/@sentry/core/esm/basebackend.js");
-/* harmony import */ var _sentry_types__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @sentry/types */ "./node_modules/@sentry/types/esm/severity.js");
-/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/supports.js");
-/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/misc.js");
-/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/syncpromise.js");
-/* harmony import */ var _eventbuilder__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./eventbuilder */ "./node_modules/@sentry/browser/esm/eventbuilder.js");
-/* harmony import */ var _transports__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./transports */ "./node_modules/@sentry/browser/esm/transports/fetch.js");
-/* harmony import */ var _transports__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./transports */ "./node_modules/@sentry/browser/esm/transports/xhr.js");
+/* harmony import */ var _sentry_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @sentry/core */ "./node_modules/@sentry/core/esm/basebackend.js");
+/* harmony import */ var _sentry_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @sentry/types */ "./node_modules/@sentry/types/esm/severity.js");
+/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/supports.js");
+/* harmony import */ var _eventbuilder__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./eventbuilder */ "./node_modules/@sentry/browser/esm/eventbuilder.js");
+/* harmony import */ var _transports__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./transports */ "./node_modules/@sentry/browser/esm/transports/fetch.js");
+/* harmony import */ var _transports__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./transports */ "./node_modules/@sentry/browser/esm/transports/xhr.js");
 
 
 
@@ -33,11 +31,31 @@
 var BrowserBackend =
 /** @class */
 function (_super) {
-  tslib__WEBPACK_IMPORTED_MODULE_0__.__extends(BrowserBackend, _super);
+  (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__extends)(BrowserBackend, _super);
 
   function BrowserBackend() {
     return _super !== null && _super.apply(this, arguments) || this;
   }
+  /**
+   * @inheritDoc
+   */
+
+
+  BrowserBackend.prototype.eventFromException = function (exception, hint) {
+    return (0,_eventbuilder__WEBPACK_IMPORTED_MODULE_1__.eventFromException)(this._options, exception, hint);
+  };
+  /**
+   * @inheritDoc
+   */
+
+
+  BrowserBackend.prototype.eventFromMessage = function (message, level, hint) {
+    if (level === void 0) {
+      level = _sentry_types__WEBPACK_IMPORTED_MODULE_2__.Severity.Info;
+    }
+
+    return (0,_eventbuilder__WEBPACK_IMPORTED_MODULE_1__.eventFromMessage)(this._options, message, level, hint);
+  };
   /**
    * @inheritDoc
    */
@@ -49,67 +67,24 @@ function (_super) {
       return _super.prototype._setupTransport.call(this);
     }
 
-    var transportOptions = tslib__WEBPACK_IMPORTED_MODULE_0__.__assign({}, this._options.transportOptions, {
-      dsn: this._options.dsn
+    var transportOptions = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)({}, this._options.transportOptions), {
+      dsn: this._options.dsn,
+      _metadata: this._options._metadata
     });
 
     if (this._options.transport) {
       return new this._options.transport(transportOptions);
     }
 
-    if ((0,_sentry_utils__WEBPACK_IMPORTED_MODULE_1__.supportsFetch)()) {
-      return new _transports__WEBPACK_IMPORTED_MODULE_2__.FetchTransport(transportOptions);
+    if ((0,_sentry_utils__WEBPACK_IMPORTED_MODULE_3__.supportsFetch)()) {
+      return new _transports__WEBPACK_IMPORTED_MODULE_4__.FetchTransport(transportOptions);
     }
 
-    return new _transports__WEBPACK_IMPORTED_MODULE_3__.XHRTransport(transportOptions);
-  };
-  /**
-   * @inheritDoc
-   */
-
-
-  BrowserBackend.prototype.eventFromException = function (exception, hint) {
-    var syntheticException = hint && hint.syntheticException || undefined;
-    var event = (0,_eventbuilder__WEBPACK_IMPORTED_MODULE_4__.eventFromUnknownInput)(exception, syntheticException, {
-      attachStacktrace: this._options.attachStacktrace
-    });
-    (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_5__.addExceptionMechanism)(event, {
-      handled: true,
-      type: 'generic'
-    });
-    event.level = _sentry_types__WEBPACK_IMPORTED_MODULE_6__.Severity.Error;
-
-    if (hint && hint.event_id) {
-      event.event_id = hint.event_id;
-    }
-
-    return _sentry_utils__WEBPACK_IMPORTED_MODULE_7__.SyncPromise.resolve(event);
-  };
-  /**
-   * @inheritDoc
-   */
-
-
-  BrowserBackend.prototype.eventFromMessage = function (message, level, hint) {
-    if (level === void 0) {
-      level = _sentry_types__WEBPACK_IMPORTED_MODULE_6__.Severity.Info;
-    }
-
-    var syntheticException = hint && hint.syntheticException || undefined;
-    var event = (0,_eventbuilder__WEBPACK_IMPORTED_MODULE_4__.eventFromString)(message, syntheticException, {
-      attachStacktrace: this._options.attachStacktrace
-    });
-    event.level = level;
-
-    if (hint && hint.event_id) {
-      event.event_id = hint.event_id;
-    }
-
-    return _sentry_utils__WEBPACK_IMPORTED_MODULE_7__.SyncPromise.resolve(event);
+    return new _transports__WEBPACK_IMPORTED_MODULE_5__.XHRTransport(transportOptions);
   };
 
   return BrowserBackend;
-}(_sentry_core__WEBPACK_IMPORTED_MODULE_8__.BaseBackend);
+}(_sentry_core__WEBPACK_IMPORTED_MODULE_6__.BaseBackend);
 
 
 
@@ -126,12 +101,14 @@ function (_super) {
 /* harmony export */   "BrowserClient": () => (/* binding */ BrowserClient)
 /* harmony export */ });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _sentry_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @sentry/core */ "./node_modules/@sentry/core/esm/api.js");
-/* harmony import */ var _sentry_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @sentry/core */ "./node_modules/@sentry/core/esm/baseclient.js");
+/* harmony import */ var _sentry_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @sentry/core */ "./node_modules/@sentry/core/esm/version.js");
+/* harmony import */ var _sentry_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @sentry/core */ "./node_modules/@sentry/core/esm/baseclient.js");
 /* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/misc.js");
 /* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/logger.js");
-/* harmony import */ var _backend__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./backend */ "./node_modules/@sentry/browser/esm/backend.js");
-/* harmony import */ var _version__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./version */ "./node_modules/@sentry/browser/esm/version.js");
+/* harmony import */ var _backend__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./backend */ "./node_modules/@sentry/browser/esm/backend.js");
+/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./helpers */ "./node_modules/@sentry/browser/esm/helpers.js");
+/* harmony import */ var _integrations__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./integrations */ "./node_modules/@sentry/browser/esm/integrations/breadcrumbs.js");
+
 
 
 
@@ -147,7 +124,7 @@ function (_super) {
 var BrowserClient =
 /** @class */
 function (_super) {
-  tslib__WEBPACK_IMPORTED_MODULE_0__.__extends(BrowserClient, _super);
+  (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__extends)(BrowserClient, _super);
   /**
    * Creates a new Browser SDK instance.
    *
@@ -160,25 +137,20 @@ function (_super) {
       options = {};
     }
 
-    return _super.call(this, _backend__WEBPACK_IMPORTED_MODULE_1__.BrowserBackend, options) || this;
-  }
-  /**
-   * @inheritDoc
-   */
+    var _this = this;
 
-
-  BrowserClient.prototype._prepareEvent = function (event, scope, hint) {
-    event.platform = event.platform || 'javascript';
-    event.sdk = tslib__WEBPACK_IMPORTED_MODULE_0__.__assign({}, event.sdk, {
-      name: _version__WEBPACK_IMPORTED_MODULE_2__.SDK_NAME,
-      packages: tslib__WEBPACK_IMPORTED_MODULE_0__.__spread(event.sdk && event.sdk.packages || [], [{
+    options._metadata = options._metadata || {};
+    options._metadata.sdk = options._metadata.sdk || {
+      name: 'sentry.javascript.browser',
+      packages: [{
         name: 'npm:@sentry/browser',
-        version: _version__WEBPACK_IMPORTED_MODULE_2__.SDK_VERSION
-      }]),
-      version: _version__WEBPACK_IMPORTED_MODULE_2__.SDK_VERSION
-    });
-    return _super.prototype._prepareEvent.call(this, event, scope, hint);
-  };
+        version: _sentry_core__WEBPACK_IMPORTED_MODULE_1__.SDK_VERSION
+      }],
+      version: _sentry_core__WEBPACK_IMPORTED_MODULE_1__.SDK_VERSION
+    };
+    _this = _super.call(this, _backend__WEBPACK_IMPORTED_MODULE_2__.BrowserBackend, options) || this;
+    return _this;
+  }
   /**
    * Show a report dialog to the user to send feedback to a specific event.
    *
@@ -199,35 +171,40 @@ function (_super) {
     }
 
     if (!this._isEnabled()) {
-      _sentry_utils__WEBPACK_IMPORTED_MODULE_4__.logger.error('Trying to call showReportDialog with Sentry Client is disabled');
+      _sentry_utils__WEBPACK_IMPORTED_MODULE_4__.logger.error('Trying to call showReportDialog with Sentry Client disabled');
       return;
     }
 
-    var dsn = options.dsn || this.getDsn();
+    (0,_helpers__WEBPACK_IMPORTED_MODULE_5__.injectReportDialog)((0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)({}, options), {
+      dsn: options.dsn || this.getDsn()
+    }));
+  };
+  /**
+   * @inheritDoc
+   */
 
-    if (!options.eventId) {
-      _sentry_utils__WEBPACK_IMPORTED_MODULE_4__.logger.error('Missing `eventId` option in showReportDialog call');
-      return;
+
+  BrowserClient.prototype._prepareEvent = function (event, scope, hint) {
+    event.platform = event.platform || 'javascript';
+    return _super.prototype._prepareEvent.call(this, event, scope, hint);
+  };
+  /**
+   * @inheritDoc
+   */
+
+
+  BrowserClient.prototype._sendEvent = function (event) {
+    var integration = this.getIntegration(_integrations__WEBPACK_IMPORTED_MODULE_6__.Breadcrumbs);
+
+    if (integration) {
+      integration.addSentryBreadcrumb(event);
     }
 
-    if (!dsn) {
-      _sentry_utils__WEBPACK_IMPORTED_MODULE_4__.logger.error('Missing `Dsn` option in showReportDialog call');
-      return;
-    }
-
-    var script = document.createElement('script');
-    script.async = true;
-    script.src = new _sentry_core__WEBPACK_IMPORTED_MODULE_5__.API(dsn).getReportDialogEndpoint(options);
-
-    if (options.onLoad) {
-      script.onload = options.onLoad;
-    }
-
-    (document.head || document.body).appendChild(script);
+    _super.prototype._sendEvent.call(this, event);
   };
 
   return BrowserClient;
-}(_sentry_core__WEBPACK_IMPORTED_MODULE_6__.BaseClient);
+}(_sentry_core__WEBPACK_IMPORTED_MODULE_7__.BaseClient);
 
 
 
@@ -241,17 +218,70 @@ function (_super) {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "eventFromUnknownInput": () => (/* binding */ eventFromUnknownInput),
-/* harmony export */   "eventFromString": () => (/* binding */ eventFromString)
+/* harmony export */   "eventFromException": () => (/* binding */ eventFromException),
+/* harmony export */   "eventFromMessage": () => (/* binding */ eventFromMessage),
+/* harmony export */   "eventFromUnknownInput": () => (/* binding */ eventFromUnknownInput)
 /* harmony export */ });
-/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/is.js");
-/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/misc.js");
-/* harmony import */ var _parsers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./parsers */ "./node_modules/@sentry/browser/esm/parsers.js");
-/* harmony import */ var _tracekit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./tracekit */ "./node_modules/@sentry/browser/esm/tracekit.js");
+/* unused harmony export eventFromString */
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _sentry_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @sentry/types */ "./node_modules/@sentry/types/esm/severity.js");
+/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/misc.js");
+/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/syncpromise.js");
+/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/is.js");
+/* harmony import */ var _parsers__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./parsers */ "./node_modules/@sentry/browser/esm/parsers.js");
+/* harmony import */ var _tracekit__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./tracekit */ "./node_modules/@sentry/browser/esm/tracekit.js");
 
 
 
-/** JSDoc */
+
+
+/**
+ * Builds and Event from a Exception
+ * @hidden
+ */
+
+function eventFromException(options, exception, hint) {
+  var syntheticException = hint && hint.syntheticException || undefined;
+  var event = eventFromUnknownInput(exception, syntheticException, {
+    attachStacktrace: options.attachStacktrace
+  });
+  (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_1__.addExceptionMechanism)(event, {
+    handled: true,
+    type: 'generic'
+  });
+  event.level = _sentry_types__WEBPACK_IMPORTED_MODULE_2__.Severity.Error;
+
+  if (hint && hint.event_id) {
+    event.event_id = hint.event_id;
+  }
+
+  return _sentry_utils__WEBPACK_IMPORTED_MODULE_3__.SyncPromise.resolve(event);
+}
+/**
+ * Builds and Event from a Message
+ * @hidden
+ */
+
+function eventFromMessage(options, message, level, hint) {
+  if (level === void 0) {
+    level = _sentry_types__WEBPACK_IMPORTED_MODULE_2__.Severity.Info;
+  }
+
+  var syntheticException = hint && hint.syntheticException || undefined;
+  var event = eventFromString(message, syntheticException, {
+    attachStacktrace: options.attachStacktrace
+  });
+  event.level = level;
+
+  if (hint && hint.event_id) {
+    event.event_id = hint.event_id;
+  }
+
+  return _sentry_utils__WEBPACK_IMPORTED_MODULE_3__.SyncPromise.resolve(event);
+}
+/**
+ * @hidden
+ */
 
 function eventFromUnknownInput(exception, syntheticException, options) {
   if (options === void 0) {
@@ -260,41 +290,48 @@ function eventFromUnknownInput(exception, syntheticException, options) {
 
   var event;
 
-  if ((0,_sentry_utils__WEBPACK_IMPORTED_MODULE_0__.isErrorEvent)(exception) && exception.error) {
+  if ((0,_sentry_utils__WEBPACK_IMPORTED_MODULE_4__.isErrorEvent)(exception) && exception.error) {
     // If it is an ErrorEvent with `error` property, extract it to get actual Error
-    var errorEvent = exception;
-    exception = errorEvent.error; // tslint:disable-line:no-parameter-reassignment
+    var errorEvent = exception; // eslint-disable-next-line no-param-reassign
 
-    event = (0,_parsers__WEBPACK_IMPORTED_MODULE_1__.eventFromStacktrace)((0,_tracekit__WEBPACK_IMPORTED_MODULE_2__.computeStackTrace)(exception));
+    exception = errorEvent.error;
+    event = (0,_parsers__WEBPACK_IMPORTED_MODULE_5__.eventFromStacktrace)((0,_tracekit__WEBPACK_IMPORTED_MODULE_6__.computeStackTrace)(exception));
     return event;
   }
 
-  if ((0,_sentry_utils__WEBPACK_IMPORTED_MODULE_0__.isDOMError)(exception) || (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_0__.isDOMException)(exception)) {
+  if ((0,_sentry_utils__WEBPACK_IMPORTED_MODULE_4__.isDOMError)(exception) || (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_4__.isDOMException)(exception)) {
     // If it is a DOMError or DOMException (which are legacy APIs, but still supported in some browsers)
-    // then we just extract the name and message, as they don't provide anything else
+    // then we just extract the name, code, and message, as they don't provide anything else
     // https://developer.mozilla.org/en-US/docs/Web/API/DOMError
     // https://developer.mozilla.org/en-US/docs/Web/API/DOMException
     var domException = exception;
-    var name_1 = domException.name || ((0,_sentry_utils__WEBPACK_IMPORTED_MODULE_0__.isDOMError)(domException) ? 'DOMError' : 'DOMException');
+    var name_1 = domException.name || ((0,_sentry_utils__WEBPACK_IMPORTED_MODULE_4__.isDOMError)(domException) ? 'DOMError' : 'DOMException');
     var message = domException.message ? name_1 + ": " + domException.message : name_1;
     event = eventFromString(message, syntheticException, options);
-    (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_3__.addExceptionTypeValue)(event, message);
+    (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_1__.addExceptionTypeValue)(event, message);
+
+    if ('code' in domException) {
+      event.tags = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)({}, event.tags), {
+        'DOMException.code': "" + domException.code
+      });
+    }
+
     return event;
   }
 
-  if ((0,_sentry_utils__WEBPACK_IMPORTED_MODULE_0__.isError)(exception)) {
+  if ((0,_sentry_utils__WEBPACK_IMPORTED_MODULE_4__.isError)(exception)) {
     // we have a real Error object, do nothing
-    event = (0,_parsers__WEBPACK_IMPORTED_MODULE_1__.eventFromStacktrace)((0,_tracekit__WEBPACK_IMPORTED_MODULE_2__.computeStackTrace)(exception));
+    event = (0,_parsers__WEBPACK_IMPORTED_MODULE_5__.eventFromStacktrace)((0,_tracekit__WEBPACK_IMPORTED_MODULE_6__.computeStackTrace)(exception));
     return event;
   }
 
-  if ((0,_sentry_utils__WEBPACK_IMPORTED_MODULE_0__.isPlainObject)(exception) || (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_0__.isEvent)(exception)) {
+  if ((0,_sentry_utils__WEBPACK_IMPORTED_MODULE_4__.isPlainObject)(exception) || (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_4__.isEvent)(exception)) {
     // If it is plain Object or Event, serialize it manually and extract options
     // This will allow us to group events based on top-level keys
     // which is much better than creating new group when any key/value change
     var objectException = exception;
-    event = (0,_parsers__WEBPACK_IMPORTED_MODULE_1__.eventFromPlainObject)(objectException, syntheticException, options.rejection);
-    (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_3__.addExceptionMechanism)(event, {
+    event = (0,_parsers__WEBPACK_IMPORTED_MODULE_5__.eventFromPlainObject)(objectException, syntheticException, options.rejection);
+    (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_1__.addExceptionMechanism)(event, {
       synthetic: true
     });
     return event;
@@ -310,14 +347,15 @@ function eventFromUnknownInput(exception, syntheticException, options) {
 
 
   event = eventFromString(exception, syntheticException, options);
-  (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_3__.addExceptionTypeValue)(event, "" + exception, undefined);
-  (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_3__.addExceptionMechanism)(event, {
+  (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_1__.addExceptionTypeValue)(event, "" + exception, undefined);
+  (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_1__.addExceptionMechanism)(event, {
     synthetic: true
   });
   return event;
-} // this._options.attachStacktrace
-
-/** JSDoc */
+}
+/**
+ * @hidden
+ */
 
 function eventFromString(input, syntheticException, options) {
   if (options === void 0) {
@@ -329,8 +367,8 @@ function eventFromString(input, syntheticException, options) {
   };
 
   if (options.attachStacktrace && syntheticException) {
-    var stacktrace = (0,_tracekit__WEBPACK_IMPORTED_MODULE_2__.computeStackTrace)(syntheticException);
-    var frames_1 = (0,_parsers__WEBPACK_IMPORTED_MODULE_1__.prepareFramesForEvent)(stacktrace.stack);
+    var stacktrace = (0,_tracekit__WEBPACK_IMPORTED_MODULE_6__.computeStackTrace)(syntheticException);
+    var frames_1 = (0,_parsers__WEBPACK_IMPORTED_MODULE_5__.prepareFramesForEvent)(stacktrace.stack);
     event.stacktrace = {
       frames: frames_1
     };
@@ -350,13 +388,15 @@ function eventFromString(input, syntheticException, options) {
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "shouldIgnoreOnError": () => (/* binding */ shouldIgnoreOnError),
-/* harmony export */   "wrap": () => (/* binding */ wrap)
+/* harmony export */   "wrap": () => (/* binding */ wrap),
+/* harmony export */   "injectReportDialog": () => (/* binding */ injectReportDialog)
 /* harmony export */ });
 /* unused harmony export ignoreNextOnError */
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _sentry_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @sentry/core */ "./node_modules/@sentry/minimal/esm/index.js");
+/* harmony import */ var _sentry_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @sentry/core */ "./node_modules/@sentry/core/esm/api.js");
 /* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/misc.js");
-/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/object.js");
+/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/logger.js");
 
 
 
@@ -391,8 +431,7 @@ function ignoreNextOnError() {
 function wrap(fn, options, before) {
   if (options === void 0) {
     options = {};
-  } // tslint:disable-next-line:strict-type-predicates
-
+  }
 
   if (typeof fn !== 'function') {
     return fn;
@@ -414,15 +453,18 @@ function wrap(fn, options, before) {
     // Bail on wrapping and return the function as-is (defers to window.onerror).
     return fn;
   }
+  /* eslint-disable prefer-rest-params */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
 
   var sentryWrapped = function sentryWrapped() {
-    var args = Array.prototype.slice.call(arguments); // tslint:disable:no-unsafe-any
+    var args = Array.prototype.slice.call(arguments);
 
     try {
-      // tslint:disable-next-line:strict-type-predicates
       if (before && typeof before === 'function') {
         before.apply(this, arguments);
-      }
+      } // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access
+
 
       var wrappedArguments = args.map(function (arg) {
         return wrap(arg, options);
@@ -433,6 +475,7 @@ function wrap(fn, options, before) {
         // NOTE: If you are a Sentry user, and you are seeing this stack frame, it
         //       means the sentry.javascript SDK caught an error invoking your application code. This
         //       is expected behavior and NOT indicative of a bug with sentry.javascript.
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         return fn.handleEvent.apply(this, wrappedArguments);
       } // Attempt to invoke user-land function
       // NOTE: If you are a Sentry user, and you are seeing this stack frame, it
@@ -440,20 +483,20 @@ function wrap(fn, options, before) {
       //       is expected behavior and NOT indicative of a bug with sentry.javascript.
 
 
-      return fn.apply(this, wrappedArguments); // tslint:enable:no-unsafe-any
+      return fn.apply(this, wrappedArguments);
     } catch (ex) {
       ignoreNextOnError();
       (0,_sentry_core__WEBPACK_IMPORTED_MODULE_1__.withScope)(function (scope) {
         scope.addEventProcessor(function (event) {
-          var processedEvent = tslib__WEBPACK_IMPORTED_MODULE_0__.__assign({}, event);
+          var processedEvent = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)({}, event);
 
           if (options.mechanism) {
             (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_2__.addExceptionTypeValue)(processedEvent, undefined, undefined);
             (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_2__.addExceptionMechanism)(processedEvent, options.mechanism);
           }
 
-          processedEvent.extra = tslib__WEBPACK_IMPORTED_MODULE_0__.__assign({}, processedEvent.extra, {
-            arguments: (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_3__.normalize)(args, 3)
+          processedEvent.extra = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)({}, processedEvent.extra), {
+            arguments: args
           });
           return processedEvent;
         });
@@ -461,7 +504,9 @@ function wrap(fn, options, before) {
       });
       throw ex;
     }
-  }; // Accessing some objects may throw
+  };
+  /* eslint-enable prefer-rest-params */
+  // Accessing some objects may throw
   // ref: https://github.com/getsentry/sentry-javascript/issues/1168
 
 
@@ -471,7 +516,7 @@ function wrap(fn, options, before) {
         sentryWrapped[property] = fn[property];
       }
     }
-  } catch (_oO) {} // tslint:disable-line:no-empty
+  } catch (_oO) {} // eslint-disable-line no-empty
 
 
   fn.prototype = fn.prototype || {};
@@ -502,12 +547,42 @@ function wrap(fn, options, before) {
           return fn.name;
         }
       });
-    }
-  } catch (_oO) {
-    /*no-empty*/
-  }
+    } // eslint-disable-next-line no-empty
+
+  } catch (_oO) {}
 
   return sentryWrapped;
+}
+/**
+ * Injects the Report Dialog script
+ * @hidden
+ */
+
+function injectReportDialog(options) {
+  if (options === void 0) {
+    options = {};
+  }
+
+  if (!options.eventId) {
+    _sentry_utils__WEBPACK_IMPORTED_MODULE_3__.logger.error("Missing eventId option in showReportDialog call");
+    return;
+  }
+
+  if (!options.dsn) {
+    _sentry_utils__WEBPACK_IMPORTED_MODULE_3__.logger.error("Missing dsn option in showReportDialog call");
+    return;
+  }
+
+  var script = document.createElement('script');
+  script.async = true;
+  script.src = new _sentry_core__WEBPACK_IMPORTED_MODULE_4__.API(options.dsn).getReportDialogEndpoint(options);
+
+  if (options.onLoad) {
+    // eslint-disable-next-line @typescript-eslint/unbound-method
+    script.onload = options.onLoad;
+  }
+
+  (document.head || document.body).appendChild(script);
 }
 
 /***/ }),
@@ -523,14 +598,16 @@ function wrap(fn, options, before) {
 /* harmony export */   "Breadcrumbs": () => (/* binding */ Breadcrumbs)
 /* harmony export */ });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _sentry_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @sentry/core */ "./node_modules/@sentry/hub/esm/hub.js");
-/* harmony import */ var _sentry_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @sentry/core */ "./node_modules/@sentry/core/esm/api.js");
-/* harmony import */ var _sentry_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @sentry/types */ "./node_modules/@sentry/types/esm/severity.js");
-/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/object.js");
-/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/string.js");
-/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/misc.js");
-/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/instrument.js");
-/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/logger.js");
+/* harmony import */ var _sentry_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @sentry/core */ "./node_modules/@sentry/hub/esm/hub.js");
+/* harmony import */ var _sentry_types__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @sentry/types */ "./node_modules/@sentry/types/esm/severity.js");
+/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/misc.js");
+/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/instrument.js");
+/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/string.js");
+/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/browser.js");
+
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+
+/* eslint-disable max-lines */
 
 
 
@@ -551,7 +628,7 @@ function () {
      * @inheritDoc
      */
     this.name = Breadcrumbs.id;
-    this._options = tslib__WEBPACK_IMPORTED_MODULE_0__.__assign({
+    this._options = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)({
       console: true,
       dom: true,
       fetch: true,
@@ -561,175 +638,22 @@ function () {
     }, options);
   }
   /**
-   * Creates breadcrumbs from console API calls
+   * Create a breadcrumb of `sentry` from the events themselves
    */
 
 
-  Breadcrumbs.prototype._consoleBreadcrumb = function (handlerData) {
-    var breadcrumb = {
-      category: 'console',
-      data: {
-        extra: {
-          arguments: (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_1__.normalize)(handlerData.args, 3)
-        },
-        logger: 'console'
-      },
-      level: _sentry_types__WEBPACK_IMPORTED_MODULE_2__.Severity.fromString(handlerData.level),
-      message: (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_3__.safeJoin)(handlerData.args, ' ')
-    };
-
-    if (handlerData.level === 'assert') {
-      if (handlerData.args[0] === false) {
-        breadcrumb.message = "Assertion failed: " + ((0,_sentry_utils__WEBPACK_IMPORTED_MODULE_3__.safeJoin)(handlerData.args.slice(1), ' ') || 'console.assert');
-        breadcrumb.data.extra.arguments = (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_1__.normalize)(handlerData.args.slice(1), 3);
-      } else {
-        // Don't capture a breadcrumb for passed assertions
-        return;
-      }
-    }
-
-    (0,_sentry_core__WEBPACK_IMPORTED_MODULE_4__.getCurrentHub)().addBreadcrumb(breadcrumb, {
-      input: handlerData.args,
-      level: handlerData.level
-    });
-  };
-  /**
-   * Creates breadcrumbs from DOM API calls
-   */
-
-
-  Breadcrumbs.prototype._domBreadcrumb = function (handlerData) {
-    var target; // Accessing event.target can throw (see getsentry/raven-js#838, #768)
-
-    try {
-      target = handlerData.event.target ? (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_5__.htmlTreeAsString)(handlerData.event.target) : (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_5__.htmlTreeAsString)(handlerData.event);
-    } catch (e) {
-      target = '<unknown>';
-    }
-
-    if (target.length === 0) {
+  Breadcrumbs.prototype.addSentryBreadcrumb = function (event) {
+    if (!this._options.sentry) {
       return;
     }
 
-    (0,_sentry_core__WEBPACK_IMPORTED_MODULE_4__.getCurrentHub)().addBreadcrumb({
-      category: "ui." + handlerData.name,
-      message: target
+    (0,_sentry_core__WEBPACK_IMPORTED_MODULE_1__.getCurrentHub)().addBreadcrumb({
+      category: "sentry." + (event.type === 'transaction' ? 'transaction' : 'event'),
+      event_id: event.event_id,
+      level: event.level,
+      message: (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_2__.getEventDescription)(event)
     }, {
-      event: event,
-      name: handlerData.name
-    });
-  };
-  /**
-   * Creates breadcrumbs from XHR API calls
-   */
-
-
-  Breadcrumbs.prototype._xhrBreadcrumb = function (handlerData) {
-    if (handlerData.endTimestamp) {
-      // We only capture complete, non-sentry requests
-      if (handlerData.xhr.__sentry_own_request__) {
-        return;
-      }
-
-      (0,_sentry_core__WEBPACK_IMPORTED_MODULE_4__.getCurrentHub)().addBreadcrumb({
-        category: 'xhr',
-        data: handlerData.xhr.__sentry_xhr__,
-        type: 'http'
-      }, {
-        xhr: handlerData.xhr
-      });
-      return;
-    } // We only capture issued sentry requests
-
-
-    if (handlerData.xhr.__sentry_own_request__) {
-      addSentryBreadcrumb(handlerData.args[0]);
-    }
-  };
-  /**
-   * Creates breadcrumbs from fetch API calls
-   */
-
-
-  Breadcrumbs.prototype._fetchBreadcrumb = function (handlerData) {
-    // We only capture complete fetch requests
-    if (!handlerData.endTimestamp) {
-      return;
-    }
-
-    var client = (0,_sentry_core__WEBPACK_IMPORTED_MODULE_4__.getCurrentHub)().getClient();
-    var dsn = client && client.getDsn();
-
-    if (dsn) {
-      var filterUrl = new _sentry_core__WEBPACK_IMPORTED_MODULE_6__.API(dsn).getStoreEndpoint(); // if Sentry key appears in URL, don't capture it as a request
-      // but rather as our own 'sentry' type breadcrumb
-
-      if (filterUrl && handlerData.fetchData.url.indexOf(filterUrl) !== -1 && handlerData.fetchData.method === 'POST' && handlerData.args[1] && handlerData.args[1].body) {
-        addSentryBreadcrumb(handlerData.args[1].body);
-        return;
-      }
-    }
-
-    if (handlerData.error) {
-      (0,_sentry_core__WEBPACK_IMPORTED_MODULE_4__.getCurrentHub)().addBreadcrumb({
-        category: 'fetch',
-        data: tslib__WEBPACK_IMPORTED_MODULE_0__.__assign({}, handlerData.fetchData, {
-          status_code: handlerData.response.status
-        }),
-        level: _sentry_types__WEBPACK_IMPORTED_MODULE_2__.Severity.Error,
-        type: 'http'
-      }, {
-        data: handlerData.error,
-        input: handlerData.args
-      });
-    } else {
-      (0,_sentry_core__WEBPACK_IMPORTED_MODULE_4__.getCurrentHub)().addBreadcrumb({
-        category: 'fetch',
-        data: tslib__WEBPACK_IMPORTED_MODULE_0__.__assign({}, handlerData.fetchData, {
-          status_code: handlerData.response.status
-        }),
-        type: 'http'
-      }, {
-        input: handlerData.args,
-        response: handlerData.response
-      });
-    }
-  };
-  /**
-   * Creates breadcrumbs from history API calls
-   */
-
-
-  Breadcrumbs.prototype._historyBreadcrumb = function (handlerData) {
-    var global = (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_5__.getGlobalObject)();
-    var from = handlerData.from;
-    var to = handlerData.to;
-    var parsedLoc = (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_5__.parseUrl)(global.location.href);
-    var parsedFrom = (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_5__.parseUrl)(from);
-    var parsedTo = (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_5__.parseUrl)(to); // Initial pushState doesn't provide `from` information
-
-    if (!parsedFrom.path) {
-      parsedFrom = parsedLoc;
-    } // Use only the path component of the URL if the URL matches the current
-    // document (almost all the time when using pushState)
-
-
-    if (parsedLoc.protocol === parsedTo.protocol && parsedLoc.host === parsedTo.host) {
-      // tslint:disable-next-line:no-parameter-reassignment
-      to = parsedTo.relative;
-    }
-
-    if (parsedLoc.protocol === parsedFrom.protocol && parsedLoc.host === parsedFrom.host) {
-      // tslint:disable-next-line:no-parameter-reassignment
-      from = parsedFrom.relative;
-    }
-
-    (0,_sentry_core__WEBPACK_IMPORTED_MODULE_4__.getCurrentHub)().addBreadcrumb({
-      category: 'navigation',
-      data: {
-        from: from,
-        to: to
-      }
+      event: event
     });
   };
   /**
@@ -746,7 +670,7 @@ function () {
     var _this = this;
 
     if (this._options.console) {
-      (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_7__.addInstrumentationHandler)({
+      (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_3__.addInstrumentationHandler)({
         callback: function callback() {
           var args = [];
 
@@ -754,14 +678,14 @@ function () {
             args[_i] = arguments[_i];
           }
 
-          _this._consoleBreadcrumb.apply(_this, tslib__WEBPACK_IMPORTED_MODULE_0__.__spread(args));
+          _this._consoleBreadcrumb.apply(_this, (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__spread)(args));
         },
         type: 'console'
       });
     }
 
     if (this._options.dom) {
-      (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_7__.addInstrumentationHandler)({
+      (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_3__.addInstrumentationHandler)({
         callback: function callback() {
           var args = [];
 
@@ -769,14 +693,14 @@ function () {
             args[_i] = arguments[_i];
           }
 
-          _this._domBreadcrumb.apply(_this, tslib__WEBPACK_IMPORTED_MODULE_0__.__spread(args));
+          _this._domBreadcrumb.apply(_this, (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__spread)(args));
         },
         type: 'dom'
       });
     }
 
     if (this._options.xhr) {
-      (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_7__.addInstrumentationHandler)({
+      (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_3__.addInstrumentationHandler)({
         callback: function callback() {
           var args = [];
 
@@ -784,14 +708,14 @@ function () {
             args[_i] = arguments[_i];
           }
 
-          _this._xhrBreadcrumb.apply(_this, tslib__WEBPACK_IMPORTED_MODULE_0__.__spread(args));
+          _this._xhrBreadcrumb.apply(_this, (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__spread)(args));
         },
         type: 'xhr'
       });
     }
 
     if (this._options.fetch) {
-      (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_7__.addInstrumentationHandler)({
+      (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_3__.addInstrumentationHandler)({
         callback: function callback() {
           var args = [];
 
@@ -799,14 +723,14 @@ function () {
             args[_i] = arguments[_i];
           }
 
-          _this._fetchBreadcrumb.apply(_this, tslib__WEBPACK_IMPORTED_MODULE_0__.__spread(args));
+          _this._fetchBreadcrumb.apply(_this, (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__spread)(args));
         },
         type: 'fetch'
       });
     }
 
     if (this._options.history) {
-      (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_7__.addInstrumentationHandler)({
+      (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_3__.addInstrumentationHandler)({
         callback: function callback() {
           var args = [];
 
@@ -814,11 +738,181 @@ function () {
             args[_i] = arguments[_i];
           }
 
-          _this._historyBreadcrumb.apply(_this, tslib__WEBPACK_IMPORTED_MODULE_0__.__spread(args));
+          _this._historyBreadcrumb.apply(_this, (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__spread)(args));
         },
         type: 'history'
       });
     }
+  };
+  /**
+   * Creates breadcrumbs from console API calls
+   */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
+
+  Breadcrumbs.prototype._consoleBreadcrumb = function (handlerData) {
+    var breadcrumb = {
+      category: 'console',
+      data: {
+        arguments: handlerData.args,
+        logger: 'console'
+      },
+      level: _sentry_types__WEBPACK_IMPORTED_MODULE_4__.Severity.fromString(handlerData.level),
+      message: (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_5__.safeJoin)(handlerData.args, ' ')
+    };
+
+    if (handlerData.level === 'assert') {
+      if (handlerData.args[0] === false) {
+        breadcrumb.message = "Assertion failed: " + ((0,_sentry_utils__WEBPACK_IMPORTED_MODULE_5__.safeJoin)(handlerData.args.slice(1), ' ') || 'console.assert');
+        breadcrumb.data.arguments = handlerData.args.slice(1);
+      } else {
+        // Don't capture a breadcrumb for passed assertions
+        return;
+      }
+    }
+
+    (0,_sentry_core__WEBPACK_IMPORTED_MODULE_1__.getCurrentHub)().addBreadcrumb(breadcrumb, {
+      input: handlerData.args,
+      level: handlerData.level
+    });
+  };
+  /**
+   * Creates breadcrumbs from DOM API calls
+   */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
+
+  Breadcrumbs.prototype._domBreadcrumb = function (handlerData) {
+    var target; // Accessing event.target can throw (see getsentry/raven-js#838, #768)
+
+    try {
+      target = handlerData.event.target ? (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_6__.htmlTreeAsString)(handlerData.event.target) : (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_6__.htmlTreeAsString)(handlerData.event);
+    } catch (e) {
+      target = '<unknown>';
+    }
+
+    if (target.length === 0) {
+      return;
+    }
+
+    (0,_sentry_core__WEBPACK_IMPORTED_MODULE_1__.getCurrentHub)().addBreadcrumb({
+      category: "ui." + handlerData.name,
+      message: target
+    }, {
+      event: handlerData.event,
+      name: handlerData.name,
+      global: handlerData.global
+    });
+  };
+  /**
+   * Creates breadcrumbs from XHR API calls
+   */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
+
+  Breadcrumbs.prototype._xhrBreadcrumb = function (handlerData) {
+    if (handlerData.endTimestamp) {
+      // We only capture complete, non-sentry requests
+      if (handlerData.xhr.__sentry_own_request__) {
+        return;
+      }
+
+      var _a = handlerData.xhr.__sentry_xhr__ || {},
+          method = _a.method,
+          url = _a.url,
+          status_code = _a.status_code,
+          body = _a.body;
+
+      (0,_sentry_core__WEBPACK_IMPORTED_MODULE_1__.getCurrentHub)().addBreadcrumb({
+        category: 'xhr',
+        data: {
+          method: method,
+          url: url,
+          status_code: status_code
+        },
+        type: 'http'
+      }, {
+        xhr: handlerData.xhr,
+        input: body
+      });
+      return;
+    }
+  };
+  /**
+   * Creates breadcrumbs from fetch API calls
+   */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
+
+  Breadcrumbs.prototype._fetchBreadcrumb = function (handlerData) {
+    // We only capture complete fetch requests
+    if (!handlerData.endTimestamp) {
+      return;
+    }
+
+    if (handlerData.fetchData.url.match(/sentry_key/) && handlerData.fetchData.method === 'POST') {
+      // We will not create breadcrumbs for fetch requests that contain `sentry_key` (internal sentry requests)
+      return;
+    }
+
+    if (handlerData.error) {
+      (0,_sentry_core__WEBPACK_IMPORTED_MODULE_1__.getCurrentHub)().addBreadcrumb({
+        category: 'fetch',
+        data: handlerData.fetchData,
+        level: _sentry_types__WEBPACK_IMPORTED_MODULE_4__.Severity.Error,
+        type: 'http'
+      }, {
+        data: handlerData.error,
+        input: handlerData.args
+      });
+    } else {
+      (0,_sentry_core__WEBPACK_IMPORTED_MODULE_1__.getCurrentHub)().addBreadcrumb({
+        category: 'fetch',
+        data: (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)({}, handlerData.fetchData), {
+          status_code: handlerData.response.status
+        }),
+        type: 'http'
+      }, {
+        input: handlerData.args,
+        response: handlerData.response
+      });
+    }
+  };
+  /**
+   * Creates breadcrumbs from history API calls
+   */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
+
+  Breadcrumbs.prototype._historyBreadcrumb = function (handlerData) {
+    var global = (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_2__.getGlobalObject)();
+    var from = handlerData.from;
+    var to = handlerData.to;
+    var parsedLoc = (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_2__.parseUrl)(global.location.href);
+    var parsedFrom = (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_2__.parseUrl)(from);
+    var parsedTo = (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_2__.parseUrl)(to); // Initial pushState doesn't provide `from` information
+
+    if (!parsedFrom.path) {
+      parsedFrom = parsedLoc;
+    } // Use only the path component of the URL if the URL matches the current
+    // document (almost all the time when using pushState)
+
+
+    if (parsedLoc.protocol === parsedTo.protocol && parsedLoc.host === parsedTo.host) {
+      to = parsedTo.relative;
+    }
+
+    if (parsedLoc.protocol === parsedFrom.protocol && parsedLoc.host === parsedFrom.host) {
+      from = parsedFrom.relative;
+    }
+
+    (0,_sentry_core__WEBPACK_IMPORTED_MODULE_1__.getCurrentHub)().addBreadcrumb({
+      category: 'navigation',
+      data: {
+        from: from,
+        to: to
+      }
+    });
   };
   /**
    * @inheritDoc
@@ -830,26 +924,6 @@ function () {
 }();
 
 
-/**
- * Create a breadcrumb of `sentry` from the events themselves
- */
-
-function addSentryBreadcrumb(serializedData) {
-  // There's always something that can go wrong with deserialization...
-  try {
-    var event_1 = JSON.parse(serializedData);
-    (0,_sentry_core__WEBPACK_IMPORTED_MODULE_4__.getCurrentHub)().addBreadcrumb({
-      category: 'sentry',
-      event_id: event_1.event_id,
-      level: event_1.level || _sentry_types__WEBPACK_IMPORTED_MODULE_2__.Severity.fromString('error'),
-      message: (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_5__.getEventDescription)(event_1)
-    }, {
-      event: event_1
-    });
-  } catch (_oO) {
-    _sentry_utils__WEBPACK_IMPORTED_MODULE_8__.logger.error('Error while adding sentry type breadcrumb');
-  }
-}
 
 /***/ }),
 
@@ -865,12 +939,15 @@ function addSentryBreadcrumb(serializedData) {
 /* harmony export */ });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _sentry_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @sentry/core */ "./node_modules/@sentry/hub/esm/hub.js");
-/* harmony import */ var _sentry_types__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @sentry/types */ "./node_modules/@sentry/types/esm/severity.js");
-/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/misc.js");
-/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/logger.js");
+/* harmony import */ var _sentry_types__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @sentry/types */ "./node_modules/@sentry/types/esm/severity.js");
+/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/logger.js");
+/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/instrument.js");
 /* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/is.js");
+/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/misc.js");
 /* harmony import */ var _eventbuilder__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../eventbuilder */ "./node_modules/@sentry/browser/esm/eventbuilder.js");
 /* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../helpers */ "./node_modules/@sentry/browser/esm/helpers.js");
+
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 
 
 
@@ -890,20 +967,11 @@ function () {
     this.name = GlobalHandlers.id;
     /** JSDoc */
 
-    this._global = (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_1__.getGlobalObject)();
-    /** JSDoc */
-
-    this._oldOnErrorHandler = null;
-    /** JSDoc */
-
-    this._oldOnUnhandledRejectionHandler = null;
-    /** JSDoc */
-
     this._onErrorHandlerInstalled = false;
     /** JSDoc */
 
     this._onUnhandledRejectionHandlerInstalled = false;
-    this._options = tslib__WEBPACK_IMPORTED_MODULE_0__.__assign({
+    this._options = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)({
       onerror: true,
       onunhandledrejection: true
     }, options);
@@ -917,13 +985,13 @@ function () {
     Error.stackTraceLimit = 50;
 
     if (this._options.onerror) {
-      _sentry_utils__WEBPACK_IMPORTED_MODULE_2__.logger.log('Global Handler attached: onerror');
+      _sentry_utils__WEBPACK_IMPORTED_MODULE_1__.logger.log('Global Handler attached: onerror');
 
       this._installGlobalOnErrorHandler();
     }
 
     if (this._options.onunhandledrejection) {
-      _sentry_utils__WEBPACK_IMPORTED_MODULE_2__.logger.log('Global Handler attached: onunhandledrejection');
+      _sentry_utils__WEBPACK_IMPORTED_MODULE_1__.logger.log('Global Handler attached: onunhandledrejection');
 
       this._installGlobalOnUnhandledRejectionHandler();
     }
@@ -932,107 +1000,103 @@ function () {
 
 
   GlobalHandlers.prototype._installGlobalOnErrorHandler = function () {
+    var _this = this;
+
     if (this._onErrorHandlerInstalled) {
       return;
     }
 
-    var self = this; // tslint:disable-line:no-this-assignment
+    (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_2__.addInstrumentationHandler)({
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      callback: function callback(data) {
+        var error = data.error;
+        var currentHub = (0,_sentry_core__WEBPACK_IMPORTED_MODULE_3__.getCurrentHub)();
+        var hasIntegration = currentHub.getIntegration(GlobalHandlers);
+        var isFailedOwnDelivery = error && error.__sentry_own_request__ === true;
 
-    this._oldOnErrorHandler = this._global.onerror;
-
-    this._global.onerror = function (msg, url, line, column, error) {
-      var currentHub = (0,_sentry_core__WEBPACK_IMPORTED_MODULE_3__.getCurrentHub)();
-      var hasIntegration = currentHub.getIntegration(GlobalHandlers);
-      var isFailedOwnDelivery = error && error.__sentry_own_request__ === true;
-
-      if (!hasIntegration || (0,_helpers__WEBPACK_IMPORTED_MODULE_4__.shouldIgnoreOnError)() || isFailedOwnDelivery) {
-        if (self._oldOnErrorHandler) {
-          return self._oldOnErrorHandler.apply(this, arguments);
+        if (!hasIntegration || (0,_helpers__WEBPACK_IMPORTED_MODULE_4__.shouldIgnoreOnError)() || isFailedOwnDelivery) {
+          return;
         }
 
-        return false;
-      }
-
-      var client = currentHub.getClient();
-      var event = (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_5__.isPrimitive)(error) ? self._eventFromIncompleteOnError(msg, url, line, column) : self._enhanceEventWithInitialFrame((0,_eventbuilder__WEBPACK_IMPORTED_MODULE_6__.eventFromUnknownInput)(error, undefined, {
-        attachStacktrace: client && client.getOptions().attachStacktrace,
-        rejection: false
-      }), url, line, column);
-      (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_1__.addExceptionMechanism)(event, {
-        handled: false,
-        type: 'onerror'
-      });
-      currentHub.captureEvent(event, {
-        originalException: error
-      });
-
-      if (self._oldOnErrorHandler) {
-        return self._oldOnErrorHandler.apply(this, arguments);
-      }
-
-      return false;
-    };
-
+        var client = currentHub.getClient();
+        var event = (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_5__.isPrimitive)(error) ? _this._eventFromIncompleteOnError(data.msg, data.url, data.line, data.column) : _this._enhanceEventWithInitialFrame((0,_eventbuilder__WEBPACK_IMPORTED_MODULE_6__.eventFromUnknownInput)(error, undefined, {
+          attachStacktrace: client && client.getOptions().attachStacktrace,
+          rejection: false
+        }), data.url, data.line, data.column);
+        (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_7__.addExceptionMechanism)(event, {
+          handled: false,
+          type: 'onerror'
+        });
+        currentHub.captureEvent(event, {
+          originalException: error
+        });
+      },
+      type: 'error'
+    });
     this._onErrorHandlerInstalled = true;
   };
   /** JSDoc */
 
 
   GlobalHandlers.prototype._installGlobalOnUnhandledRejectionHandler = function () {
+    var _this = this;
+
     if (this._onUnhandledRejectionHandlerInstalled) {
       return;
     }
 
-    var self = this; // tslint:disable-line:no-this-assignment
+    (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_2__.addInstrumentationHandler)({
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      callback: function callback(e) {
+        var error = e; // dig the object of the rejection out of known event types
 
-    this._oldOnUnhandledRejectionHandler = this._global.onunhandledrejection;
-
-    this._global.onunhandledrejection = function (e) {
-      var error = e;
-
-      try {
-        error = e && 'reason' in e ? e.reason : e;
-      } catch (_oO) {// no-empty
-      }
-
-      var currentHub = (0,_sentry_core__WEBPACK_IMPORTED_MODULE_3__.getCurrentHub)();
-      var hasIntegration = currentHub.getIntegration(GlobalHandlers);
-      var isFailedOwnDelivery = error && error.__sentry_own_request__ === true;
-
-      if (!hasIntegration || (0,_helpers__WEBPACK_IMPORTED_MODULE_4__.shouldIgnoreOnError)() || isFailedOwnDelivery) {
-        if (self._oldOnUnhandledRejectionHandler) {
-          return self._oldOnUnhandledRejectionHandler.apply(this, arguments);
+        try {
+          // PromiseRejectionEvents store the object of the rejection under 'reason'
+          // see https://developer.mozilla.org/en-US/docs/Web/API/PromiseRejectionEvent
+          if ('reason' in e) {
+            error = e.reason;
+          } // something, somewhere, (likely a browser extension) effectively casts PromiseRejectionEvents
+          // to CustomEvents, moving the `promise` and `reason` attributes of the PRE into
+          // the CustomEvent's `detail` attribute, since they're not part of CustomEvent's spec
+          // see https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent and
+          // https://github.com/getsentry/sentry-javascript/issues/2380
+          else if ('detail' in e && 'reason' in e.detail) {
+              error = e.detail.reason;
+            }
+        } catch (_oO) {// no-empty
         }
 
-        return true;
-      }
+        var currentHub = (0,_sentry_core__WEBPACK_IMPORTED_MODULE_3__.getCurrentHub)();
+        var hasIntegration = currentHub.getIntegration(GlobalHandlers);
+        var isFailedOwnDelivery = error && error.__sentry_own_request__ === true;
 
-      var client = currentHub.getClient();
-      var event = (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_5__.isPrimitive)(error) ? self._eventFromIncompleteRejection(error) : (0,_eventbuilder__WEBPACK_IMPORTED_MODULE_6__.eventFromUnknownInput)(error, undefined, {
-        attachStacktrace: client && client.getOptions().attachStacktrace,
-        rejection: true
-      });
-      event.level = _sentry_types__WEBPACK_IMPORTED_MODULE_7__.Severity.Error;
-      (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_1__.addExceptionMechanism)(event, {
-        handled: false,
-        type: 'onunhandledrejection'
-      });
-      currentHub.captureEvent(event, {
-        originalException: error
-      });
+        if (!hasIntegration || (0,_helpers__WEBPACK_IMPORTED_MODULE_4__.shouldIgnoreOnError)() || isFailedOwnDelivery) {
+          return true;
+        }
 
-      if (self._oldOnUnhandledRejectionHandler) {
-        return self._oldOnUnhandledRejectionHandler.apply(this, arguments);
-      }
-
-      return true;
-    };
-
+        var client = currentHub.getClient();
+        var event = (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_5__.isPrimitive)(error) ? _this._eventFromRejectionWithPrimitive(error) : (0,_eventbuilder__WEBPACK_IMPORTED_MODULE_6__.eventFromUnknownInput)(error, undefined, {
+          attachStacktrace: client && client.getOptions().attachStacktrace,
+          rejection: true
+        });
+        event.level = _sentry_types__WEBPACK_IMPORTED_MODULE_8__.Severity.Error;
+        (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_7__.addExceptionMechanism)(event, {
+          handled: false,
+          type: 'onunhandledrejection'
+        });
+        currentHub.captureEvent(event, {
+          originalException: error
+        });
+        return;
+      },
+      type: 'unhandledrejection'
+    });
     this._onUnhandledRejectionHandlerInstalled = true;
   };
   /**
    * This function creates a stack from an old, error-less onerror handler.
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
 
 
   GlobalHandlers.prototype._eventFromIncompleteOnError = function (msg, url, line, column) {
@@ -1061,21 +1125,26 @@ function () {
     return this._enhanceEventWithInitialFrame(event, url, line, column);
   };
   /**
-   * This function creates an Event from an TraceKitStackTrace that has part of it missing.
+   * Create an event from a promise rejection where the `reason` is a primitive.
+   *
+   * @param reason: The `reason` property of the promise rejection
+   * @returns An Event object with an appropriate `exception` value
    */
 
 
-  GlobalHandlers.prototype._eventFromIncompleteRejection = function (error) {
+  GlobalHandlers.prototype._eventFromRejectionWithPrimitive = function (reason) {
     return {
       exception: {
         values: [{
           type: 'UnhandledRejection',
-          value: "Non-Error promise rejection captured with value: " + error
+          // String() is needed because the Primitive type includes symbols (which can't be automatically stringified)
+          value: "Non-Error promise rejection captured with value: " + String(reason)
         }]
       }
     };
   };
   /** JSDoc */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
 
 
   GlobalHandlers.prototype._enhanceEventWithInitialFrame = function (event, url, line, column) {
@@ -1086,7 +1155,7 @@ function () {
     event.exception.values[0].stacktrace.frames = event.exception.values[0].stacktrace.frames || [];
     var colno = isNaN(parseInt(column, 10)) ? undefined : column;
     var lineno = isNaN(parseInt(line, 10)) ? undefined : line;
-    var filename = (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_5__.isString)(url) && url.length > 0 ? url : (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_1__.getLocationHref)();
+    var filename = (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_5__.isString)(url) && url.length > 0 ? url : (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_7__.getLocationHref)();
 
     if (event.exception.values[0].stacktrace.frames.length === 0) {
       event.exception.values[0].stacktrace.frames.push({
@@ -1185,7 +1254,7 @@ function () {
 
     var linkedErrors = this._walkErrorTree(hint.originalException, this._key);
 
-    event.exception.values = tslib__WEBPACK_IMPORTED_MODULE_0__.__spread(linkedErrors, event.exception.values);
+    event.exception.values = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__spread)(linkedErrors, event.exception.values);
     return event;
   };
   /**
@@ -1204,7 +1273,7 @@ function () {
 
     var stacktrace = (0,_tracekit__WEBPACK_IMPORTED_MODULE_4__.computeStackTrace)(error[key]);
     var exception = (0,_parsers__WEBPACK_IMPORTED_MODULE_5__.exceptionFromStacktrace)(stacktrace);
-    return this._walkErrorTree(error[key], key, tslib__WEBPACK_IMPORTED_MODULE_0__.__spread([exception], stack));
+    return this._walkErrorTree(error[key], key, (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__spread)([exception], stack));
   };
   /**
    * @inheritDoc
@@ -1229,29 +1298,71 @@ function () {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "TryCatch": () => (/* binding */ TryCatch)
 /* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/misc.js");
 /* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/object.js");
-/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../helpers */ "./node_modules/@sentry/browser/esm/helpers.js");
+/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/stacktrace.js");
+/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../helpers */ "./node_modules/@sentry/browser/esm/helpers.js");
 
 
+
+var DEFAULT_EVENT_TARGET = ['EventTarget', 'Window', 'Node', 'ApplicationCache', 'AudioTrackList', 'ChannelMergerNode', 'CryptoOperation', 'EventSource', 'FileReader', 'HTMLUnknownElement', 'IDBDatabase', 'IDBRequest', 'IDBTransaction', 'KeyOperation', 'MediaController', 'MessagePort', 'ModalWindow', 'Notification', 'SVGElementInstance', 'Screen', 'TextTrack', 'TextTrackCue', 'TextTrackList', 'WebSocket', 'WebSocketWorker', 'Worker', 'XMLHttpRequest', 'XMLHttpRequestEventTarget', 'XMLHttpRequestUpload'];
 /** Wrap timer functions and event targets to catch errors and provide better meta data */
 
 var TryCatch =
 /** @class */
 function () {
-  function TryCatch() {
-    /** JSDoc */
-    this._ignoreOnError = 0;
+  /**
+   * @inheritDoc
+   */
+  function TryCatch(options) {
     /**
      * @inheritDoc
      */
-
     this.name = TryCatch.id;
+    this._options = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)({
+      XMLHttpRequest: true,
+      eventTarget: true,
+      requestAnimationFrame: true,
+      setInterval: true,
+      setTimeout: true
+    }, options);
   }
+  /**
+   * Wrap timer functions and event targets to catch errors
+   * and provide better metadata.
+   */
+
+
+  TryCatch.prototype.setupOnce = function () {
+    var global = (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_1__.getGlobalObject)();
+
+    if (this._options.setTimeout) {
+      (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_2__.fill)(global, 'setTimeout', this._wrapTimeFunction.bind(this));
+    }
+
+    if (this._options.setInterval) {
+      (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_2__.fill)(global, 'setInterval', this._wrapTimeFunction.bind(this));
+    }
+
+    if (this._options.requestAnimationFrame) {
+      (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_2__.fill)(global, 'requestAnimationFrame', this._wrapRAF.bind(this));
+    }
+
+    if (this._options.XMLHttpRequest && 'XMLHttpRequest' in global) {
+      (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_2__.fill)(XMLHttpRequest.prototype, 'send', this._wrapXHR.bind(this));
+    }
+
+    if (this._options.eventTarget) {
+      var eventTarget = Array.isArray(this._options.eventTarget) ? this._options.eventTarget : DEFAULT_EVENT_TARGET;
+      eventTarget.forEach(this._wrapEventTarget.bind(this));
+    }
+  };
   /** JSDoc */
 
 
   TryCatch.prototype._wrapTimeFunction = function (original) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return function () {
       var args = [];
 
@@ -1260,10 +1371,10 @@ function () {
       }
 
       var originalCallback = args[0];
-      args[0] = (0,_helpers__WEBPACK_IMPORTED_MODULE_0__.wrap)(originalCallback, {
+      args[0] = (0,_helpers__WEBPACK_IMPORTED_MODULE_3__.wrap)(originalCallback, {
         mechanism: {
           data: {
-            function: (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_1__.getFunctionName)(original)
+            function: (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_4__.getFunctionName)(original)
           },
           handled: true,
           type: 'instrument'
@@ -1273,15 +1384,18 @@ function () {
     };
   };
   /** JSDoc */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
 
 
   TryCatch.prototype._wrapRAF = function (original) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return function (callback) {
-      return original((0,_helpers__WEBPACK_IMPORTED_MODULE_0__.wrap)(callback, {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+      return original.call(this, (0,_helpers__WEBPACK_IMPORTED_MODULE_3__.wrap)(callback, {
         mechanism: {
           data: {
             function: 'requestAnimationFrame',
-            handler: (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_1__.getFunctionName)(original)
+            handler: (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_4__.getFunctionName)(original)
           },
           handled: true,
           type: 'instrument'
@@ -1293,8 +1407,10 @@ function () {
 
 
   TryCatch.prototype._wrapEventTarget = function (target) {
-    var global = (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_1__.getGlobalObject)();
-    var proto = global[target] && global[target].prototype;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    var global = (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_1__.getGlobalObject)(); // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+
+    var proto = global[target] && global[target].prototype; // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
 
     if (!proto || !proto.hasOwnProperty || !proto.hasOwnProperty('addEventListener')) {
       return;
@@ -1303,13 +1419,12 @@ function () {
     (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_2__.fill)(proto, 'addEventListener', function (original) {
       return function (eventName, fn, options) {
         try {
-          // tslint:disable-next-line:no-unbound-method strict-type-predicates
           if (typeof fn.handleEvent === 'function') {
-            fn.handleEvent = (0,_helpers__WEBPACK_IMPORTED_MODULE_0__.wrap)(fn.handleEvent.bind(fn), {
+            fn.handleEvent = (0,_helpers__WEBPACK_IMPORTED_MODULE_3__.wrap)(fn.handleEvent.bind(fn), {
               mechanism: {
                 data: {
                   function: 'handleEvent',
-                  handler: (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_1__.getFunctionName)(fn),
+                  handler: (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_4__.getFunctionName)(fn),
                   target: target
                 },
                 handled: true,
@@ -1320,11 +1435,12 @@ function () {
         } catch (err) {// can sometimes get 'Permission denied to access property "handle Event'
         }
 
-        return original.call(this, eventName, (0,_helpers__WEBPACK_IMPORTED_MODULE_0__.wrap)(fn, {
+        return original.call(this, eventName, // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (0,_helpers__WEBPACK_IMPORTED_MODULE_3__.wrap)(fn, {
           mechanism: {
             data: {
               function: 'addEventListener',
-              handler: (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_1__.getFunctionName)(fn),
+              handler: (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_4__.getFunctionName)(fn),
               target: target
             },
             handled: true,
@@ -1333,16 +1449,40 @@ function () {
         }), options);
       };
     });
-    (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_2__.fill)(proto, 'removeEventListener', function (original) {
+    (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_2__.fill)(proto, 'removeEventListener', function (originalRemoveEventListener) {
       return function (eventName, fn, options) {
-        var callback = fn;
+        var _a;
+        /**
+         * There are 2 possible scenarios here:
+         *
+         * 1. Someone passes a callback, which was attached prior to Sentry initialization, or by using unmodified
+         * method, eg. `document.addEventListener.call(el, name, handler). In this case, we treat this function
+         * as a pass-through, and call original `removeEventListener` with it.
+         *
+         * 2. Someone passes a callback, which was attached after Sentry was initialized, which means that it was using
+         * our wrapped version of `addEventListener`, which internally calls `wrap` helper.
+         * This helper "wraps" whole callback inside a try/catch statement, and attached appropriate metadata to it,
+         * in order for us to make a distinction between wrapped/non-wrapped functions possible.
+         * If a function was wrapped, it has additional property of `__sentry_wrapped__`, holding the handler.
+         *
+         * When someone adds a handler prior to initialization, and then do it again, but after,
+         * then we have to detach both of them. Otherwise, if we'd detach only wrapped one, it'd be impossible
+         * to get rid of the initial handler and it'd stick there forever.
+         */
+
+
+        var wrappedEventHandler = fn;
 
         try {
-          callback = callback && (callback.__sentry_wrapped__ || callback);
+          var originalEventHandler = (_a = wrappedEventHandler) === null || _a === void 0 ? void 0 : _a.__sentry_wrapped__;
+
+          if (originalEventHandler) {
+            originalRemoveEventListener.call(this, eventName, originalEventHandler, options);
+          }
         } catch (e) {// ignore, accessing __sentry_wrapped__ will throw in some Selenium environments
         }
 
-        return original.call(this, eventName, callback, options);
+        return originalRemoveEventListener.call(this, eventName, wrappedEventHandler, options);
       };
     });
   };
@@ -1350,78 +1490,43 @@ function () {
 
 
   TryCatch.prototype._wrapXHR = function (originalSend) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return function () {
-      var _this = this;
-
       var args = [];
 
       for (var _i = 0; _i < arguments.length; _i++) {
         args[_i] = arguments[_i];
-      }
+      } // eslint-disable-next-line @typescript-eslint/no-this-alias
 
-      var xhr = this; // tslint:disable-line:no-this-assignment
 
-      var xmlHttpRequestProps = ['onload', 'onerror', 'onprogress'];
+      var xhr = this;
+      var xmlHttpRequestProps = ['onload', 'onerror', 'onprogress', 'onreadystatechange'];
       xmlHttpRequestProps.forEach(function (prop) {
-        if (prop in _this && typeof _this[prop] === 'function') {
-          (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_2__.fill)(_this, prop, function (original) {
-            return (0,_helpers__WEBPACK_IMPORTED_MODULE_0__.wrap)(original, {
+        if (prop in xhr && typeof xhr[prop] === 'function') {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_2__.fill)(xhr, prop, function (original) {
+            var wrapOptions = {
               mechanism: {
                 data: {
                   function: prop,
-                  handler: (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_1__.getFunctionName)(original)
+                  handler: (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_4__.getFunctionName)(original)
                 },
                 handled: true,
                 type: 'instrument'
               }
-            });
+            }; // If Instrument integration has been called before TryCatch, get the name of original function
+
+            if (original.__sentry_original__) {
+              wrapOptions.mechanism.data.handler = (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_4__.getFunctionName)(original.__sentry_original__);
+            } // Otherwise wrap directly
+
+
+            return (0,_helpers__WEBPACK_IMPORTED_MODULE_3__.wrap)(original, wrapOptions);
           });
         }
       });
-
-      if ('onreadystatechange' in xhr && typeof xhr.onreadystatechange === 'function') {
-        (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_2__.fill)(xhr, 'onreadystatechange', function (original) {
-          var wrapOptions = {
-            mechanism: {
-              data: {
-                function: 'onreadystatechange',
-                handler: (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_1__.getFunctionName)(original)
-              },
-              handled: true,
-              type: 'instrument'
-            }
-          }; // If Instrument integration has been called before TryCatch, get the name of original function
-
-          if (original.__sentry_original__) {
-            wrapOptions.mechanism.data.handler = (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_1__.getFunctionName)(original.__sentry_original__);
-          } // Otherwise wrap directly
-
-
-          return (0,_helpers__WEBPACK_IMPORTED_MODULE_0__.wrap)(original, wrapOptions);
-        });
-      }
-
       return originalSend.apply(this, args);
     };
-  };
-  /**
-   * Wrap timer functions and event targets to catch errors
-   * and provide better metadata.
-   */
-
-
-  TryCatch.prototype.setupOnce = function () {
-    this._ignoreOnError = this._ignoreOnError;
-    var global = (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_1__.getGlobalObject)();
-    (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_2__.fill)(global, 'setTimeout', this._wrapTimeFunction.bind(this));
-    (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_2__.fill)(global, 'setInterval', this._wrapTimeFunction.bind(this));
-    (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_2__.fill)(global, 'requestAnimationFrame', this._wrapRAF.bind(this));
-
-    if ('XMLHttpRequest' in global) {
-      (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_2__.fill)(XMLHttpRequest.prototype, 'send', this._wrapXHR.bind(this));
-    }
-
-    ['EventTarget', 'Window', 'Node', 'ApplicationCache', 'AudioTrackList', 'ChannelMergerNode', 'CryptoOperation', 'EventSource', 'FileReader', 'HTMLUnknownElement', 'IDBDatabase', 'IDBRequest', 'IDBTransaction', 'KeyOperation', 'MediaController', 'MessagePort', 'ModalWindow', 'Notification', 'SVGElementInstance', 'Screen', 'TextTrack', 'TextTrackCue', 'TextTrackList', 'WebSocket', 'WebSocketWorker', 'Worker', 'XMLHttpRequest', 'XMLHttpRequestEventTarget', 'XMLHttpRequestUpload'].forEach(this._wrapEventTarget.bind(this));
   };
   /**
    * @inheritDoc
@@ -1472,17 +1577,32 @@ function () {
 
   UserAgent.prototype.setupOnce = function () {
     (0,_sentry_core__WEBPACK_IMPORTED_MODULE_2__.addGlobalEventProcessor)(function (event) {
+      var _a, _b, _c;
+
       if ((0,_sentry_core__WEBPACK_IMPORTED_MODULE_3__.getCurrentHub)().getIntegration(UserAgent)) {
-        if (!global.navigator || !global.location) {
+        // if none of the information we want exists, don't bother
+        if (!global.navigator && !global.location && !global.document) {
           return event;
-        } // Request Interface: https://docs.sentry.io/development/sdk-dev/event-payloads/request/
+        } // grab as much info as exists and add it to the event
 
 
-        var request = event.request || {};
-        request.url = request.url || global.location.href;
-        request.headers = request.headers || {};
-        request.headers['User-Agent'] = global.navigator.userAgent;
-        return tslib__WEBPACK_IMPORTED_MODULE_0__.__assign({}, event, {
+        var url = ((_a = event.request) === null || _a === void 0 ? void 0 : _a.url) || ((_b = global.location) === null || _b === void 0 ? void 0 : _b.href);
+        var referrer = (global.document || {}).referrer;
+        var userAgent = (global.navigator || {}).userAgent;
+
+        var headers = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)({}, (_c = event.request) === null || _c === void 0 ? void 0 : _c.headers), referrer && {
+          Referer: referrer
+        }), userAgent && {
+          'User-Agent': userAgent
+        });
+
+        var request = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)({}, url && {
+          url: url
+        }), {
+          headers: headers
+        });
+
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)({}, event), {
           request: request
         });
       }
@@ -1539,8 +1659,7 @@ function exceptionFromStacktrace(stacktrace) {
     exception.stacktrace = {
       frames: frames
     };
-  } // tslint:disable-next-line:strict-type-predicates
-
+  }
 
   if (exception.type === undefined && exception.value === '') {
     exception.value = 'Unrecoverable error caught';
@@ -1610,7 +1729,7 @@ function prepareFramesForEvent(stack) {
   } // The frame where the crash happened, should be the last entry in the array
 
 
-  return localStack.map(function (frame) {
+  return localStack.slice(0, STACKTRACE_LIMIT).map(function (frame) {
     return {
       colno: frame.column === null ? undefined : frame.column,
       filename: frame.url || localStack[0].url,
@@ -1618,7 +1737,7 @@ function prepareFramesForEvent(stack) {
       in_app: true,
       lineno: frame.line === null ? undefined : frame.line
     };
-  }).slice(0, STACKTRACE_LIMIT).reverse();
+  }).reverse();
 }
 
 /***/ }),
@@ -1640,6 +1759,8 @@ function prepareFramesForEvent(stack) {
 /* harmony import */ var _sentry_core__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @sentry/core */ "./node_modules/@sentry/hub/esm/hub.js");
 /* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/misc.js");
 /* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/syncpromise.js");
+/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/logger.js");
+/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/instrument.js");
 /* harmony import */ var _client__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./client */ "./node_modules/@sentry/browser/esm/client.js");
 /* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./helpers */ "./node_modules/@sentry/browser/esm/helpers.js");
 /* harmony import */ var _integrations__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./integrations */ "./node_modules/@sentry/browser/esm/integrations/trycatch.js");
@@ -1728,7 +1849,15 @@ function init(options) {
     }
   }
 
+  if (options.autoSessionTracking === undefined) {
+    options.autoSessionTracking = true;
+  }
+
   (0,_sentry_core__WEBPACK_IMPORTED_MODULE_8__.initAndBind)(_client__WEBPACK_IMPORTED_MODULE_9__.BrowserClient, options);
+
+  if (options.autoSessionTracking) {
+    startSessionTracking();
+  }
 }
 /**
  * Present the user with a report dialog.
@@ -1814,9 +1943,43 @@ function close(timeout) {
  *
  * @returns The result of wrapped function call.
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 
 function wrap(fn) {
-  return (0,_helpers__WEBPACK_IMPORTED_MODULE_12__.wrap)(fn)(); // tslint:disable-line:no-unsafe-any
+  return (0,_helpers__WEBPACK_IMPORTED_MODULE_12__.wrap)(fn)();
+}
+/**
+ * Enable automatic Session Tracking for the initial page load.
+ */
+
+function startSessionTracking() {
+  var window = (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_7__.getGlobalObject)();
+  var document = window.document;
+
+  if (typeof document === 'undefined') {
+    _sentry_utils__WEBPACK_IMPORTED_MODULE_13__.logger.warn('Session tracking in non-browser environment with @sentry/browser is not supported.');
+    return;
+  }
+
+  var hub = (0,_sentry_core__WEBPACK_IMPORTED_MODULE_10__.getCurrentHub)();
+
+  if ('startSession' in hub) {
+    // The only way for this to be false is for there to be a version mismatch between @sentry/browser (>= 6.0.0) and
+    // @sentry/hub (< 5.27.0). In the simple case, there won't ever be such a mismatch, because the two packages are
+    // pinned at the same version in package.json, but there are edge cases where it's possible'. See
+    // https://github.com/getsentry/sentry-javascript/issues/3234 and
+    // https://github.com/getsentry/sentry-javascript/issues/3207.
+    hub.startSession();
+    hub.captureSession(); // We want to create a session for every navigation as well
+
+    (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_14__.addInstrumentationHandler)({
+      callback: function callback() {
+        hub.startSession();
+        hub.captureSession();
+      },
+      type: 'history'
+    });
+  }
 }
 
 /***/ }),
@@ -1832,25 +1995,38 @@ function wrap(fn) {
 /* harmony export */   "computeStackTrace": () => (/* binding */ computeStackTrace)
 /* harmony export */ });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-// tslint:disable:object-literal-sort-keys
+/**
+ * This was originally forked from https://github.com/occ/TraceKit, but has since been
+ * largely modified and is now maintained as part of Sentry JS SDK.
+ */
  // global reference to slice
 
 var UNKNOWN_FUNCTION = '?'; // Chromium based browsers: Chrome, Brave, new Opera, new Edge
 
-var chrome = /^\s*at (?:(.*?) ?\()?((?:file|https?|blob|chrome-extension|native|eval|webpack|<anonymous>|[-a-z]+:|\/).*?)(?::(\d+))?(?::(\d+))?\)?\s*$/i; // gecko regex: `(?:bundle|\d+\.js)`: `bundle` is for react native, `\d+\.js` also but specifically for ram bundles because it
+var chrome = /^\s*at (?:(.*?) ?\()?((?:file|https?|blob|chrome-extension|address|native|eval|webpack|<anonymous>|[-a-z]+:|.*bundle|\/).*?)(?::(\d+))?(?::(\d+))?\)?\s*$/i; // gecko regex: `(?:bundle|\d+\.js)`: `bundle` is for react native, `\d+\.js` also but specifically for ram bundles because it
 // generates filenames without a prefix like `file://` the filenames in the stacktrace are just 42.js
 // We need this specific case for now because we want no other regex to match.
 
-var gecko = /^\s*(.*?)(?:\((.*?)\))?(?:^|@)?((?:file|https?|blob|chrome|webpack|resource|moz-extension).*?:\/.*?|\[native code\]|[^@]*(?:bundle|\d+\.js))(?::(\d+))?(?::(\d+))?\s*$/i;
+var gecko = /^\s*(.*?)(?:\((.*?)\))?(?:^|@)?((?:file|https?|blob|chrome|webpack|resource|moz-extension|capacitor).*?:\/.*?|\[native code\]|[^@]*(?:bundle|\d+\.js)|\/[\w\-. /=]+)(?::(\d+))?(?::(\d+))?\s*$/i;
 var winjs = /^\s*at (?:((?:\[object object\])?.+) )?\(?((?:file|ms-appx|https?|webpack|blob):.*?):(\d+)(?::(\d+))?\)?\s*$/i;
 var geckoEval = /(\S+) line (\d+)(?: > eval line \d+)* > eval/i;
-var chromeEval = /\((\S*)(?::(\d+))(?::(\d+))\)/;
+var chromeEval = /\((\S*)(?::(\d+))(?::(\d+))\)/; // Based on our own mapping pattern - https://github.com/getsentry/sentry/blob/9f08305e09866c8bd6d0c24f5b0aabdd7dd6c59c/src/sentry/lang/javascript/errormapping.py#L83-L108
+
+var reactMinifiedRegexp = /Minified React error #\d+;/i;
 /** JSDoc */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
 
 function computeStackTrace(ex) {
-  // tslint:disable:no-unsafe-any
   var stack = null;
-  var popSize = ex && ex.framesToPop;
+  var popSize = 0;
+
+  if (ex) {
+    if (typeof ex.framesToPop === 'number') {
+      popSize = ex.framesToPop;
+    } else if (reactMinifiedRegexp.test(ex.message)) {
+      popSize = 1;
+    }
+  }
 
   try {
     // This must be tried first because Opera 10 *destroys*
@@ -1881,10 +2057,9 @@ function computeStackTrace(ex) {
   };
 }
 /** JSDoc */
-// tslint:disable-next-line:cyclomatic-complexity
+// eslint-disable-next-line @typescript-eslint/no-explicit-any, complexity
 
 function computeStackTraceFromStackProp(ex) {
-  // tslint:disable:no-conditional-assignment
   if (!ex || !ex.stack) {
     return null;
   }
@@ -1912,7 +2087,9 @@ function computeStackTraceFromStackProp(ex) {
       }
 
       element = {
-        url: parts[2],
+        // working with the regexp above is super painful. it is quite a hack, but just stripping the `address at `
+        // prefix here seems like the quickest solution for now.
+        url: parts[2] && parts[2].indexOf('address at ') === 0 ? parts[2].substr('address at '.length) : parts[2],
         func: parts[1] || UNKNOWN_FUNCTION,
         args: isNative ? [parts[2]] : [],
         line: parts[3] ? +parts[3] : null,
@@ -1972,6 +2149,7 @@ function computeStackTraceFromStackProp(ex) {
   };
 }
 /** JSDoc */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 
 
 function computeStackTraceFromStacktraceProp(ex) {
@@ -1984,13 +2162,12 @@ function computeStackTraceFromStacktraceProp(ex) {
 
   var stacktrace = ex.stacktrace;
   var opera10Regex = / line (\d+).*script (?:in )?(\S+)(?:: in function (\S+))?$/i;
-  var opera11Regex = / line (\d+), column (\d+)\s*(?:in (?:<anonymous function: ([^>]+)>|([^\)]+))\((.*)\))? in (.*):\s*$/i;
+  var opera11Regex = / line (\d+), column (\d+)\s*(?:in (?:<anonymous function: ([^>]+)>|([^)]+))\((.*)\))? in (.*):\s*$/i;
   var lines = stacktrace.split('\n');
   var stack = [];
   var parts;
 
   for (var line = 0; line < lines.length; line += 2) {
-    // tslint:disable:no-conditional-assignment
     var element = null;
 
     if (parts = opera10Regex.exec(lines[line])) {
@@ -2035,7 +2212,7 @@ function computeStackTraceFromStacktraceProp(ex) {
 
 function popFrames(stacktrace, popSize) {
   try {
-    return tslib__WEBPACK_IMPORTED_MODULE_0__.__assign({}, stacktrace, {
+    return (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)({}, stacktrace), {
       stack: stacktrace.stack.slice(popSize)
     });
   } catch (e) {
@@ -2047,6 +2224,7 @@ function popFrames(stacktrace, popSize) {
  * https://github.com/getsentry/sentry-javascript/issues/1949
  * In this specific case we try to extract stacktrace.message.error.message
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 
 
 function extractMessage(ex) {
@@ -2075,11 +2253,22 @@ function extractMessage(ex) {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "BaseTransport": () => (/* binding */ BaseTransport)
 /* harmony export */ });
-/* harmony import */ var _sentry_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @sentry/core */ "./node_modules/@sentry/core/esm/api.js");
-/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/promisebuffer.js");
-/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/error.js");
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _sentry_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @sentry/core */ "./node_modules/@sentry/core/esm/api.js");
+/* harmony import */ var _sentry_types__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @sentry/types */ "./node_modules/@sentry/types/esm/status.js");
+/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/promisebuffer.js");
+/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/error.js");
+/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/logger.js");
+/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/misc.js");
 
 
+
+
+var CATEGORY_MAPPING = {
+  event: 'error',
+  transaction: 'transaction',
+  session: 'session'
+};
 /** Base Transport class implementation */
 
 var BaseTransport =
@@ -2089,8 +2278,13 @@ function () {
     this.options = options;
     /** A simple buffer holding all requests. */
 
-    this._buffer = new _sentry_utils__WEBPACK_IMPORTED_MODULE_0__.PromiseBuffer(30);
-    this.url = new _sentry_core__WEBPACK_IMPORTED_MODULE_1__.API(this.options.dsn).getStoreEndpointWithUrlEncodedAuth();
+    this._buffer = new _sentry_utils__WEBPACK_IMPORTED_MODULE_1__.PromiseBuffer(30);
+    /** Locks transport after receiving rate limits in a response */
+
+    this._rateLimits = {};
+    this._api = new _sentry_core__WEBPACK_IMPORTED_MODULE_2__.API(options.dsn, options._metadata); // eslint-disable-next-line deprecation/deprecation
+
+    this.url = this._api.getStoreEndpointWithUrlEncodedAuth();
   }
   /**
    * @inheritDoc
@@ -2098,7 +2292,7 @@ function () {
 
 
   BaseTransport.prototype.sendEvent = function (_) {
-    throw new _sentry_utils__WEBPACK_IMPORTED_MODULE_2__.SentryError('Transport Class has to implement `sendEvent` method');
+    throw new _sentry_utils__WEBPACK_IMPORTED_MODULE_3__.SentryError('Transport Class has to implement `sendEvent` method');
   };
   /**
    * @inheritDoc
@@ -2107,6 +2301,120 @@ function () {
 
   BaseTransport.prototype.close = function (timeout) {
     return this._buffer.drain(timeout);
+  };
+  /**
+   * Handle Sentry repsonse for promise-based transports.
+   */
+
+
+  BaseTransport.prototype._handleResponse = function (_a) {
+    var requestType = _a.requestType,
+        response = _a.response,
+        headers = _a.headers,
+        resolve = _a.resolve,
+        reject = _a.reject;
+    var status = _sentry_types__WEBPACK_IMPORTED_MODULE_4__.Status.fromHttpCode(response.status);
+    /**
+     * "The name is case-insensitive."
+     * https://developer.mozilla.org/en-US/docs/Web/API/Headers/get
+     */
+
+    var limited = this._handleRateLimit(headers);
+
+    if (limited) _sentry_utils__WEBPACK_IMPORTED_MODULE_5__.logger.warn("Too many requests, backing off until: " + this._disabledUntil(requestType));
+
+    if (status === _sentry_types__WEBPACK_IMPORTED_MODULE_4__.Status.Success) {
+      resolve({
+        status: status
+      });
+      return;
+    }
+
+    reject(response);
+  };
+  /**
+   * Gets the time that given category is disabled until for rate limiting
+   */
+
+
+  BaseTransport.prototype._disabledUntil = function (requestType) {
+    var category = CATEGORY_MAPPING[requestType];
+    return this._rateLimits[category] || this._rateLimits.all;
+  };
+  /**
+   * Checks if a category is rate limited
+   */
+
+
+  BaseTransport.prototype._isRateLimited = function (requestType) {
+    return this._disabledUntil(requestType) > new Date(Date.now());
+  };
+  /**
+   * Sets internal _rateLimits from incoming headers. Returns true if headers contains a non-empty rate limiting header.
+   */
+
+
+  BaseTransport.prototype._handleRateLimit = function (headers) {
+    var e_1, _a, e_2, _b;
+
+    var now = Date.now();
+    var rlHeader = headers['x-sentry-rate-limits'];
+    var raHeader = headers['retry-after'];
+
+    if (rlHeader) {
+      try {
+        // rate limit headers are of the form
+        //     <header>,<header>,..
+        // where each <header> is of the form
+        //     <retry_after>: <categories>: <scope>: <reason_code>
+        // where
+        //     <retry_after> is a delay in ms
+        //     <categories> is the event type(s) (error, transaction, etc) being rate limited and is of the form
+        //         <category>;<category>;...
+        //     <scope> is what's being limited (org, project, or key) - ignored by SDK
+        //     <reason_code> is an arbitrary string like "org_quota" - ignored by SDK
+        for (var _c = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__values)(rlHeader.trim().split(',')), _d = _c.next(); !_d.done; _d = _c.next()) {
+          var limit = _d.value;
+          var parameters = limit.split(':', 2);
+          var headerDelay = parseInt(parameters[0], 10);
+          var delay = (!isNaN(headerDelay) ? headerDelay : 60) * 1000; // 60sec default
+
+          try {
+            for (var _e = (e_2 = void 0, (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__values)(parameters[1].split(';'))), _f = _e.next(); !_f.done; _f = _e.next()) {
+              var category = _f.value;
+              this._rateLimits[category || 'all'] = new Date(now + delay);
+            }
+          } catch (e_2_1) {
+            e_2 = {
+              error: e_2_1
+            };
+          } finally {
+            try {
+              if (_f && !_f.done && (_b = _e.return)) _b.call(_e);
+            } finally {
+              if (e_2) throw e_2.error;
+            }
+          }
+        }
+      } catch (e_1_1) {
+        e_1 = {
+          error: e_1_1
+        };
+      } finally {
+        try {
+          if (_d && !_d.done && (_a = _c.return)) _a.call(_c);
+        } finally {
+          if (e_1) throw e_1.error;
+        }
+      }
+
+      return true;
+    } else if (raHeader) {
+      this._rateLimits.all = new Date(now + (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_6__.parseRetryAfterHeader)(now, raHeader));
+      return true;
+    }
+
+    return false;
   };
 
   return BaseTransport;
@@ -2127,30 +2435,104 @@ function () {
 /* harmony export */   "FetchTransport": () => (/* binding */ FetchTransport)
 /* harmony export */ });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _sentry_types__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @sentry/types */ "./node_modules/@sentry/types/esm/status.js");
+/* harmony import */ var _sentry_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @sentry/core */ "./node_modules/@sentry/core/esm/request.js");
 /* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/misc.js");
 /* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/supports.js");
-/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/syncpromise.js");
-/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/logger.js");
+/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/logger.js");
+/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/syncpromise.js");
 /* harmony import */ var _base__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./base */ "./node_modules/@sentry/browser/esm/transports/base.js");
 
 
 
 
-var global = (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_1__.getGlobalObject)();
+/**
+ * A special usecase for incorrectly wrapped Fetch APIs in conjunction with ad-blockers.
+ * Whenever someone wraps the Fetch API and returns the wrong promise chain,
+ * this chain becomes orphaned and there is no possible way to capture it's rejections
+ * other than allowing it bubble up to this very handler. eg.
+ *
+ * const f = window.fetch;
+ * window.fetch = function () {
+ *   const p = f.apply(this, arguments);
+ *
+ *   p.then(function() {
+ *     console.log('hi.');
+ *   });
+ *
+ *   return p;
+ * }
+ *
+ * `p.then(function () { ... })` is producing a completely separate promise chain,
+ * however, what's returned is `p` - the result of original `fetch` call.
+ *
+ * This mean, that whenever we use the Fetch API to send our own requests, _and_
+ * some ad-blocker blocks it, this orphaned chain will _always_ reject,
+ * effectively causing another event to be captured.
+ * This makes a whole process become an infinite loop, which we need to somehow
+ * deal with, and break it in one way or another.
+ *
+ * To deal with this issue, we are making sure that we _always_ use the real
+ * browser Fetch API, instead of relying on what `window.fetch` exposes.
+ * The only downside to this would be missing our own requests as breadcrumbs,
+ * but because we are already not doing this, it should be just fine.
+ *
+ * Possible failed fetch error messages per-browser:
+ *
+ * Chrome:  Failed to fetch
+ * Edge:    Failed to Fetch
+ * Firefox: NetworkError when attempting to fetch resource
+ * Safari:  resource blocked by content blocker
+ */
+
+function getNativeFetchImplementation() {
+  /* eslint-disable @typescript-eslint/unbound-method */
+  var _a, _b; // Fast path to avoid DOM I/O
+
+
+  var global = (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_1__.getGlobalObject)();
+
+  if ((0,_sentry_utils__WEBPACK_IMPORTED_MODULE_2__.isNativeFetch)(global.fetch)) {
+    return global.fetch.bind(global);
+  }
+
+  var document = global.document;
+  var fetchImpl = global.fetch; // eslint-disable-next-line deprecation/deprecation
+
+  if (typeof ((_a = document) === null || _a === void 0 ? void 0 : _a.createElement) === "function") {
+    try {
+      var sandbox = document.createElement('iframe');
+      sandbox.hidden = true;
+      document.head.appendChild(sandbox);
+
+      if ((_b = sandbox.contentWindow) === null || _b === void 0 ? void 0 : _b.fetch) {
+        fetchImpl = sandbox.contentWindow.fetch;
+      }
+
+      document.head.removeChild(sandbox);
+    } catch (e) {
+      _sentry_utils__WEBPACK_IMPORTED_MODULE_3__.logger.warn('Could not create sandbox iframe for pure fetch check, bailing to window.fetch: ', e);
+    }
+  }
+
+  return fetchImpl.bind(global);
+  /* eslint-enable @typescript-eslint/unbound-method */
+}
 /** `fetch` based transport */
+
 
 var FetchTransport =
 /** @class */
 function (_super) {
-  tslib__WEBPACK_IMPORTED_MODULE_0__.__extends(FetchTransport, _super);
+  (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__extends)(FetchTransport, _super);
 
-  function FetchTransport() {
-    var _this = _super !== null && _super.apply(this, arguments) || this;
-    /** Locks transport after receiving 429 response */
+  function FetchTransport(options, fetchImpl) {
+    if (fetchImpl === void 0) {
+      fetchImpl = getNativeFetchImplementation();
+    }
 
+    var _this = _super.call(this, options) || this;
 
-    _this._disabledUntil = new Date(Date.now());
+    _this._fetch = fetchImpl;
     return _this;
   }
   /**
@@ -2159,18 +2541,36 @@ function (_super) {
 
 
   FetchTransport.prototype.sendEvent = function (event) {
+    return this._sendRequest((0,_sentry_core__WEBPACK_IMPORTED_MODULE_4__.eventToSentryRequest)(event, this._api), event);
+  };
+  /**
+   * @inheritDoc
+   */
+
+
+  FetchTransport.prototype.sendSession = function (session) {
+    return this._sendRequest((0,_sentry_core__WEBPACK_IMPORTED_MODULE_4__.sessionToSentryRequest)(session, this._api), session);
+  };
+  /**
+   * @param sentryRequest Prepared SentryRequest to be delivered
+   * @param originalPayload Original payload used to create SentryRequest
+   */
+
+
+  FetchTransport.prototype._sendRequest = function (sentryRequest, originalPayload) {
     var _this = this;
 
-    if (new Date(Date.now()) < this._disabledUntil) {
+    if (this._isRateLimited(sentryRequest.type)) {
       return Promise.reject({
-        event: event,
-        reason: "Transport locked till " + this._disabledUntil + " due to too many requests.",
+        event: originalPayload,
+        type: sentryRequest.type,
+        reason: "Transport locked till " + this._disabledUntil(sentryRequest.type) + " due to too many requests.",
         status: 429
       });
     }
 
-    var defaultOptions = {
-      body: JSON.stringify(event),
+    var options = {
+      body: sentryRequest.body,
       method: 'POST',
       // Despite all stars in the sky saying that Edge supports old draft syntax, aka 'never', 'always', 'origin' and 'default
       // https://caniuse.com/#feat=referrer-policy
@@ -2179,28 +2579,28 @@ function (_super) {
       referrerPolicy: (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_2__.supportsReferrerPolicy)() ? 'origin' : ''
     };
 
-    if (this.options.headers !== undefined) {
-      defaultOptions.headers = this.options.headers;
+    if (this.options.fetchParameters !== undefined) {
+      Object.assign(options, this.options.fetchParameters);
     }
 
-    return this._buffer.add(new _sentry_utils__WEBPACK_IMPORTED_MODULE_3__.SyncPromise(function (resolve, reject) {
-      global.fetch(_this.url, defaultOptions).then(function (response) {
-        var status = _sentry_types__WEBPACK_IMPORTED_MODULE_4__.Status.fromHttpCode(response.status);
+    if (this.options.headers !== undefined) {
+      options.headers = this.options.headers;
+    }
 
-        if (status === _sentry_types__WEBPACK_IMPORTED_MODULE_4__.Status.Success) {
-          resolve({
-            status: status
-          });
-          return;
-        }
+    return this._buffer.add(new _sentry_utils__WEBPACK_IMPORTED_MODULE_5__.SyncPromise(function (resolve, reject) {
+      _this._fetch(sentryRequest.url, options).then(function (response) {
+        var headers = {
+          'x-sentry-rate-limits': response.headers.get('X-Sentry-Rate-Limits'),
+          'retry-after': response.headers.get('Retry-After')
+        };
 
-        if (status === _sentry_types__WEBPACK_IMPORTED_MODULE_4__.Status.RateLimit) {
-          var now = Date.now();
-          _this._disabledUntil = new Date(now + (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_1__.parseRetryAfterHeader)(now, response.headers.get('Retry-After')));
-          _sentry_utils__WEBPACK_IMPORTED_MODULE_5__.logger.warn("Too many requests, backing off till: " + _this._disabledUntil);
-        }
-
-        reject(response);
+        _this._handleResponse({
+          requestType: sentryRequest.type,
+          response: response,
+          headers: headers,
+          resolve: resolve,
+          reject: reject
+        });
       }).catch(reject);
     }));
   };
@@ -2223,11 +2623,9 @@ function (_super) {
 /* harmony export */   "XHRTransport": () => (/* binding */ XHRTransport)
 /* harmony export */ });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _sentry_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @sentry/types */ "./node_modules/@sentry/types/esm/status.js");
-/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/syncpromise.js");
-/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/misc.js");
-/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/logger.js");
-/* harmony import */ var _base__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./base */ "./node_modules/@sentry/browser/esm/transports/base.js");
+/* harmony import */ var _sentry_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @sentry/core */ "./node_modules/@sentry/core/esm/request.js");
+/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/syncpromise.js");
+/* harmony import */ var _base__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./base */ "./node_modules/@sentry/browser/esm/transports/base.js");
 
 
 
@@ -2237,15 +2635,10 @@ function (_super) {
 var XHRTransport =
 /** @class */
 function (_super) {
-  tslib__WEBPACK_IMPORTED_MODULE_0__.__extends(XHRTransport, _super);
+  (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__extends)(XHRTransport, _super);
 
   function XHRTransport() {
-    var _this = _super !== null && _super.apply(this, arguments) || this;
-    /** Locks transport after receiving 429 response */
-
-
-    _this._disabledUntil = new Date(Date.now());
-    return _this;
+    return _super !== null && _super.apply(this, arguments) || this;
   }
   /**
    * @inheritDoc
@@ -2253,43 +2646,55 @@ function (_super) {
 
 
   XHRTransport.prototype.sendEvent = function (event) {
+    return this._sendRequest((0,_sentry_core__WEBPACK_IMPORTED_MODULE_1__.eventToSentryRequest)(event, this._api), event);
+  };
+  /**
+   * @inheritDoc
+   */
+
+
+  XHRTransport.prototype.sendSession = function (session) {
+    return this._sendRequest((0,_sentry_core__WEBPACK_IMPORTED_MODULE_1__.sessionToSentryRequest)(session, this._api), session);
+  };
+  /**
+   * @param sentryRequest Prepared SentryRequest to be delivered
+   * @param originalPayload Original payload used to create SentryRequest
+   */
+
+
+  XHRTransport.prototype._sendRequest = function (sentryRequest, originalPayload) {
     var _this = this;
 
-    if (new Date(Date.now()) < this._disabledUntil) {
+    if (this._isRateLimited(sentryRequest.type)) {
       return Promise.reject({
-        event: event,
-        reason: "Transport locked till " + this._disabledUntil + " due to too many requests.",
+        event: originalPayload,
+        type: sentryRequest.type,
+        reason: "Transport locked till " + this._disabledUntil(sentryRequest.type) + " due to too many requests.",
         status: 429
       });
     }
 
-    return this._buffer.add(new _sentry_utils__WEBPACK_IMPORTED_MODULE_1__.SyncPromise(function (resolve, reject) {
+    return this._buffer.add(new _sentry_utils__WEBPACK_IMPORTED_MODULE_2__.SyncPromise(function (resolve, reject) {
       var request = new XMLHttpRequest();
 
       request.onreadystatechange = function () {
-        if (request.readyState !== 4) {
-          return;
-        }
+        if (request.readyState === 4) {
+          var headers = {
+            'x-sentry-rate-limits': request.getResponseHeader('X-Sentry-Rate-Limits'),
+            'retry-after': request.getResponseHeader('Retry-After')
+          };
 
-        var status = _sentry_types__WEBPACK_IMPORTED_MODULE_2__.Status.fromHttpCode(request.status);
-
-        if (status === _sentry_types__WEBPACK_IMPORTED_MODULE_2__.Status.Success) {
-          resolve({
-            status: status
+          _this._handleResponse({
+            requestType: sentryRequest.type,
+            response: request,
+            headers: headers,
+            resolve: resolve,
+            reject: reject
           });
-          return;
         }
-
-        if (status === _sentry_types__WEBPACK_IMPORTED_MODULE_2__.Status.RateLimit) {
-          var now = Date.now();
-          _this._disabledUntil = new Date(now + (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_3__.parseRetryAfterHeader)(now, request.getResponseHeader('Retry-After')));
-          _sentry_utils__WEBPACK_IMPORTED_MODULE_4__.logger.warn("Too many requests, backing off till: " + _this._disabledUntil);
-        }
-
-        reject(request);
       };
 
-      request.open('POST', _this.url);
+      request.open('POST', sentryRequest.url);
 
       for (var header in _this.options.headers) {
         if (_this.options.headers.hasOwnProperty(header)) {
@@ -2297,30 +2702,14 @@ function (_super) {
         }
       }
 
-      request.send(JSON.stringify(event));
+      request.send(sentryRequest.body);
     }));
   };
 
   return XHRTransport;
-}(_base__WEBPACK_IMPORTED_MODULE_5__.BaseTransport);
+}(_base__WEBPACK_IMPORTED_MODULE_3__.BaseTransport);
 
 
-
-/***/ }),
-
-/***/ "./node_modules/@sentry/browser/esm/version.js":
-/*!*****************************************************!*\
-  !*** ./node_modules/@sentry/browser/esm/version.js ***!
-  \*****************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "SDK_NAME": () => (/* binding */ SDK_NAME),
-/* harmony export */   "SDK_VERSION": () => (/* binding */ SDK_VERSION)
-/* harmony export */ });
-var SDK_NAME = 'sentry.javascript.browser';
-var SDK_VERSION = '5.11.0';
 
 /***/ }),
 
@@ -2336,18 +2725,26 @@ var SDK_VERSION = '5.11.0';
 /* harmony export */ });
 /* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/dsn.js");
 /* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/object.js");
-/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/misc.js");
 
 var SENTRY_API_VERSION = '7';
-/** Helper class to provide urls to different Sentry endpoints. */
+/**
+ * Helper class to provide urls, headers and metadata that can be used to form
+ * different types of requests to Sentry endpoints.
+ * Supports both envelopes and regular event requests.
+ **/
 
 var API =
 /** @class */
 function () {
   /** Create a new instance of API */
-  function API(dsn) {
+  function API(dsn, metadata) {
+    if (metadata === void 0) {
+      metadata = {};
+    }
+
     this.dsn = dsn;
     this._dsnObject = new _sentry_utils__WEBPACK_IMPORTED_MODULE_0__.Dsn(dsn);
+    this.metadata = metadata;
   }
   /** Returns the Dsn object. */
 
@@ -2355,33 +2752,40 @@ function () {
   API.prototype.getDsn = function () {
     return this._dsnObject;
   };
-  /** Returns a string with auth headers in the url to the store endpoint. */
+  /** Returns the prefix to construct Sentry ingestion API endpoints. */
 
 
-  API.prototype.getStoreEndpoint = function () {
-    return "" + this._getBaseUrl() + this.getStoreEndpointPath();
-  };
-  /** Returns the store endpoint with auth added in url encoded. */
-
-
-  API.prototype.getStoreEndpointWithUrlEncodedAuth = function () {
-    var dsn = this._dsnObject;
-    var auth = {
-      sentry_key: dsn.user,
-      sentry_version: SENTRY_API_VERSION
-    }; // Auth is intentionally sent as part of query string (NOT as custom HTTP header)
-    // to avoid preflight CORS requests
-
-    return this.getStoreEndpoint() + "?" + (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_1__.urlEncode)(auth);
-  };
-  /** Returns the base path of the url including the port. */
-
-
-  API.prototype._getBaseUrl = function () {
+  API.prototype.getBaseApiEndpoint = function () {
     var dsn = this._dsnObject;
     var protocol = dsn.protocol ? dsn.protocol + ":" : '';
     var port = dsn.port ? ":" + dsn.port : '';
-    return protocol + "//" + dsn.host + port;
+    return protocol + "//" + dsn.host + port + (dsn.path ? "/" + dsn.path : '') + "/api/";
+  };
+  /** Returns the store endpoint URL. */
+
+
+  API.prototype.getStoreEndpoint = function () {
+    return this._getIngestEndpoint('store');
+  };
+  /**
+   * Returns the store endpoint URL with auth in the query string.
+   *
+   * Sending auth as part of the query string and not as custom HTTP headers avoids CORS preflight requests.
+   */
+
+
+  API.prototype.getStoreEndpointWithUrlEncodedAuth = function () {
+    return this.getStoreEndpoint() + "?" + this._encodedAuth();
+  };
+  /**
+   * Returns the envelope endpoint URL with auth in the query string.
+   *
+   * Sending auth as part of the query string and not as custom HTTP headers avoids CORS preflight requests.
+   */
+
+
+  API.prototype.getEnvelopeEndpointWithUrlEncodedAuth = function () {
+    return this._getEnvelopeEndpoint() + "?" + this._encodedAuth();
   };
   /** Returns only the path component for the store endpoint. */
 
@@ -2390,16 +2794,18 @@ function () {
     var dsn = this._dsnObject;
     return (dsn.path ? "/" + dsn.path : '') + "/api/" + dsn.projectId + "/store/";
   };
-  /** Returns an object that can be used in request headers. */
+  /**
+   * Returns an object that can be used in request headers.
+   * This is needed for node and the old /store endpoint in sentry
+   */
 
 
   API.prototype.getRequestHeaders = function (clientName, clientVersion) {
+    // CHANGE THIS to use metadata but keep clientName and clientVersion compatible
     var dsn = this._dsnObject;
     var header = ["Sentry sentry_version=" + SENTRY_API_VERSION];
-    header.push("sentry_timestamp=" + (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_2__.timestampWithMs)()); // TODO: This can be removed
-
     header.push("sentry_client=" + clientName + "/" + clientVersion);
-    header.push("sentry_key=" + dsn.user);
+    header.push("sentry_key=" + dsn.publicKey);
 
     if (dsn.pass) {
       header.push("sentry_secret=" + dsn.pass);
@@ -2419,11 +2825,15 @@ function () {
     }
 
     var dsn = this._dsnObject;
-    var endpoint = "" + this._getBaseUrl() + (dsn.path ? "/" + dsn.path : '') + "/api/embed/error-page/";
+    var endpoint = this.getBaseApiEndpoint() + "embed/error-page/";
     var encodedOptions = [];
     encodedOptions.push("dsn=" + dsn.toString());
 
     for (var key in dialogOptions) {
+      if (key === 'dsn') {
+        continue;
+      }
+
       if (key === 'user') {
         if (!dialogOptions.user) {
           continue;
@@ -2447,6 +2857,33 @@ function () {
 
     return endpoint;
   };
+  /** Returns the envelope endpoint URL. */
+
+
+  API.prototype._getEnvelopeEndpoint = function () {
+    return this._getIngestEndpoint('envelope');
+  };
+  /** Returns the ingest API endpoint for target. */
+
+
+  API.prototype._getIngestEndpoint = function (target) {
+    var base = this.getBaseApiEndpoint();
+    var dsn = this._dsnObject;
+    return "" + base + dsn.projectId + "/" + target + "/";
+  };
+  /** Returns a URL-encoded string with auth config suitable for a query string. */
+
+
+  API.prototype._encodedAuth = function () {
+    var dsn = this._dsnObject;
+    var auth = {
+      // We send only the minimum set of required information. See
+      // https://github.com/getsentry/sentry-javascript/issues/2572.
+      sentry_key: dsn.publicKey,
+      sentry_version: SENTRY_API_VERSION
+    };
+    return (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_1__.urlEncode)(auth);
+  };
 
   return API;
 }();
@@ -2466,8 +2903,8 @@ function () {
 /* harmony export */   "BaseBackend": () => (/* binding */ BaseBackend)
 /* harmony export */ });
 /* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/logger.js");
-/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/error.js");
-/* harmony import */ var _transports_noop__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./transports/noop */ "./node_modules/@sentry/core/esm/transports/noop.js");
+/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/error.js");
+/* harmony import */ var _transports_noop__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./transports/noop */ "./node_modules/@sentry/core/esm/transports/noop.js");
 
 
 /**
@@ -2489,20 +2926,13 @@ function () {
     this._transport = this._setupTransport();
   }
   /**
-   * Sets up the transport so it can be used later to send requests.
-   */
-
-
-  BaseBackend.prototype._setupTransport = function () {
-    return new _transports_noop__WEBPACK_IMPORTED_MODULE_1__.NoopTransport();
-  };
-  /**
    * @inheritDoc
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
 
 
   BaseBackend.prototype.eventFromException = function (_exception, _hint) {
-    throw new _sentry_utils__WEBPACK_IMPORTED_MODULE_2__.SentryError('Backend has to implement `eventFromException` method');
+    throw new _sentry_utils__WEBPACK_IMPORTED_MODULE_1__.SentryError('Backend has to implement `eventFromException` method');
   };
   /**
    * @inheritDoc
@@ -2510,7 +2940,7 @@ function () {
 
 
   BaseBackend.prototype.eventFromMessage = function (_message, _level, _hint) {
-    throw new _sentry_utils__WEBPACK_IMPORTED_MODULE_2__.SentryError('Backend has to implement `eventFromMessage` method');
+    throw new _sentry_utils__WEBPACK_IMPORTED_MODULE_1__.SentryError('Backend has to implement `eventFromMessage` method');
   };
   /**
    * @inheritDoc
@@ -2527,8 +2957,31 @@ function () {
    */
 
 
+  BaseBackend.prototype.sendSession = function (session) {
+    if (!this._transport.sendSession) {
+      _sentry_utils__WEBPACK_IMPORTED_MODULE_0__.logger.warn("Dropping session because custom transport doesn't implement sendSession");
+      return;
+    }
+
+    this._transport.sendSession(session).then(null, function (reason) {
+      _sentry_utils__WEBPACK_IMPORTED_MODULE_0__.logger.error("Error while sending session: " + reason);
+    });
+  };
+  /**
+   * @inheritDoc
+   */
+
+
   BaseBackend.prototype.getTransport = function () {
     return this._transport;
+  };
+  /**
+   * Sets up the transport so it can be used later to send requests.
+   */
+
+
+  BaseBackend.prototype._setupTransport = function () {
+    return new _transports_noop__WEBPACK_IMPORTED_MODULE_2__.NoopTransport();
   };
 
   return BaseBackend;
@@ -2549,13 +3002,22 @@ function () {
 /* harmony export */   "BaseClient": () => (/* binding */ BaseClient)
 /* harmony export */ });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _sentry_hub__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @sentry/hub */ "./node_modules/@sentry/hub/esm/scope.js");
+/* harmony import */ var _sentry_types__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @sentry/types */ "./node_modules/@sentry/types/esm/session.js");
 /* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/dsn.js");
+/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/is.js");
 /* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/logger.js");
-/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/is.js");
-/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/syncpromise.js");
-/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/string.js");
+/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/syncpromise.js");
 /* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/misc.js");
-/* harmony import */ var _integration__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./integration */ "./node_modules/@sentry/core/esm/integration.js");
+/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/time.js");
+/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/object.js");
+/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/string.js");
+/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/error.js");
+/* harmony import */ var _integration__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./integration */ "./node_modules/@sentry/core/esm/integration.js");
+
+/* eslint-disable max-lines */
+
+
 
 
 
@@ -2573,7 +3035,7 @@ function () {
  * without a valid Dsn, the SDK will not send any events to Sentry.
  *
  * Before sending an event via the backend, it is passed through
- * {@link BaseClient.prepareEvent} to add SDK information and scope data
+ * {@link BaseClient._prepareEvent} to add SDK information and scope data
  * (breadcrumbs and context). To add more custom information, override this
  * method and extend the resulting prepared event.
  *
@@ -2604,41 +3066,32 @@ function () {
   function BaseClient(backendClass, options) {
     /** Array of used integrations. */
     this._integrations = {};
-    /** Is the client still processing a call? */
+    /** Number of call being processed */
 
-    this._processing = false;
+    this._processing = 0;
     this._backend = new backendClass(options);
     this._options = options;
 
     if (options.dsn) {
       this._dsn = new _sentry_utils__WEBPACK_IMPORTED_MODULE_1__.Dsn(options.dsn);
     }
-
-    if (this._isEnabled()) {
-      this._integrations = (0,_integration__WEBPACK_IMPORTED_MODULE_2__.setupIntegrations)(this._options);
-    }
   }
   /**
    * @inheritDoc
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
 
 
   BaseClient.prototype.captureException = function (exception, hint, scope) {
     var _this = this;
 
     var eventId = hint && hint.event_id;
-    this._processing = true;
 
-    this._getBackend().eventFromException(exception, hint).then(function (event) {
-      return _this._processEvent(event, hint, scope);
-    }).then(function (finalEvent) {
-      // We need to check for finalEvent in case beforeSend returned null
-      eventId = finalEvent && finalEvent.event_id;
-      _this._processing = false;
-    }).then(null, function (reason) {
-      _sentry_utils__WEBPACK_IMPORTED_MODULE_3__.logger.error(reason);
-      _this._processing = false;
-    });
+    this._process(this._getBackend().eventFromException(exception, hint).then(function (event) {
+      return _this._captureEvent(event, hint, scope);
+    }).then(function (result) {
+      eventId = result;
+    }));
 
     return eventId;
   };
@@ -2651,18 +3104,14 @@ function () {
     var _this = this;
 
     var eventId = hint && hint.event_id;
-    this._processing = true;
-    var promisedEvent = (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_4__.isPrimitive)(message) ? this._getBackend().eventFromMessage("" + message, level, hint) : this._getBackend().eventFromException(message, hint);
-    promisedEvent.then(function (event) {
-      return _this._processEvent(event, hint, scope);
-    }).then(function (finalEvent) {
-      // We need to check for finalEvent in case beforeSend returned null
-      eventId = finalEvent && finalEvent.event_id;
-      _this._processing = false;
-    }).then(null, function (reason) {
-      _sentry_utils__WEBPACK_IMPORTED_MODULE_3__.logger.error(reason);
-      _this._processing = false;
-    });
+    var promisedEvent = (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_2__.isPrimitive)(message) ? this._getBackend().eventFromMessage(String(message), level, hint) : this._getBackend().eventFromException(message, hint);
+
+    this._process(promisedEvent.then(function (event) {
+      return _this._captureEvent(event, hint, scope);
+    }).then(function (result) {
+      eventId = result;
+    }));
+
     return eventId;
   };
   /**
@@ -2671,21 +3120,30 @@ function () {
 
 
   BaseClient.prototype.captureEvent = function (event, hint, scope) {
-    var _this = this;
-
     var eventId = hint && hint.event_id;
-    this._processing = true;
 
-    this._processEvent(event, hint, scope).then(function (finalEvent) {
-      // We need to check for finalEvent in case beforeSend returned null
-      eventId = finalEvent && finalEvent.event_id;
-      _this._processing = false;
-    }).then(null, function (reason) {
-      _sentry_utils__WEBPACK_IMPORTED_MODULE_3__.logger.error(reason);
-      _this._processing = false;
-    });
+    this._process(this._captureEvent(event, hint, scope).then(function (result) {
+      eventId = result;
+    }));
 
     return eventId;
+  };
+  /**
+   * @inheritDoc
+   */
+
+
+  BaseClient.prototype.captureSession = function (session) {
+    if (!session.release) {
+      _sentry_utils__WEBPACK_IMPORTED_MODULE_3__.logger.warn('Discarded session because of missing release');
+    } else {
+      this._sendSession(session); // After sending, we set init false to inidcate it's not the first occurence
+
+
+      session.update({
+        init: false
+      });
+    }
   };
   /**
    * @inheritDoc
@@ -2711,10 +3169,9 @@ function () {
   BaseClient.prototype.flush = function (timeout) {
     var _this = this;
 
-    return this._isClientProcessing(timeout).then(function (status) {
-      clearInterval(status.interval);
+    return this._isClientProcessing(timeout).then(function (ready) {
       return _this._getBackend().getTransport().close(timeout).then(function (transportFlushed) {
-        return status.ready && transportFlushed;
+        return ready && transportFlushed;
       });
     });
   };
@@ -2732,12 +3189,14 @@ function () {
     });
   };
   /**
-   * @inheritDoc
+   * Sets up the integrations
    */
 
 
-  BaseClient.prototype.getIntegrations = function () {
-    return this._integrations || {};
+  BaseClient.prototype.setupIntegrations = function () {
+    if (this._isEnabled()) {
+      this._integrations = (0,_integration__WEBPACK_IMPORTED_MODULE_4__.setupIntegrations)(this._options);
+    }
   };
   /**
    * @inheritDoc
@@ -2752,31 +3211,90 @@ function () {
       return null;
     }
   };
+  /** Updates existing session based on the provided event */
+
+
+  BaseClient.prototype._updateSessionFromEvent = function (session, event) {
+    var e_1, _a;
+
+    var crashed = false;
+    var errored = false;
+    var userAgent;
+    var exceptions = event.exception && event.exception.values;
+
+    if (exceptions) {
+      errored = true;
+
+      try {
+        for (var exceptions_1 = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__values)(exceptions), exceptions_1_1 = exceptions_1.next(); !exceptions_1_1.done; exceptions_1_1 = exceptions_1.next()) {
+          var ex = exceptions_1_1.value;
+          var mechanism = ex.mechanism;
+
+          if (mechanism && mechanism.handled === false) {
+            crashed = true;
+            break;
+          }
+        }
+      } catch (e_1_1) {
+        e_1 = {
+          error: e_1_1
+        };
+      } finally {
+        try {
+          if (exceptions_1_1 && !exceptions_1_1.done && (_a = exceptions_1.return)) _a.call(exceptions_1);
+        } finally {
+          if (e_1) throw e_1.error;
+        }
+      }
+    }
+
+    var user = event.user;
+
+    if (!session.userAgent) {
+      var headers = event.request ? event.request.headers : {};
+
+      for (var key in headers) {
+        if (key.toLowerCase() === 'user-agent') {
+          userAgent = headers[key];
+          break;
+        }
+      }
+    }
+
+    session.update((0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)({}, crashed && {
+      status: _sentry_types__WEBPACK_IMPORTED_MODULE_5__.SessionStatus.Crashed
+    }), {
+      user: user,
+      userAgent: userAgent,
+      errors: session.errors + Number(errored || crashed)
+    }));
+    this.captureSession(session);
+  };
+  /** Deliver captured session to Sentry */
+
+
+  BaseClient.prototype._sendSession = function (session) {
+    this._getBackend().sendSession(session);
+  };
   /** Waits for the client to be done with processing. */
 
 
   BaseClient.prototype._isClientProcessing = function (timeout) {
     var _this = this;
 
-    return new _sentry_utils__WEBPACK_IMPORTED_MODULE_5__.SyncPromise(function (resolve) {
+    return new _sentry_utils__WEBPACK_IMPORTED_MODULE_6__.SyncPromise(function (resolve) {
       var ticked = 0;
       var tick = 1;
-      var interval = 0;
-      clearInterval(interval);
-      interval = setInterval(function () {
-        if (!_this._processing) {
-          resolve({
-            interval: interval,
-            ready: true
-          });
+      var interval = setInterval(function () {
+        if (_this._processing == 0) {
+          clearInterval(interval);
+          resolve(true);
         } else {
           ticked += tick;
 
           if (timeout && ticked >= timeout) {
-            resolve({
-              interval: interval,
-              ready: false
-            });
+            clearInterval(interval);
+            resolve(false);
           }
         }
       }, tick);
@@ -2804,79 +3322,179 @@ function () {
    * nested objects, such as the context, keys are merged.
    *
    * @param event The original event.
-   * @param hint May contain additional informartion about the original exception.
+   * @param hint May contain additional information about the original exception.
    * @param scope A scope containing event metadata.
    * @returns A new event with more information.
    */
 
 
   BaseClient.prototype._prepareEvent = function (event, scope, hint) {
-    var _a = this.getOptions(),
-        environment = _a.environment,
-        release = _a.release,
-        dist = _a.dist,
-        _b = _a.maxValueLength,
-        maxValueLength = _b === void 0 ? 250 : _b;
+    var _this = this;
 
-    var prepared = tslib__WEBPACK_IMPORTED_MODULE_0__.__assign({}, event);
+    var _a = this.getOptions().normalizeDepth,
+        normalizeDepth = _a === void 0 ? 3 : _a;
 
-    if (prepared.environment === undefined && environment !== undefined) {
-      prepared.environment = environment;
-    }
+    var prepared = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)({}, event), {
+      event_id: event.event_id || (hint && hint.event_id ? hint.event_id : (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_7__.uuid4)()),
+      timestamp: event.timestamp || (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_8__.dateTimestampInSeconds)()
+    });
 
-    if (prepared.release === undefined && release !== undefined) {
-      prepared.release = release;
-    }
+    this._applyClientOptions(prepared);
 
-    if (prepared.dist === undefined && dist !== undefined) {
-      prepared.dist = dist;
-    }
-
-    if (prepared.message) {
-      prepared.message = (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_6__.truncate)(prepared.message, maxValueLength);
-    }
-
-    var exception = prepared.exception && prepared.exception.values && prepared.exception.values[0];
-
-    if (exception && exception.value) {
-      exception.value = (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_6__.truncate)(exception.value, maxValueLength);
-    }
-
-    var request = prepared.request;
-
-    if (request && request.url) {
-      request.url = (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_6__.truncate)(request.url, maxValueLength);
-    }
-
-    if (prepared.event_id === undefined) {
-      prepared.event_id = (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_7__.uuid4)();
-    }
-
-    this._addIntegrations(prepared.sdk); // We prepare the result here with a resolved Event.
+    this._applyIntegrationsMetadata(prepared); // If we have scope given to us, use it as the base for further modifications.
+    // This allows us to prevent unnecessary copying of data if `captureContext` is not provided.
 
 
-    var result = _sentry_utils__WEBPACK_IMPORTED_MODULE_5__.SyncPromise.resolve(prepared); // This should be the last thing called, since we want that
+    var finalScope = scope;
+
+    if (hint && hint.captureContext) {
+      finalScope = _sentry_hub__WEBPACK_IMPORTED_MODULE_9__.Scope.clone(finalScope).update(hint.captureContext);
+    } // We prepare the result here with a resolved Event.
+
+
+    var result = _sentry_utils__WEBPACK_IMPORTED_MODULE_6__.SyncPromise.resolve(prepared); // This should be the last thing called, since we want that
     // {@link Hub.addEventProcessor} gets the finished prepared event.
 
-    if (scope) {
+    if (finalScope) {
       // In case we have a hub we reassign it.
-      result = scope.applyToEvent(prepared, hint);
+      result = finalScope.applyToEvent(prepared, hint);
     }
 
-    return result;
+    return result.then(function (evt) {
+      if (typeof normalizeDepth === 'number' && normalizeDepth > 0) {
+        return _this._normalizeEvent(evt, normalizeDepth);
+      }
+
+      return evt;
+    });
   };
   /**
-   * This function adds all used integrations to the SDK info in the event.
-   * @param sdkInfo The sdkInfo of the event that will be filled with all integrations.
+   * Applies `normalize` function on necessary `Event` attributes to make them safe for serialization.
+   * Normalized keys:
+   * - `breadcrumbs.data`
+   * - `user`
+   * - `contexts`
+   * - `extra`
+   * @param event Event
+   * @returns Normalized event
    */
 
 
-  BaseClient.prototype._addIntegrations = function (sdkInfo) {
+  BaseClient.prototype._normalizeEvent = function (event, depth) {
+    if (!event) {
+      return null;
+    }
+
+    var normalized = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)({}, event), event.breadcrumbs && {
+      breadcrumbs: event.breadcrumbs.map(function (b) {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)({}, b), b.data && {
+          data: (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_10__.normalize)(b.data, depth)
+        });
+      })
+    }), event.user && {
+      user: (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_10__.normalize)(event.user, depth)
+    }), event.contexts && {
+      contexts: (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_10__.normalize)(event.contexts, depth)
+    }), event.extra && {
+      extra: (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_10__.normalize)(event.extra, depth)
+    }); // event.contexts.trace stores information about a Transaction. Similarly,
+    // event.spans[] stores information about child Spans. Given that a
+    // Transaction is conceptually a Span, normalization should apply to both
+    // Transactions and Spans consistently.
+    // For now the decision is to skip normalization of Transactions and Spans,
+    // so this block overwrites the normalized event to add back the original
+    // Transaction information prior to normalization.
+
+
+    if (event.contexts && event.contexts.trace) {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+      normalized.contexts.trace = event.contexts.trace;
+    }
+
+    return normalized;
+  };
+  /**
+   *  Enhances event using the client configuration.
+   *  It takes care of all "static" values like environment, release and `dist`,
+   *  as well as truncating overly long values.
+   * @param event event instance to be enhanced
+   */
+
+
+  BaseClient.prototype._applyClientOptions = function (event) {
+    var options = this.getOptions();
+    var environment = options.environment,
+        release = options.release,
+        dist = options.dist,
+        _a = options.maxValueLength,
+        maxValueLength = _a === void 0 ? 250 : _a;
+
+    if (!('environment' in event)) {
+      event.environment = 'environment' in options ? environment : 'production';
+    }
+
+    if (event.release === undefined && release !== undefined) {
+      event.release = release;
+    }
+
+    if (event.dist === undefined && dist !== undefined) {
+      event.dist = dist;
+    }
+
+    if (event.message) {
+      event.message = (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_11__.truncate)(event.message, maxValueLength);
+    }
+
+    var exception = event.exception && event.exception.values && event.exception.values[0];
+
+    if (exception && exception.value) {
+      exception.value = (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_11__.truncate)(exception.value, maxValueLength);
+    }
+
+    var request = event.request;
+
+    if (request && request.url) {
+      request.url = (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_11__.truncate)(request.url, maxValueLength);
+    }
+  };
+  /**
+   * This function adds all used integrations to the SDK info in the event.
+   * @param event The event that will be filled with all integrations.
+   */
+
+
+  BaseClient.prototype._applyIntegrationsMetadata = function (event) {
+    var sdkInfo = event.sdk;
     var integrationsArray = Object.keys(this._integrations);
 
     if (sdkInfo && integrationsArray.length > 0) {
       sdkInfo.integrations = integrationsArray;
     }
+  };
+  /**
+   * Tells the backend to send this event
+   * @param event The Sentry event to send
+   */
+
+
+  BaseClient.prototype._sendEvent = function (event) {
+    this._getBackend().sendEvent(event);
+  };
+  /**
+   * Processes the event and logs an error in case of rejection
+   * @param event
+   * @param hint
+   * @param scope
+   */
+
+
+  BaseClient.prototype._captureEvent = function (event, hint, scope) {
+    return this._processEvent(event, hint, scope).then(function (finalEvent) {
+      return finalEvent.event_id;
+    }, function (reason) {
+      _sentry_utils__WEBPACK_IMPORTED_MODULE_3__.logger.error(reason);
+      return undefined;
+    });
   };
   /**
    * Processes an event (either error or message) and sends it to Sentry.
@@ -2887,103 +3505,100 @@ function () {
    *
    *
    * @param event The event to send to Sentry.
-   * @param hint May contain additional informartion about the original exception.
+   * @param hint May contain additional information about the original exception.
    * @param scope A scope containing event metadata.
    * @returns A SyncPromise that resolves with the event or rejects in case event was/will not be send.
    */
 
 
   BaseClient.prototype._processEvent = function (event, hint, scope) {
-    var _this = this;
+    var _this = this; // eslint-disable-next-line @typescript-eslint/unbound-method
+
 
     var _a = this.getOptions(),
         beforeSend = _a.beforeSend,
         sampleRate = _a.sampleRate;
 
     if (!this._isEnabled()) {
-      return _sentry_utils__WEBPACK_IMPORTED_MODULE_5__.SyncPromise.reject('SDK not enabled, will not send event.');
-    } // 1.0 === 100% events are sent
-    // 0.0 === 0% events are sent
-
-
-    if (typeof sampleRate === 'number' && Math.random() > sampleRate) {
-      return _sentry_utils__WEBPACK_IMPORTED_MODULE_5__.SyncPromise.reject('This event has been sampled, will not send event.');
+      return _sentry_utils__WEBPACK_IMPORTED_MODULE_6__.SyncPromise.reject(new _sentry_utils__WEBPACK_IMPORTED_MODULE_12__.SentryError('SDK not enabled, will not send event.'));
     }
 
-    return new _sentry_utils__WEBPACK_IMPORTED_MODULE_5__.SyncPromise(function (resolve, reject) {
-      _this._prepareEvent(event, scope, hint).then(function (prepared) {
-        if (prepared === null) {
-          reject('An event processor returned null, will not send event.');
-          return;
-        }
+    var isTransaction = event.type === 'transaction'; // 1.0 === 100% events are sent
+    // 0.0 === 0% events are sent
+    // Sampling for transaction happens somewhere else
 
-        var finalEvent = prepared;
+    if (!isTransaction && typeof sampleRate === 'number' && Math.random() > sampleRate) {
+      return _sentry_utils__WEBPACK_IMPORTED_MODULE_6__.SyncPromise.reject(new _sentry_utils__WEBPACK_IMPORTED_MODULE_12__.SentryError("Discarding event because it's not included in the random sample (sampling rate = " + sampleRate + ")"));
+    }
 
-        try {
-          var isInternalException = hint && hint.data && hint.data.__sentry__ === true;
+    return this._prepareEvent(event, scope, hint).then(function (prepared) {
+      if (prepared === null) {
+        throw new _sentry_utils__WEBPACK_IMPORTED_MODULE_12__.SentryError('An event processor returned null, will not send event.');
+      }
 
-          if (isInternalException || !beforeSend) {
-            _this._getBackend().sendEvent(finalEvent);
+      var isInternalException = hint && hint.data && hint.data.__sentry__ === true;
 
-            resolve(finalEvent);
-            return;
-          }
+      if (isInternalException || isTransaction || !beforeSend) {
+        return prepared;
+      }
 
-          var beforeSendResult = beforeSend(prepared, hint); // tslint:disable-next-line:strict-type-predicates
+      var beforeSendResult = beforeSend(prepared, hint);
 
-          if (typeof beforeSendResult === 'undefined') {
-            _sentry_utils__WEBPACK_IMPORTED_MODULE_3__.logger.error('`beforeSend` method has to return `null` or a valid event.');
-          } else if ((0,_sentry_utils__WEBPACK_IMPORTED_MODULE_4__.isThenable)(beforeSendResult)) {
-            _this._handleAsyncBeforeSend(beforeSendResult, resolve, reject);
-          } else {
-            finalEvent = beforeSendResult;
+      if (typeof beforeSendResult === 'undefined') {
+        throw new _sentry_utils__WEBPACK_IMPORTED_MODULE_12__.SentryError('`beforeSend` method has to return `null` or a valid event.');
+      } else if ((0,_sentry_utils__WEBPACK_IMPORTED_MODULE_2__.isThenable)(beforeSendResult)) {
+        return beforeSendResult.then(function (event) {
+          return event;
+        }, function (e) {
+          throw new _sentry_utils__WEBPACK_IMPORTED_MODULE_12__.SentryError("beforeSend rejected with " + e);
+        });
+      }
 
-            if (finalEvent === null) {
-              _sentry_utils__WEBPACK_IMPORTED_MODULE_3__.logger.log('`beforeSend` returned `null`, will not send event.');
-              resolve(null);
-              return;
-            } // From here on we are really async
+      return beforeSendResult;
+    }).then(function (processedEvent) {
+      if (processedEvent === null) {
+        throw new _sentry_utils__WEBPACK_IMPORTED_MODULE_12__.SentryError('`beforeSend` returned `null`, will not send event.');
+      }
 
+      var session = scope && scope.getSession && scope.getSession();
 
-            _this._getBackend().sendEvent(finalEvent);
+      if (!isTransaction && session) {
+        _this._updateSessionFromEvent(session, processedEvent);
+      }
 
-            resolve(finalEvent);
-          }
-        } catch (exception) {
-          _this.captureException(exception, {
-            data: {
-              __sentry__: true
-            },
-            originalException: exception
-          });
+      _this._sendEvent(processedEvent);
 
-          reject('`beforeSend` threw an error, will not send event.');
-        }
-      }).then(null, function () {
-        reject('`beforeSend` threw an error, will not send event.');
+      return processedEvent;
+    }).then(null, function (reason) {
+      if (reason instanceof _sentry_utils__WEBPACK_IMPORTED_MODULE_12__.SentryError) {
+        throw reason;
+      }
+
+      _this.captureException(reason, {
+        data: {
+          __sentry__: true
+        },
+        originalException: reason
       });
+
+      throw new _sentry_utils__WEBPACK_IMPORTED_MODULE_12__.SentryError("Event processing pipeline threw an error, original event will not be sent. Details have been sent as a new event.\nReason: " + reason);
     });
   };
   /**
-   * Resolves before send Promise and calls resolve/reject on parent SyncPromise.
+   * Occupies the client with processing and event
    */
 
 
-  BaseClient.prototype._handleAsyncBeforeSend = function (beforeSend, resolve, reject) {
+  BaseClient.prototype._process = function (promise) {
     var _this = this;
 
-    beforeSend.then(function (processedEvent) {
-      if (processedEvent === null) {
-        reject('`beforeSend` returned `null`, will not send event.');
-        return;
-      } // From here on we are really async
-
-
-      _this._getBackend().sendEvent(processedEvent);
-
-      resolve(processedEvent);
-    }).then(null, function (e) {
-      reject("beforeSend rejected with " + e);
+    this._processing += 1;
+    promise.then(function (value) {
+      _this._processing -= 1;
+      return value;
+    }, function (reason) {
+      _this._processing -= 1;
+      return reason;
     });
   };
 
@@ -3016,7 +3631,7 @@ var installedIntegrations = [];
 /** Gets integration to install */
 
 function getIntegrationsToSetup(options) {
-  var defaultIntegrations = options.defaultIntegrations && tslib__WEBPACK_IMPORTED_MODULE_0__.__spread(options.defaultIntegrations) || [];
+  var defaultIntegrations = options.defaultIntegrations && (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__spread)(options.defaultIntegrations) || [];
   var userIntegrations = options.integrations;
   var integrations = [];
 
@@ -3043,7 +3658,7 @@ function getIntegrationsToSetup(options) {
     integrations = userIntegrations(defaultIntegrations);
     integrations = Array.isArray(integrations) ? integrations : [integrations];
   } else {
-    integrations = tslib__WEBPACK_IMPORTED_MODULE_0__.__spread(defaultIntegrations);
+    integrations = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__spread)(defaultIntegrations);
   } // Make sure that if present, `Debug` integration will always run last
 
 
@@ -3053,7 +3668,7 @@ function getIntegrationsToSetup(options) {
   var alwaysLastToRun = 'Debug';
 
   if (integrationsNames.indexOf(alwaysLastToRun) !== -1) {
-    integrations.push.apply(integrations, tslib__WEBPACK_IMPORTED_MODULE_0__.__spread(integrations.splice(integrationsNames.indexOf(alwaysLastToRun), 1)));
+    integrations.push.apply(integrations, (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__spread)(integrations.splice(integrationsNames.indexOf(alwaysLastToRun), 1)));
   }
 
   return integrations;
@@ -3115,7 +3730,8 @@ function () {
 
 
   FunctionToString.prototype.setupOnce = function () {
-    originalFunctionToString = Function.prototype.toString;
+    // eslint-disable-next-line @typescript-eslint/unbound-method
+    originalFunctionToString = Function.prototype.toString; // eslint-disable-next-line @typescript-eslint/no-explicit-any
 
     Function.prototype.toString = function () {
       var args = [];
@@ -3124,8 +3740,7 @@ function () {
         args[_i] = arguments[_i];
       }
 
-      var context = this.__sentry_original__ || this; // tslint:disable-next-line:no-unsafe-any
-
+      var context = this.__sentry_original__ || this;
       return originalFunctionToString.apply(context, args);
     };
   };
@@ -3224,13 +3839,13 @@ function () {
       return true;
     }
 
-    if (this._isBlacklistedUrl(event, options)) {
-      _sentry_utils__WEBPACK_IMPORTED_MODULE_3__.logger.warn("Event dropped due to being matched by `blacklistUrls` option.\nEvent: " + (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_4__.getEventDescription)(event) + ".\nUrl: " + this._getEventFilterUrl(event));
+    if (this._isDeniedUrl(event, options)) {
+      _sentry_utils__WEBPACK_IMPORTED_MODULE_3__.logger.warn("Event dropped due to being matched by `denyUrls` option.\nEvent: " + (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_4__.getEventDescription)(event) + ".\nUrl: " + this._getEventFilterUrl(event));
       return true;
     }
 
-    if (!this._isWhitelistedUrl(event, options)) {
-      _sentry_utils__WEBPACK_IMPORTED_MODULE_3__.logger.warn("Event dropped due to not being matched by `whitelistUrls` option.\nEvent: " + (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_4__.getEventDescription)(event) + ".\nUrl: " + this._getEventFilterUrl(event));
+    if (!this._isAllowedUrl(event, options)) {
+      _sentry_utils__WEBPACK_IMPORTED_MODULE_3__.logger.warn("Event dropped due to not being matched by `allowUrls` option.\nEvent: " + (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_4__.getEventDescription)(event) + ".\nUrl: " + this._getEventFilterUrl(event));
       return true;
     }
 
@@ -3240,10 +3855,6 @@ function () {
 
 
   InboundFilters.prototype._isSentryError = function (event, options) {
-    if (options === void 0) {
-      options = {};
-    }
-
     if (!options.ignoreInternal) {
       return false;
     }
@@ -3258,10 +3869,6 @@ function () {
 
 
   InboundFilters.prototype._isIgnoredError = function (event, options) {
-    if (options === void 0) {
-      options = {};
-    }
-
     if (!options.ignoreErrors || !options.ignoreErrors.length) {
       return false;
     }
@@ -3276,38 +3883,30 @@ function () {
   /** JSDoc */
 
 
-  InboundFilters.prototype._isBlacklistedUrl = function (event, options) {
-    if (options === void 0) {
-      options = {};
-    } // TODO: Use Glob instead?
-
-
-    if (!options.blacklistUrls || !options.blacklistUrls.length) {
+  InboundFilters.prototype._isDeniedUrl = function (event, options) {
+    // TODO: Use Glob instead?
+    if (!options.denyUrls || !options.denyUrls.length) {
       return false;
     }
 
     var url = this._getEventFilterUrl(event);
 
-    return !url ? false : options.blacklistUrls.some(function (pattern) {
+    return !url ? false : options.denyUrls.some(function (pattern) {
       return (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_5__.isMatchingPattern)(url, pattern);
     });
   };
   /** JSDoc */
 
 
-  InboundFilters.prototype._isWhitelistedUrl = function (event, options) {
-    if (options === void 0) {
-      options = {};
-    } // TODO: Use Glob instead?
-
-
-    if (!options.whitelistUrls || !options.whitelistUrls.length) {
+  InboundFilters.prototype._isAllowedUrl = function (event, options) {
+    // TODO: Use Glob instead?
+    if (!options.allowUrls || !options.allowUrls.length) {
       return true;
     }
 
     var url = this._getEventFilterUrl(event);
 
-    return !url ? true : options.whitelistUrls.some(function (pattern) {
+    return !url ? true : options.allowUrls.some(function (pattern) {
       return (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_5__.isMatchingPattern)(url, pattern);
     });
   };
@@ -3320,10 +3919,10 @@ function () {
     }
 
     return {
-      blacklistUrls: tslib__WEBPACK_IMPORTED_MODULE_0__.__spread(this._options.blacklistUrls || [], clientOptions.blacklistUrls || []),
-      ignoreErrors: tslib__WEBPACK_IMPORTED_MODULE_0__.__spread(this._options.ignoreErrors || [], clientOptions.ignoreErrors || [], DEFAULT_IGNORE_ERRORS),
-      ignoreInternal: typeof this._options.ignoreInternal !== 'undefined' ? this._options.ignoreInternal : true,
-      whitelistUrls: tslib__WEBPACK_IMPORTED_MODULE_0__.__spread(this._options.whitelistUrls || [], clientOptions.whitelistUrls || [])
+      allowUrls: (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__spread)(this._options.whitelistUrls || [], this._options.allowUrls || [], clientOptions.whitelistUrls || [], clientOptions.allowUrls || []),
+      denyUrls: (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__spread)(this._options.blacklistUrls || [], this._options.denyUrls || [], clientOptions.blacklistUrls || [], clientOptions.denyUrls || []),
+      ignoreErrors: (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__spread)(this._options.ignoreErrors || [], clientOptions.ignoreErrors || [], DEFAULT_IGNORE_ERRORS),
+      ignoreInternal: typeof this._options.ignoreInternal !== 'undefined' ? this._options.ignoreInternal : true
     };
   };
   /** JSDoc */
@@ -3385,6 +3984,134 @@ function () {
 
 /***/ }),
 
+/***/ "./node_modules/@sentry/core/esm/request.js":
+/*!**************************************************!*\
+  !*** ./node_modules/@sentry/core/esm/request.js ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "sessionToSentryRequest": () => (/* binding */ sessionToSentryRequest),
+/* harmony export */   "eventToSentryRequest": () => (/* binding */ eventToSentryRequest)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+
+/** Extract sdk info from from the API metadata */
+
+function getSdkMetadataForEnvelopeHeader(api) {
+  if (!api.metadata || !api.metadata.sdk) {
+    return;
+  }
+
+  var _a = api.metadata.sdk,
+      name = _a.name,
+      version = _a.version;
+  return {
+    name: name,
+    version: version
+  };
+}
+/**
+ * Apply SdkInfo (name, version, packages, integrations) to the corresponding event key.
+ * Merge with existing data if any.
+ **/
+
+
+function enhanceEventWithSdkInfo(event, sdkInfo) {
+  if (!sdkInfo) {
+    return event;
+  }
+
+  event.sdk = event.sdk || {
+    name: sdkInfo.name,
+    version: sdkInfo.version
+  };
+  event.sdk.name = event.sdk.name || sdkInfo.name;
+  event.sdk.version = event.sdk.version || sdkInfo.version;
+  event.sdk.integrations = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__spread)(event.sdk.integrations || [], sdkInfo.integrations || []);
+  event.sdk.packages = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__spread)(event.sdk.packages || [], sdkInfo.packages || []);
+  return event;
+}
+/** Creates a SentryRequest from an event. */
+
+
+function sessionToSentryRequest(session, api) {
+  var sdkInfo = getSdkMetadataForEnvelopeHeader(api);
+  var envelopeHeaders = JSON.stringify((0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)({
+    sent_at: new Date().toISOString()
+  }, sdkInfo && {
+    sdk: sdkInfo
+  }));
+  var itemHeaders = JSON.stringify({
+    type: 'session'
+  });
+  return {
+    body: envelopeHeaders + "\n" + itemHeaders + "\n" + JSON.stringify(session),
+    type: 'session',
+    url: api.getEnvelopeEndpointWithUrlEncodedAuth()
+  };
+}
+/** Creates a SentryRequest from an event. */
+
+function eventToSentryRequest(event, api) {
+  var sdkInfo = getSdkMetadataForEnvelopeHeader(api);
+  var eventType = event.type || 'event';
+  var useEnvelope = eventType === 'transaction';
+
+  var _a = event.debug_meta || {},
+      transactionSampling = _a.transactionSampling,
+      metadata = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__rest)(_a, ["transactionSampling"]);
+
+  var _b = transactionSampling || {},
+      samplingMethod = _b.method,
+      sampleRate = _b.rate;
+
+  if (Object.keys(metadata).length === 0) {
+    delete event.debug_meta;
+  } else {
+    event.debug_meta = metadata;
+  }
+
+  var req = {
+    body: JSON.stringify(sdkInfo ? enhanceEventWithSdkInfo(event, api.metadata.sdk) : event),
+    type: eventType,
+    url: useEnvelope ? api.getEnvelopeEndpointWithUrlEncodedAuth() : api.getStoreEndpointWithUrlEncodedAuth()
+  }; // https://develop.sentry.dev/sdk/envelopes/
+  // Since we don't need to manipulate envelopes nor store them, there is no
+  // exported concept of an Envelope with operations including serialization and
+  // deserialization. Instead, we only implement a minimal subset of the spec to
+  // serialize events inline here.
+
+  if (useEnvelope) {
+    var envelopeHeaders = JSON.stringify((0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)({
+      event_id: event.event_id,
+      sent_at: new Date().toISOString()
+    }, sdkInfo && {
+      sdk: sdkInfo
+    }));
+    var itemHeaders = JSON.stringify({
+      type: event.type,
+      // TODO: Right now, sampleRate may or may not be defined (it won't be in the cases of inheritance and
+      // explicitly-set sampling decisions). Are we good with that?
+      sample_rates: [{
+        id: samplingMethod,
+        rate: sampleRate
+      }]
+    }); // The trailing newline is optional. We intentionally don't send it to avoid
+    // sending unnecessary bytes.
+    //
+    // const envelope = `${envelopeHeaders}\n${itemHeaders}\n${req.body}\n`;
+
+    var envelope = envelopeHeaders + "\n" + itemHeaders + "\n" + req.body;
+    req.body = envelope;
+  }
+
+  return req;
+}
+
+/***/ }),
+
 /***/ "./node_modules/@sentry/core/esm/sdk.js":
 /*!**********************************************!*\
   !*** ./node_modules/@sentry/core/esm/sdk.js ***!
@@ -3403,7 +4130,7 @@ function () {
  * Internal function to create a new SDK client instance. The client is
  * installed and then bound to the current scope.
  *
- * @param clientClass The client class to instanciate.
+ * @param clientClass The client class to instantiate.
  * @param options Options to pass to the client.
  */
 
@@ -3412,7 +4139,9 @@ function initAndBind(clientClass, options) {
     _sentry_utils__WEBPACK_IMPORTED_MODULE_0__.logger.enable();
   }
 
-  (0,_sentry_hub__WEBPACK_IMPORTED_MODULE_1__.getCurrentHub)().bindClient(new clientClass(options));
+  var hub = (0,_sentry_hub__WEBPACK_IMPORTED_MODULE_1__.getCurrentHub)();
+  var client = new clientClass(options);
+  hub.bindClient(client);
 }
 
 /***/ }),
@@ -3464,30 +4193,51 @@ function () {
 
 /***/ }),
 
+/***/ "./node_modules/@sentry/core/esm/version.js":
+/*!**************************************************!*\
+  !*** ./node_modules/@sentry/core/esm/version.js ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "SDK_VERSION": () => (/* binding */ SDK_VERSION)
+/* harmony export */ });
+var SDK_VERSION = '6.2.4';
+
+/***/ }),
+
 /***/ "./node_modules/@sentry/hub/esm/hub.js":
 /*!*********************************************!*\
   !*** ./node_modules/@sentry/hub/esm/hub.js ***!
   \*********************************************/
-/***/ ((module, __webpack_exports__, __webpack_require__) => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "getCurrentHub": () => (/* binding */ getCurrentHub)
 /* harmony export */ });
-/* unused harmony exports API_VERSION, Hub, getMainCarrier, makeMain, getHubFromCarrier, setHubOnCarrier */
+/* unused harmony exports API_VERSION, Hub, getMainCarrier, makeMain, getActiveDomain, getHubFromCarrier, setHubOnCarrier */
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _sentry_types__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @sentry/types */ "./node_modules/@sentry/types/esm/session.js");
 /* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/misc.js");
-/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/logger.js");
+/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/time.js");
+/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/logger.js");
+/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/node.js");
 /* harmony import */ var _scope__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./scope */ "./node_modules/@sentry/hub/esm/scope.js");
-/* module decorator */ module = __webpack_require__.hmd(module);
+/* harmony import */ var _session__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./session */ "./node_modules/@sentry/hub/esm/session.js");
+
+/* eslint-disable max-lines */
+
+
 
 
 
 /**
  * API compatibility version of this hub.
  *
- * WARNING: This number should only be incresed when the global interface
- * changes a and new methods are introduced.
+ * WARNING: This number should only be increased when the global interface
+ * changes and new methods are introduced.
  *
  * @hidden
  */
@@ -3532,36 +4282,10 @@ function () {
     this._version = _version;
     /** Is a {@link Layer}[] containing the client and scope */
 
-    this._stack = [];
-
-    this._stack.push({
-      client: client,
-      scope: scope
-    });
+    this._stack = [{}];
+    this.getStackTop().scope = scope;
+    this.bindClient(client);
   }
-  /**
-   * Internal helper function to call a method on the top client if it exists.
-   *
-   * @param method The method to call on the client.
-   * @param args Arguments to pass to the client function.
-   */
-
-
-  Hub.prototype._invokeClient = function (method) {
-    var _a;
-
-    var args = [];
-
-    for (var _i = 1; _i < arguments.length; _i++) {
-      args[_i - 1] = arguments[_i];
-    }
-
-    var top = this.getStackTop();
-
-    if (top && top.client && top.client[method]) {
-      (_a = top.client)[method].apply(_a, tslib__WEBPACK_IMPORTED_MODULE_0__.__spread(args, [top.scope]));
-    }
-  };
   /**
    * @inheritDoc
    */
@@ -3578,6 +4302,10 @@ function () {
   Hub.prototype.bindClient = function (client) {
     var top = this.getStackTop();
     top.client = client;
+
+    if (client && client.setupIntegrations) {
+      client.setupIntegrations();
+    }
   };
   /**
    * @inheritDoc
@@ -3586,9 +4314,7 @@ function () {
 
   Hub.prototype.pushScope = function () {
     // We want to clone the content of prev scope
-    var stack = this.getStack();
-    var parentScope = stack.length > 0 ? stack[stack.length - 1].scope : undefined;
-    var scope = _scope__WEBPACK_IMPORTED_MODULE_1__.Scope.clone(parentScope);
+    var scope = _scope__WEBPACK_IMPORTED_MODULE_1__.Scope.clone(this.getScope());
     this.getStack().push({
       client: this.getClient(),
       scope: scope
@@ -3601,7 +4327,8 @@ function () {
 
 
   Hub.prototype.popScope = function () {
-    return this.getStack().pop() !== undefined;
+    if (this.getStack().length <= 1) return false;
+    return !!this.getStack().pop();
   };
   /**
    * @inheritDoc
@@ -3646,6 +4373,7 @@ function () {
   /**
    * @inheritDoc
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
 
 
   Hub.prototype.captureException = function (exception, hint) {
@@ -3670,7 +4398,7 @@ function () {
       };
     }
 
-    this._invokeClient('captureException', exception, tslib__WEBPACK_IMPORTED_MODULE_0__.__assign({}, finalHint, {
+    this._invokeClient('captureException', exception, (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)({}, finalHint), {
       event_id: eventId
     }));
 
@@ -3703,7 +4431,7 @@ function () {
       };
     }
 
-    this._invokeClient('captureMessage', message, level, tslib__WEBPACK_IMPORTED_MODULE_0__.__assign({}, finalHint, {
+    this._invokeClient('captureMessage', message, level, (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)({}, finalHint), {
       event_id: eventId
     }));
 
@@ -3717,7 +4445,7 @@ function () {
   Hub.prototype.captureEvent = function (event, hint) {
     var eventId = this._lastEventId = (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_2__.uuid4)();
 
-    this._invokeClient('captureEvent', event, tslib__WEBPACK_IMPORTED_MODULE_0__.__assign({}, hint, {
+    this._invokeClient('captureEvent', event, (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)({}, hint), {
       event_id: eventId
     }));
 
@@ -3737,37 +4465,30 @@ function () {
 
 
   Hub.prototype.addBreadcrumb = function (breadcrumb, hint) {
-    var top = this.getStackTop();
+    var _a = this.getStackTop(),
+        scope = _a.scope,
+        client = _a.client;
 
-    if (!top.scope || !top.client) {
-      return;
-    }
+    if (!scope || !client) return; // eslint-disable-next-line @typescript-eslint/unbound-method
 
-    var _a = top.client.getOptions && top.client.getOptions() || {},
-        _b = _a.beforeBreadcrumb,
-        beforeBreadcrumb = _b === void 0 ? null : _b,
-        _c = _a.maxBreadcrumbs,
-        maxBreadcrumbs = _c === void 0 ? DEFAULT_BREADCRUMBS : _c;
+    var _b = client.getOptions && client.getOptions() || {},
+        _c = _b.beforeBreadcrumb,
+        beforeBreadcrumb = _c === void 0 ? null : _c,
+        _d = _b.maxBreadcrumbs,
+        maxBreadcrumbs = _d === void 0 ? DEFAULT_BREADCRUMBS : _d;
 
-    if (maxBreadcrumbs <= 0) {
-      return;
-    }
+    if (maxBreadcrumbs <= 0) return;
+    var timestamp = (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_3__.dateTimestampInSeconds)();
 
-    var timestamp = (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_2__.timestampWithMs)();
-
-    var mergedBreadcrumb = tslib__WEBPACK_IMPORTED_MODULE_0__.__assign({
+    var mergedBreadcrumb = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)({
       timestamp: timestamp
     }, breadcrumb);
 
     var finalBreadcrumb = beforeBreadcrumb ? (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_2__.consoleSandbox)(function () {
       return beforeBreadcrumb(mergedBreadcrumb, hint);
     }) : mergedBreadcrumb;
-
-    if (finalBreadcrumb === null) {
-      return;
-    }
-
-    top.scope.addBreadcrumb(finalBreadcrumb, Math.min(maxBreadcrumbs, MAX_BREADCRUMBS));
+    if (finalBreadcrumb === null) return;
+    scope.addBreadcrumb(finalBreadcrumb, Math.min(maxBreadcrumbs, MAX_BREADCRUMBS));
   };
   /**
    * @inheritDoc
@@ -3775,13 +4496,8 @@ function () {
 
 
   Hub.prototype.setUser = function (user) {
-    var top = this.getStackTop();
-
-    if (!top.scope) {
-      return;
-    }
-
-    top.scope.setUser(user);
+    var scope = this.getScope();
+    if (scope) scope.setUser(user);
   };
   /**
    * @inheritDoc
@@ -3789,13 +4505,8 @@ function () {
 
 
   Hub.prototype.setTags = function (tags) {
-    var top = this.getStackTop();
-
-    if (!top.scope) {
-      return;
-    }
-
-    top.scope.setTags(tags);
+    var scope = this.getScope();
+    if (scope) scope.setTags(tags);
   };
   /**
    * @inheritDoc
@@ -3803,13 +4514,8 @@ function () {
 
 
   Hub.prototype.setExtras = function (extras) {
-    var top = this.getStackTop();
-
-    if (!top.scope) {
-      return;
-    }
-
-    top.scope.setExtras(extras);
+    var scope = this.getScope();
+    if (scope) scope.setExtras(extras);
   };
   /**
    * @inheritDoc
@@ -3817,13 +4523,8 @@ function () {
 
 
   Hub.prototype.setTag = function (key, value) {
-    var top = this.getStackTop();
-
-    if (!top.scope) {
-      return;
-    }
-
-    top.scope.setTag(key, value);
+    var scope = this.getScope();
+    if (scope) scope.setTag(key, value);
   };
   /**
    * @inheritDoc
@@ -3831,27 +4532,18 @@ function () {
 
 
   Hub.prototype.setExtra = function (key, extra) {
-    var top = this.getStackTop();
-
-    if (!top.scope) {
-      return;
-    }
-
-    top.scope.setExtra(key, extra);
+    var scope = this.getScope();
+    if (scope) scope.setExtra(key, extra);
   };
   /**
    * @inheritDoc
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
 
 
   Hub.prototype.setContext = function (name, context) {
-    var top = this.getStackTop();
-
-    if (!top.scope) {
-      return;
-    }
-
-    top.scope.setContext(name, context);
+    var scope = this.getScope();
+    if (scope) scope.setContext(name, context);
   };
   /**
    * @inheritDoc
@@ -3859,10 +4551,12 @@ function () {
 
 
   Hub.prototype.configureScope = function (callback) {
-    var top = this.getStackTop();
+    var _a = this.getStackTop(),
+        scope = _a.scope,
+        client = _a.client;
 
-    if (top.scope && top.client) {
-      callback(top.scope);
+    if (scope && client) {
+      callback(scope);
     }
   };
   /**
@@ -3886,15 +4580,12 @@ function () {
 
   Hub.prototype.getIntegration = function (integration) {
     var client = this.getClient();
-
-    if (!client) {
-      return null;
-    }
+    if (!client) return null;
 
     try {
       return client.getIntegration(integration);
     } catch (_oO) {
-      _sentry_utils__WEBPACK_IMPORTED_MODULE_3__.logger.warn("Cannot retrieve integration " + integration.id + " from the current Hub");
+      _sentry_utils__WEBPACK_IMPORTED_MODULE_4__.logger.warn("Cannot retrieve integration " + integration.id + " from the current Hub");
       return null;
     }
   };
@@ -3903,12 +4594,16 @@ function () {
    */
 
 
-  Hub.prototype.startSpan = function (spanOrSpanContext, forceNoChild) {
-    if (forceNoChild === void 0) {
-      forceNoChild = false;
-    }
+  Hub.prototype.startSpan = function (context) {
+    return this._callExtensionMethod('startSpan', context);
+  };
+  /**
+   * @inheritDoc
+   */
 
-    return this._callExtensionMethod('startSpan', spanOrSpanContext, forceNoChild);
+
+  Hub.prototype.startTransaction = function (context, customSamplingContext) {
+    return this._callExtensionMethod('startTransaction', context, customSamplingContext);
   };
   /**
    * @inheritDoc
@@ -3919,9 +4614,127 @@ function () {
     return this._callExtensionMethod('traceHeaders');
   };
   /**
+   * @inheritDoc
+   */
+
+
+  Hub.prototype.captureSession = function (endSession) {
+    if (endSession === void 0) {
+      endSession = false;
+    } // both send the update and pull the session from the scope
+
+
+    if (endSession) {
+      return this.endSession();
+    } // only send the update
+
+
+    this._sendSessionUpdate();
+  };
+  /**
+   * @inheritDoc
+   */
+
+
+  Hub.prototype.endSession = function () {
+    var _a, _b, _c, _d, _e;
+
+    (_c = (_b = (_a = this.getStackTop()) === null || _a === void 0 ? void 0 : _a.scope) === null || _b === void 0 ? void 0 : _b.getSession()) === null || _c === void 0 ? void 0 : _c.close();
+
+    this._sendSessionUpdate(); // the session is over; take it off of the scope
+
+
+    (_e = (_d = this.getStackTop()) === null || _d === void 0 ? void 0 : _d.scope) === null || _e === void 0 ? void 0 : _e.setSession();
+  };
+  /**
+   * @inheritDoc
+   */
+
+
+  Hub.prototype.startSession = function (context) {
+    var _a = this.getStackTop(),
+        scope = _a.scope,
+        client = _a.client;
+
+    var _b = client && client.getOptions() || {},
+        release = _b.release,
+        environment = _b.environment;
+
+    var session = new _session__WEBPACK_IMPORTED_MODULE_5__.Session((0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)({
+      release: release,
+      environment: environment
+    }, scope && {
+      user: scope.getUser()
+    }), context));
+
+    if (scope) {
+      // End existing session if there's one
+      var currentSession = scope.getSession && scope.getSession();
+
+      if (currentSession && currentSession.status === _sentry_types__WEBPACK_IMPORTED_MODULE_6__.SessionStatus.Ok) {
+        currentSession.update({
+          status: _sentry_types__WEBPACK_IMPORTED_MODULE_6__.SessionStatus.Exited
+        });
+      }
+
+      this.endSession(); // Afterwards we set the new session on the scope
+
+      scope.setSession(session);
+    }
+
+    return session;
+  };
+  /**
+   * Sends the current Session on the scope
+   */
+
+
+  Hub.prototype._sendSessionUpdate = function () {
+    var _a = this.getStackTop(),
+        scope = _a.scope,
+        client = _a.client;
+
+    if (!scope) return;
+    var session = scope.getSession && scope.getSession();
+
+    if (session) {
+      if (client && client.captureSession) {
+        client.captureSession(session);
+      }
+    }
+  };
+  /**
+   * Internal helper function to call a method on the top client if it exists.
+   *
+   * @param method The method to call on the client.
+   * @param args Arguments to pass to the client function.
+   */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
+
+  Hub.prototype._invokeClient = function (method) {
+    var _a;
+
+    var args = [];
+
+    for (var _i = 1; _i < arguments.length; _i++) {
+      args[_i - 1] = arguments[_i];
+    }
+
+    var _b = this.getStackTop(),
+        scope = _b.scope,
+        client = _b.client;
+
+    if (client && client[method]) {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-explicit-any
+      (_a = client)[method].apply(_a, (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__spread)(args, [scope]));
+    }
+  };
+  /**
    * Calls global extension method and binding current instance to the function call
    */
-  // @ts-ignore
+  // @ts-ignore Function lacks ending return statement and return type does not include 'undefined'. ts(2366)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
 
 
   Hub.prototype._callExtensionMethod = function (method) {
@@ -3932,13 +4745,13 @@ function () {
     }
 
     var carrier = getMainCarrier();
-    var sentry = carrier.__SENTRY__; // tslint:disable-next-line: strict-type-predicates
+    var sentry = carrier.__SENTRY__;
 
     if (sentry && sentry.extensions && typeof sentry.extensions[method] === 'function') {
       return sentry.extensions[method].apply(this, args);
     }
 
-    _sentry_utils__WEBPACK_IMPORTED_MODULE_3__.logger.warn("Extension method " + method + " couldn't be found, doing nothing.");
+    _sentry_utils__WEBPACK_IMPORTED_MODULE_4__.logger.warn("Extension method " + method + " couldn't be found, doing nothing.");
   };
 
   return Hub;
@@ -3984,7 +4797,7 @@ function getCurrentHub() {
   } // Prefer domains over global if they are there (applicable only to Node environment)
 
 
-  if ((0,_sentry_utils__WEBPACK_IMPORTED_MODULE_2__.isNodeEnv)()) {
+  if ((0,_sentry_utils__WEBPACK_IMPORTED_MODULE_7__.isNodeEnv)()) {
     return getHubFromActiveDomain(registry);
   } // Return hub that lives on a global object
 
@@ -3992,21 +4805,33 @@ function getCurrentHub() {
   return getHubFromCarrier(registry);
 }
 /**
- * Try to read the hub from an active domain, fallback to the registry if one doesnt exist
+ * Returns the active domain, if one exists
+ * @deprecated No longer used; remove in v7
+ * @returns The domain, or undefined if there is no active domain
+ */
+// eslint-disable-next-line deprecation/deprecation
+
+function getActiveDomain() {
+  _sentry_utils__WEBPACK_IMPORTED_MODULE_4__.logger.warn('Function `getActiveDomain` is deprecated and will be removed in a future version.');
+
+  var sentry = getMainCarrier().__SENTRY__;
+
+  return sentry && sentry.extensions && sentry.extensions.domain && sentry.extensions.domain.active;
+}
+/**
+ * Try to read the hub from an active domain, and fallback to the registry if one doesn't exist
  * @returns discovered hub
  */
 
 function getHubFromActiveDomain(registry) {
+  var _a, _b, _c;
+
   try {
-    // We need to use `dynamicRequire` because `require` on it's own will be optimized by webpack.
-    // We do not want this to happen, we need to try to `require` the domain node module and fail if we are in browser
-    // for example so we do not have to shim it and use `getCurrentHub` universally.
-    var domain = (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_2__.dynamicRequire)(module, 'domain');
-    var activeDomain = domain.active; // If there no active domain, just return global hub
+    var activeDomain = (_c = (_b = (_a = getMainCarrier().__SENTRY__) === null || _a === void 0 ? void 0 : _a.extensions) === null || _b === void 0 ? void 0 : _b.domain) === null || _c === void 0 ? void 0 : _c.active; // If there's no active domain, just return global hub
 
     if (!activeDomain) {
       return getHubFromCarrier(registry);
-    } // If there's no hub on current domain, or its an old API, assign a new one
+    } // If there's no hub on current domain, or it's an old API, assign a new one
 
 
     if (!hasHubOnCarrier(activeDomain) || getHubFromCarrier(activeDomain).isOlderThan(API_VERSION)) {
@@ -4028,11 +4853,7 @@ function getHubFromActiveDomain(registry) {
 
 
 function hasHubOnCarrier(carrier) {
-  if (carrier && carrier.__SENTRY__ && carrier.__SENTRY__.hub) {
-    return true;
-  }
-
-  return false;
+  return !!(carrier && carrier.__SENTRY__ && carrier.__SENTRY__.hub);
 }
 /**
  * This will create a new {@link Hub} and add to the passed object on
@@ -4043,10 +4864,7 @@ function hasHubOnCarrier(carrier) {
 
 
 function getHubFromCarrier(carrier) {
-  if (carrier && carrier.__SENTRY__ && carrier.__SENTRY__.hub) {
-    return carrier.__SENTRY__.hub;
-  }
-
+  if (carrier && carrier.__SENTRY__ && carrier.__SENTRY__.hub) return carrier.__SENTRY__.hub;
   carrier.__SENTRY__ = carrier.__SENTRY__ || {};
   carrier.__SENTRY__.hub = new Hub();
   return carrier.__SENTRY__.hub;
@@ -4055,13 +4873,11 @@ function getHubFromCarrier(carrier) {
  * This will set passed {@link Hub} on the passed object's __SENTRY__.hub attribute
  * @param carrier object
  * @param hub Hub
+ * @returns A boolean indicating success or failure
  */
 
 function setHubOnCarrier(carrier, hub) {
-  if (!carrier) {
-    return false;
-  }
-
+  if (!carrier) return false;
   carrier.__SENTRY__ = carrier.__SENTRY__ || {};
   carrier.__SENTRY__.hub = hub;
   return true;
@@ -4081,9 +4897,9 @@ function setHubOnCarrier(carrier, hub) {
 /* harmony export */   "addGlobalEventProcessor": () => (/* binding */ addGlobalEventProcessor)
 /* harmony export */ });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/syncpromise.js");
-/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/is.js");
-/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/object.js");
+/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/is.js");
+/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/time.js");
+/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/syncpromise.js");
 /* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/misc.js");
 
 
@@ -4118,8 +4934,33 @@ function () {
     this._extra = {};
     /** Contexts */
 
-    this._context = {};
+    this._contexts = {};
   }
+  /**
+   * Inherit values from the parent scope.
+   * @param scope to clone.
+   */
+
+
+  Scope.clone = function (scope) {
+    var newScope = new Scope();
+
+    if (scope) {
+      newScope._breadcrumbs = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__spread)(scope._breadcrumbs);
+      newScope._tags = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)({}, scope._tags);
+      newScope._extra = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)({}, scope._extra);
+      newScope._contexts = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)({}, scope._contexts);
+      newScope._user = scope._user;
+      newScope._level = scope._level;
+      newScope._span = scope._span;
+      newScope._session = scope._session;
+      newScope._transactionName = scope._transactionName;
+      newScope._fingerprint = scope._fingerprint;
+      newScope._eventProcessors = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__spread)(scope._eventProcessors);
+    }
+
+    return newScope;
+  };
   /**
    * Add internal on change listener. Used for sub SDKs that need to store the scope.
    * @hidden
@@ -4140,61 +4981,18 @@ function () {
     return this;
   };
   /**
-   * This will be called on every set call.
-   */
-
-
-  Scope.prototype._notifyScopeListeners = function () {
-    var _this = this;
-
-    if (!this._notifyingListeners) {
-      this._notifyingListeners = true;
-      setTimeout(function () {
-        _this._scopeListeners.forEach(function (callback) {
-          callback(_this);
-        });
-
-        _this._notifyingListeners = false;
-      });
-    }
-  };
-  /**
-   * This will be called after {@link applyToEvent} is finished.
-   */
-
-
-  Scope.prototype._notifyEventProcessors = function (processors, event, hint, index) {
-    var _this = this;
-
-    if (index === void 0) {
-      index = 0;
-    }
-
-    return new _sentry_utils__WEBPACK_IMPORTED_MODULE_1__.SyncPromise(function (resolve, reject) {
-      var processor = processors[index]; // tslint:disable-next-line:strict-type-predicates
-
-      if (event === null || typeof processor !== 'function') {
-        resolve(event);
-      } else {
-        var result = processor(tslib__WEBPACK_IMPORTED_MODULE_0__.__assign({}, event), hint);
-
-        if ((0,_sentry_utils__WEBPACK_IMPORTED_MODULE_2__.isThenable)(result)) {
-          result.then(function (final) {
-            return _this._notifyEventProcessors(processors, final, hint, index + 1).then(resolve);
-          }).then(null, reject);
-        } else {
-          _this._notifyEventProcessors(processors, result, hint, index + 1).then(resolve).then(null, reject);
-        }
-      }
-    });
-  };
-  /**
    * @inheritDoc
    */
 
 
   Scope.prototype.setUser = function (user) {
-    this._user = (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_3__.normalize)(user);
+    this._user = user || {};
+
+    if (this._session) {
+      this._session.update({
+        user: user
+      });
+    }
 
     this._notifyScopeListeners();
 
@@ -4205,8 +5003,16 @@ function () {
    */
 
 
+  Scope.prototype.getUser = function () {
+    return this._user;
+  };
+  /**
+   * @inheritDoc
+   */
+
+
   Scope.prototype.setTags = function (tags) {
-    this._tags = tslib__WEBPACK_IMPORTED_MODULE_0__.__assign({}, this._tags, (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_3__.normalize)(tags));
+    this._tags = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)({}, this._tags), tags);
 
     this._notifyScopeListeners();
 
@@ -4220,7 +5026,7 @@ function () {
   Scope.prototype.setTag = function (key, value) {
     var _a;
 
-    this._tags = tslib__WEBPACK_IMPORTED_MODULE_0__.__assign({}, this._tags, (_a = {}, _a[key] = (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_3__.normalize)(value), _a));
+    this._tags = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)({}, this._tags), (_a = {}, _a[key] = value, _a));
 
     this._notifyScopeListeners();
 
@@ -4231,8 +5037,8 @@ function () {
    */
 
 
-  Scope.prototype.setExtras = function (extra) {
-    this._extra = tslib__WEBPACK_IMPORTED_MODULE_0__.__assign({}, this._extra, (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_3__.normalize)(extra));
+  Scope.prototype.setExtras = function (extras) {
+    this._extra = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)({}, this._extra), extras);
 
     this._notifyScopeListeners();
 
@@ -4246,7 +5052,7 @@ function () {
   Scope.prototype.setExtra = function (key, extra) {
     var _a;
 
-    this._extra = tslib__WEBPACK_IMPORTED_MODULE_0__.__assign({}, this._extra, (_a = {}, _a[key] = (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_3__.normalize)(extra), _a));
+    this._extra = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)({}, this._extra), (_a = {}, _a[key] = extra, _a));
 
     this._notifyScopeListeners();
 
@@ -4258,7 +5064,7 @@ function () {
 
 
   Scope.prototype.setFingerprint = function (fingerprint) {
-    this._fingerprint = (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_3__.normalize)(fingerprint);
+    this._fingerprint = fingerprint;
 
     this._notifyScopeListeners();
 
@@ -4270,7 +5076,7 @@ function () {
 
 
   Scope.prototype.setLevel = function (level) {
-    this._level = (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_3__.normalize)(level);
+    this._level = level;
 
     this._notifyScopeListeners();
 
@@ -4281,20 +5087,36 @@ function () {
    */
 
 
-  Scope.prototype.setTransaction = function (transaction) {
-    this._transaction = transaction;
+  Scope.prototype.setTransactionName = function (name) {
+    this._transactionName = name;
 
     this._notifyScopeListeners();
 
     return this;
   };
   /**
+   * Can be removed in major version.
+   * @deprecated in favor of {@link this.setTransactionName}
+   */
+
+
+  Scope.prototype.setTransaction = function (name) {
+    return this.setTransactionName(name);
+  };
+  /**
    * @inheritDoc
    */
 
 
-  Scope.prototype.setContext = function (name, context) {
-    this._context[name] = context ? (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_3__.normalize)(context) : undefined;
+  Scope.prototype.setContext = function (key, context) {
+    var _a;
+
+    if (context === null) {
+      // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
+      delete this._contexts[key];
+    } else {
+      this._contexts = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)({}, this._contexts), (_a = {}, _a[key] = context, _a));
+    }
 
     this._notifyScopeListeners();
 
@@ -4313,8 +5135,7 @@ function () {
     return this;
   };
   /**
-   * Internal getter for Span, used in Hub.
-   * @hidden
+   * @inheritDoc
    */
 
 
@@ -4322,28 +5143,104 @@ function () {
     return this._span;
   };
   /**
-   * Inherit values from the parent scope.
-   * @param scope to clone.
+   * @inheritDoc
    */
 
 
-  Scope.clone = function (scope) {
-    var newScope = new Scope();
+  Scope.prototype.getTransaction = function () {
+    var _a, _b, _c, _d; // often, this span will be a transaction, but it's not guaranteed to be
 
-    if (scope) {
-      newScope._breadcrumbs = tslib__WEBPACK_IMPORTED_MODULE_0__.__spread(scope._breadcrumbs);
-      newScope._tags = tslib__WEBPACK_IMPORTED_MODULE_0__.__assign({}, scope._tags);
-      newScope._extra = tslib__WEBPACK_IMPORTED_MODULE_0__.__assign({}, scope._extra);
-      newScope._context = tslib__WEBPACK_IMPORTED_MODULE_0__.__assign({}, scope._context);
-      newScope._user = scope._user;
-      newScope._level = scope._level;
-      newScope._span = scope._span;
-      newScope._transaction = scope._transaction;
-      newScope._fingerprint = scope._fingerprint;
-      newScope._eventProcessors = tslib__WEBPACK_IMPORTED_MODULE_0__.__spread(scope._eventProcessors);
+
+    var span = this.getSpan(); // try it the new way first
+
+    if ((_a = span) === null || _a === void 0 ? void 0 : _a.transaction) {
+      return (_b = span) === null || _b === void 0 ? void 0 : _b.transaction;
+    } // fallback to the old way (known bug: this only finds transactions with sampled = true)
+
+
+    if ((_d = (_c = span) === null || _c === void 0 ? void 0 : _c.spanRecorder) === null || _d === void 0 ? void 0 : _d.spans[0]) {
+      return span.spanRecorder.spans[0];
+    } // neither way found a transaction
+
+
+    return undefined;
+  };
+  /**
+   * @inheritDoc
+   */
+
+
+  Scope.prototype.setSession = function (session) {
+    if (!session) {
+      delete this._session;
+    } else {
+      this._session = session;
     }
 
-    return newScope;
+    this._notifyScopeListeners();
+
+    return this;
+  };
+  /**
+   * @inheritDoc
+   */
+
+
+  Scope.prototype.getSession = function () {
+    return this._session;
+  };
+  /**
+   * @inheritDoc
+   */
+
+
+  Scope.prototype.update = function (captureContext) {
+    if (!captureContext) {
+      return this;
+    }
+
+    if (typeof captureContext === 'function') {
+      var updatedScope = captureContext(this);
+      return updatedScope instanceof Scope ? updatedScope : this;
+    }
+
+    if (captureContext instanceof Scope) {
+      this._tags = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)({}, this._tags), captureContext._tags);
+      this._extra = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)({}, this._extra), captureContext._extra);
+      this._contexts = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)({}, this._contexts), captureContext._contexts);
+
+      if (captureContext._user && Object.keys(captureContext._user).length) {
+        this._user = captureContext._user;
+      }
+
+      if (captureContext._level) {
+        this._level = captureContext._level;
+      }
+
+      if (captureContext._fingerprint) {
+        this._fingerprint = captureContext._fingerprint;
+      }
+    } else if ((0,_sentry_utils__WEBPACK_IMPORTED_MODULE_1__.isPlainObject)(captureContext)) {
+      // eslint-disable-next-line no-param-reassign
+      captureContext = captureContext;
+      this._tags = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)({}, this._tags), captureContext.tags);
+      this._extra = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)({}, this._extra), captureContext.extra);
+      this._contexts = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)({}, this._contexts), captureContext.contexts);
+
+      if (captureContext.user) {
+        this._user = captureContext.user;
+      }
+
+      if (captureContext.level) {
+        this._level = captureContext.level;
+      }
+
+      if (captureContext.fingerprint) {
+        this._fingerprint = captureContext.fingerprint;
+      }
+    }
+
+    return this;
   };
   /**
    * @inheritDoc
@@ -4355,11 +5252,12 @@ function () {
     this._tags = {};
     this._extra = {};
     this._user = {};
-    this._context = {};
+    this._contexts = {};
     this._level = undefined;
-    this._transaction = undefined;
+    this._transactionName = undefined;
     this._fingerprint = undefined;
     this._span = undefined;
+    this._session = undefined;
 
     this._notifyScopeListeners();
 
@@ -4371,13 +5269,11 @@ function () {
 
 
   Scope.prototype.addBreadcrumb = function (breadcrumb, maxBreadcrumbs) {
-    var timestamp = (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_4__.timestampWithMs)();
-
-    var mergedBreadcrumb = tslib__WEBPACK_IMPORTED_MODULE_0__.__assign({
-      timestamp: timestamp
+    var mergedBreadcrumb = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)({
+      timestamp: (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_2__.dateTimestampInSeconds)()
     }, breadcrumb);
 
-    this._breadcrumbs = maxBreadcrumbs !== undefined && maxBreadcrumbs >= 0 ? tslib__WEBPACK_IMPORTED_MODULE_0__.__spread(this._breadcrumbs, [(0,_sentry_utils__WEBPACK_IMPORTED_MODULE_3__.normalize)(mergedBreadcrumb)]).slice(-maxBreadcrumbs) : tslib__WEBPACK_IMPORTED_MODULE_0__.__spread(this._breadcrumbs, [(0,_sentry_utils__WEBPACK_IMPORTED_MODULE_3__.normalize)(mergedBreadcrumb)]);
+    this._breadcrumbs = maxBreadcrumbs !== undefined && maxBreadcrumbs >= 0 ? (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__spread)(this._breadcrumbs, [mergedBreadcrumb]).slice(-maxBreadcrumbs) : (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__spread)(this._breadcrumbs, [mergedBreadcrumb]);
 
     this._notifyScopeListeners();
 
@@ -4394,6 +5290,116 @@ function () {
     this._notifyScopeListeners();
 
     return this;
+  };
+  /**
+   * Applies the current context and fingerprint to the event.
+   * Note that breadcrumbs will be added by the client.
+   * Also if the event has already breadcrumbs on it, we do not merge them.
+   * @param event Event
+   * @param hint May contain additional informartion about the original exception.
+   * @hidden
+   */
+
+
+  Scope.prototype.applyToEvent = function (event, hint) {
+    var _a;
+
+    if (this._extra && Object.keys(this._extra).length) {
+      event.extra = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)({}, this._extra), event.extra);
+    }
+
+    if (this._tags && Object.keys(this._tags).length) {
+      event.tags = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)({}, this._tags), event.tags);
+    }
+
+    if (this._user && Object.keys(this._user).length) {
+      event.user = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)({}, this._user), event.user);
+    }
+
+    if (this._contexts && Object.keys(this._contexts).length) {
+      event.contexts = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)({}, this._contexts), event.contexts);
+    }
+
+    if (this._level) {
+      event.level = this._level;
+    }
+
+    if (this._transactionName) {
+      event.transaction = this._transactionName;
+    } // We want to set the trace context for normal events only if there isn't already
+    // a trace context on the event. There is a product feature in place where we link
+    // errors with transaction and it relys on that.
+
+
+    if (this._span) {
+      event.contexts = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)({
+        trace: this._span.getTraceContext()
+      }, event.contexts);
+      var transactionName = (_a = this._span.transaction) === null || _a === void 0 ? void 0 : _a.name;
+
+      if (transactionName) {
+        event.tags = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)({
+          transaction: transactionName
+        }, event.tags);
+      }
+    }
+
+    this._applyFingerprint(event);
+
+    event.breadcrumbs = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__spread)(event.breadcrumbs || [], this._breadcrumbs);
+    event.breadcrumbs = event.breadcrumbs.length > 0 ? event.breadcrumbs : undefined;
+    return this._notifyEventProcessors((0,tslib__WEBPACK_IMPORTED_MODULE_0__.__spread)(getGlobalEventProcessors(), this._eventProcessors), event, hint);
+  };
+  /**
+   * This will be called after {@link applyToEvent} is finished.
+   */
+
+
+  Scope.prototype._notifyEventProcessors = function (processors, event, hint, index) {
+    var _this = this;
+
+    if (index === void 0) {
+      index = 0;
+    }
+
+    return new _sentry_utils__WEBPACK_IMPORTED_MODULE_3__.SyncPromise(function (resolve, reject) {
+      var processor = processors[index];
+
+      if (event === null || typeof processor !== 'function') {
+        resolve(event);
+      } else {
+        var result = processor((0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)({}, event), hint);
+
+        if ((0,_sentry_utils__WEBPACK_IMPORTED_MODULE_1__.isThenable)(result)) {
+          result.then(function (final) {
+            return _this._notifyEventProcessors(processors, final, hint, index + 1).then(resolve);
+          }).then(null, reject);
+        } else {
+          _this._notifyEventProcessors(processors, result, hint, index + 1).then(resolve).then(null, reject);
+        }
+      }
+    });
+  };
+  /**
+   * This will be called on every set call.
+   */
+
+
+  Scope.prototype._notifyScopeListeners = function () {
+    var _this = this; // We need this check for this._notifyingListeners to be able to work on scope during updates
+    // If this check is not here we'll produce endless recursion when something is done with the scope
+    // during the callback.
+
+
+    if (!this._notifyingListeners) {
+      this._notifyingListeners = true;
+
+      this._scopeListeners.forEach(function (callback) {
+        callback(_this);
+      });
+
+      this._notifyingListeners = false;
+    }
   };
   /**
    * Applies fingerprint from the scope to the event if there's one,
@@ -4414,47 +5420,6 @@ function () {
       delete event.fingerprint;
     }
   };
-  /**
-   * Applies the current context and fingerprint to the event.
-   * Note that breadcrumbs will be added by the client.
-   * Also if the event has already breadcrumbs on it, we do not merge them.
-   * @param event Event
-   * @param hint May contain additional informartion about the original exception.
-   * @hidden
-   */
-
-
-  Scope.prototype.applyToEvent = function (event, hint) {
-    if (this._extra && Object.keys(this._extra).length) {
-      event.extra = tslib__WEBPACK_IMPORTED_MODULE_0__.__assign({}, this._extra, event.extra);
-    }
-
-    if (this._tags && Object.keys(this._tags).length) {
-      event.tags = tslib__WEBPACK_IMPORTED_MODULE_0__.__assign({}, this._tags, event.tags);
-    }
-
-    if (this._user && Object.keys(this._user).length) {
-      event.user = tslib__WEBPACK_IMPORTED_MODULE_0__.__assign({}, this._user, event.user);
-    }
-
-    if (this._context && Object.keys(this._context).length) {
-      event.contexts = tslib__WEBPACK_IMPORTED_MODULE_0__.__assign({}, this._context, event.contexts);
-    }
-
-    if (this._level) {
-      event.level = this._level;
-    }
-
-    if (this._transaction) {
-      event.transaction = this._transaction;
-    }
-
-    this._applyFingerprint(event);
-
-    event.breadcrumbs = tslib__WEBPACK_IMPORTED_MODULE_0__.__spread(event.breadcrumbs || [], this._breadcrumbs);
-    event.breadcrumbs = event.breadcrumbs.length > 0 ? event.breadcrumbs : undefined;
-    return this._notifyEventProcessors(tslib__WEBPACK_IMPORTED_MODULE_0__.__spread(getGlobalEventProcessors(), this._eventProcessors), event, hint);
-  };
 
   return Scope;
 }();
@@ -4465,10 +5430,12 @@ function () {
  */
 
 function getGlobalEventProcessors() {
+  /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access  */
   var global = (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_4__.getGlobalObject)();
   global.__SENTRY__ = global.__SENTRY__ || {};
   global.__SENTRY__.globalEventProcessors = global.__SENTRY__.globalEventProcessors || [];
   return global.__SENTRY__.globalEventProcessors;
+  /* eslint-enable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access */
 }
 /**
  * Add a EventProcessor to be kept globally.
@@ -4479,6 +5446,154 @@ function getGlobalEventProcessors() {
 function addGlobalEventProcessor(callback) {
   getGlobalEventProcessors().push(callback);
 }
+
+/***/ }),
+
+/***/ "./node_modules/@sentry/hub/esm/session.js":
+/*!*************************************************!*\
+  !*** ./node_modules/@sentry/hub/esm/session.js ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Session": () => (/* binding */ Session)
+/* harmony export */ });
+/* harmony import */ var _sentry_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @sentry/types */ "./node_modules/@sentry/types/esm/session.js");
+/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/misc.js");
+/* harmony import */ var _sentry_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @sentry/utils */ "./node_modules/@sentry/utils/esm/object.js");
+
+
+/**
+ * @inheritdoc
+ */
+
+var Session =
+/** @class */
+function () {
+  function Session(context) {
+    this.errors = 0;
+    this.sid = (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_0__.uuid4)();
+    this.timestamp = Date.now();
+    this.started = Date.now();
+    this.duration = 0;
+    this.status = _sentry_types__WEBPACK_IMPORTED_MODULE_1__.SessionStatus.Ok;
+    this.init = true;
+
+    if (context) {
+      this.update(context);
+    }
+  }
+  /** JSDoc */
+  // eslint-disable-next-line complexity
+
+
+  Session.prototype.update = function (context) {
+    if (context === void 0) {
+      context = {};
+    }
+
+    if (context.user) {
+      if (context.user.ip_address) {
+        this.ipAddress = context.user.ip_address;
+      }
+
+      if (!context.did) {
+        this.did = context.user.id || context.user.email || context.user.username;
+      }
+    }
+
+    this.timestamp = context.timestamp || Date.now();
+
+    if (context.sid) {
+      // Good enough uuid validation. — Kamil
+      this.sid = context.sid.length === 32 ? context.sid : (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_0__.uuid4)();
+    }
+
+    if (context.init !== undefined) {
+      this.init = context.init;
+    }
+
+    if (context.did) {
+      this.did = "" + context.did;
+    }
+
+    if (typeof context.started === 'number') {
+      this.started = context.started;
+    }
+
+    if (typeof context.duration === 'number') {
+      this.duration = context.duration;
+    } else {
+      this.duration = this.timestamp - this.started;
+    }
+
+    if (context.release) {
+      this.release = context.release;
+    }
+
+    if (context.environment) {
+      this.environment = context.environment;
+    }
+
+    if (context.ipAddress) {
+      this.ipAddress = context.ipAddress;
+    }
+
+    if (context.userAgent) {
+      this.userAgent = context.userAgent;
+    }
+
+    if (typeof context.errors === 'number') {
+      this.errors = context.errors;
+    }
+
+    if (context.status) {
+      this.status = context.status;
+    }
+  };
+  /** JSDoc */
+
+
+  Session.prototype.close = function (status) {
+    if (status) {
+      this.update({
+        status: status
+      });
+    } else if (this.status === _sentry_types__WEBPACK_IMPORTED_MODULE_1__.SessionStatus.Ok) {
+      this.update({
+        status: _sentry_types__WEBPACK_IMPORTED_MODULE_1__.SessionStatus.Exited
+      });
+    } else {
+      this.update();
+    }
+  };
+  /** JSDoc */
+
+
+  Session.prototype.toJSON = function () {
+    return (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_2__.dropUndefinedKeys)({
+      sid: "" + this.sid,
+      init: this.init,
+      started: new Date(this.started).toISOString(),
+      timestamp: new Date(this.timestamp).toISOString(),
+      status: this.status,
+      errors: this.errors,
+      did: typeof this.did === 'number' || typeof this.did === 'string' ? "" + this.did : undefined,
+      duration: this.duration,
+      attrs: (0,_sentry_utils__WEBPACK_IMPORTED_MODULE_2__.dropUndefinedKeys)({
+        release: this.release,
+        environment: this.environment,
+        ip_address: this.ipAddress,
+        user_agent: this.userAgent
+      })
+    });
+  };
+
+  return Session;
+}();
+
+
 
 /***/ }),
 
@@ -4493,7 +5608,7 @@ function addGlobalEventProcessor(callback) {
 /* harmony export */   "captureException": () => (/* binding */ captureException),
 /* harmony export */   "withScope": () => (/* binding */ withScope)
 /* harmony export */ });
-/* unused harmony exports captureMessage, captureEvent, configureScope, addBreadcrumb, setContext, setExtras, setTags, setExtra, setTag, setUser, _callOnClient */
+/* unused harmony exports captureMessage, captureEvent, configureScope, addBreadcrumb, setContext, setExtras, setTags, setExtra, setTag, setUser, _callOnClient, startTransaction */
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _sentry_hub__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @sentry/hub */ "./node_modules/@sentry/hub/esm/hub.js");
 
@@ -4503,6 +5618,7 @@ function addGlobalEventProcessor(callback) {
  * @param method function to call on hub.
  * @param args to pass to function.
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 
 function callOnHub(method) {
   var args = [];
@@ -4514,8 +5630,8 @@ function callOnHub(method) {
   var hub = (0,_sentry_hub__WEBPACK_IMPORTED_MODULE_1__.getCurrentHub)();
 
   if (hub && hub[method]) {
-    // tslint:disable-next-line:no-unsafe-any
-    return hub[method].apply(hub, tslib__WEBPACK_IMPORTED_MODULE_0__.__spread(args));
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    return hub[method].apply(hub, (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__spread)(args));
   }
 
   throw new Error("No hub defined or " + method + " was not found on the hub, please open a bug report.");
@@ -4526,9 +5642,10 @@ function callOnHub(method) {
  * @param exception An exception-like object.
  * @returns The generated eventId.
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
 
 
-function captureException(exception) {
+function captureException(exception, captureContext) {
   var syntheticException;
 
   try {
@@ -4538,6 +5655,7 @@ function captureException(exception) {
   }
 
   return callOnHub('captureException', exception, {
+    captureContext: captureContext,
     originalException: exception,
     syntheticException: syntheticException
   });
@@ -4550,19 +5668,25 @@ function captureException(exception) {
  * @returns The generated eventId.
  */
 
-function captureMessage(message, level) {
+function captureMessage(message, captureContext) {
   var syntheticException;
 
   try {
     throw new Error(message);
   } catch (exception) {
     syntheticException = exception;
-  }
+  } // This is necessary to provide explicit scopes upgrade, without changing the original
+  // arity of the `captureMessage(message, level)` method.
 
-  return callOnHub('captureMessage', message, level, {
+
+  var level = typeof captureContext === 'string' ? captureContext : undefined;
+  var context = typeof captureContext !== 'string' ? {
+    captureContext: captureContext
+  } : undefined;
+  return callOnHub('captureMessage', message, level, (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)({
     originalException: message,
     syntheticException: syntheticException
-  });
+  }, context));
 }
 /**
  * Captures a manually created event and sends it to Sentry.
@@ -4597,8 +5721,9 @@ function addBreadcrumb(breadcrumb) {
 /**
  * Sets context data with the given name.
  * @param name of the context
- * @param context Any kind of data. This data will be normailzed.
+ * @param context Any kind of data. This data will be normalized.
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 
 function setContext(name, context) {
   callOnHub('setContext', name, context);
@@ -4622,7 +5747,7 @@ function setTags(tags) {
 /**
  * Set key:value that will be sent as extra data with the event.
  * @param key String of extra
- * @param extra Any kind of data. This data will be normailzed.
+ * @param extra Any kind of data. This data will be normalized.
  */
 
 function setExtra(key, extra) {
@@ -4630,8 +5755,11 @@ function setExtra(key, extra) {
 }
 /**
  * Set key:value that will be sent as tags data with the event.
+ *
+ * Can also be used to unset a tag, by passing `undefined`.
+ *
  * @param key String key of tag
- * @param value String value of tag
+ * @param value Value of tag
  */
 
 function setTag(key, value) {
@@ -4673,6 +5801,7 @@ function withScope(callback) {
  * @param args Arguments to pass to the client/fontend.
  * @hidden
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 
 function _callOnClient(method) {
   var args = [];
@@ -4681,8 +5810,60 @@ function _callOnClient(method) {
     args[_i - 1] = arguments[_i];
   }
 
-  callOnHub.apply(void 0, tslib__WEBPACK_IMPORTED_MODULE_0__.__spread(['_invokeClient', method], args));
+  callOnHub.apply(void 0, (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__spread)(['_invokeClient', method], args));
 }
+/**
+ * Starts a new `Transaction` and returns it. This is the entry point to manual tracing instrumentation.
+ *
+ * A tree structure can be built by adding child spans to the transaction, and child spans to other spans. To start a
+ * new child span within the transaction or any span, call the respective `.startChild()` method.
+ *
+ * Every child span must be finished before the transaction is finished, otherwise the unfinished spans are discarded.
+ *
+ * The transaction must be finished with a call to its `.finish()` method, at which point the transaction with all its
+ * finished child spans will be sent to Sentry.
+ *
+ * @param context Properties of the new `Transaction`.
+ * @param customSamplingContext Information given to the transaction sampling function (along with context-dependent
+ * default values). See {@link Options.tracesSampler}.
+ *
+ * @returns The transaction which was just started
+ */
+
+function startTransaction(context, customSamplingContext) {
+  return callOnHub('startTransaction', (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)({}, context), customSamplingContext);
+}
+
+/***/ }),
+
+/***/ "./node_modules/@sentry/types/esm/session.js":
+/*!***************************************************!*\
+  !*** ./node_modules/@sentry/types/esm/session.js ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "SessionStatus": () => (/* binding */ SessionStatus)
+/* harmony export */ });
+/**
+ * Session Status
+ */
+var SessionStatus;
+
+(function (SessionStatus) {
+  /** JSDoc */
+  SessionStatus["Ok"] = "ok";
+  /** JSDoc */
+
+  SessionStatus["Exited"] = "exited";
+  /** JSDoc */
+
+  SessionStatus["Crashed"] = "crashed";
+  /** JSDoc */
+
+  SessionStatus["Abnormal"] = "abnormal";
+})(SessionStatus || (SessionStatus = {}));
 
 /***/ }),
 
@@ -4697,6 +5878,7 @@ function _callOnClient(method) {
 /* harmony export */   "Severity": () => (/* binding */ Severity)
 /* harmony export */ });
 /** JSDoc */
+// eslint-disable-next-line import/export
 var Severity;
 
 (function (Severity) {
@@ -4720,8 +5902,7 @@ var Severity;
   /** JSDoc */
 
   Severity["Critical"] = "critical";
-})(Severity || (Severity = {})); // tslint:disable:completed-docs
-// tslint:disable:no-unnecessary-qualifier no-namespace
+})(Severity || (Severity = {})); // eslint-disable-next-line @typescript-eslint/no-namespace, import/export
 
 
 (function (Severity) {
@@ -4774,6 +5955,7 @@ var Severity;
 /* harmony export */   "Status": () => (/* binding */ Status)
 /* harmony export */ });
 /** The status of an event. */
+// eslint-disable-next-line import/export
 var Status;
 
 (function (Status) {
@@ -4794,8 +5976,7 @@ var Status;
   /** A server-side error ocurred during submission. */
 
   Status["Failed"] = "failed";
-})(Status || (Status = {})); // tslint:disable:completed-docs
-// tslint:disable:no-unnecessary-qualifier no-namespace
+})(Status || (Status = {})); // eslint-disable-next-line @typescript-eslint/no-namespace, import/export
 
 
 (function (Status) {
@@ -4830,6 +6011,113 @@ var Status;
 
 /***/ }),
 
+/***/ "./node_modules/@sentry/utils/esm/browser.js":
+/*!***************************************************!*\
+  !*** ./node_modules/@sentry/utils/esm/browser.js ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "htmlTreeAsString": () => (/* binding */ htmlTreeAsString)
+/* harmony export */ });
+/* harmony import */ var _is__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./is */ "./node_modules/@sentry/utils/esm/is.js");
+
+/**
+ * Given a child DOM element, returns a query-selector statement describing that
+ * and its ancestors
+ * e.g. [HTMLElement] => body > div > input#foo.btn[name=baz]
+ * @returns generated DOM path
+ */
+
+function htmlTreeAsString(elem) {
+  // try/catch both:
+  // - accessing event.target (see getsentry/raven-js#838, #768)
+  // - `htmlTreeAsString` because it's complex, and just accessing the DOM incorrectly
+  // - can throw an exception in some circumstances.
+  try {
+    var currentElem = elem;
+    var MAX_TRAVERSE_HEIGHT = 5;
+    var MAX_OUTPUT_LEN = 80;
+    var out = [];
+    var height = 0;
+    var len = 0;
+    var separator = ' > ';
+    var sepLength = separator.length;
+    var nextStr = void 0; // eslint-disable-next-line no-plusplus
+
+    while (currentElem && height++ < MAX_TRAVERSE_HEIGHT) {
+      nextStr = _htmlElementAsString(currentElem); // bail out if
+      // - nextStr is the 'html' element
+      // - the length of the string that would be created exceeds MAX_OUTPUT_LEN
+      //   (ignore this limit if we are on the first iteration)
+
+      if (nextStr === 'html' || height > 1 && len + out.length * sepLength + nextStr.length >= MAX_OUTPUT_LEN) {
+        break;
+      }
+
+      out.push(nextStr);
+      len += nextStr.length;
+      currentElem = currentElem.parentNode;
+    }
+
+    return out.reverse().join(separator);
+  } catch (_oO) {
+    return '<unknown>';
+  }
+}
+/**
+ * Returns a simple, query-selector representation of a DOM element
+ * e.g. [HTMLElement] => input#foo.btn[name=baz]
+ * @returns generated DOM path
+ */
+
+function _htmlElementAsString(el) {
+  var elem = el;
+  var out = [];
+  var className;
+  var classes;
+  var key;
+  var attr;
+  var i;
+
+  if (!elem || !elem.tagName) {
+    return '';
+  }
+
+  out.push(elem.tagName.toLowerCase());
+
+  if (elem.id) {
+    out.push("#" + elem.id);
+  } // eslint-disable-next-line prefer-const
+
+
+  className = elem.className;
+
+  if (className && (0,_is__WEBPACK_IMPORTED_MODULE_0__.isString)(className)) {
+    classes = className.split(/\s+/);
+
+    for (i = 0; i < classes.length; i++) {
+      out.push("." + classes[i]);
+    }
+  }
+
+  var allowedAttrs = ['type', 'name', 'title', 'alt'];
+
+  for (i = 0; i < allowedAttrs.length; i++) {
+    key = allowedAttrs[i];
+    attr = elem.getAttribute(key);
+
+    if (attr) {
+      out.push("[" + key + "=\"" + attr + "\"]");
+    }
+  }
+
+  return out.join('');
+}
+
+/***/ }),
+
 /***/ "./node_modules/@sentry/utils/esm/dsn.js":
 /*!***********************************************!*\
   !*** ./node_modules/@sentry/utils/esm/dsn.js ***!
@@ -4846,7 +6134,7 @@ var Status;
 
 /** Regular expression used to parse a Dsn. */
 
-var DSN_REGEX = /^(?:(\w+):)\/\/(?:(\w+)(?::(\w+))?@)([\w\.-]+)(?::(\d+))?\/(.+)/;
+var DSN_REGEX = /^(?:(\w+):)\/\/(?:(\w+)(?::(\w+))?@)([\w.-]+)(?::(\d+))?\/(.+)/;
 /** Error message */
 
 var ERROR_MESSAGE = 'Invalid Dsn';
@@ -4869,7 +6157,7 @@ function () {
    * Renders the string representation of this Dsn.
    *
    * By default, this will render the public representation without the password
-   * component. To get the deprecated private _representation, set `withPassword`
+   * component. To get the deprecated private representation, set `withPassword`
    * to true.
    *
    * @param withPassword When set to true, the password will be included.
@@ -4879,8 +6167,7 @@ function () {
   Dsn.prototype.toString = function (withPassword) {
     if (withPassword === void 0) {
       withPassword = false;
-    } // tslint:disable-next-line:no-this-assignment
-
+    }
 
     var _a = this,
         host = _a.host,
@@ -4889,9 +6176,9 @@ function () {
         port = _a.port,
         projectId = _a.projectId,
         protocol = _a.protocol,
-        user = _a.user;
+        publicKey = _a.publicKey;
 
-    return protocol + "://" + user + (withPassword && pass ? ":" + pass : '') + ("@" + host + (port ? ":" + port : '') + "/" + (path ? path + "/" : path) + projectId);
+    return protocol + "://" + publicKey + (withPassword && pass ? ":" + pass : '') + ("@" + host + (port ? ":" + port : '') + "/" + (path ? path + "/" : path) + projectId);
   };
   /** Parses a string into this Dsn. */
 
@@ -4903,9 +6190,9 @@ function () {
       throw new _error__WEBPACK_IMPORTED_MODULE_1__.SentryError(ERROR_MESSAGE);
     }
 
-    var _a = tslib__WEBPACK_IMPORTED_MODULE_0__.__read(match.slice(1), 6),
+    var _a = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__read)(match.slice(1), 6),
         protocol = _a[0],
-        user = _a[1],
+        publicKey = _a[1],
         _b = _a[2],
         pass = _b === void 0 ? '' : _b,
         host = _a[3],
@@ -4922,6 +6209,14 @@ function () {
       projectId = split.pop();
     }
 
+    if (projectId) {
+      var projectMatch = projectId.match(/^\d+/);
+
+      if (projectMatch) {
+        projectId = projectMatch[0];
+      }
+    }
+
     this._fromComponents({
       host: host,
       pass: pass,
@@ -4929,15 +6224,21 @@ function () {
       projectId: projectId,
       port: port,
       protocol: protocol,
-      user: user
+      publicKey: publicKey
     });
   };
   /** Maps Dsn components into this instance. */
 
 
   Dsn.prototype._fromComponents = function (components) {
+    // TODO this is for backwards compatibility, and can be removed in a future version
+    if ('user' in components && !('publicKey' in components)) {
+      components.publicKey = components.user;
+    }
+
+    this.user = components.publicKey || '';
     this.protocol = components.protocol;
-    this.user = components.user;
+    this.publicKey = components.publicKey || '';
     this.pass = components.pass || '';
     this.host = components.host;
     this.port = components.port || '';
@@ -4950,18 +6251,22 @@ function () {
   Dsn.prototype._validate = function () {
     var _this = this;
 
-    ['protocol', 'user', 'host', 'projectId'].forEach(function (component) {
+    ['protocol', 'publicKey', 'host', 'projectId'].forEach(function (component) {
       if (!_this[component]) {
-        throw new _error__WEBPACK_IMPORTED_MODULE_1__.SentryError(ERROR_MESSAGE);
+        throw new _error__WEBPACK_IMPORTED_MODULE_1__.SentryError(ERROR_MESSAGE + ": " + component + " missing");
       }
     });
 
+    if (!this.projectId.match(/^\d+$/)) {
+      throw new _error__WEBPACK_IMPORTED_MODULE_1__.SentryError(ERROR_MESSAGE + ": Invalid projectId " + this.projectId);
+    }
+
     if (this.protocol !== 'http' && this.protocol !== 'https') {
-      throw new _error__WEBPACK_IMPORTED_MODULE_1__.SentryError(ERROR_MESSAGE);
+      throw new _error__WEBPACK_IMPORTED_MODULE_1__.SentryError(ERROR_MESSAGE + ": Invalid protocol " + this.protocol);
     }
 
     if (this.port && isNaN(parseInt(this.port, 10))) {
-      throw new _error__WEBPACK_IMPORTED_MODULE_1__.SentryError(ERROR_MESSAGE);
+      throw new _error__WEBPACK_IMPORTED_MODULE_1__.SentryError(ERROR_MESSAGE + ": Invalid port " + this.port);
     }
   };
 
@@ -4991,15 +6296,14 @@ function () {
 var SentryError =
 /** @class */
 function (_super) {
-  tslib__WEBPACK_IMPORTED_MODULE_0__.__extends(SentryError, _super);
+  (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__extends)(SentryError, _super);
 
   function SentryError(message) {
     var _newTarget = this.constructor;
 
     var _this = _super.call(this, message) || this;
 
-    _this.message = message; // tslint:disable:no-unsafe-any
-
+    _this.message = message;
     _this.name = _newTarget.prototype.constructor.name;
     (0,_polyfill__WEBPACK_IMPORTED_MODULE_1__.setPrototypeOf)(_this, _newTarget.prototype);
     return _this;
@@ -5023,12 +6327,13 @@ function (_super) {
 /* harmony export */   "addInstrumentationHandler": () => (/* binding */ addInstrumentationHandler)
 /* harmony export */ });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _is__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./is */ "./node_modules/@sentry/utils/esm/is.js");
+/* harmony import */ var _is__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./is */ "./node_modules/@sentry/utils/esm/is.js");
 /* harmony import */ var _logger__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./logger */ "./node_modules/@sentry/utils/esm/logger.js");
 /* harmony import */ var _misc__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./misc */ "./node_modules/@sentry/utils/esm/misc.js");
-/* harmony import */ var _object__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./object */ "./node_modules/@sentry/utils/esm/object.js");
-/* harmony import */ var _supports__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./supports */ "./node_modules/@sentry/utils/esm/supports.js");
-/* tslint:disable:only-arrow-functions no-unsafe-any */
+/* harmony import */ var _object__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./object */ "./node_modules/@sentry/utils/esm/object.js");
+/* harmony import */ var _stacktrace__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./stacktrace */ "./node_modules/@sentry/utils/esm/stacktrace.js");
+/* harmony import */ var _supports__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./supports */ "./node_modules/@sentry/utils/esm/supports.js");
+
 
 
 
@@ -5043,6 +6348,8 @@ var global = (0,_misc__WEBPACK_IMPORTED_MODULE_1__.getGlobalObject)();
  *  - XHR API
  *  - History API
  *  - DOM API (click/typing)
+ *  - Error API
+ *  - UnhandledRejection API
  */
 
 var handlers = {};
@@ -5077,6 +6384,14 @@ function instrument(type) {
       instrumentHistory();
       break;
 
+    case 'error':
+      instrumentError();
+      break;
+
+    case 'unhandledrejection':
+      instrumentUnhandledRejection();
+      break;
+
     default:
       _logger__WEBPACK_IMPORTED_MODULE_2__.logger.warn('unknown instrumentation type:', type);
   }
@@ -5089,7 +6404,6 @@ function instrument(type) {
 
 
 function addInstrumentationHandler(handler) {
-  // tslint:disable-next-line:strict-type-predicates
   if (!handler || typeof handler.type !== 'string' || typeof handler.callback !== 'function') {
     return;
   }
@@ -5108,13 +6422,13 @@ function triggerHandlers(type, data) {
   }
 
   try {
-    for (var _b = tslib__WEBPACK_IMPORTED_MODULE_0__.__values(handlers[type] || []), _c = _b.next(); !_c.done; _c = _b.next()) {
+    for (var _b = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__values)(handlers[type] || []), _c = _b.next(); !_c.done; _c = _b.next()) {
       var handler = _c.value;
 
       try {
         handler(data);
       } catch (e) {
-        _logger__WEBPACK_IMPORTED_MODULE_2__.logger.error("Error while triggering instrumentation handler.\nType: " + type + "\nName: " + (0,_misc__WEBPACK_IMPORTED_MODULE_1__.getFunctionName)(handler) + "\nError: " + e);
+        _logger__WEBPACK_IMPORTED_MODULE_2__.logger.error("Error while triggering instrumentation handler.\nType: " + type + "\nName: " + (0,_stacktrace__WEBPACK_IMPORTED_MODULE_3__.getFunctionName)(handler) + "\nError: " + e);
       }
     }
   } catch (e_1_1) {
@@ -5142,7 +6456,7 @@ function instrumentConsole() {
       return;
     }
 
-    (0,_object__WEBPACK_IMPORTED_MODULE_3__.fill)(global.console, level, function (originalConsoleLevel) {
+    (0,_object__WEBPACK_IMPORTED_MODULE_4__.fill)(global.console, level, function (originalConsoleLevel) {
       return function () {
         var args = [];
 
@@ -5166,11 +6480,11 @@ function instrumentConsole() {
 
 
 function instrumentFetch() {
-  if (!(0,_supports__WEBPACK_IMPORTED_MODULE_4__.supportsNativeFetch)()) {
+  if (!(0,_supports__WEBPACK_IMPORTED_MODULE_5__.supportsNativeFetch)()) {
     return;
   }
 
-  (0,_object__WEBPACK_IMPORTED_MODULE_3__.fill)(global, 'fetch', function (originalFetch) {
+  (0,_object__WEBPACK_IMPORTED_MODULE_4__.fill)(global, 'fetch', function (originalFetch) {
     return function () {
       var args = [];
 
@@ -5178,7 +6492,7 @@ function instrumentFetch() {
         args[_i] = arguments[_i];
       }
 
-      var commonHandlerData = {
+      var handlerData = {
         args: args,
         fetchData: {
           method: getFetchMethod(args),
@@ -5186,23 +6500,29 @@ function instrumentFetch() {
         },
         startTimestamp: Date.now()
       };
-      triggerHandlers('fetch', tslib__WEBPACK_IMPORTED_MODULE_0__.__assign({}, commonHandlerData));
+      triggerHandlers('fetch', (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)({}, handlerData)); // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+
       return originalFetch.apply(global, args).then(function (response) {
-        triggerHandlers('fetch', tslib__WEBPACK_IMPORTED_MODULE_0__.__assign({}, commonHandlerData, {
+        triggerHandlers('fetch', (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)({}, handlerData), {
           endTimestamp: Date.now(),
           response: response
         }));
         return response;
       }, function (error) {
-        triggerHandlers('fetch', tslib__WEBPACK_IMPORTED_MODULE_0__.__assign({}, commonHandlerData, {
+        triggerHandlers('fetch', (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_0__.__assign)({}, handlerData), {
           endTimestamp: Date.now(),
           error: error
-        }));
+        })); // NOTE: If you are a Sentry user, and you are seeing this stack frame,
+        //       it means the sentry.javascript SDK caught an error invoking your application code.
+        //       This is expected behavior and NOT indicative of a bug with sentry.javascript.
+
         throw error;
       });
     };
   });
 }
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+
 /** Extract `method` from fetch call arguments */
 
 
@@ -5211,7 +6531,7 @@ function getFetchMethod(fetchArgs) {
     fetchArgs = [];
   }
 
-  if ('Request' in global && (0,_is__WEBPACK_IMPORTED_MODULE_5__.isInstanceOf)(fetchArgs[0], Request) && fetchArgs[0].method) {
+  if ('Request' in global && (0,_is__WEBPACK_IMPORTED_MODULE_6__.isInstanceOf)(fetchArgs[0], Request) && fetchArgs[0].method) {
     return String(fetchArgs[0].method).toUpperCase();
   }
 
@@ -5233,63 +6553,49 @@ function getFetchUrl(fetchArgs) {
     return fetchArgs[0];
   }
 
-  if ('Request' in global && (0,_is__WEBPACK_IMPORTED_MODULE_5__.isInstanceOf)(fetchArgs[0], Request)) {
+  if ('Request' in global && (0,_is__WEBPACK_IMPORTED_MODULE_6__.isInstanceOf)(fetchArgs[0], Request)) {
     return fetchArgs[0].url;
   }
 
   return String(fetchArgs[0]);
 }
+/* eslint-enable @typescript-eslint/no-unsafe-member-access */
+
 /** JSDoc */
 
 
 function instrumentXHR() {
   if (!('XMLHttpRequest' in global)) {
     return;
-  }
+  } // Poor man's implementation of ES6 `Map`, tracking and keeping in sync key and value separately.
 
+
+  var requestKeys = [];
+  var requestValues = [];
   var xhrproto = XMLHttpRequest.prototype;
-  (0,_object__WEBPACK_IMPORTED_MODULE_3__.fill)(xhrproto, 'open', function (originalOpen) {
+  (0,_object__WEBPACK_IMPORTED_MODULE_4__.fill)(xhrproto, 'open', function (originalOpen) {
     return function () {
       var args = [];
 
       for (var _i = 0; _i < arguments.length; _i++) {
         args[_i] = arguments[_i];
-      }
+      } // eslint-disable-next-line @typescript-eslint/no-this-alias
 
+
+      var xhr = this;
       var url = args[1];
-      this.__sentry_xhr__ = {
-        method: (0,_is__WEBPACK_IMPORTED_MODULE_5__.isString)(args[0]) ? args[0].toUpperCase() : args[0],
+      xhr.__sentry_xhr__ = {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+        method: (0,_is__WEBPACK_IMPORTED_MODULE_6__.isString)(args[0]) ? args[0].toUpperCase() : args[0],
         url: args[1]
       }; // if Sentry key appears in URL, don't capture it as a request
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
 
-      if ((0,_is__WEBPACK_IMPORTED_MODULE_5__.isString)(url) && this.__sentry_xhr__.method === 'POST' && url.match(/sentry_key/)) {
-        this.__sentry_own_request__ = true;
+      if ((0,_is__WEBPACK_IMPORTED_MODULE_6__.isString)(url) && xhr.__sentry_xhr__.method === 'POST' && url.match(/sentry_key/)) {
+        xhr.__sentry_own_request__ = true;
       }
 
-      return originalOpen.apply(this, args);
-    };
-  });
-  (0,_object__WEBPACK_IMPORTED_MODULE_3__.fill)(xhrproto, 'send', function (originalSend) {
-    return function () {
-      var args = [];
-
-      for (var _i = 0; _i < arguments.length; _i++) {
-        args[_i] = arguments[_i];
-      }
-
-      var xhr = this; // tslint:disable-line:no-this-assignment
-
-      var commonHandlerData = {
-        args: args,
-        startTimestamp: Date.now(),
-        xhr: xhr
-      };
-      triggerHandlers('xhr', tslib__WEBPACK_IMPORTED_MODULE_0__.__assign({}, commonHandlerData));
-      /**
-       * @hidden
-       */
-
-      function onreadystatechangeHandler() {
+      var onreadystatechangeHandler = function onreadystatechangeHandler() {
         if (xhr.readyState === 4) {
           try {
             // touching statusCode in some platforms throws
@@ -5301,14 +6607,33 @@ function instrumentXHR() {
             /* do nothing */
           }
 
-          triggerHandlers('xhr', tslib__WEBPACK_IMPORTED_MODULE_0__.__assign({}, commonHandlerData, {
-            endTimestamp: Date.now()
-          }));
+          try {
+            var requestPos = requestKeys.indexOf(xhr);
+
+            if (requestPos !== -1) {
+              // Make sure to pop both key and value to keep it in sync.
+              requestKeys.splice(requestPos);
+              var args_1 = requestValues.splice(requestPos)[0];
+
+              if (xhr.__sentry_xhr__ && args_1[0] !== undefined) {
+                xhr.__sentry_xhr__.body = args_1[0];
+              }
+            }
+          } catch (e) {
+            /* do nothing */
+          }
+
+          triggerHandlers('xhr', {
+            args: args,
+            endTimestamp: Date.now(),
+            startTimestamp: Date.now(),
+            xhr: xhr
+          });
         }
-      }
+      };
 
       if ('onreadystatechange' in xhr && typeof xhr.onreadystatechange === 'function') {
-        (0,_object__WEBPACK_IMPORTED_MODULE_3__.fill)(xhr, 'onreadystatechange', function (original) {
+        (0,_object__WEBPACK_IMPORTED_MODULE_4__.fill)(xhr, 'onreadystatechange', function (original) {
           return function () {
             var readyStateArgs = [];
 
@@ -5321,11 +6646,27 @@ function instrumentXHR() {
           };
         });
       } else {
-        // if onreadystatechange wasn't actually set by the page on this xhr, we
-        // are free to set our own and capture the breadcrumb
-        xhr.onreadystatechange = onreadystatechangeHandler;
+        xhr.addEventListener('readystatechange', onreadystatechangeHandler);
       }
 
+      return originalOpen.apply(xhr, args);
+    };
+  });
+  (0,_object__WEBPACK_IMPORTED_MODULE_4__.fill)(xhrproto, 'send', function (originalSend) {
+    return function () {
+      var args = [];
+
+      for (var _i = 0; _i < arguments.length; _i++) {
+        args[_i] = arguments[_i];
+      }
+
+      requestKeys.push(this);
+      requestValues.push(args);
+      triggerHandlers('xhr', {
+        args: args,
+        startTimestamp: Date.now(),
+        xhr: this
+      });
       return originalSend.apply(this, args);
     };
   });
@@ -5335,7 +6676,7 @@ var lastHref;
 /** JSDoc */
 
 function instrumentHistory() {
-  if (!(0,_supports__WEBPACK_IMPORTED_MODULE_4__.supportsHistory)()) {
+  if (!(0,_supports__WEBPACK_IMPORTED_MODULE_5__.supportsHistory)()) {
     return;
   }
 
@@ -5390,8 +6731,128 @@ function instrumentHistory() {
     };
   }
 
-  (0,_object__WEBPACK_IMPORTED_MODULE_3__.fill)(global.history, 'pushState', historyReplacementFunction);
-  (0,_object__WEBPACK_IMPORTED_MODULE_3__.fill)(global.history, 'replaceState', historyReplacementFunction);
+  (0,_object__WEBPACK_IMPORTED_MODULE_4__.fill)(global.history, 'pushState', historyReplacementFunction);
+  (0,_object__WEBPACK_IMPORTED_MODULE_4__.fill)(global.history, 'replaceState', historyReplacementFunction);
+}
+
+var debounceDuration = 1000;
+var debounceTimerID;
+var lastCapturedEvent;
+/**
+ * Decide whether the current event should finish the debounce of previously captured one.
+ * @param previous previously captured event
+ * @param current event to be captured
+ */
+
+function shouldShortcircuitPreviousDebounce(previous, current) {
+  // If there was no previous event, it should always be swapped for the new one.
+  if (!previous) {
+    return true;
+  } // If both events have different type, then user definitely performed two separate actions. e.g. click + keypress.
+
+
+  if (previous.type !== current.type) {
+    return true;
+  }
+
+  try {
+    // If both events have the same type, it's still possible that actions were performed on different targets.
+    // e.g. 2 clicks on different buttons.
+    if (previous.target !== current.target) {
+      return true;
+    }
+  } catch (e) {} // just accessing `target` property can throw an exception in some rare circumstances
+  // see: https://github.com/getsentry/sentry-javascript/issues/838
+  // If both events have the same type _and_ same `target` (an element which triggered an event, _not necessarily_
+  // to which an event listener was attached), we treat them as the same action, as we want to capture
+  // only one breadcrumb. e.g. multiple clicks on the same button, or typing inside a user input box.
+
+
+  return false;
+}
+/**
+ * Decide whether an event should be captured.
+ * @param event event to be captured
+ */
+
+
+function shouldSkipDOMEvent(event) {
+  // We are only interested in filtering `keypress` events for now.
+  if (event.type !== 'keypress') {
+    return false;
+  }
+
+  try {
+    var target = event.target;
+
+    if (!target || !target.tagName) {
+      return true;
+    } // Only consider keypress events on actual input elements. This will disregard keypresses targeting body
+    // e.g.tabbing through elements, hotkeys, etc.
+
+
+    if (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable) {
+      return false;
+    }
+  } catch (e) {// just accessing `target` property can throw an exception in some rare circumstances
+    // see: https://github.com/getsentry/sentry-javascript/issues/838
+  }
+
+  return true;
+}
+/**
+ * Wraps addEventListener to capture UI breadcrumbs
+ * @param handler function that will be triggered
+ * @param globalListener indicates whether event was captured by the global event listener
+ * @returns wrapped breadcrumb events handler
+ * @hidden
+ */
+
+
+function makeDOMEventHandler(handler, globalListener) {
+  if (globalListener === void 0) {
+    globalListener = false;
+  }
+
+  return function (event) {
+    // It's possible this handler might trigger multiple times for the same
+    // event (e.g. event propagation through node ancestors).
+    // Ignore if we've already captured that event.
+    if (!event || lastCapturedEvent === event) {
+      return;
+    } // We always want to skip _some_ events.
+
+
+    if (shouldSkipDOMEvent(event)) {
+      return;
+    }
+
+    var name = event.type === 'keypress' ? 'input' : event.type; // If there is no debounce timer, it means that we can safely capture the new event and store it for future comparisons.
+
+    if (debounceTimerID === undefined) {
+      handler({
+        event: event,
+        name: name,
+        global: globalListener
+      });
+      lastCapturedEvent = event;
+    } // If there is a debounce awaiting, see if the new event is different enough to treat it as a unique one.
+    // If that's the case, emit the previous event and store locally the newly-captured DOM event.
+    else if (shouldShortcircuitPreviousDebounce(lastCapturedEvent, event)) {
+        handler({
+          event: event,
+          name: name,
+          global: globalListener
+        });
+        lastCapturedEvent = event;
+      } // Start a new debounce timer that will prevent us from capturing multiple events that should be grouped together.
+
+
+    clearTimeout(debounceTimerID);
+    debounceTimerID = global.setTimeout(function () {
+      debounceTimerID = undefined;
+    }, debounceDuration);
+  };
 }
 /** JSDoc */
 
@@ -5399,160 +6860,125 @@ function instrumentHistory() {
 function instrumentDOM() {
   if (!('document' in global)) {
     return;
-  } // Capture breadcrumbs from any click that is unhandled / bubbled up all the way
-  // to the document. Do this before we instrument addEventListener.
+  } // Make it so that any click or keypress that is unhandled / bubbled up all the way to the document triggers our dom
+  // handlers. (Normally we have only one, which captures a breadcrumb for each click or keypress.) Do this before
+  // we instrument `addEventListener` so that we don't end up attaching this handler twice.
 
 
-  global.document.addEventListener('click', domEventHandler('click', triggerHandlers.bind(null, 'dom')), false);
-  global.document.addEventListener('keypress', keypressEventHandler(triggerHandlers.bind(null, 'dom')), false); // After hooking into document bubbled up click and keypresses events, we also hook into user handled click & keypresses.
+  var triggerDOMHandler = triggerHandlers.bind(null, 'dom');
+  var globalDOMEventHandler = makeDOMEventHandler(triggerDOMHandler, true);
+  global.document.addEventListener('click', globalDOMEventHandler, false);
+  global.document.addEventListener('keypress', globalDOMEventHandler, false); // After hooking into click and keypress events bubbled up to `document`, we also hook into user-handled
+  // clicks & keypresses, by adding an event listener of our own to any element to which they add a listener. That
+  // way, whenever one of their handlers is triggered, ours will be, too. (This is needed because their handler
+  // could potentially prevent the event from bubbling up to our global listeners. This way, our handler are still
+  // guaranteed to fire at least once.)
 
   ['EventTarget', 'Node'].forEach(function (target) {
-    var proto = global[target] && global[target].prototype;
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+    var proto = global[target] && global[target].prototype; // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, no-prototype-builtins
 
     if (!proto || !proto.hasOwnProperty || !proto.hasOwnProperty('addEventListener')) {
       return;
     }
 
-    (0,_object__WEBPACK_IMPORTED_MODULE_3__.fill)(proto, 'addEventListener', function (original) {
-      return function (eventName, fn, options) {
-        if (fn && fn.handleEvent) {
-          if (eventName === 'click') {
-            (0,_object__WEBPACK_IMPORTED_MODULE_3__.fill)(fn, 'handleEvent', function (innerOriginal) {
-              return function (event) {
-                domEventHandler('click', triggerHandlers.bind(null, 'dom'))(event);
-                return innerOriginal.call(this, event);
-              };
-            });
-          }
+    (0,_object__WEBPACK_IMPORTED_MODULE_4__.fill)(proto, 'addEventListener', function (originalAddEventListener) {
+      return function (type, listener, options) {
+        if (type === 'click' || type == 'keypress') {
+          try {
+            var el = this;
+            var handlers_1 = el.__sentry_instrumentation_handlers__ = el.__sentry_instrumentation_handlers__ || {};
+            var handlerForType = handlers_1[type] = handlers_1[type] || {
+              refCount: 0
+            };
 
-          if (eventName === 'keypress') {
-            (0,_object__WEBPACK_IMPORTED_MODULE_3__.fill)(fn, 'handleEvent', function (innerOriginal) {
-              return function (event) {
-                keypressEventHandler(triggerHandlers.bind(null, 'dom'))(event);
-                return innerOriginal.call(this, event);
-              };
-            });
-          }
-        } else {
-          if (eventName === 'click') {
-            domEventHandler('click', triggerHandlers.bind(null, 'dom'), true)(this);
-          }
+            if (!handlerForType.handler) {
+              var handler = makeDOMEventHandler(triggerDOMHandler);
+              handlerForType.handler = handler;
+              originalAddEventListener.call(this, type, handler, options);
+            }
 
-          if (eventName === 'keypress') {
-            keypressEventHandler(triggerHandlers.bind(null, 'dom'))(this);
+            handlerForType.refCount += 1;
+          } catch (e) {// Accessing dom properties is always fragile.
+            // Also allows us to skip `addEventListenrs` calls with no proper `this` context.
           }
         }
 
-        return original.call(this, eventName, fn, options);
+        return originalAddEventListener.call(this, type, listener, options);
       };
     });
-    (0,_object__WEBPACK_IMPORTED_MODULE_3__.fill)(proto, 'removeEventListener', function (original) {
-      return function (eventName, fn, options) {
-        var callback = fn;
+    (0,_object__WEBPACK_IMPORTED_MODULE_4__.fill)(proto, 'removeEventListener', function (originalRemoveEventListener) {
+      return function (type, listener, options) {
+        if (type === 'click' || type == 'keypress') {
+          try {
+            var el = this;
+            var handlers_2 = el.__sentry_instrumentation_handlers__ || {};
+            var handlerForType = handlers_2[type];
 
-        try {
-          callback = callback && (callback.__sentry_wrapped__ || callback);
-        } catch (e) {// ignore, accessing __sentry_wrapped__ will throw in some Selenium environments
+            if (handlerForType) {
+              handlerForType.refCount -= 1; // If there are no longer any custom handlers of the current type on this element, we can remove ours, too.
+
+              if (handlerForType.refCount <= 0) {
+                originalRemoveEventListener.call(this, type, handlerForType.handler, options);
+                handlerForType.handler = undefined;
+                delete handlers_2[type]; // eslint-disable-line @typescript-eslint/no-dynamic-delete
+              } // If there are no longer any custom handlers of any type on this element, cleanup everything.
+
+
+              if (Object.keys(handlers_2).length === 0) {
+                delete el.__sentry_instrumentation_handlers__;
+              }
+            }
+          } catch (e) {// Accessing dom properties is always fragile.
+            // Also allows us to skip `addEventListenrs` calls with no proper `this` context.
+          }
         }
 
-        return original.call(this, eventName, callback, options);
+        return originalRemoveEventListener.call(this, type, listener, options);
       };
     });
   });
 }
 
-var debounceDuration = 1000;
-var debounceTimer = 0;
-var keypressTimeout;
-var lastCapturedEvent;
-/**
- * Wraps addEventListener to capture UI breadcrumbs
- * @param name the event name (e.g. "click")
- * @param handler function that will be triggered
- * @param debounce decides whether it should wait till another event loop
- * @returns wrapped breadcrumb events handler
- * @hidden
- */
+var _oldOnErrorHandler = null;
+/** JSDoc */
 
-function domEventHandler(name, handler, debounce) {
-  if (debounce === void 0) {
-    debounce = false;
-  }
+function instrumentError() {
+  _oldOnErrorHandler = global.onerror;
 
-  return function (event) {
-    // reset keypress timeout; e.g. triggering a 'click' after
-    // a 'keypress' will reset the keypress debounce so that a new
-    // set of keypresses can be recorded
-    keypressTimeout = undefined; // It's possible this handler might trigger multiple times for the same
-    // event (e.g. event propagation through node ancestors). Ignore if we've
-    // already captured the event.
+  global.onerror = function (msg, url, line, column, error) {
+    triggerHandlers('error', {
+      column: column,
+      error: error,
+      line: line,
+      msg: msg,
+      url: url
+    });
 
-    if (!event || lastCapturedEvent === event) {
-      return;
+    if (_oldOnErrorHandler) {
+      // eslint-disable-next-line prefer-rest-params
+      return _oldOnErrorHandler.apply(this, arguments);
     }
 
-    lastCapturedEvent = event;
-
-    if (debounceTimer) {
-      clearTimeout(debounceTimer);
-    }
-
-    if (debounce) {
-      debounceTimer = setTimeout(function () {
-        handler({
-          event: event,
-          name: name
-        });
-      });
-    } else {
-      handler({
-        event: event,
-        name: name
-      });
-    }
+    return false;
   };
 }
-/**
- * Wraps addEventListener to capture keypress UI events
- * @param handler function that will be triggered
- * @returns wrapped keypress events handler
- * @hidden
- */
 
+var _oldOnUnhandledRejectionHandler = null;
+/** JSDoc */
 
-function keypressEventHandler(handler) {
-  // TODO: if somehow user switches keypress target before
-  //       debounce timeout is triggered, we will only capture
-  //       a single breadcrumb from the FIRST target (acceptable?)
-  return function (event) {
-    var target;
+function instrumentUnhandledRejection() {
+  _oldOnUnhandledRejectionHandler = global.onunhandledrejection;
 
-    try {
-      target = event.target;
-    } catch (e) {
-      // just accessing event properties can throw an exception in some rare circumstances
-      // see: https://github.com/getsentry/raven-js/issues/838
-      return;
+  global.onunhandledrejection = function (e) {
+    triggerHandlers('unhandledrejection', e);
+
+    if (_oldOnUnhandledRejectionHandler) {
+      // eslint-disable-next-line prefer-rest-params
+      return _oldOnUnhandledRejectionHandler.apply(this, arguments);
     }
 
-    var tagName = target && target.tagName; // only consider keypress events on actual input elements
-    // this will disregard keypresses targeting body (e.g. tabbing
-    // through elements, hotkeys, etc)
-
-    if (!tagName || tagName !== 'INPUT' && tagName !== 'TEXTAREA' && !target.isContentEditable) {
-      return;
-    } // record first keypress in a series, but ignore subsequent
-    // keypresses until debounce clears
-
-
-    if (!keypressTimeout) {
-      domEventHandler('input', handler)(event);
-    }
-
-    clearTimeout(keypressTimeout);
-    keypressTimeout = setTimeout(function () {
-      keypressTimeout = undefined;
-    }, debounceDuration);
+    return true;
   };
 }
 
@@ -5581,6 +7007,10 @@ function keypressEventHandler(handler) {
 /* harmony export */   "isInstanceOf": () => (/* binding */ isInstanceOf)
 /* harmony export */ });
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 
 /**
  * Checks whether given value's type is one of a few Error or Error-like
@@ -5649,7 +7079,7 @@ function isString(wat) {
   return Object.prototype.toString.call(wat) === '[object String]';
 }
 /**
- * Checks whether given value's is a primitive (undefined, null, number, boolean, string)
+ * Checks whether given value's is a primitive (undefined, null, number, boolean, string, bigint, symbol)
  * {@link isPrimitive}.
  *
  * @param wat A value to be checked.
@@ -5679,7 +7109,6 @@ function isPlainObject(wat) {
  */
 
 function isEvent(wat) {
-  // tslint:disable-next-line:strict-type-predicates
   return typeof Event !== 'undefined' && isInstanceOf(wat, Event);
 }
 /**
@@ -5691,7 +7120,6 @@ function isEvent(wat) {
  */
 
 function isElement(wat) {
-  // tslint:disable-next-line:strict-type-predicates
   return typeof Element !== 'undefined' && isInstanceOf(wat, Element);
 }
 /**
@@ -5711,8 +7139,8 @@ function isRegExp(wat) {
  */
 
 function isThenable(wat) {
-  // tslint:disable:no-unsafe-any
-  return Boolean(wat && wat.then && typeof wat.then === 'function'); // tslint:enable:no-unsafe-any
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+  return Boolean(wat && wat.then && typeof wat.then === 'function');
 }
 /**
  * Checks whether given value's type is a SyntheticEvent
@@ -5723,7 +7151,6 @@ function isThenable(wat) {
  */
 
 function isSyntheticEvent(wat) {
-  // tslint:disable-next-line:no-unsafe-any
   return isPlainObject(wat) && 'nativeEvent' in wat && 'preventDefault' in wat && 'stopPropagation' in wat;
 }
 /**
@@ -5737,7 +7164,6 @@ function isSyntheticEvent(wat) {
 
 function isInstanceOf(wat, base) {
   try {
-    // tslint:disable-next-line:no-unsafe-any
     return wat instanceof base;
   } catch (_e) {
     return false;
@@ -5757,6 +7183,7 @@ function isInstanceOf(wat, base) {
 /* harmony export */   "logger": () => (/* binding */ logger)
 /* harmony export */ });
 /* harmony import */ var _misc__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./misc */ "./node_modules/@sentry/utils/esm/misc.js");
+/* eslint-disable @typescript-eslint/no-explicit-any */
  // TODO: Implement different loggers for different environments
 
 var global = (0,_misc__WEBPACK_IMPORTED_MODULE_0__.getGlobalObject)();
@@ -5799,7 +7226,7 @@ function () {
     }
 
     (0,_misc__WEBPACK_IMPORTED_MODULE_0__.consoleSandbox)(function () {
-      global.console.log(PREFIX + "[Log]: " + args.join(' ')); // tslint:disable-line:no-console
+      global.console.log(PREFIX + "[Log]: " + args.join(' '));
     });
   };
   /** JSDoc */
@@ -5817,7 +7244,7 @@ function () {
     }
 
     (0,_misc__WEBPACK_IMPORTED_MODULE_0__.consoleSandbox)(function () {
-      global.console.warn(PREFIX + "[Warn]: " + args.join(' ')); // tslint:disable-line:no-console
+      global.console.warn(PREFIX + "[Warn]: " + args.join(' '));
     });
   };
   /** JSDoc */
@@ -5835,7 +7262,7 @@ function () {
     }
 
     (0,_misc__WEBPACK_IMPORTED_MODULE_0__.consoleSandbox)(function () {
-      global.console.error(PREFIX + "[Error]: " + args.join(' ')); // tslint:disable-line:no-console
+      global.console.error(PREFIX + "[Error]: " + args.join(' '));
     });
   };
 
@@ -5859,7 +7286,11 @@ var logger = global.__SENTRY__.logger || (global.__SENTRY__.logger = new Logger(
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Memo": () => (/* binding */ Memo)
 /* harmony export */ });
-// tslint:disable:no-unsafe-any
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 
 /**
  * Memo class used for decycle json objects. Uses WeakSet if available otherwise array.
@@ -5868,7 +7299,6 @@ var Memo =
 /** @class */
 function () {
   function Memo() {
-    // tslint:disable-next-line
     this._hasWeakSet = typeof WeakSet === 'function';
     this._inner = this._hasWeakSet ? new WeakSet() : [];
   }
@@ -5887,7 +7317,7 @@ function () {
       this._inner.add(obj);
 
       return false;
-    } // tslint:disable-next-line:prefer-for-of
+    } // eslint-disable-next-line @typescript-eslint/prefer-for-of
 
 
     for (var i = 0; i < this._inner.length; i++) {
@@ -5937,8 +7367,6 @@ function () {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "dynamicRequire": () => (/* binding */ dynamicRequire),
-/* harmony export */   "isNodeEnv": () => (/* binding */ isNodeEnv),
 /* harmony export */   "getGlobalObject": () => (/* binding */ getGlobalObject),
 /* harmony export */   "uuid4": () => (/* binding */ uuid4),
 /* harmony export */   "parseUrl": () => (/* binding */ parseUrl),
@@ -5947,34 +7375,13 @@ function () {
 /* harmony export */   "addExceptionTypeValue": () => (/* binding */ addExceptionTypeValue),
 /* harmony export */   "addExceptionMechanism": () => (/* binding */ addExceptionMechanism),
 /* harmony export */   "getLocationHref": () => (/* binding */ getLocationHref),
-/* harmony export */   "htmlTreeAsString": () => (/* binding */ htmlTreeAsString),
-/* harmony export */   "timestampWithMs": () => (/* binding */ timestampWithMs),
-/* harmony export */   "parseRetryAfterHeader": () => (/* binding */ parseRetryAfterHeader),
-/* harmony export */   "getFunctionName": () => (/* binding */ getFunctionName)
+/* harmony export */   "parseRetryAfterHeader": () => (/* binding */ parseRetryAfterHeader)
 /* harmony export */ });
-/* unused harmony export parseSemver */
-/* harmony import */ var _is__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./is */ "./node_modules/@sentry/utils/esm/is.js");
+/* unused harmony exports parseSemver, addContextToFrame, stripUrlQueryAndFragment */
+/* harmony import */ var _node__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node */ "./node_modules/@sentry/utils/esm/node.js");
+/* harmony import */ var _string__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./string */ "./node_modules/@sentry/utils/esm/string.js");
 
-/**
- * Requires a module which is protected _against bundler minification.
- *
- * @param request The module path to resolve
- */
 
-function dynamicRequire(mod, request) {
-  // tslint:disable-next-line: no-unsafe-any
-  return mod.require(request);
-}
-/**
- * Checks whether we're in the Node.js or Browser environment
- *
- * @returns Answer to given question
- */
-
-function isNodeEnv() {
-  // tslint:disable:strict-type-predicates
-  return Object.prototype.toString.call(typeof process !== 'undefined' ? process : 0) === '[object process]';
-}
 var fallbackGlobalObject = {};
 /**
  * Safely get global scope object
@@ -5983,7 +7390,7 @@ var fallbackGlobalObject = {};
  */
 
 function getGlobalObject() {
-  return isNodeEnv() ? __webpack_require__.g : typeof window !== 'undefined' ? window : typeof self !== 'undefined' ? self : fallbackGlobalObject;
+  return (0,_node__WEBPACK_IMPORTED_MODULE_0__.isNodeEnv)() ? __webpack_require__.g : typeof window !== 'undefined' ? window : typeof self !== 'undefined' ? self : fallbackGlobalObject;
 }
 /**
  * UUID4 generator
@@ -5999,10 +7406,10 @@ function uuid4() {
     // Use window.crypto API if available
     var arr = new Uint16Array(8);
     crypto.getRandomValues(arr); // set 4 in byte 7
-    // tslint:disable-next-line:no-bitwise
+    // eslint-disable-next-line no-bitwise
 
     arr[3] = arr[3] & 0xfff | 0x4000; // set 2 most significant bits of byte 9 to '10'
-    // tslint:disable-next-line:no-bitwise
+    // eslint-disable-next-line no-bitwise
 
     arr[4] = arr[4] & 0x3fff | 0x8000;
 
@@ -6021,8 +7428,8 @@ function uuid4() {
 
 
   return 'xxxxxxxxxxxx4xxxyxxxxxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-    // tslint:disable-next-line:no-bitwise
-    var r = Math.random() * 16 | 0; // tslint:disable-next-line:no-bitwise
+    // eslint-disable-next-line no-bitwise
+    var r = Math.random() * 16 | 0; // eslint-disable-next-line no-bitwise
 
     var v = c === 'x' ? r : r & 0x3 | 0x8;
     return v.toString(16);
@@ -6041,7 +7448,7 @@ function parseUrl(url) {
     return {};
   }
 
-  var match = url.match(/^(([^:\/?#]+):)?(\/\/([^\/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?$/);
+  var match = url.match(/^(([^:/?#]+):)?(\/\/([^/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?$/);
 
   if (!match) {
     return {};
@@ -6087,12 +7494,14 @@ function consoleSandbox(callback) {
 
   if (!('console' in global)) {
     return callback();
-  }
+  } // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+
 
   var originalConsole = global.console;
   var wrappedLevels = {}; // Restore all wrapped console methods
 
   levels.forEach(function (level) {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     if (level in global.console && originalConsole[level].__sentry_original__) {
       wrappedLevels[level] = originalConsole[level];
       originalConsole[level] = originalConsole[level].__sentry_original__;
@@ -6135,11 +7544,12 @@ function addExceptionMechanism(event, mechanism) {
 
 
   try {
-    // @ts-ignore
-    // tslint:disable:no-non-null-assertion
+    // @ts-ignore Type 'Mechanism | {}' is not assignable to type 'Mechanism | undefined'
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     event.exception.values[0].mechanism = event.exception.values[0].mechanism || {};
     Object.keys(mechanism).forEach(function (key) {
-      // @ts-ignore
+      // @ts-ignore Mechanism has no index signature
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       event.exception.values[0].mechanism[key] = mechanism[key];
     });
   } catch (_oO) {// no-empty
@@ -6155,105 +7565,6 @@ function getLocationHref() {
   } catch (oO) {
     return '';
   }
-}
-/**
- * Given a child DOM element, returns a query-selector statement describing that
- * and its ancestors
- * e.g. [HTMLElement] => body > div > input#foo.btn[name=baz]
- * @returns generated DOM path
- */
-
-function htmlTreeAsString(elem) {
-  // try/catch both:
-  // - accessing event.target (see getsentry/raven-js#838, #768)
-  // - `htmlTreeAsString` because it's complex, and just accessing the DOM incorrectly
-  // - can throw an exception in some circumstances.
-  try {
-    var currentElem = elem;
-    var MAX_TRAVERSE_HEIGHT = 5;
-    var MAX_OUTPUT_LEN = 80;
-    var out = [];
-    var height = 0;
-    var len = 0;
-    var separator = ' > ';
-    var sepLength = separator.length;
-    var nextStr = void 0;
-
-    while (currentElem && height++ < MAX_TRAVERSE_HEIGHT) {
-      nextStr = _htmlElementAsString(currentElem); // bail out if
-      // - nextStr is the 'html' element
-      // - the length of the string that would be created exceeds MAX_OUTPUT_LEN
-      //   (ignore this limit if we are on the first iteration)
-
-      if (nextStr === 'html' || height > 1 && len + out.length * sepLength + nextStr.length >= MAX_OUTPUT_LEN) {
-        break;
-      }
-
-      out.push(nextStr);
-      len += nextStr.length;
-      currentElem = currentElem.parentNode;
-    }
-
-    return out.reverse().join(separator);
-  } catch (_oO) {
-    return '<unknown>';
-  }
-}
-/**
- * Returns a simple, query-selector representation of a DOM element
- * e.g. [HTMLElement] => input#foo.btn[name=baz]
- * @returns generated DOM path
- */
-
-function _htmlElementAsString(el) {
-  var elem = el;
-  var out = [];
-  var className;
-  var classes;
-  var key;
-  var attr;
-  var i;
-
-  if (!elem || !elem.tagName) {
-    return '';
-  }
-
-  out.push(elem.tagName.toLowerCase());
-
-  if (elem.id) {
-    out.push("#" + elem.id);
-  }
-
-  className = elem.className;
-
-  if (className && (0,_is__WEBPACK_IMPORTED_MODULE_0__.isString)(className)) {
-    classes = className.split(/\s+/);
-
-    for (i = 0; i < classes.length; i++) {
-      out.push("." + classes[i]);
-    }
-  }
-
-  var attrWhitelist = ['type', 'name', 'title', 'alt'];
-
-  for (i = 0; i < attrWhitelist.length; i++) {
-    key = attrWhitelist[i];
-    attr = elem.getAttribute(key);
-
-    if (attr) {
-      out.push("[" + key + "=\"" + attr + "\"]");
-    }
-  }
-
-  return out.join('');
-}
-/**
- * Returns a timestamp in seconds with milliseconds precision.
- */
-
-
-function timestampWithMs() {
-  return new Date().getTime() / 1000;
 } // https://semver.org/#is-there-a-suggested-regular-expression-regex-to-check-a-semver-string
 
 var SEMVER_REGEXP = /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$/;
@@ -6302,23 +7613,73 @@ function parseRetryAfterHeader(now, header) {
 
   return defaultRetryAfter;
 }
-var defaultFunctionName = '<anonymous>';
 /**
- * Safely extract function name from itself
+ * This function adds context (pre/post/line) lines to the provided frame
+ *
+ * @param lines string[] containing all lines
+ * @param frame StackFrame that will be mutated
+ * @param linesOfContext number of context lines we want to add pre/post
  */
 
-function getFunctionName(fn) {
-  try {
-    if (!fn || typeof fn !== 'function') {
-      return defaultFunctionName;
-    }
-
-    return fn.name || defaultFunctionName;
-  } catch (e) {
-    // Just accessing custom props in some Selenium environments
-    // can cause a "Permission denied" exception (see raven-js#495).
-    return defaultFunctionName;
+function addContextToFrame(lines, frame, linesOfContext) {
+  if (linesOfContext === void 0) {
+    linesOfContext = 5;
   }
+
+  var lineno = frame.lineno || 0;
+  var maxLines = lines.length;
+  var sourceLine = Math.max(Math.min(maxLines, lineno - 1), 0);
+  frame.pre_context = lines.slice(Math.max(0, sourceLine - linesOfContext), sourceLine).map(function (line) {
+    return (0,_string__WEBPACK_IMPORTED_MODULE_1__.snipLine)(line, 0);
+  });
+  frame.context_line = (0,_string__WEBPACK_IMPORTED_MODULE_1__.snipLine)(lines[Math.min(maxLines - 1, sourceLine)], frame.colno || 0);
+  frame.post_context = lines.slice(Math.min(sourceLine + 1, maxLines), sourceLine + 1 + linesOfContext).map(function (line) {
+    return (0,_string__WEBPACK_IMPORTED_MODULE_1__.snipLine)(line, 0);
+  });
+}
+/**
+ * Strip the query string and fragment off of a given URL or path (if present)
+ *
+ * @param urlPath Full URL or path, including possible query string and/or fragment
+ * @returns URL or path without query string or fragment
+ */
+
+function stripUrlQueryAndFragment(urlPath) {
+  // eslint-disable-next-line no-useless-escape
+  return urlPath.split(/[\?#]/, 1)[0];
+}
+
+/***/ }),
+
+/***/ "./node_modules/@sentry/utils/esm/node.js":
+/*!************************************************!*\
+  !*** ./node_modules/@sentry/utils/esm/node.js ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "isNodeEnv": () => (/* binding */ isNodeEnv),
+/* harmony export */   "dynamicRequire": () => (/* binding */ dynamicRequire)
+/* harmony export */ });
+/**
+ * Checks whether we're in the Node.js or Browser environment
+ *
+ * @returns Answer to given question
+ */
+function isNodeEnv() {
+  return Object.prototype.toString.call(typeof process !== 'undefined' ? process : 0) === '[object process]';
+}
+/**
+ * Requires a module which is protected against bundler minification.
+ *
+ * @param request The module path to resolve
+ */
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/no-explicit-any
+
+function dynamicRequire(mod, request) {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+  return mod.require(request);
 }
 
 /***/ }),
@@ -6335,14 +7696,19 @@ function getFunctionName(fn) {
 /* harmony export */   "urlEncode": () => (/* binding */ urlEncode),
 /* harmony export */   "normalizeToSize": () => (/* binding */ normalizeToSize),
 /* harmony export */   "normalize": () => (/* binding */ normalize),
-/* harmony export */   "extractExceptionKeysForMessage": () => (/* binding */ extractExceptionKeysForMessage)
+/* harmony export */   "extractExceptionKeysForMessage": () => (/* binding */ extractExceptionKeysForMessage),
+/* harmony export */   "dropUndefinedKeys": () => (/* binding */ dropUndefinedKeys)
 /* harmony export */ });
 /* unused harmony export walk */
-/* harmony import */ var _is__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./is */ "./node_modules/@sentry/utils/esm/is.js");
-/* harmony import */ var _memo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./memo */ "./node_modules/@sentry/utils/esm/memo.js");
-/* harmony import */ var _misc__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./misc */ "./node_modules/@sentry/utils/esm/misc.js");
-/* harmony import */ var _string__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./string */ "./node_modules/@sentry/utils/esm/string.js");
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _browser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./browser */ "./node_modules/@sentry/utils/esm/browser.js");
+/* harmony import */ var _is__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./is */ "./node_modules/@sentry/utils/esm/is.js");
+/* harmony import */ var _memo__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./memo */ "./node_modules/@sentry/utils/esm/memo.js");
+/* harmony import */ var _stacktrace__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./stacktrace */ "./node_modules/@sentry/utils/esm/stacktrace.js");
+/* harmony import */ var _string__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./string */ "./node_modules/@sentry/utils/esm/string.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+
 
 
 
@@ -6353,19 +7719,19 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
  *
  * @param source An object that contains a method to be wrapped.
  * @param name A name of method to be wrapped.
- * @param replacement A function that should be used to wrap a given method.
+ * @param replacementFactory A function that should be used to wrap a given method, returning the wrapped method which
+ * will be substituted in for `source[name]`.
  * @returns void
  */
 
-function fill(source, name, replacement) {
+function fill(source, name, replacementFactory) {
   if (!(name in source)) {
     return;
   }
 
   var original = source[name];
-  var wrapped = replacement(original); // Make sure it's a function first, as we need to attach an empty prototype for `defineProperties` to work
+  var wrapped = replacementFactory(original); // Make sure it's a function first, as we need to attach an empty prototype for `defineProperties` to work
   // otherwise it'll throw "TypeError: Object.defineProperties called on non-object"
-  // tslint:disable-next-line:strict-type-predicates
 
   if (typeof wrapped === 'function') {
     try {
@@ -6391,20 +7757,19 @@ function fill(source, name, replacement) {
  */
 
 function urlEncode(object) {
-  return Object.keys(object).map( // tslint:disable-next-line:no-unsafe-any
-  function (key) {
+  return Object.keys(object).map(function (key) {
     return encodeURIComponent(key) + "=" + encodeURIComponent(object[key]);
   }).join('&');
 }
 /**
- * Transforms any object into an object literal with all it's attributes
+ * Transforms any object into an object literal with all its attributes
  * attached to it.
  *
- * @param value Initial source that we have to transform in order to be usable by the serializer
+ * @param value Initial source that we have to transform in order for it to be usable by the serializer
  */
 
 function getWalkSource(value) {
-  if ((0,_is__WEBPACK_IMPORTED_MODULE_0__.isError)(value)) {
+  if ((0,_is__WEBPACK_IMPORTED_MODULE_1__.isError)(value)) {
     var error = value;
     var err = {
       message: error.message,
@@ -6421,25 +7786,24 @@ function getWalkSource(value) {
     return err;
   }
 
-  if ((0,_is__WEBPACK_IMPORTED_MODULE_0__.isEvent)(value)) {
+  if ((0,_is__WEBPACK_IMPORTED_MODULE_1__.isEvent)(value)) {
     var event_1 = value;
     var source = {};
     source.type = event_1.type; // Accessing event.target can throw (see getsentry/raven-js#838, #768)
 
     try {
-      source.target = (0,_is__WEBPACK_IMPORTED_MODULE_0__.isElement)(event_1.target) ? (0,_misc__WEBPACK_IMPORTED_MODULE_1__.htmlTreeAsString)(event_1.target) : Object.prototype.toString.call(event_1.target);
+      source.target = (0,_is__WEBPACK_IMPORTED_MODULE_1__.isElement)(event_1.target) ? (0,_browser__WEBPACK_IMPORTED_MODULE_2__.htmlTreeAsString)(event_1.target) : Object.prototype.toString.call(event_1.target);
     } catch (_oO) {
       source.target = '<unknown>';
     }
 
     try {
-      source.currentTarget = (0,_is__WEBPACK_IMPORTED_MODULE_0__.isElement)(event_1.currentTarget) ? (0,_misc__WEBPACK_IMPORTED_MODULE_1__.htmlTreeAsString)(event_1.currentTarget) : Object.prototype.toString.call(event_1.currentTarget);
+      source.currentTarget = (0,_is__WEBPACK_IMPORTED_MODULE_1__.isElement)(event_1.currentTarget) ? (0,_browser__WEBPACK_IMPORTED_MODULE_2__.htmlTreeAsString)(event_1.currentTarget) : Object.prototype.toString.call(event_1.currentTarget);
     } catch (_oO) {
       source.currentTarget = '<unknown>';
-    } // tslint:disable-next-line:strict-type-predicates
+    }
 
-
-    if (typeof CustomEvent !== 'undefined' && (0,_is__WEBPACK_IMPORTED_MODULE_0__.isInstanceOf)(value, CustomEvent)) {
+    if (typeof CustomEvent !== 'undefined' && (0,_is__WEBPACK_IMPORTED_MODULE_1__.isInstanceOf)(value, CustomEvent)) {
       source.detail = event_1.detail;
     }
 
@@ -6458,7 +7822,7 @@ function getWalkSource(value) {
 
 
 function utf8Length(value) {
-  // tslint:disable-next-line:no-bitwise
+  // eslint-disable-next-line no-bitwise
   return ~-encodeURI(value).split(/%..|./).length;
 }
 /** Calculates bytes size of input object */
@@ -6489,7 +7853,15 @@ maxSize) {
 
   return serialized;
 }
-/** Transforms any input value into a string form, either primitive value or a type of the input */
+/**
+ * Transform any non-primitive, BigInt, or Symbol-type value into a string. Acts as a no-op on strings, numbers,
+ * booleans, null, and undefined.
+ *
+ * @param value The value to stringify
+ * @returns For non-primitive, BigInt, and Symbol-type values, a string denoting the value's type, type and value, or
+ *  type and `description` property, respectively. For non-BigInt, non-Symbol primitives, returns the original value,
+ *  unchanged.
+ */
 
 function serializeValue(value) {
   var type = Object.prototype.toString.call(value); // Node.js REPL notation
@@ -6507,7 +7879,7 @@ function serializeValue(value) {
   }
 
   var normalized = normalizeValue(value);
-  return (0,_is__WEBPACK_IMPORTED_MODULE_0__.isPrimitive)(normalized) ? normalized : type;
+  return (0,_is__WEBPACK_IMPORTED_MODULE_1__.isPrimitive)(normalized) ? normalized : type;
 }
 /**
  * normalizeValue()
@@ -6518,7 +7890,6 @@ function serializeValue(value) {
  * - serializes Error objects
  * - filter global objects
  */
-// tslint:disable-next-line:cyclomatic-complexity
 
 
 function normalizeValue(value, key) {
@@ -6543,10 +7914,9 @@ function normalizeValue(value, key) {
   } // React's SyntheticEvent thingy
 
 
-  if ((0,_is__WEBPACK_IMPORTED_MODULE_0__.isSyntheticEvent)(value)) {
+  if ((0,_is__WEBPACK_IMPORTED_MODULE_1__.isSyntheticEvent)(value)) {
     return '[SyntheticEvent]';
-  } // tslint:disable-next-line:no-tautology-expression
-
+  }
 
   if (typeof value === 'number' && value !== value) {
     return '[NaN]';
@@ -6557,7 +7927,16 @@ function normalizeValue(value, key) {
   }
 
   if (typeof value === 'function') {
-    return "[Function: " + (0,_misc__WEBPACK_IMPORTED_MODULE_1__.getFunctionName)(value) + "]";
+    return "[Function: " + (0,_stacktrace__WEBPACK_IMPORTED_MODULE_3__.getFunctionName)(value) + "]";
+  } // symbols and bigints are considered primitives by TS, but aren't natively JSON-serilaizable
+
+
+  if (_typeof(value) === 'symbol') {
+    return "[" + String(value) + "]";
+  }
+
+  if (typeof value === 'bigint') {
+    return "[BigInt: " + String(value) + "]";
   }
 
   return value;
@@ -6570,6 +7949,7 @@ function normalizeValue(value, key) {
  * @param depth Optional number indicating how deep should walking be performed
  * @param memo Optional Memo class handling decycling
  */
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 
 
 function walk(key, value, depth, memo) {
@@ -6578,25 +7958,27 @@ function walk(key, value, depth, memo) {
   }
 
   if (memo === void 0) {
-    memo = new _memo__WEBPACK_IMPORTED_MODULE_2__.Memo();
+    memo = new _memo__WEBPACK_IMPORTED_MODULE_4__.Memo();
   } // If we reach the maximum depth, serialize whatever has left
 
 
   if (depth === 0) {
     return serializeValue(value);
-  } // If value implements `toJSON` method, call it and return early
-  // tslint:disable:no-unsafe-any
+  }
+  /* eslint-disable @typescript-eslint/no-unsafe-member-access */
+  // If value implements `toJSON` method, call it and return early
 
 
   if (value !== null && value !== undefined && typeof value.toJSON === 'function') {
     return value.toJSON();
-  } // tslint:enable:no-unsafe-any
+  }
+  /* eslint-enable @typescript-eslint/no-unsafe-member-access */
   // If normalized value is a primitive, there are no branches left to walk, so we can just bail out, as theres no point in going down that branch any further
 
 
   var normalized = normalizeValue(value, key);
 
-  if ((0,_is__WEBPACK_IMPORTED_MODULE_0__.isPrimitive)(normalized)) {
+  if ((0,_is__WEBPACK_IMPORTED_MODULE_1__.isPrimitive)(normalized)) {
     return normalized;
   } // Create source that we will use for next itterations, either objectified error object (Error type with extracted keys:value pairs) or the input itself
 
@@ -6637,10 +8019,10 @@ function walk(key, value, depth, memo) {
  * - Takes care of Error objects serialization
  * - Optionally limit depth of final output
  */
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 
 function normalize(input, depth) {
   try {
-    // tslint:disable-next-line:no-unsafe-any
     return JSON.parse(JSON.stringify(input, function (key, value) {
       return walk(key, value, depth);
     }));
@@ -6653,12 +8035,12 @@ function normalize(input, depth) {
  * and truncated list that will be used inside the event message.
  * eg. `Non-error exception captured with keys: foo, bar, baz`
  */
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 
 function extractExceptionKeysForMessage(exception, maxLength) {
   if (maxLength === void 0) {
     maxLength = 40;
-  } // tslint:disable:strict-type-predicates
-
+  }
 
   var keys = Object.keys(getWalkSource(exception));
   keys.sort();
@@ -6668,7 +8050,7 @@ function extractExceptionKeysForMessage(exception, maxLength) {
   }
 
   if (keys[0].length >= maxLength) {
-    return (0,_string__WEBPACK_IMPORTED_MODULE_3__.truncate)(keys[0], maxLength);
+    return (0,_string__WEBPACK_IMPORTED_MODULE_5__.truncate)(keys[0], maxLength);
   }
 
   for (var includedKeys = keys.length; includedKeys > 0; includedKeys--) {
@@ -6682,10 +8064,51 @@ function extractExceptionKeysForMessage(exception, maxLength) {
       return serialized;
     }
 
-    return (0,_string__WEBPACK_IMPORTED_MODULE_3__.truncate)(serialized, maxLength);
+    return (0,_string__WEBPACK_IMPORTED_MODULE_5__.truncate)(serialized, maxLength);
   }
 
   return '';
+}
+/**
+ * Given any object, return the new object with removed keys that value was `undefined`.
+ * Works recursively on objects and arrays.
+ */
+
+function dropUndefinedKeys(val) {
+  var e_1, _a;
+
+  if ((0,_is__WEBPACK_IMPORTED_MODULE_1__.isPlainObject)(val)) {
+    var obj = val;
+    var rv = {};
+
+    try {
+      for (var _b = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__values)(Object.keys(obj)), _c = _b.next(); !_c.done; _c = _b.next()) {
+        var key = _c.value;
+
+        if (typeof obj[key] !== 'undefined') {
+          rv[key] = dropUndefinedKeys(obj[key]);
+        }
+      }
+    } catch (e_1_1) {
+      e_1 = {
+        error: e_1_1
+      };
+    } finally {
+      try {
+        if (_c && !_c.done && (_a = _b.return)) _a.call(_b);
+      } finally {
+        if (e_1) throw e_1.error;
+      }
+    }
+
+    return rv;
+  }
+
+  if (Array.isArray(val)) {
+    return val.map(dropUndefinedKeys);
+  }
+
+  return val;
 }
 
 /***/ }),
@@ -6702,26 +8125,28 @@ function extractExceptionKeysForMessage(exception, maxLength) {
 /* harmony export */ });
 var setPrototypeOf = Object.setPrototypeOf || ({
   __proto__: []
-} instanceof Array ? setProtoOf : mixinProperties); // tslint:disable-line:no-unbound-method
-
+} instanceof Array ? setProtoOf : mixinProperties);
 /**
  * setPrototypeOf polyfill using __proto__
  */
+// eslint-disable-next-line @typescript-eslint/ban-types
 
 function setProtoOf(obj, proto) {
-  // @ts-ignore
+  // @ts-ignore __proto__ does not exist on obj
   obj.__proto__ = proto;
   return obj;
 }
 /**
  * setPrototypeOf polyfill using mixin
  */
+// eslint-disable-next-line @typescript-eslint/ban-types
 
 
 function mixinProperties(obj, proto) {
   for (var prop in proto) {
+    // eslint-disable-next-line no-prototype-builtins
     if (!obj.hasOwnProperty(prop)) {
-      // @ts-ignore
+      // @ts-ignore typescript complains about indexing so we remove
       obj[prop] = proto[prop];
     }
   }
@@ -6846,6 +8271,37 @@ function () {
 
 /***/ }),
 
+/***/ "./node_modules/@sentry/utils/esm/stacktrace.js":
+/*!******************************************************!*\
+  !*** ./node_modules/@sentry/utils/esm/stacktrace.js ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "getFunctionName": () => (/* binding */ getFunctionName)
+/* harmony export */ });
+var defaultFunctionName = '<anonymous>';
+/**
+ * Safely extract function name from itself
+ */
+
+function getFunctionName(fn) {
+  try {
+    if (!fn || typeof fn !== 'function') {
+      return defaultFunctionName;
+    }
+
+    return fn.name || defaultFunctionName;
+  } catch (e) {
+    // Just accessing custom props in some Selenium environments
+    // can cause a "Permission denied" exception (see raven-js#495).
+    return defaultFunctionName;
+  }
+}
+
+/***/ }),
+
 /***/ "./node_modules/@sentry/utils/esm/string.js":
 /*!**************************************************!*\
   !*** ./node_modules/@sentry/utils/esm/string.js ***!
@@ -6855,25 +8311,24 @@ function () {
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "truncate": () => (/* binding */ truncate),
+/* harmony export */   "snipLine": () => (/* binding */ snipLine),
 /* harmony export */   "safeJoin": () => (/* binding */ safeJoin),
 /* harmony export */   "isMatchingPattern": () => (/* binding */ isMatchingPattern)
 /* harmony export */ });
-/* unused harmony export snipLine */
 /* harmony import */ var _is__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./is */ "./node_modules/@sentry/utils/esm/is.js");
 
 /**
  * Truncates given string to the maximum characters count
  *
  * @param str An object that contains serializable values
- * @param max Maximum number of characters in truncated string
+ * @param max Maximum number of characters in truncated string (0 = unlimited)
  * @returns string Encoded
  */
 
 function truncate(str, max) {
   if (max === void 0) {
     max = 0;
-  } // tslint:disable-next-line:strict-type-predicates
-
+  }
 
   if (typeof str !== 'string' || max === 0) {
     return str;
@@ -6899,7 +8354,8 @@ function snipLine(line, colno) {
   }
 
   if (colno > ll) {
-    colno = ll; // tslint:disable-line:no-parameter-reassignment
+    // eslint-disable-next-line no-param-reassign
+    colno = ll;
   }
 
   var start = Math.max(colno - 60, 0);
@@ -6936,13 +8392,14 @@ function snipLine(line, colno) {
  * @param delimiter string to be placed in-between values
  * @returns Joined values
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 
 function safeJoin(input, delimiter) {
   if (!Array.isArray(input)) {
     return '';
   }
 
-  var output = []; // tslint:disable-next-line:prefer-for-of
+  var output = []; // eslint-disable-next-line @typescript-eslint/prefer-for-of
 
   for (var i = 0; i < input.length; i++) {
     var value = input[i];
@@ -6963,6 +8420,10 @@ function safeJoin(input, delimiter) {
  */
 
 function isMatchingPattern(value, pattern) {
+  if (!(0,_is__WEBPACK_IMPORTED_MODULE_0__.isString)(value)) {
+    return false;
+  }
+
   if ((0,_is__WEBPACK_IMPORTED_MODULE_0__.isRegExp)(pattern)) {
     return pattern.test(value);
   }
@@ -6985,6 +8446,7 @@ function isMatchingPattern(value, pattern) {
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "supportsFetch": () => (/* binding */ supportsFetch),
+/* harmony export */   "isNativeFetch": () => (/* binding */ isNativeFetch),
 /* harmony export */   "supportsNativeFetch": () => (/* binding */ supportsNativeFetch),
 /* harmony export */   "supportsReferrerPolicy": () => (/* binding */ supportsReferrerPolicy),
 /* harmony export */   "supportsHistory": () => (/* binding */ supportsHistory)
@@ -7003,7 +8465,6 @@ function isMatchingPattern(value, pattern) {
 
 function supportsErrorEvent() {
   try {
-    // tslint:disable:no-unused-expression
     new ErrorEvent('');
     return true;
   } catch (e) {
@@ -7019,11 +8480,9 @@ function supportsErrorEvent() {
 
 function supportsDOMError() {
   try {
-    // It really needs 1 argument, not 0.
     // Chrome: VM89:1 Uncaught TypeError: Failed to construct 'DOMError':
     // 1 argument required, but only 0 present.
-    // @ts-ignore
-    // tslint:disable:no-unused-expression
+    // @ts-ignore It really needs 1 argument, not 0.
     new DOMError('');
     return true;
   } catch (e) {
@@ -7039,7 +8498,6 @@ function supportsDOMError() {
 
 function supportsDOMException() {
   try {
-    // tslint:disable:no-unused-expression
     new DOMException('');
     return true;
   } catch (e) {
@@ -7059,11 +8517,8 @@ function supportsFetch() {
   }
 
   try {
-    // tslint:disable-next-line:no-unused-expression
-    new Headers(); // tslint:disable-next-line:no-unused-expression
-
-    new Request(''); // tslint:disable-next-line:no-unused-expression
-
+    new Headers();
+    new Request('');
     new Response();
     return true;
   } catch (e) {
@@ -7073,6 +8528,7 @@ function supportsFetch() {
 /**
  * isNativeFetch checks if the given function is a native implementation of fetch()
  */
+// eslint-disable-next-line @typescript-eslint/ban-types
 
 function isNativeFetch(func) {
   return func && /^function fetch\(\)\s+\{\s+\[native code\]\s+\}$/.test(func.toString());
@@ -7084,14 +8540,13 @@ function isNativeFetch(func) {
  * @returns true if `window.fetch` is natively implemented, false otherwise
  */
 
-
 function supportsNativeFetch() {
   if (!supportsFetch()) {
     return false;
   }
 
   var global = (0,_misc__WEBPACK_IMPORTED_MODULE_0__.getGlobalObject)(); // Fast path to avoid DOM I/O
-  // tslint:disable-next-line:no-unbound-method
+  // eslint-disable-next-line @typescript-eslint/unbound-method
 
   if (isNativeFetch(global.fetch)) {
     return true;
@@ -7100,17 +8555,16 @@ function supportsNativeFetch() {
 
 
   var result = false;
-  var doc = global.document;
+  var doc = global.document; // eslint-disable-next-line deprecation/deprecation
 
-  if (doc) {
-    var sandbox = doc.createElement('iframe');
-    sandbox.hidden = true;
-
+  if (doc && typeof doc.createElement === "function") {
     try {
+      var sandbox = doc.createElement('iframe');
+      sandbox.hidden = true;
       doc.head.appendChild(sandbox);
 
       if (sandbox.contentWindow && sandbox.contentWindow.fetch) {
-        // tslint:disable-next-line:no-unbound-method
+        // eslint-disable-next-line @typescript-eslint/unbound-method
         result = isNativeFetch(sandbox.contentWindow.fetch);
       }
 
@@ -7130,7 +8584,6 @@ function supportsNativeFetch() {
  */
 
 function supportsReportingObserver() {
-  // tslint:disable-next-line: no-unsafe-any
   return 'ReportingObserver' in (0,_misc__WEBPACK_IMPORTED_MODULE_0__.getGlobalObject)();
 }
 /**
@@ -7150,7 +8603,6 @@ function supportsReferrerPolicy() {
   }
 
   try {
-    // tslint:disable:no-unused-expression
     new Request('_', {
       referrerPolicy: 'origin'
     });
@@ -7171,9 +8623,13 @@ function supportsHistory() {
   //       a try/catch block*, will cause Chrome to output an error to console.error
   // borrowed from: https://github.com/angular/angular.js/pull/13945/files
   var global = (0,_misc__WEBPACK_IMPORTED_MODULE_0__.getGlobalObject)();
-  var chrome = global.chrome; // tslint:disable-next-line:no-unsafe-any
+  /* eslint-disable @typescript-eslint/no-unsafe-member-access */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
 
+  var chrome = global.chrome;
   var isChromePackagedApp = chrome && chrome.app && chrome.app.runtime;
+  /* eslint-enable @typescript-eslint/no-unsafe-member-access */
+
   var hasHistoryApi = 'history' in global && !!global.history.pushState && !!global.history.replaceState;
   return !isChromePackagedApp && hasHistoryApi;
 }
@@ -7191,6 +8647,13 @@ function supportsHistory() {
 /* harmony export */   "SyncPromise": () => (/* binding */ SyncPromise)
 /* harmony export */ });
 /* harmony import */ var _is__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./is */ "./node_modules/@sentry/utils/esm/is.js");
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
+
+/* eslint-disable @typescript-eslint/typedef */
+
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 /** SyncPromise internal states */
 
@@ -7266,22 +8729,29 @@ function () {
         return;
       }
 
-      if (_this._state === States.REJECTED) {
-        _this._handlers.forEach(function (handler) {
+      var cachedHandlers = _this._handlers.slice();
+
+      _this._handlers = [];
+      cachedHandlers.forEach(function (handler) {
+        if (handler.done) {
+          return;
+        }
+
+        if (_this._state === States.RESOLVED) {
+          if (handler.onfulfilled) {
+            // eslint-disable-next-line @typescript-eslint/no-floating-promises
+            handler.onfulfilled(_this._value);
+          }
+        }
+
+        if (_this._state === States.REJECTED) {
           if (handler.onrejected) {
             handler.onrejected(_this._value);
           }
-        });
-      } else {
-        _this._handlers.forEach(function (handler) {
-          if (handler.onfulfilled) {
-            // tslint:disable-next-line:no-unsafe-any
-            handler.onfulfilled(_this._value);
-          }
-        });
-      }
+        }
 
-      _this._handlers = [];
+        handler.done = true;
+      });
     };
 
     try {
@@ -7290,12 +8760,6 @@ function () {
       this._reject(e);
     }
   }
-  /** JSDoc */
-
-
-  SyncPromise.prototype.toString = function () {
-    return '[object SyncPromise]';
-  };
   /** JSDoc */
 
 
@@ -7351,6 +8815,7 @@ function () {
 
     return new SyncPromise(function (resolve, reject) {
       _this._attachHandler({
+        done: false,
         onfulfilled: function onfulfilled(result) {
           if (!_onfulfilled) {
             // TODO: ¯\_(ツ)_/¯
@@ -7419,18 +8884,448 @@ function () {
         if (isRejected) {
           reject(val);
           return;
-        } // tslint:disable-next-line:no-unsafe-any
-
+        }
 
         resolve(val);
       });
     });
+  };
+  /** JSDoc */
+
+
+  SyncPromise.prototype.toString = function () {
+    return '[object SyncPromise]';
   };
 
   return SyncPromise;
 }();
 
 
+
+/***/ }),
+
+/***/ "./node_modules/@sentry/utils/esm/time.js":
+/*!************************************************!*\
+  !*** ./node_modules/@sentry/utils/esm/time.js ***!
+  \************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "dateTimestampInSeconds": () => (/* binding */ dateTimestampInSeconds)
+/* harmony export */ });
+/* unused harmony exports timestampInSeconds, timestampWithMs, usingPerformanceAPI, browserPerformanceTimeOrigin */
+/* harmony import */ var _misc__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./misc */ "./node_modules/@sentry/utils/esm/misc.js");
+/* harmony import */ var _node__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node */ "./node_modules/@sentry/utils/esm/node.js");
+/* module decorator */ module = __webpack_require__.hmd(module);
+
+
+/**
+ * A TimestampSource implementation for environments that do not support the Performance Web API natively.
+ *
+ * Note that this TimestampSource does not use a monotonic clock. A call to `nowSeconds` may return a timestamp earlier
+ * than a previously returned value. We do not try to emulate a monotonic behavior in order to facilitate debugging. It
+ * is more obvious to explain "why does my span have negative duration" than "why my spans have zero duration".
+ */
+
+var dateTimestampSource = {
+  nowSeconds: function nowSeconds() {
+    return Date.now() / 1000;
+  }
+};
+/**
+ * Returns a wrapper around the native Performance API browser implementation, or undefined for browsers that do not
+ * support the API.
+ *
+ * Wrapping the native API works around differences in behavior from different browsers.
+ */
+
+function getBrowserPerformance() {
+  var performance = (0,_misc__WEBPACK_IMPORTED_MODULE_0__.getGlobalObject)().performance;
+
+  if (!performance || !performance.now) {
+    return undefined;
+  } // Replace performance.timeOrigin with our own timeOrigin based on Date.now().
+  //
+  // This is a partial workaround for browsers reporting performance.timeOrigin such that performance.timeOrigin +
+  // performance.now() gives a date arbitrarily in the past.
+  //
+  // Additionally, computing timeOrigin in this way fills the gap for browsers where performance.timeOrigin is
+  // undefined.
+  //
+  // The assumption that performance.timeOrigin + performance.now() ~= Date.now() is flawed, but we depend on it to
+  // interact with data coming out of performance entries.
+  //
+  // Note that despite recommendations against it in the spec, browsers implement the Performance API with a clock that
+  // might stop when the computer is asleep (and perhaps under other circumstances). Such behavior causes
+  // performance.timeOrigin + performance.now() to have an arbitrary skew over Date.now(). In laptop computers, we have
+  // observed skews that can be as long as days, weeks or months.
+  //
+  // See https://github.com/getsentry/sentry-javascript/issues/2590.
+  //
+  // BUG: despite our best intentions, this workaround has its limitations. It mostly addresses timings of pageload
+  // transactions, but ignores the skew built up over time that can aversely affect timestamps of navigation
+  // transactions of long-lived web pages.
+
+
+  var timeOrigin = Date.now() - performance.now();
+  return {
+    now: function now() {
+      return performance.now();
+    },
+    timeOrigin: timeOrigin
+  };
+}
+/**
+ * Returns the native Performance API implementation from Node.js. Returns undefined in old Node.js versions that don't
+ * implement the API.
+ */
+
+
+function getNodePerformance() {
+  try {
+    var perfHooks = (0,_node__WEBPACK_IMPORTED_MODULE_1__.dynamicRequire)(module, 'perf_hooks');
+    return perfHooks.performance;
+  } catch (_) {
+    return undefined;
+  }
+}
+/**
+ * The Performance API implementation for the current platform, if available.
+ */
+
+
+var platformPerformance = (0,_node__WEBPACK_IMPORTED_MODULE_1__.isNodeEnv)() ? getNodePerformance() : getBrowserPerformance();
+var timestampSource = platformPerformance === undefined ? dateTimestampSource : {
+  nowSeconds: function nowSeconds() {
+    return (platformPerformance.timeOrigin + platformPerformance.now()) / 1000;
+  }
+};
+/**
+ * Returns a timestamp in seconds since the UNIX epoch using the Date API.
+ */
+
+var dateTimestampInSeconds = dateTimestampSource.nowSeconds.bind(dateTimestampSource);
+/**
+ * Returns a timestamp in seconds since the UNIX epoch using either the Performance or Date APIs, depending on the
+ * availability of the Performance API.
+ *
+ * See `usingPerformanceAPI` to test whether the Performance API is used.
+ *
+ * BUG: Note that because of how browsers implement the Performance API, the clock might stop when the computer is
+ * asleep. This creates a skew between `dateTimestampInSeconds` and `timestampInSeconds`. The
+ * skew can grow to arbitrary amounts like days, weeks or months.
+ * See https://github.com/getsentry/sentry-javascript/issues/2590.
+ */
+
+var timestampInSeconds = timestampSource.nowSeconds.bind(timestampSource); // Re-exported with an old name for backwards-compatibility.
+
+var timestampWithMs = timestampInSeconds;
+/**
+ * A boolean that is true when timestampInSeconds uses the Performance API to produce monotonic timestamps.
+ */
+
+var usingPerformanceAPI = platformPerformance !== undefined;
+/**
+ * The number of milliseconds since the UNIX epoch. This value is only usable in a browser, and only when the
+ * performance API is available.
+ */
+
+var browserPerformanceTimeOrigin = function () {
+  var performance = (0,_misc__WEBPACK_IMPORTED_MODULE_0__.getGlobalObject)().performance;
+
+  if (!performance) {
+    return undefined;
+  }
+
+  if (performance.timeOrigin) {
+    return performance.timeOrigin;
+  } // While performance.timing.navigationStart is deprecated in favor of performance.timeOrigin, performance.timeOrigin
+  // is not as widely supported. Namely, performance.timeOrigin is undefined in Safari as of writing.
+  // Also as of writing, performance.timing is not available in Web Workers in mainstream browsers, so it is not always
+  // a valid fallback. In the absence of an initial time provided by the browser, fallback to the current time from the
+  // Date API.
+  // eslint-disable-next-line deprecation/deprecation
+
+
+  return performance.timing && performance.timing.navigationStart || Date.now();
+}();
+
+/***/ }),
+
+/***/ "./node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js":
+/*!*******************************************************************************!*\
+  !*** ./node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js ***!
+  \*******************************************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+/* eslint-env browser */
+
+/*
+  eslint-disable
+  no-console,
+  func-names
+*/
+
+var normalizeUrl = __webpack_require__(/*! ./normalize-url */ "./node_modules/mini-css-extract-plugin/dist/hmr/normalize-url.js");
+
+var srcByModuleId = Object.create(null);
+var noDocument = typeof document === 'undefined';
+var forEach = Array.prototype.forEach;
+
+function debounce(fn, time) {
+  var timeout = 0;
+  return function () {
+    var self = this; // eslint-disable-next-line prefer-rest-params
+
+    var args = arguments;
+
+    var functionCall = function functionCall() {
+      return fn.apply(self, args);
+    };
+
+    clearTimeout(timeout);
+    timeout = setTimeout(functionCall, time);
+  };
+}
+
+function noop() {}
+
+function getCurrentScriptUrl(moduleId) {
+  var src = srcByModuleId[moduleId];
+
+  if (!src) {
+    if (document.currentScript) {
+      src = document.currentScript.src;
+    } else {
+      var scripts = document.getElementsByTagName('script');
+      var lastScriptTag = scripts[scripts.length - 1];
+
+      if (lastScriptTag) {
+        src = lastScriptTag.src;
+      }
+    }
+
+    srcByModuleId[moduleId] = src;
+  }
+
+  return function (fileMap) {
+    if (!src) {
+      return null;
+    }
+
+    var splitResult = src.split(/([^\\/]+)\.js$/);
+    var filename = splitResult && splitResult[1];
+
+    if (!filename) {
+      return [src.replace('.js', '.css')];
+    }
+
+    if (!fileMap) {
+      return [src.replace('.js', '.css')];
+    }
+
+    return fileMap.split(',').map(function (mapRule) {
+      var reg = new RegExp("".concat(filename, "\\.js$"), 'g');
+      return normalizeUrl(src.replace(reg, "".concat(mapRule.replace(/{fileName}/g, filename), ".css")));
+    });
+  };
+}
+
+function updateCss(el, url) {
+  if (!url) {
+    if (!el.href) {
+      return;
+    } // eslint-disable-next-line
+
+
+    url = el.href.split('?')[0];
+  }
+
+  if (!isUrlRequest(url)) {
+    return;
+  }
+
+  if (el.isLoaded === false) {
+    // We seem to be about to replace a css link that hasn't loaded yet.
+    // We're probably changing the same file more than once.
+    return;
+  }
+
+  if (!url || !(url.indexOf('.css') > -1)) {
+    return;
+  } // eslint-disable-next-line no-param-reassign
+
+
+  el.visited = true;
+  var newEl = el.cloneNode();
+  newEl.isLoaded = false;
+  newEl.addEventListener('load', function () {
+    if (newEl.isLoaded) {
+      return;
+    }
+
+    newEl.isLoaded = true;
+    el.parentNode.removeChild(el);
+  });
+  newEl.addEventListener('error', function () {
+    if (newEl.isLoaded) {
+      return;
+    }
+
+    newEl.isLoaded = true;
+    el.parentNode.removeChild(el);
+  });
+  newEl.href = "".concat(url, "?").concat(Date.now());
+
+  if (el.nextSibling) {
+    el.parentNode.insertBefore(newEl, el.nextSibling);
+  } else {
+    el.parentNode.appendChild(newEl);
+  }
+}
+
+function getReloadUrl(href, src) {
+  var ret; // eslint-disable-next-line no-param-reassign
+
+  href = normalizeUrl(href, {
+    stripWWW: false
+  }); // eslint-disable-next-line array-callback-return
+
+  src.some(function (url) {
+    if (href.indexOf(src) > -1) {
+      ret = url;
+    }
+  });
+  return ret;
+}
+
+function reloadStyle(src) {
+  if (!src) {
+    return false;
+  }
+
+  var elements = document.querySelectorAll('link');
+  var loaded = false;
+  forEach.call(elements, function (el) {
+    if (!el.href) {
+      return;
+    }
+
+    var url = getReloadUrl(el.href, src);
+
+    if (!isUrlRequest(url)) {
+      return;
+    }
+
+    if (el.visited === true) {
+      return;
+    }
+
+    if (url) {
+      updateCss(el, url);
+      loaded = true;
+    }
+  });
+  return loaded;
+}
+
+function reloadAll() {
+  var elements = document.querySelectorAll('link');
+  forEach.call(elements, function (el) {
+    if (el.visited === true) {
+      return;
+    }
+
+    updateCss(el);
+  });
+}
+
+function isUrlRequest(url) {
+  // An URL is not an request if
+  // It is not http or https
+  if (!/^https?:/i.test(url)) {
+    return false;
+  }
+
+  return true;
+}
+
+module.exports = function (moduleId, options) {
+  if (noDocument) {
+    console.log('no window.document found, will not HMR CSS');
+    return noop;
+  }
+
+  var getScriptSrc = getCurrentScriptUrl(moduleId);
+
+  function update() {
+    var src = getScriptSrc(options.filename);
+    var reloaded = reloadStyle(src);
+
+    if (options.locals) {
+      console.log('[HMR] Detected local css modules. Reload all css');
+      reloadAll();
+      return;
+    }
+
+    if (reloaded) {
+      console.log('[HMR] css reload %s', src.join(' '));
+    } else {
+      console.log('[HMR] Reload all css');
+      reloadAll();
+    }
+  }
+
+  return debounce(update, 50);
+};
+
+/***/ }),
+
+/***/ "./node_modules/mini-css-extract-plugin/dist/hmr/normalize-url.js":
+/*!************************************************************************!*\
+  !*** ./node_modules/mini-css-extract-plugin/dist/hmr/normalize-url.js ***!
+  \************************************************************************/
+/***/ ((module) => {
+
+"use strict";
+
+/* eslint-disable */
+
+function normalizeUrl(pathComponents) {
+  return pathComponents.reduce(function (accumulator, item) {
+    switch (item) {
+      case '..':
+        accumulator.pop();
+        break;
+
+      case '.':
+        break;
+
+      default:
+        accumulator.push(item);
+    }
+
+    return accumulator;
+  }, []).join('/');
+}
+
+module.exports = function (urlString) {
+  urlString = urlString.trim();
+
+  if (/^data:/i.test(urlString)) {
+    return urlString;
+  }
+
+  var protocol = urlString.indexOf('//') !== -1 ? urlString.split('//')[0] + '//' : '';
+  var components = urlString.replace(new RegExp(protocol, 'i'), '').split('/');
+  var host = components[0].toLowerCase().replace(/\.$/, '');
+  components[0] = '';
+  var path = normalizeUrl(components);
+  return protocol + host + path;
+};
 
 /***/ }),
 
@@ -7680,7 +9575,7 @@ module.exports = ReactPropTypesSecret;
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
- */function _typeof(obj){if(typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"){_typeof=function _typeof(obj){return typeof obj;};}else{_typeof=function _typeof(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj;};}return _typeof(obj);}if(true){(function(){'use strict';var React=__webpack_require__(/*! react */ "./node_modules/react/index.js");var _assign=__webpack_require__(/*! object-assign */ "./node_modules/object-assign/index.js");var Scheduler=__webpack_require__(/*! scheduler */ "./node_modules/react-dom/node_modules/scheduler/index.js");var checkPropTypes=__webpack_require__(/*! prop-types/checkPropTypes */ "./node_modules/prop-types/checkPropTypes.js");var tracing=__webpack_require__(/*! scheduler/tracing */ "./node_modules/react-dom/node_modules/scheduler/tracing.js");var ReactSharedInternals=React.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;// Prevent newer renderers from RTE when used with older react package versions.
+ */function _typeof(obj){if(typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"){_typeof=function _typeof(obj){return typeof obj;};}else{_typeof=function _typeof(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj;};}return _typeof(obj);}if(true){(function(){'use strict';var React=__webpack_require__(/*! react */ "./node_modules/react/index.js");var _assign=__webpack_require__(/*! object-assign */ "./node_modules/object-assign/index.js");var Scheduler=__webpack_require__(/*! scheduler */ "./node_modules/scheduler/index.js");var checkPropTypes=__webpack_require__(/*! prop-types/checkPropTypes */ "./node_modules/prop-types/checkPropTypes.js");var tracing=__webpack_require__(/*! scheduler/tracing */ "./node_modules/scheduler/tracing.js");var ReactSharedInternals=React.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;// Prevent newer renderers from RTE when used with older react package versions.
 // Current owner and dispatcher used to share the same ref,
 // but PR #14548 split them out to better support the react-debug-tools package.
 if(!ReactSharedInternals.hasOwnProperty('ReactCurrentDispatcher')){ReactSharedInternals.ReactCurrentDispatcher={current:null};}if(!ReactSharedInternals.hasOwnProperty('ReactCurrentBatchConfig')){ReactSharedInternals.ReactCurrentBatchConfig={suspense:null};}// by calls to these methods by a Babel plugin.
@@ -11853,1264 +13748,6 @@ if (false) {} else {
 
 /***/ }),
 
-/***/ "./node_modules/react-dom/node_modules/scheduler/cjs/scheduler-tracing.development.js":
-/*!********************************************************************************************!*\
-  !*** ./node_modules/react-dom/node_modules/scheduler/cjs/scheduler-tracing.development.js ***!
-  \********************************************************************************************/
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-/** @license React v0.19.1
- * scheduler-tracing.development.js
- *
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-
-if (true) {
-  (function () {
-    'use strict';
-
-    var DEFAULT_THREAD_ID = 0; // Counters used to generate unique IDs.
-
-    var interactionIDCounter = 0;
-    var threadIDCounter = 0; // Set of currently traced interactions.
-    // Interactions "stack"–
-    // Meaning that newly traced interactions are appended to the previously active set.
-    // When an interaction goes out of scope, the previous set (if any) is restored.
-
-    exports.__interactionsRef = null; // Listener(s) to notify when interactions begin and end.
-
-    exports.__subscriberRef = null;
-    {
-      exports.__interactionsRef = {
-        current: new Set()
-      };
-      exports.__subscriberRef = {
-        current: null
-      };
-    }
-
-    function unstable_clear(callback) {
-      var prevInteractions = exports.__interactionsRef.current;
-      exports.__interactionsRef.current = new Set();
-
-      try {
-        return callback();
-      } finally {
-        exports.__interactionsRef.current = prevInteractions;
-      }
-    }
-
-    function unstable_getCurrent() {
-      {
-        return exports.__interactionsRef.current;
-      }
-    }
-
-    function unstable_getThreadID() {
-      return ++threadIDCounter;
-    }
-
-    function unstable_trace(name, timestamp, callback) {
-      var threadID = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : DEFAULT_THREAD_ID;
-      var interaction = {
-        __count: 1,
-        id: interactionIDCounter++,
-        name: name,
-        timestamp: timestamp
-      };
-      var prevInteractions = exports.__interactionsRef.current; // Traced interactions should stack/accumulate.
-      // To do that, clone the current interactions.
-      // The previous set will be restored upon completion.
-
-      var interactions = new Set(prevInteractions);
-      interactions.add(interaction);
-      exports.__interactionsRef.current = interactions;
-      var subscriber = exports.__subscriberRef.current;
-      var returnValue;
-
-      try {
-        if (subscriber !== null) {
-          subscriber.onInteractionTraced(interaction);
-        }
-      } finally {
-        try {
-          if (subscriber !== null) {
-            subscriber.onWorkStarted(interactions, threadID);
-          }
-        } finally {
-          try {
-            returnValue = callback();
-          } finally {
-            exports.__interactionsRef.current = prevInteractions;
-
-            try {
-              if (subscriber !== null) {
-                subscriber.onWorkStopped(interactions, threadID);
-              }
-            } finally {
-              interaction.__count--; // If no async work was scheduled for this interaction,
-              // Notify subscribers that it's completed.
-
-              if (subscriber !== null && interaction.__count === 0) {
-                subscriber.onInteractionScheduledWorkCompleted(interaction);
-              }
-            }
-          }
-        }
-      }
-
-      return returnValue;
-    }
-
-    function unstable_wrap(callback) {
-      var threadID = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : DEFAULT_THREAD_ID;
-      var wrappedInteractions = exports.__interactionsRef.current;
-      var subscriber = exports.__subscriberRef.current;
-
-      if (subscriber !== null) {
-        subscriber.onWorkScheduled(wrappedInteractions, threadID);
-      } // Update the pending async work count for the current interactions.
-      // Update after calling subscribers in case of error.
-
-
-      wrappedInteractions.forEach(function (interaction) {
-        interaction.__count++;
-      });
-      var hasRun = false;
-
-      function wrapped() {
-        var prevInteractions = exports.__interactionsRef.current;
-        exports.__interactionsRef.current = wrappedInteractions;
-        subscriber = exports.__subscriberRef.current;
-
-        try {
-          var returnValue;
-
-          try {
-            if (subscriber !== null) {
-              subscriber.onWorkStarted(wrappedInteractions, threadID);
-            }
-          } finally {
-            try {
-              returnValue = callback.apply(undefined, arguments);
-            } finally {
-              exports.__interactionsRef.current = prevInteractions;
-
-              if (subscriber !== null) {
-                subscriber.onWorkStopped(wrappedInteractions, threadID);
-              }
-            }
-          }
-
-          return returnValue;
-        } finally {
-          if (!hasRun) {
-            // We only expect a wrapped function to be executed once,
-            // But in the event that it's executed more than once–
-            // Only decrement the outstanding interaction counts once.
-            hasRun = true; // Update pending async counts for all wrapped interactions.
-            // If this was the last scheduled async work for any of them,
-            // Mark them as completed.
-
-            wrappedInteractions.forEach(function (interaction) {
-              interaction.__count--;
-
-              if (subscriber !== null && interaction.__count === 0) {
-                subscriber.onInteractionScheduledWorkCompleted(interaction);
-              }
-            });
-          }
-        }
-      }
-
-      wrapped.cancel = function cancel() {
-        subscriber = exports.__subscriberRef.current;
-
-        try {
-          if (subscriber !== null) {
-            subscriber.onWorkCanceled(wrappedInteractions, threadID);
-          }
-        } finally {
-          // Update pending async counts for all wrapped interactions.
-          // If this was the last scheduled async work for any of them,
-          // Mark them as completed.
-          wrappedInteractions.forEach(function (interaction) {
-            interaction.__count--;
-
-            if (subscriber && interaction.__count === 0) {
-              subscriber.onInteractionScheduledWorkCompleted(interaction);
-            }
-          });
-        }
-      };
-
-      return wrapped;
-    }
-
-    var subscribers = null;
-    {
-      subscribers = new Set();
-    }
-
-    function unstable_subscribe(subscriber) {
-      {
-        subscribers.add(subscriber);
-
-        if (subscribers.size === 1) {
-          exports.__subscriberRef.current = {
-            onInteractionScheduledWorkCompleted: onInteractionScheduledWorkCompleted,
-            onInteractionTraced: onInteractionTraced,
-            onWorkCanceled: onWorkCanceled,
-            onWorkScheduled: onWorkScheduled,
-            onWorkStarted: onWorkStarted,
-            onWorkStopped: onWorkStopped
-          };
-        }
-      }
-    }
-
-    function unstable_unsubscribe(subscriber) {
-      {
-        subscribers.delete(subscriber);
-
-        if (subscribers.size === 0) {
-          exports.__subscriberRef.current = null;
-        }
-      }
-    }
-
-    function onInteractionTraced(interaction) {
-      var didCatchError = false;
-      var caughtError = null;
-      subscribers.forEach(function (subscriber) {
-        try {
-          subscriber.onInteractionTraced(interaction);
-        } catch (error) {
-          if (!didCatchError) {
-            didCatchError = true;
-            caughtError = error;
-          }
-        }
-      });
-
-      if (didCatchError) {
-        throw caughtError;
-      }
-    }
-
-    function onInteractionScheduledWorkCompleted(interaction) {
-      var didCatchError = false;
-      var caughtError = null;
-      subscribers.forEach(function (subscriber) {
-        try {
-          subscriber.onInteractionScheduledWorkCompleted(interaction);
-        } catch (error) {
-          if (!didCatchError) {
-            didCatchError = true;
-            caughtError = error;
-          }
-        }
-      });
-
-      if (didCatchError) {
-        throw caughtError;
-      }
-    }
-
-    function onWorkScheduled(interactions, threadID) {
-      var didCatchError = false;
-      var caughtError = null;
-      subscribers.forEach(function (subscriber) {
-        try {
-          subscriber.onWorkScheduled(interactions, threadID);
-        } catch (error) {
-          if (!didCatchError) {
-            didCatchError = true;
-            caughtError = error;
-          }
-        }
-      });
-
-      if (didCatchError) {
-        throw caughtError;
-      }
-    }
-
-    function onWorkStarted(interactions, threadID) {
-      var didCatchError = false;
-      var caughtError = null;
-      subscribers.forEach(function (subscriber) {
-        try {
-          subscriber.onWorkStarted(interactions, threadID);
-        } catch (error) {
-          if (!didCatchError) {
-            didCatchError = true;
-            caughtError = error;
-          }
-        }
-      });
-
-      if (didCatchError) {
-        throw caughtError;
-      }
-    }
-
-    function onWorkStopped(interactions, threadID) {
-      var didCatchError = false;
-      var caughtError = null;
-      subscribers.forEach(function (subscriber) {
-        try {
-          subscriber.onWorkStopped(interactions, threadID);
-        } catch (error) {
-          if (!didCatchError) {
-            didCatchError = true;
-            caughtError = error;
-          }
-        }
-      });
-
-      if (didCatchError) {
-        throw caughtError;
-      }
-    }
-
-    function onWorkCanceled(interactions, threadID) {
-      var didCatchError = false;
-      var caughtError = null;
-      subscribers.forEach(function (subscriber) {
-        try {
-          subscriber.onWorkCanceled(interactions, threadID);
-        } catch (error) {
-          if (!didCatchError) {
-            didCatchError = true;
-            caughtError = error;
-          }
-        }
-      });
-
-      if (didCatchError) {
-        throw caughtError;
-      }
-    }
-
-    exports.unstable_clear = unstable_clear;
-    exports.unstable_getCurrent = unstable_getCurrent;
-    exports.unstable_getThreadID = unstable_getThreadID;
-    exports.unstable_subscribe = unstable_subscribe;
-    exports.unstable_trace = unstable_trace;
-    exports.unstable_unsubscribe = unstable_unsubscribe;
-    exports.unstable_wrap = unstable_wrap;
-  })();
-}
-
-/***/ }),
-
-/***/ "./node_modules/react-dom/node_modules/scheduler/cjs/scheduler.development.js":
-/*!************************************************************************************!*\
-  !*** ./node_modules/react-dom/node_modules/scheduler/cjs/scheduler.development.js ***!
-  \************************************************************************************/
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-/** @license React v0.19.1
- * scheduler.development.js
- *
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-if (true) {
-  (function () {
-    'use strict';
-
-    var enableSchedulerDebugging = false;
-    var enableProfiling = true;
-
-    var _requestHostCallback;
-
-    var requestHostTimeout;
-    var cancelHostTimeout;
-    var shouldYieldToHost;
-    var requestPaint;
-
-    if ( // If Scheduler runs in a non-DOM environment, it falls back to a naive
-    // implementation using setTimeout.
-    typeof window === 'undefined' || // Check if MessageChannel is supported, too.
-    typeof MessageChannel !== 'function') {
-      // If this accidentally gets imported in a non-browser environment, e.g. JavaScriptCore,
-      // fallback to a naive implementation.
-      var _callback = null;
-      var _timeoutID = null;
-
-      var _flushCallback = function _flushCallback() {
-        if (_callback !== null) {
-          try {
-            var currentTime = exports.unstable_now();
-            var hasRemainingTime = true;
-
-            _callback(hasRemainingTime, currentTime);
-
-            _callback = null;
-          } catch (e) {
-            setTimeout(_flushCallback, 0);
-            throw e;
-          }
-        }
-      };
-
-      var initialTime = Date.now();
-
-      exports.unstable_now = function () {
-        return Date.now() - initialTime;
-      };
-
-      _requestHostCallback = function requestHostCallback(cb) {
-        if (_callback !== null) {
-          // Protect against re-entrancy.
-          setTimeout(_requestHostCallback, 0, cb);
-        } else {
-          _callback = cb;
-          setTimeout(_flushCallback, 0);
-        }
-      };
-
-      requestHostTimeout = function requestHostTimeout(cb, ms) {
-        _timeoutID = setTimeout(cb, ms);
-      };
-
-      cancelHostTimeout = function cancelHostTimeout() {
-        clearTimeout(_timeoutID);
-      };
-
-      shouldYieldToHost = function shouldYieldToHost() {
-        return false;
-      };
-
-      requestPaint = exports.unstable_forceFrameRate = function () {};
-    } else {
-      // Capture local references to native APIs, in case a polyfill overrides them.
-      var performance = window.performance;
-      var _Date = window.Date;
-      var _setTimeout = window.setTimeout;
-      var _clearTimeout = window.clearTimeout;
-
-      if (typeof console !== 'undefined') {
-        // TODO: Scheduler no longer requires these methods to be polyfilled. But
-        // maybe we want to continue warning if they don't exist, to preserve the
-        // option to rely on it in the future?
-        var requestAnimationFrame = window.requestAnimationFrame;
-        var cancelAnimationFrame = window.cancelAnimationFrame; // TODO: Remove fb.me link
-
-        if (typeof requestAnimationFrame !== 'function') {
-          // Using console['error'] to evade Babel and ESLint
-          console['error']("This browser doesn't support requestAnimationFrame. " + 'Make sure that you load a ' + 'polyfill in older browsers. https://fb.me/react-polyfills');
-        }
-
-        if (typeof cancelAnimationFrame !== 'function') {
-          // Using console['error'] to evade Babel and ESLint
-          console['error']("This browser doesn't support cancelAnimationFrame. " + 'Make sure that you load a ' + 'polyfill in older browsers. https://fb.me/react-polyfills');
-        }
-      }
-
-      if (_typeof(performance) === 'object' && typeof performance.now === 'function') {
-        exports.unstable_now = function () {
-          return performance.now();
-        };
-      } else {
-        var _initialTime = _Date.now();
-
-        exports.unstable_now = function () {
-          return _Date.now() - _initialTime;
-        };
-      }
-
-      var isMessageLoopRunning = false;
-      var scheduledHostCallback = null;
-      var taskTimeoutID = -1; // Scheduler periodically yields in case there is other work on the main
-      // thread, like user events. By default, it yields multiple times per frame.
-      // It does not attempt to align with frame boundaries, since most tasks don't
-      // need to be frame aligned; for those that do, use requestAnimationFrame.
-
-      var yieldInterval = 5;
-      var deadline = 0; // TODO: Make this configurable
-
-      {
-        // `isInputPending` is not available. Since we have no way of knowing if
-        // there's pending input, always yield at the end of the frame.
-        shouldYieldToHost = function shouldYieldToHost() {
-          return exports.unstable_now() >= deadline;
-        }; // Since we yield every frame regardless, `requestPaint` has no effect.
-
-
-        requestPaint = function requestPaint() {};
-      }
-
-      exports.unstable_forceFrameRate = function (fps) {
-        if (fps < 0 || fps > 125) {
-          // Using console['error'] to evade Babel and ESLint
-          console['error']('forceFrameRate takes a positive int between 0 and 125, ' + 'forcing framerates higher than 125 fps is not unsupported');
-          return;
-        }
-
-        if (fps > 0) {
-          yieldInterval = Math.floor(1000 / fps);
-        } else {
-          // reset the framerate
-          yieldInterval = 5;
-        }
-      };
-
-      var performWorkUntilDeadline = function performWorkUntilDeadline() {
-        if (scheduledHostCallback !== null) {
-          var currentTime = exports.unstable_now(); // Yield after `yieldInterval` ms, regardless of where we are in the vsync
-          // cycle. This means there's always time remaining at the beginning of
-          // the message event.
-
-          deadline = currentTime + yieldInterval;
-          var hasTimeRemaining = true;
-
-          try {
-            var hasMoreWork = scheduledHostCallback(hasTimeRemaining, currentTime);
-
-            if (!hasMoreWork) {
-              isMessageLoopRunning = false;
-              scheduledHostCallback = null;
-            } else {
-              // If there's more work, schedule the next message event at the end
-              // of the preceding one.
-              port.postMessage(null);
-            }
-          } catch (error) {
-            // If a scheduler task throws, exit the current browser task so the
-            // error can be observed.
-            port.postMessage(null);
-            throw error;
-          }
-        } else {
-          isMessageLoopRunning = false;
-        } // Yielding to the browser will give it a chance to paint, so we can
-
-      };
-
-      var channel = new MessageChannel();
-      var port = channel.port2;
-      channel.port1.onmessage = performWorkUntilDeadline;
-
-      _requestHostCallback = function _requestHostCallback(callback) {
-        scheduledHostCallback = callback;
-
-        if (!isMessageLoopRunning) {
-          isMessageLoopRunning = true;
-          port.postMessage(null);
-        }
-      };
-
-      requestHostTimeout = function requestHostTimeout(callback, ms) {
-        taskTimeoutID = _setTimeout(function () {
-          callback(exports.unstable_now());
-        }, ms);
-      };
-
-      cancelHostTimeout = function cancelHostTimeout() {
-        _clearTimeout(taskTimeoutID);
-
-        taskTimeoutID = -1;
-      };
-    }
-
-    function push(heap, node) {
-      var index = heap.length;
-      heap.push(node);
-      siftUp(heap, node, index);
-    }
-
-    function peek(heap) {
-      var first = heap[0];
-      return first === undefined ? null : first;
-    }
-
-    function pop(heap) {
-      var first = heap[0];
-
-      if (first !== undefined) {
-        var last = heap.pop();
-
-        if (last !== first) {
-          heap[0] = last;
-          siftDown(heap, last, 0);
-        }
-
-        return first;
-      } else {
-        return null;
-      }
-    }
-
-    function siftUp(heap, node, i) {
-      var index = i;
-
-      while (true) {
-        var parentIndex = index - 1 >>> 1;
-        var parent = heap[parentIndex];
-
-        if (parent !== undefined && compare(parent, node) > 0) {
-          // The parent is larger. Swap positions.
-          heap[parentIndex] = node;
-          heap[index] = parent;
-          index = parentIndex;
-        } else {
-          // The parent is smaller. Exit.
-          return;
-        }
-      }
-    }
-
-    function siftDown(heap, node, i) {
-      var index = i;
-      var length = heap.length;
-
-      while (index < length) {
-        var leftIndex = (index + 1) * 2 - 1;
-        var left = heap[leftIndex];
-        var rightIndex = leftIndex + 1;
-        var right = heap[rightIndex]; // If the left or right node is smaller, swap with the smaller of those.
-
-        if (left !== undefined && compare(left, node) < 0) {
-          if (right !== undefined && compare(right, left) < 0) {
-            heap[index] = right;
-            heap[rightIndex] = node;
-            index = rightIndex;
-          } else {
-            heap[index] = left;
-            heap[leftIndex] = node;
-            index = leftIndex;
-          }
-        } else if (right !== undefined && compare(right, node) < 0) {
-          heap[index] = right;
-          heap[rightIndex] = node;
-          index = rightIndex;
-        } else {
-          // Neither child is smaller. Exit.
-          return;
-        }
-      }
-    }
-
-    function compare(a, b) {
-      // Compare sort index first, then task id.
-      var diff = a.sortIndex - b.sortIndex;
-      return diff !== 0 ? diff : a.id - b.id;
-    } // TODO: Use symbols?
-
-
-    var NoPriority = 0;
-    var ImmediatePriority = 1;
-    var UserBlockingPriority = 2;
-    var NormalPriority = 3;
-    var LowPriority = 4;
-    var IdlePriority = 5;
-    var runIdCounter = 0;
-    var mainThreadIdCounter = 0;
-    var profilingStateSize = 4;
-    var sharedProfilingBuffer = // $FlowFixMe Flow doesn't know about SharedArrayBuffer
-    typeof SharedArrayBuffer === 'function' ? new SharedArrayBuffer(profilingStateSize * Int32Array.BYTES_PER_ELEMENT) : // $FlowFixMe Flow doesn't know about ArrayBuffer
-    typeof ArrayBuffer === 'function' ? new ArrayBuffer(profilingStateSize * Int32Array.BYTES_PER_ELEMENT) : null // Don't crash the init path on IE9
-    ;
-    var profilingState = sharedProfilingBuffer !== null ? new Int32Array(sharedProfilingBuffer) : []; // We can't read this but it helps save bytes for null checks
-
-    var PRIORITY = 0;
-    var CURRENT_TASK_ID = 1;
-    var CURRENT_RUN_ID = 2;
-    var QUEUE_SIZE = 3;
-    {
-      profilingState[PRIORITY] = NoPriority; // This is maintained with a counter, because the size of the priority queue
-      // array might include canceled tasks.
-
-      profilingState[QUEUE_SIZE] = 0;
-      profilingState[CURRENT_TASK_ID] = 0;
-    } // Bytes per element is 4
-
-    var INITIAL_EVENT_LOG_SIZE = 131072;
-    var MAX_EVENT_LOG_SIZE = 524288; // Equivalent to 2 megabytes
-
-    var eventLogSize = 0;
-    var eventLogBuffer = null;
-    var eventLog = null;
-    var eventLogIndex = 0;
-    var TaskStartEvent = 1;
-    var TaskCompleteEvent = 2;
-    var TaskErrorEvent = 3;
-    var TaskCancelEvent = 4;
-    var TaskRunEvent = 5;
-    var TaskYieldEvent = 6;
-    var SchedulerSuspendEvent = 7;
-    var SchedulerResumeEvent = 8;
-
-    function logEvent(entries) {
-      if (eventLog !== null) {
-        var offset = eventLogIndex;
-        eventLogIndex += entries.length;
-
-        if (eventLogIndex + 1 > eventLogSize) {
-          eventLogSize *= 2;
-
-          if (eventLogSize > MAX_EVENT_LOG_SIZE) {
-            // Using console['error'] to evade Babel and ESLint
-            console['error']("Scheduler Profiling: Event log exceeded maximum size. Don't " + 'forget to call `stopLoggingProfilingEvents()`.');
-            stopLoggingProfilingEvents();
-            return;
-          }
-
-          var newEventLog = new Int32Array(eventLogSize * 4);
-          newEventLog.set(eventLog);
-          eventLogBuffer = newEventLog.buffer;
-          eventLog = newEventLog;
-        }
-
-        eventLog.set(entries, offset);
-      }
-    }
-
-    function startLoggingProfilingEvents() {
-      eventLogSize = INITIAL_EVENT_LOG_SIZE;
-      eventLogBuffer = new ArrayBuffer(eventLogSize * 4);
-      eventLog = new Int32Array(eventLogBuffer);
-      eventLogIndex = 0;
-    }
-
-    function stopLoggingProfilingEvents() {
-      var buffer = eventLogBuffer;
-      eventLogSize = 0;
-      eventLogBuffer = null;
-      eventLog = null;
-      eventLogIndex = 0;
-      return buffer;
-    }
-
-    function markTaskStart(task, ms) {
-      {
-        profilingState[QUEUE_SIZE]++;
-
-        if (eventLog !== null) {
-          // performance.now returns a float, representing milliseconds. When the
-          // event is logged, it's coerced to an int. Convert to microseconds to
-          // maintain extra degrees of precision.
-          logEvent([TaskStartEvent, ms * 1000, task.id, task.priorityLevel]);
-        }
-      }
-    }
-
-    function markTaskCompleted(task, ms) {
-      {
-        profilingState[PRIORITY] = NoPriority;
-        profilingState[CURRENT_TASK_ID] = 0;
-        profilingState[QUEUE_SIZE]--;
-
-        if (eventLog !== null) {
-          logEvent([TaskCompleteEvent, ms * 1000, task.id]);
-        }
-      }
-    }
-
-    function markTaskCanceled(task, ms) {
-      {
-        profilingState[QUEUE_SIZE]--;
-
-        if (eventLog !== null) {
-          logEvent([TaskCancelEvent, ms * 1000, task.id]);
-        }
-      }
-    }
-
-    function markTaskErrored(task, ms) {
-      {
-        profilingState[PRIORITY] = NoPriority;
-        profilingState[CURRENT_TASK_ID] = 0;
-        profilingState[QUEUE_SIZE]--;
-
-        if (eventLog !== null) {
-          logEvent([TaskErrorEvent, ms * 1000, task.id]);
-        }
-      }
-    }
-
-    function markTaskRun(task, ms) {
-      {
-        runIdCounter++;
-        profilingState[PRIORITY] = task.priorityLevel;
-        profilingState[CURRENT_TASK_ID] = task.id;
-        profilingState[CURRENT_RUN_ID] = runIdCounter;
-
-        if (eventLog !== null) {
-          logEvent([TaskRunEvent, ms * 1000, task.id, runIdCounter]);
-        }
-      }
-    }
-
-    function markTaskYield(task, ms) {
-      {
-        profilingState[PRIORITY] = NoPriority;
-        profilingState[CURRENT_TASK_ID] = 0;
-        profilingState[CURRENT_RUN_ID] = 0;
-
-        if (eventLog !== null) {
-          logEvent([TaskYieldEvent, ms * 1000, task.id, runIdCounter]);
-        }
-      }
-    }
-
-    function markSchedulerSuspended(ms) {
-      {
-        mainThreadIdCounter++;
-
-        if (eventLog !== null) {
-          logEvent([SchedulerSuspendEvent, ms * 1000, mainThreadIdCounter]);
-        }
-      }
-    }
-
-    function markSchedulerUnsuspended(ms) {
-      {
-        if (eventLog !== null) {
-          logEvent([SchedulerResumeEvent, ms * 1000, mainThreadIdCounter]);
-        }
-      }
-    }
-    /* eslint-disable no-var */
-    // Math.pow(2, 30) - 1
-    // 0b111111111111111111111111111111
-
-
-    var maxSigned31BitInt = 1073741823; // Times out immediately
-
-    var IMMEDIATE_PRIORITY_TIMEOUT = -1; // Eventually times out
-
-    var USER_BLOCKING_PRIORITY = 250;
-    var NORMAL_PRIORITY_TIMEOUT = 5000;
-    var LOW_PRIORITY_TIMEOUT = 10000; // Never times out
-
-    var IDLE_PRIORITY = maxSigned31BitInt; // Tasks are stored on a min heap
-
-    var taskQueue = [];
-    var timerQueue = []; // Incrementing id counter. Used to maintain insertion order.
-
-    var taskIdCounter = 1; // Pausing the scheduler is useful for debugging.
-
-    var currentTask = null;
-    var currentPriorityLevel = NormalPriority; // This is set while performing work, to prevent re-entrancy.
-
-    var isPerformingWork = false;
-    var isHostCallbackScheduled = false;
-    var isHostTimeoutScheduled = false;
-
-    function advanceTimers(currentTime) {
-      // Check for tasks that are no longer delayed and add them to the queue.
-      var timer = peek(timerQueue);
-
-      while (timer !== null) {
-        if (timer.callback === null) {
-          // Timer was cancelled.
-          pop(timerQueue);
-        } else if (timer.startTime <= currentTime) {
-          // Timer fired. Transfer to the task queue.
-          pop(timerQueue);
-          timer.sortIndex = timer.expirationTime;
-          push(taskQueue, timer);
-          {
-            markTaskStart(timer, currentTime);
-            timer.isQueued = true;
-          }
-        } else {
-          // Remaining timers are pending.
-          return;
-        }
-
-        timer = peek(timerQueue);
-      }
-    }
-
-    function handleTimeout(currentTime) {
-      isHostTimeoutScheduled = false;
-      advanceTimers(currentTime);
-
-      if (!isHostCallbackScheduled) {
-        if (peek(taskQueue) !== null) {
-          isHostCallbackScheduled = true;
-
-          _requestHostCallback(flushWork);
-        } else {
-          var firstTimer = peek(timerQueue);
-
-          if (firstTimer !== null) {
-            requestHostTimeout(handleTimeout, firstTimer.startTime - currentTime);
-          }
-        }
-      }
-    }
-
-    function flushWork(hasTimeRemaining, initialTime) {
-      {
-        markSchedulerUnsuspended(initialTime);
-      } // We'll need a host callback the next time work is scheduled.
-
-      isHostCallbackScheduled = false;
-
-      if (isHostTimeoutScheduled) {
-        // We scheduled a timeout but it's no longer needed. Cancel it.
-        isHostTimeoutScheduled = false;
-        cancelHostTimeout();
-      }
-
-      isPerformingWork = true;
-      var previousPriorityLevel = currentPriorityLevel;
-
-      try {
-        if (enableProfiling) {
-          try {
-            return workLoop(hasTimeRemaining, initialTime);
-          } catch (error) {
-            if (currentTask !== null) {
-              var currentTime = exports.unstable_now();
-              markTaskErrored(currentTask, currentTime);
-              currentTask.isQueued = false;
-            }
-
-            throw error;
-          }
-        } else {
-          // No catch in prod codepath.
-          return workLoop(hasTimeRemaining, initialTime);
-        }
-      } finally {
-        currentTask = null;
-        currentPriorityLevel = previousPriorityLevel;
-        isPerformingWork = false;
-        {
-          var _currentTime = exports.unstable_now();
-
-          markSchedulerSuspended(_currentTime);
-        }
-      }
-    }
-
-    function workLoop(hasTimeRemaining, initialTime) {
-      var currentTime = initialTime;
-      advanceTimers(currentTime);
-      currentTask = peek(taskQueue);
-
-      while (currentTask !== null && !enableSchedulerDebugging) {
-        if (currentTask.expirationTime > currentTime && (!hasTimeRemaining || shouldYieldToHost())) {
-          // This currentTask hasn't expired, and we've reached the deadline.
-          break;
-        }
-
-        var callback = currentTask.callback;
-
-        if (callback !== null) {
-          currentTask.callback = null;
-          currentPriorityLevel = currentTask.priorityLevel;
-          var didUserCallbackTimeout = currentTask.expirationTime <= currentTime;
-          markTaskRun(currentTask, currentTime);
-          var continuationCallback = callback(didUserCallbackTimeout);
-          currentTime = exports.unstable_now();
-
-          if (typeof continuationCallback === 'function') {
-            currentTask.callback = continuationCallback;
-            markTaskYield(currentTask, currentTime);
-          } else {
-            {
-              markTaskCompleted(currentTask, currentTime);
-              currentTask.isQueued = false;
-            }
-
-            if (currentTask === peek(taskQueue)) {
-              pop(taskQueue);
-            }
-          }
-
-          advanceTimers(currentTime);
-        } else {
-          pop(taskQueue);
-        }
-
-        currentTask = peek(taskQueue);
-      } // Return whether there's additional work
-
-
-      if (currentTask !== null) {
-        return true;
-      } else {
-        var firstTimer = peek(timerQueue);
-
-        if (firstTimer !== null) {
-          requestHostTimeout(handleTimeout, firstTimer.startTime - currentTime);
-        }
-
-        return false;
-      }
-    }
-
-    function unstable_runWithPriority(priorityLevel, eventHandler) {
-      switch (priorityLevel) {
-        case ImmediatePriority:
-        case UserBlockingPriority:
-        case NormalPriority:
-        case LowPriority:
-        case IdlePriority:
-          break;
-
-        default:
-          priorityLevel = NormalPriority;
-      }
-
-      var previousPriorityLevel = currentPriorityLevel;
-      currentPriorityLevel = priorityLevel;
-
-      try {
-        return eventHandler();
-      } finally {
-        currentPriorityLevel = previousPriorityLevel;
-      }
-    }
-
-    function unstable_next(eventHandler) {
-      var priorityLevel;
-
-      switch (currentPriorityLevel) {
-        case ImmediatePriority:
-        case UserBlockingPriority:
-        case NormalPriority:
-          // Shift down to normal priority
-          priorityLevel = NormalPriority;
-          break;
-
-        default:
-          // Anything lower than normal priority should remain at the current level.
-          priorityLevel = currentPriorityLevel;
-          break;
-      }
-
-      var previousPriorityLevel = currentPriorityLevel;
-      currentPriorityLevel = priorityLevel;
-
-      try {
-        return eventHandler();
-      } finally {
-        currentPriorityLevel = previousPriorityLevel;
-      }
-    }
-
-    function unstable_wrapCallback(callback) {
-      var parentPriorityLevel = currentPriorityLevel;
-      return function () {
-        // This is a fork of runWithPriority, inlined for performance.
-        var previousPriorityLevel = currentPriorityLevel;
-        currentPriorityLevel = parentPriorityLevel;
-
-        try {
-          return callback.apply(this, arguments);
-        } finally {
-          currentPriorityLevel = previousPriorityLevel;
-        }
-      };
-    }
-
-    function timeoutForPriorityLevel(priorityLevel) {
-      switch (priorityLevel) {
-        case ImmediatePriority:
-          return IMMEDIATE_PRIORITY_TIMEOUT;
-
-        case UserBlockingPriority:
-          return USER_BLOCKING_PRIORITY;
-
-        case IdlePriority:
-          return IDLE_PRIORITY;
-
-        case LowPriority:
-          return LOW_PRIORITY_TIMEOUT;
-
-        case NormalPriority:
-        default:
-          return NORMAL_PRIORITY_TIMEOUT;
-      }
-    }
-
-    function unstable_scheduleCallback(priorityLevel, callback, options) {
-      var currentTime = exports.unstable_now();
-      var startTime;
-      var timeout;
-
-      if (_typeof(options) === 'object' && options !== null) {
-        var delay = options.delay;
-
-        if (typeof delay === 'number' && delay > 0) {
-          startTime = currentTime + delay;
-        } else {
-          startTime = currentTime;
-        }
-
-        timeout = typeof options.timeout === 'number' ? options.timeout : timeoutForPriorityLevel(priorityLevel);
-      } else {
-        timeout = timeoutForPriorityLevel(priorityLevel);
-        startTime = currentTime;
-      }
-
-      var expirationTime = startTime + timeout;
-      var newTask = {
-        id: taskIdCounter++,
-        callback: callback,
-        priorityLevel: priorityLevel,
-        startTime: startTime,
-        expirationTime: expirationTime,
-        sortIndex: -1
-      };
-      {
-        newTask.isQueued = false;
-      }
-
-      if (startTime > currentTime) {
-        // This is a delayed task.
-        newTask.sortIndex = startTime;
-        push(timerQueue, newTask);
-
-        if (peek(taskQueue) === null && newTask === peek(timerQueue)) {
-          // All tasks are delayed, and this is the task with the earliest delay.
-          if (isHostTimeoutScheduled) {
-            // Cancel an existing timeout.
-            cancelHostTimeout();
-          } else {
-            isHostTimeoutScheduled = true;
-          } // Schedule a timeout.
-
-
-          requestHostTimeout(handleTimeout, startTime - currentTime);
-        }
-      } else {
-        newTask.sortIndex = expirationTime;
-        push(taskQueue, newTask);
-        {
-          markTaskStart(newTask, currentTime);
-          newTask.isQueued = true;
-        } // Schedule a host callback, if needed. If we're already performing work,
-        // wait until the next time we yield.
-
-        if (!isHostCallbackScheduled && !isPerformingWork) {
-          isHostCallbackScheduled = true;
-
-          _requestHostCallback(flushWork);
-        }
-      }
-
-      return newTask;
-    }
-
-    function unstable_pauseExecution() {}
-
-    function unstable_continueExecution() {
-      if (!isHostCallbackScheduled && !isPerformingWork) {
-        isHostCallbackScheduled = true;
-
-        _requestHostCallback(flushWork);
-      }
-    }
-
-    function unstable_getFirstCallbackNode() {
-      return peek(taskQueue);
-    }
-
-    function unstable_cancelCallback(task) {
-      {
-        if (task.isQueued) {
-          var currentTime = exports.unstable_now();
-          markTaskCanceled(task, currentTime);
-          task.isQueued = false;
-        }
-      } // Null out the callback to indicate the task has been canceled. (Can't
-      // remove from the queue because you can't remove arbitrary nodes from an
-      // array based heap, only the first one.)
-
-      task.callback = null;
-    }
-
-    function unstable_getCurrentPriorityLevel() {
-      return currentPriorityLevel;
-    }
-
-    function unstable_shouldYield() {
-      var currentTime = exports.unstable_now();
-      advanceTimers(currentTime);
-      var firstTask = peek(taskQueue);
-      return firstTask !== currentTask && currentTask !== null && firstTask !== null && firstTask.callback !== null && firstTask.startTime <= currentTime && firstTask.expirationTime < currentTask.expirationTime || shouldYieldToHost();
-    }
-
-    var unstable_requestPaint = requestPaint;
-    var unstable_Profiling = {
-      startLoggingProfilingEvents: startLoggingProfilingEvents,
-      stopLoggingProfilingEvents: stopLoggingProfilingEvents,
-      sharedProfilingBuffer: sharedProfilingBuffer
-    };
-    exports.unstable_IdlePriority = IdlePriority;
-    exports.unstable_ImmediatePriority = ImmediatePriority;
-    exports.unstable_LowPriority = LowPriority;
-    exports.unstable_NormalPriority = NormalPriority;
-    exports.unstable_Profiling = unstable_Profiling;
-    exports.unstable_UserBlockingPriority = UserBlockingPriority;
-    exports.unstable_cancelCallback = unstable_cancelCallback;
-    exports.unstable_continueExecution = unstable_continueExecution;
-    exports.unstable_getCurrentPriorityLevel = unstable_getCurrentPriorityLevel;
-    exports.unstable_getFirstCallbackNode = unstable_getFirstCallbackNode;
-    exports.unstable_next = unstable_next;
-    exports.unstable_pauseExecution = unstable_pauseExecution;
-    exports.unstable_requestPaint = unstable_requestPaint;
-    exports.unstable_runWithPriority = unstable_runWithPriority;
-    exports.unstable_scheduleCallback = unstable_scheduleCallback;
-    exports.unstable_shouldYield = unstable_shouldYield;
-    exports.unstable_wrapCallback = unstable_wrapCallback;
-  })();
-}
-
-/***/ }),
-
-/***/ "./node_modules/react-dom/node_modules/scheduler/index.js":
-/*!****************************************************************!*\
-  !*** ./node_modules/react-dom/node_modules/scheduler/index.js ***!
-  \****************************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-"use strict";
-
-
-if (false) {} else {
-  module.exports = __webpack_require__(/*! ./cjs/scheduler.development.js */ "./node_modules/react-dom/node_modules/scheduler/cjs/scheduler.development.js");
-}
-
-/***/ }),
-
-/***/ "./node_modules/react-dom/node_modules/scheduler/tracing.js":
-/*!******************************************************************!*\
-  !*** ./node_modules/react-dom/node_modules/scheduler/tracing.js ***!
-  \******************************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-"use strict";
-
-
-if (false) {} else {
-  module.exports = __webpack_require__(/*! ./cjs/scheduler-tracing.development.js */ "./node_modules/react-dom/node_modules/scheduler/cjs/scheduler-tracing.development.js");
-}
-
-/***/ }),
-
 /***/ "./node_modules/react/cjs/react.development.js":
 /*!*****************************************************!*\
   !*** ./node_modules/react/cjs/react.development.js ***!
@@ -15014,6 +15651,1264 @@ if (false) {} else {
 
 /***/ }),
 
+/***/ "./node_modules/scheduler/cjs/scheduler-tracing.development.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/scheduler/cjs/scheduler-tracing.development.js ***!
+  \*********************************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+/** @license React v0.19.1
+ * scheduler-tracing.development.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+if (true) {
+  (function () {
+    'use strict';
+
+    var DEFAULT_THREAD_ID = 0; // Counters used to generate unique IDs.
+
+    var interactionIDCounter = 0;
+    var threadIDCounter = 0; // Set of currently traced interactions.
+    // Interactions "stack"–
+    // Meaning that newly traced interactions are appended to the previously active set.
+    // When an interaction goes out of scope, the previous set (if any) is restored.
+
+    exports.__interactionsRef = null; // Listener(s) to notify when interactions begin and end.
+
+    exports.__subscriberRef = null;
+    {
+      exports.__interactionsRef = {
+        current: new Set()
+      };
+      exports.__subscriberRef = {
+        current: null
+      };
+    }
+
+    function unstable_clear(callback) {
+      var prevInteractions = exports.__interactionsRef.current;
+      exports.__interactionsRef.current = new Set();
+
+      try {
+        return callback();
+      } finally {
+        exports.__interactionsRef.current = prevInteractions;
+      }
+    }
+
+    function unstable_getCurrent() {
+      {
+        return exports.__interactionsRef.current;
+      }
+    }
+
+    function unstable_getThreadID() {
+      return ++threadIDCounter;
+    }
+
+    function unstable_trace(name, timestamp, callback) {
+      var threadID = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : DEFAULT_THREAD_ID;
+      var interaction = {
+        __count: 1,
+        id: interactionIDCounter++,
+        name: name,
+        timestamp: timestamp
+      };
+      var prevInteractions = exports.__interactionsRef.current; // Traced interactions should stack/accumulate.
+      // To do that, clone the current interactions.
+      // The previous set will be restored upon completion.
+
+      var interactions = new Set(prevInteractions);
+      interactions.add(interaction);
+      exports.__interactionsRef.current = interactions;
+      var subscriber = exports.__subscriberRef.current;
+      var returnValue;
+
+      try {
+        if (subscriber !== null) {
+          subscriber.onInteractionTraced(interaction);
+        }
+      } finally {
+        try {
+          if (subscriber !== null) {
+            subscriber.onWorkStarted(interactions, threadID);
+          }
+        } finally {
+          try {
+            returnValue = callback();
+          } finally {
+            exports.__interactionsRef.current = prevInteractions;
+
+            try {
+              if (subscriber !== null) {
+                subscriber.onWorkStopped(interactions, threadID);
+              }
+            } finally {
+              interaction.__count--; // If no async work was scheduled for this interaction,
+              // Notify subscribers that it's completed.
+
+              if (subscriber !== null && interaction.__count === 0) {
+                subscriber.onInteractionScheduledWorkCompleted(interaction);
+              }
+            }
+          }
+        }
+      }
+
+      return returnValue;
+    }
+
+    function unstable_wrap(callback) {
+      var threadID = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : DEFAULT_THREAD_ID;
+      var wrappedInteractions = exports.__interactionsRef.current;
+      var subscriber = exports.__subscriberRef.current;
+
+      if (subscriber !== null) {
+        subscriber.onWorkScheduled(wrappedInteractions, threadID);
+      } // Update the pending async work count for the current interactions.
+      // Update after calling subscribers in case of error.
+
+
+      wrappedInteractions.forEach(function (interaction) {
+        interaction.__count++;
+      });
+      var hasRun = false;
+
+      function wrapped() {
+        var prevInteractions = exports.__interactionsRef.current;
+        exports.__interactionsRef.current = wrappedInteractions;
+        subscriber = exports.__subscriberRef.current;
+
+        try {
+          var returnValue;
+
+          try {
+            if (subscriber !== null) {
+              subscriber.onWorkStarted(wrappedInteractions, threadID);
+            }
+          } finally {
+            try {
+              returnValue = callback.apply(undefined, arguments);
+            } finally {
+              exports.__interactionsRef.current = prevInteractions;
+
+              if (subscriber !== null) {
+                subscriber.onWorkStopped(wrappedInteractions, threadID);
+              }
+            }
+          }
+
+          return returnValue;
+        } finally {
+          if (!hasRun) {
+            // We only expect a wrapped function to be executed once,
+            // But in the event that it's executed more than once–
+            // Only decrement the outstanding interaction counts once.
+            hasRun = true; // Update pending async counts for all wrapped interactions.
+            // If this was the last scheduled async work for any of them,
+            // Mark them as completed.
+
+            wrappedInteractions.forEach(function (interaction) {
+              interaction.__count--;
+
+              if (subscriber !== null && interaction.__count === 0) {
+                subscriber.onInteractionScheduledWorkCompleted(interaction);
+              }
+            });
+          }
+        }
+      }
+
+      wrapped.cancel = function cancel() {
+        subscriber = exports.__subscriberRef.current;
+
+        try {
+          if (subscriber !== null) {
+            subscriber.onWorkCanceled(wrappedInteractions, threadID);
+          }
+        } finally {
+          // Update pending async counts for all wrapped interactions.
+          // If this was the last scheduled async work for any of them,
+          // Mark them as completed.
+          wrappedInteractions.forEach(function (interaction) {
+            interaction.__count--;
+
+            if (subscriber && interaction.__count === 0) {
+              subscriber.onInteractionScheduledWorkCompleted(interaction);
+            }
+          });
+        }
+      };
+
+      return wrapped;
+    }
+
+    var subscribers = null;
+    {
+      subscribers = new Set();
+    }
+
+    function unstable_subscribe(subscriber) {
+      {
+        subscribers.add(subscriber);
+
+        if (subscribers.size === 1) {
+          exports.__subscriberRef.current = {
+            onInteractionScheduledWorkCompleted: onInteractionScheduledWorkCompleted,
+            onInteractionTraced: onInteractionTraced,
+            onWorkCanceled: onWorkCanceled,
+            onWorkScheduled: onWorkScheduled,
+            onWorkStarted: onWorkStarted,
+            onWorkStopped: onWorkStopped
+          };
+        }
+      }
+    }
+
+    function unstable_unsubscribe(subscriber) {
+      {
+        subscribers.delete(subscriber);
+
+        if (subscribers.size === 0) {
+          exports.__subscriberRef.current = null;
+        }
+      }
+    }
+
+    function onInteractionTraced(interaction) {
+      var didCatchError = false;
+      var caughtError = null;
+      subscribers.forEach(function (subscriber) {
+        try {
+          subscriber.onInteractionTraced(interaction);
+        } catch (error) {
+          if (!didCatchError) {
+            didCatchError = true;
+            caughtError = error;
+          }
+        }
+      });
+
+      if (didCatchError) {
+        throw caughtError;
+      }
+    }
+
+    function onInteractionScheduledWorkCompleted(interaction) {
+      var didCatchError = false;
+      var caughtError = null;
+      subscribers.forEach(function (subscriber) {
+        try {
+          subscriber.onInteractionScheduledWorkCompleted(interaction);
+        } catch (error) {
+          if (!didCatchError) {
+            didCatchError = true;
+            caughtError = error;
+          }
+        }
+      });
+
+      if (didCatchError) {
+        throw caughtError;
+      }
+    }
+
+    function onWorkScheduled(interactions, threadID) {
+      var didCatchError = false;
+      var caughtError = null;
+      subscribers.forEach(function (subscriber) {
+        try {
+          subscriber.onWorkScheduled(interactions, threadID);
+        } catch (error) {
+          if (!didCatchError) {
+            didCatchError = true;
+            caughtError = error;
+          }
+        }
+      });
+
+      if (didCatchError) {
+        throw caughtError;
+      }
+    }
+
+    function onWorkStarted(interactions, threadID) {
+      var didCatchError = false;
+      var caughtError = null;
+      subscribers.forEach(function (subscriber) {
+        try {
+          subscriber.onWorkStarted(interactions, threadID);
+        } catch (error) {
+          if (!didCatchError) {
+            didCatchError = true;
+            caughtError = error;
+          }
+        }
+      });
+
+      if (didCatchError) {
+        throw caughtError;
+      }
+    }
+
+    function onWorkStopped(interactions, threadID) {
+      var didCatchError = false;
+      var caughtError = null;
+      subscribers.forEach(function (subscriber) {
+        try {
+          subscriber.onWorkStopped(interactions, threadID);
+        } catch (error) {
+          if (!didCatchError) {
+            didCatchError = true;
+            caughtError = error;
+          }
+        }
+      });
+
+      if (didCatchError) {
+        throw caughtError;
+      }
+    }
+
+    function onWorkCanceled(interactions, threadID) {
+      var didCatchError = false;
+      var caughtError = null;
+      subscribers.forEach(function (subscriber) {
+        try {
+          subscriber.onWorkCanceled(interactions, threadID);
+        } catch (error) {
+          if (!didCatchError) {
+            didCatchError = true;
+            caughtError = error;
+          }
+        }
+      });
+
+      if (didCatchError) {
+        throw caughtError;
+      }
+    }
+
+    exports.unstable_clear = unstable_clear;
+    exports.unstable_getCurrent = unstable_getCurrent;
+    exports.unstable_getThreadID = unstable_getThreadID;
+    exports.unstable_subscribe = unstable_subscribe;
+    exports.unstable_trace = unstable_trace;
+    exports.unstable_unsubscribe = unstable_unsubscribe;
+    exports.unstable_wrap = unstable_wrap;
+  })();
+}
+
+/***/ }),
+
+/***/ "./node_modules/scheduler/cjs/scheduler.development.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/scheduler/cjs/scheduler.development.js ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+/** @license React v0.19.1
+ * scheduler.development.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+if (true) {
+  (function () {
+    'use strict';
+
+    var enableSchedulerDebugging = false;
+    var enableProfiling = true;
+
+    var _requestHostCallback;
+
+    var requestHostTimeout;
+    var cancelHostTimeout;
+    var shouldYieldToHost;
+    var requestPaint;
+
+    if ( // If Scheduler runs in a non-DOM environment, it falls back to a naive
+    // implementation using setTimeout.
+    typeof window === 'undefined' || // Check if MessageChannel is supported, too.
+    typeof MessageChannel !== 'function') {
+      // If this accidentally gets imported in a non-browser environment, e.g. JavaScriptCore,
+      // fallback to a naive implementation.
+      var _callback = null;
+      var _timeoutID = null;
+
+      var _flushCallback = function _flushCallback() {
+        if (_callback !== null) {
+          try {
+            var currentTime = exports.unstable_now();
+            var hasRemainingTime = true;
+
+            _callback(hasRemainingTime, currentTime);
+
+            _callback = null;
+          } catch (e) {
+            setTimeout(_flushCallback, 0);
+            throw e;
+          }
+        }
+      };
+
+      var initialTime = Date.now();
+
+      exports.unstable_now = function () {
+        return Date.now() - initialTime;
+      };
+
+      _requestHostCallback = function requestHostCallback(cb) {
+        if (_callback !== null) {
+          // Protect against re-entrancy.
+          setTimeout(_requestHostCallback, 0, cb);
+        } else {
+          _callback = cb;
+          setTimeout(_flushCallback, 0);
+        }
+      };
+
+      requestHostTimeout = function requestHostTimeout(cb, ms) {
+        _timeoutID = setTimeout(cb, ms);
+      };
+
+      cancelHostTimeout = function cancelHostTimeout() {
+        clearTimeout(_timeoutID);
+      };
+
+      shouldYieldToHost = function shouldYieldToHost() {
+        return false;
+      };
+
+      requestPaint = exports.unstable_forceFrameRate = function () {};
+    } else {
+      // Capture local references to native APIs, in case a polyfill overrides them.
+      var performance = window.performance;
+      var _Date = window.Date;
+      var _setTimeout = window.setTimeout;
+      var _clearTimeout = window.clearTimeout;
+
+      if (typeof console !== 'undefined') {
+        // TODO: Scheduler no longer requires these methods to be polyfilled. But
+        // maybe we want to continue warning if they don't exist, to preserve the
+        // option to rely on it in the future?
+        var requestAnimationFrame = window.requestAnimationFrame;
+        var cancelAnimationFrame = window.cancelAnimationFrame; // TODO: Remove fb.me link
+
+        if (typeof requestAnimationFrame !== 'function') {
+          // Using console['error'] to evade Babel and ESLint
+          console['error']("This browser doesn't support requestAnimationFrame. " + 'Make sure that you load a ' + 'polyfill in older browsers. https://fb.me/react-polyfills');
+        }
+
+        if (typeof cancelAnimationFrame !== 'function') {
+          // Using console['error'] to evade Babel and ESLint
+          console['error']("This browser doesn't support cancelAnimationFrame. " + 'Make sure that you load a ' + 'polyfill in older browsers. https://fb.me/react-polyfills');
+        }
+      }
+
+      if (_typeof(performance) === 'object' && typeof performance.now === 'function') {
+        exports.unstable_now = function () {
+          return performance.now();
+        };
+      } else {
+        var _initialTime = _Date.now();
+
+        exports.unstable_now = function () {
+          return _Date.now() - _initialTime;
+        };
+      }
+
+      var isMessageLoopRunning = false;
+      var scheduledHostCallback = null;
+      var taskTimeoutID = -1; // Scheduler periodically yields in case there is other work on the main
+      // thread, like user events. By default, it yields multiple times per frame.
+      // It does not attempt to align with frame boundaries, since most tasks don't
+      // need to be frame aligned; for those that do, use requestAnimationFrame.
+
+      var yieldInterval = 5;
+      var deadline = 0; // TODO: Make this configurable
+
+      {
+        // `isInputPending` is not available. Since we have no way of knowing if
+        // there's pending input, always yield at the end of the frame.
+        shouldYieldToHost = function shouldYieldToHost() {
+          return exports.unstable_now() >= deadline;
+        }; // Since we yield every frame regardless, `requestPaint` has no effect.
+
+
+        requestPaint = function requestPaint() {};
+      }
+
+      exports.unstable_forceFrameRate = function (fps) {
+        if (fps < 0 || fps > 125) {
+          // Using console['error'] to evade Babel and ESLint
+          console['error']('forceFrameRate takes a positive int between 0 and 125, ' + 'forcing framerates higher than 125 fps is not unsupported');
+          return;
+        }
+
+        if (fps > 0) {
+          yieldInterval = Math.floor(1000 / fps);
+        } else {
+          // reset the framerate
+          yieldInterval = 5;
+        }
+      };
+
+      var performWorkUntilDeadline = function performWorkUntilDeadline() {
+        if (scheduledHostCallback !== null) {
+          var currentTime = exports.unstable_now(); // Yield after `yieldInterval` ms, regardless of where we are in the vsync
+          // cycle. This means there's always time remaining at the beginning of
+          // the message event.
+
+          deadline = currentTime + yieldInterval;
+          var hasTimeRemaining = true;
+
+          try {
+            var hasMoreWork = scheduledHostCallback(hasTimeRemaining, currentTime);
+
+            if (!hasMoreWork) {
+              isMessageLoopRunning = false;
+              scheduledHostCallback = null;
+            } else {
+              // If there's more work, schedule the next message event at the end
+              // of the preceding one.
+              port.postMessage(null);
+            }
+          } catch (error) {
+            // If a scheduler task throws, exit the current browser task so the
+            // error can be observed.
+            port.postMessage(null);
+            throw error;
+          }
+        } else {
+          isMessageLoopRunning = false;
+        } // Yielding to the browser will give it a chance to paint, so we can
+
+      };
+
+      var channel = new MessageChannel();
+      var port = channel.port2;
+      channel.port1.onmessage = performWorkUntilDeadline;
+
+      _requestHostCallback = function _requestHostCallback(callback) {
+        scheduledHostCallback = callback;
+
+        if (!isMessageLoopRunning) {
+          isMessageLoopRunning = true;
+          port.postMessage(null);
+        }
+      };
+
+      requestHostTimeout = function requestHostTimeout(callback, ms) {
+        taskTimeoutID = _setTimeout(function () {
+          callback(exports.unstable_now());
+        }, ms);
+      };
+
+      cancelHostTimeout = function cancelHostTimeout() {
+        _clearTimeout(taskTimeoutID);
+
+        taskTimeoutID = -1;
+      };
+    }
+
+    function push(heap, node) {
+      var index = heap.length;
+      heap.push(node);
+      siftUp(heap, node, index);
+    }
+
+    function peek(heap) {
+      var first = heap[0];
+      return first === undefined ? null : first;
+    }
+
+    function pop(heap) {
+      var first = heap[0];
+
+      if (first !== undefined) {
+        var last = heap.pop();
+
+        if (last !== first) {
+          heap[0] = last;
+          siftDown(heap, last, 0);
+        }
+
+        return first;
+      } else {
+        return null;
+      }
+    }
+
+    function siftUp(heap, node, i) {
+      var index = i;
+
+      while (true) {
+        var parentIndex = index - 1 >>> 1;
+        var parent = heap[parentIndex];
+
+        if (parent !== undefined && compare(parent, node) > 0) {
+          // The parent is larger. Swap positions.
+          heap[parentIndex] = node;
+          heap[index] = parent;
+          index = parentIndex;
+        } else {
+          // The parent is smaller. Exit.
+          return;
+        }
+      }
+    }
+
+    function siftDown(heap, node, i) {
+      var index = i;
+      var length = heap.length;
+
+      while (index < length) {
+        var leftIndex = (index + 1) * 2 - 1;
+        var left = heap[leftIndex];
+        var rightIndex = leftIndex + 1;
+        var right = heap[rightIndex]; // If the left or right node is smaller, swap with the smaller of those.
+
+        if (left !== undefined && compare(left, node) < 0) {
+          if (right !== undefined && compare(right, left) < 0) {
+            heap[index] = right;
+            heap[rightIndex] = node;
+            index = rightIndex;
+          } else {
+            heap[index] = left;
+            heap[leftIndex] = node;
+            index = leftIndex;
+          }
+        } else if (right !== undefined && compare(right, node) < 0) {
+          heap[index] = right;
+          heap[rightIndex] = node;
+          index = rightIndex;
+        } else {
+          // Neither child is smaller. Exit.
+          return;
+        }
+      }
+    }
+
+    function compare(a, b) {
+      // Compare sort index first, then task id.
+      var diff = a.sortIndex - b.sortIndex;
+      return diff !== 0 ? diff : a.id - b.id;
+    } // TODO: Use symbols?
+
+
+    var NoPriority = 0;
+    var ImmediatePriority = 1;
+    var UserBlockingPriority = 2;
+    var NormalPriority = 3;
+    var LowPriority = 4;
+    var IdlePriority = 5;
+    var runIdCounter = 0;
+    var mainThreadIdCounter = 0;
+    var profilingStateSize = 4;
+    var sharedProfilingBuffer = // $FlowFixMe Flow doesn't know about SharedArrayBuffer
+    typeof SharedArrayBuffer === 'function' ? new SharedArrayBuffer(profilingStateSize * Int32Array.BYTES_PER_ELEMENT) : // $FlowFixMe Flow doesn't know about ArrayBuffer
+    typeof ArrayBuffer === 'function' ? new ArrayBuffer(profilingStateSize * Int32Array.BYTES_PER_ELEMENT) : null // Don't crash the init path on IE9
+    ;
+    var profilingState = sharedProfilingBuffer !== null ? new Int32Array(sharedProfilingBuffer) : []; // We can't read this but it helps save bytes for null checks
+
+    var PRIORITY = 0;
+    var CURRENT_TASK_ID = 1;
+    var CURRENT_RUN_ID = 2;
+    var QUEUE_SIZE = 3;
+    {
+      profilingState[PRIORITY] = NoPriority; // This is maintained with a counter, because the size of the priority queue
+      // array might include canceled tasks.
+
+      profilingState[QUEUE_SIZE] = 0;
+      profilingState[CURRENT_TASK_ID] = 0;
+    } // Bytes per element is 4
+
+    var INITIAL_EVENT_LOG_SIZE = 131072;
+    var MAX_EVENT_LOG_SIZE = 524288; // Equivalent to 2 megabytes
+
+    var eventLogSize = 0;
+    var eventLogBuffer = null;
+    var eventLog = null;
+    var eventLogIndex = 0;
+    var TaskStartEvent = 1;
+    var TaskCompleteEvent = 2;
+    var TaskErrorEvent = 3;
+    var TaskCancelEvent = 4;
+    var TaskRunEvent = 5;
+    var TaskYieldEvent = 6;
+    var SchedulerSuspendEvent = 7;
+    var SchedulerResumeEvent = 8;
+
+    function logEvent(entries) {
+      if (eventLog !== null) {
+        var offset = eventLogIndex;
+        eventLogIndex += entries.length;
+
+        if (eventLogIndex + 1 > eventLogSize) {
+          eventLogSize *= 2;
+
+          if (eventLogSize > MAX_EVENT_LOG_SIZE) {
+            // Using console['error'] to evade Babel and ESLint
+            console['error']("Scheduler Profiling: Event log exceeded maximum size. Don't " + 'forget to call `stopLoggingProfilingEvents()`.');
+            stopLoggingProfilingEvents();
+            return;
+          }
+
+          var newEventLog = new Int32Array(eventLogSize * 4);
+          newEventLog.set(eventLog);
+          eventLogBuffer = newEventLog.buffer;
+          eventLog = newEventLog;
+        }
+
+        eventLog.set(entries, offset);
+      }
+    }
+
+    function startLoggingProfilingEvents() {
+      eventLogSize = INITIAL_EVENT_LOG_SIZE;
+      eventLogBuffer = new ArrayBuffer(eventLogSize * 4);
+      eventLog = new Int32Array(eventLogBuffer);
+      eventLogIndex = 0;
+    }
+
+    function stopLoggingProfilingEvents() {
+      var buffer = eventLogBuffer;
+      eventLogSize = 0;
+      eventLogBuffer = null;
+      eventLog = null;
+      eventLogIndex = 0;
+      return buffer;
+    }
+
+    function markTaskStart(task, ms) {
+      {
+        profilingState[QUEUE_SIZE]++;
+
+        if (eventLog !== null) {
+          // performance.now returns a float, representing milliseconds. When the
+          // event is logged, it's coerced to an int. Convert to microseconds to
+          // maintain extra degrees of precision.
+          logEvent([TaskStartEvent, ms * 1000, task.id, task.priorityLevel]);
+        }
+      }
+    }
+
+    function markTaskCompleted(task, ms) {
+      {
+        profilingState[PRIORITY] = NoPriority;
+        profilingState[CURRENT_TASK_ID] = 0;
+        profilingState[QUEUE_SIZE]--;
+
+        if (eventLog !== null) {
+          logEvent([TaskCompleteEvent, ms * 1000, task.id]);
+        }
+      }
+    }
+
+    function markTaskCanceled(task, ms) {
+      {
+        profilingState[QUEUE_SIZE]--;
+
+        if (eventLog !== null) {
+          logEvent([TaskCancelEvent, ms * 1000, task.id]);
+        }
+      }
+    }
+
+    function markTaskErrored(task, ms) {
+      {
+        profilingState[PRIORITY] = NoPriority;
+        profilingState[CURRENT_TASK_ID] = 0;
+        profilingState[QUEUE_SIZE]--;
+
+        if (eventLog !== null) {
+          logEvent([TaskErrorEvent, ms * 1000, task.id]);
+        }
+      }
+    }
+
+    function markTaskRun(task, ms) {
+      {
+        runIdCounter++;
+        profilingState[PRIORITY] = task.priorityLevel;
+        profilingState[CURRENT_TASK_ID] = task.id;
+        profilingState[CURRENT_RUN_ID] = runIdCounter;
+
+        if (eventLog !== null) {
+          logEvent([TaskRunEvent, ms * 1000, task.id, runIdCounter]);
+        }
+      }
+    }
+
+    function markTaskYield(task, ms) {
+      {
+        profilingState[PRIORITY] = NoPriority;
+        profilingState[CURRENT_TASK_ID] = 0;
+        profilingState[CURRENT_RUN_ID] = 0;
+
+        if (eventLog !== null) {
+          logEvent([TaskYieldEvent, ms * 1000, task.id, runIdCounter]);
+        }
+      }
+    }
+
+    function markSchedulerSuspended(ms) {
+      {
+        mainThreadIdCounter++;
+
+        if (eventLog !== null) {
+          logEvent([SchedulerSuspendEvent, ms * 1000, mainThreadIdCounter]);
+        }
+      }
+    }
+
+    function markSchedulerUnsuspended(ms) {
+      {
+        if (eventLog !== null) {
+          logEvent([SchedulerResumeEvent, ms * 1000, mainThreadIdCounter]);
+        }
+      }
+    }
+    /* eslint-disable no-var */
+    // Math.pow(2, 30) - 1
+    // 0b111111111111111111111111111111
+
+
+    var maxSigned31BitInt = 1073741823; // Times out immediately
+
+    var IMMEDIATE_PRIORITY_TIMEOUT = -1; // Eventually times out
+
+    var USER_BLOCKING_PRIORITY = 250;
+    var NORMAL_PRIORITY_TIMEOUT = 5000;
+    var LOW_PRIORITY_TIMEOUT = 10000; // Never times out
+
+    var IDLE_PRIORITY = maxSigned31BitInt; // Tasks are stored on a min heap
+
+    var taskQueue = [];
+    var timerQueue = []; // Incrementing id counter. Used to maintain insertion order.
+
+    var taskIdCounter = 1; // Pausing the scheduler is useful for debugging.
+
+    var currentTask = null;
+    var currentPriorityLevel = NormalPriority; // This is set while performing work, to prevent re-entrancy.
+
+    var isPerformingWork = false;
+    var isHostCallbackScheduled = false;
+    var isHostTimeoutScheduled = false;
+
+    function advanceTimers(currentTime) {
+      // Check for tasks that are no longer delayed and add them to the queue.
+      var timer = peek(timerQueue);
+
+      while (timer !== null) {
+        if (timer.callback === null) {
+          // Timer was cancelled.
+          pop(timerQueue);
+        } else if (timer.startTime <= currentTime) {
+          // Timer fired. Transfer to the task queue.
+          pop(timerQueue);
+          timer.sortIndex = timer.expirationTime;
+          push(taskQueue, timer);
+          {
+            markTaskStart(timer, currentTime);
+            timer.isQueued = true;
+          }
+        } else {
+          // Remaining timers are pending.
+          return;
+        }
+
+        timer = peek(timerQueue);
+      }
+    }
+
+    function handleTimeout(currentTime) {
+      isHostTimeoutScheduled = false;
+      advanceTimers(currentTime);
+
+      if (!isHostCallbackScheduled) {
+        if (peek(taskQueue) !== null) {
+          isHostCallbackScheduled = true;
+
+          _requestHostCallback(flushWork);
+        } else {
+          var firstTimer = peek(timerQueue);
+
+          if (firstTimer !== null) {
+            requestHostTimeout(handleTimeout, firstTimer.startTime - currentTime);
+          }
+        }
+      }
+    }
+
+    function flushWork(hasTimeRemaining, initialTime) {
+      {
+        markSchedulerUnsuspended(initialTime);
+      } // We'll need a host callback the next time work is scheduled.
+
+      isHostCallbackScheduled = false;
+
+      if (isHostTimeoutScheduled) {
+        // We scheduled a timeout but it's no longer needed. Cancel it.
+        isHostTimeoutScheduled = false;
+        cancelHostTimeout();
+      }
+
+      isPerformingWork = true;
+      var previousPriorityLevel = currentPriorityLevel;
+
+      try {
+        if (enableProfiling) {
+          try {
+            return workLoop(hasTimeRemaining, initialTime);
+          } catch (error) {
+            if (currentTask !== null) {
+              var currentTime = exports.unstable_now();
+              markTaskErrored(currentTask, currentTime);
+              currentTask.isQueued = false;
+            }
+
+            throw error;
+          }
+        } else {
+          // No catch in prod codepath.
+          return workLoop(hasTimeRemaining, initialTime);
+        }
+      } finally {
+        currentTask = null;
+        currentPriorityLevel = previousPriorityLevel;
+        isPerformingWork = false;
+        {
+          var _currentTime = exports.unstable_now();
+
+          markSchedulerSuspended(_currentTime);
+        }
+      }
+    }
+
+    function workLoop(hasTimeRemaining, initialTime) {
+      var currentTime = initialTime;
+      advanceTimers(currentTime);
+      currentTask = peek(taskQueue);
+
+      while (currentTask !== null && !enableSchedulerDebugging) {
+        if (currentTask.expirationTime > currentTime && (!hasTimeRemaining || shouldYieldToHost())) {
+          // This currentTask hasn't expired, and we've reached the deadline.
+          break;
+        }
+
+        var callback = currentTask.callback;
+
+        if (callback !== null) {
+          currentTask.callback = null;
+          currentPriorityLevel = currentTask.priorityLevel;
+          var didUserCallbackTimeout = currentTask.expirationTime <= currentTime;
+          markTaskRun(currentTask, currentTime);
+          var continuationCallback = callback(didUserCallbackTimeout);
+          currentTime = exports.unstable_now();
+
+          if (typeof continuationCallback === 'function') {
+            currentTask.callback = continuationCallback;
+            markTaskYield(currentTask, currentTime);
+          } else {
+            {
+              markTaskCompleted(currentTask, currentTime);
+              currentTask.isQueued = false;
+            }
+
+            if (currentTask === peek(taskQueue)) {
+              pop(taskQueue);
+            }
+          }
+
+          advanceTimers(currentTime);
+        } else {
+          pop(taskQueue);
+        }
+
+        currentTask = peek(taskQueue);
+      } // Return whether there's additional work
+
+
+      if (currentTask !== null) {
+        return true;
+      } else {
+        var firstTimer = peek(timerQueue);
+
+        if (firstTimer !== null) {
+          requestHostTimeout(handleTimeout, firstTimer.startTime - currentTime);
+        }
+
+        return false;
+      }
+    }
+
+    function unstable_runWithPriority(priorityLevel, eventHandler) {
+      switch (priorityLevel) {
+        case ImmediatePriority:
+        case UserBlockingPriority:
+        case NormalPriority:
+        case LowPriority:
+        case IdlePriority:
+          break;
+
+        default:
+          priorityLevel = NormalPriority;
+      }
+
+      var previousPriorityLevel = currentPriorityLevel;
+      currentPriorityLevel = priorityLevel;
+
+      try {
+        return eventHandler();
+      } finally {
+        currentPriorityLevel = previousPriorityLevel;
+      }
+    }
+
+    function unstable_next(eventHandler) {
+      var priorityLevel;
+
+      switch (currentPriorityLevel) {
+        case ImmediatePriority:
+        case UserBlockingPriority:
+        case NormalPriority:
+          // Shift down to normal priority
+          priorityLevel = NormalPriority;
+          break;
+
+        default:
+          // Anything lower than normal priority should remain at the current level.
+          priorityLevel = currentPriorityLevel;
+          break;
+      }
+
+      var previousPriorityLevel = currentPriorityLevel;
+      currentPriorityLevel = priorityLevel;
+
+      try {
+        return eventHandler();
+      } finally {
+        currentPriorityLevel = previousPriorityLevel;
+      }
+    }
+
+    function unstable_wrapCallback(callback) {
+      var parentPriorityLevel = currentPriorityLevel;
+      return function () {
+        // This is a fork of runWithPriority, inlined for performance.
+        var previousPriorityLevel = currentPriorityLevel;
+        currentPriorityLevel = parentPriorityLevel;
+
+        try {
+          return callback.apply(this, arguments);
+        } finally {
+          currentPriorityLevel = previousPriorityLevel;
+        }
+      };
+    }
+
+    function timeoutForPriorityLevel(priorityLevel) {
+      switch (priorityLevel) {
+        case ImmediatePriority:
+          return IMMEDIATE_PRIORITY_TIMEOUT;
+
+        case UserBlockingPriority:
+          return USER_BLOCKING_PRIORITY;
+
+        case IdlePriority:
+          return IDLE_PRIORITY;
+
+        case LowPriority:
+          return LOW_PRIORITY_TIMEOUT;
+
+        case NormalPriority:
+        default:
+          return NORMAL_PRIORITY_TIMEOUT;
+      }
+    }
+
+    function unstable_scheduleCallback(priorityLevel, callback, options) {
+      var currentTime = exports.unstable_now();
+      var startTime;
+      var timeout;
+
+      if (_typeof(options) === 'object' && options !== null) {
+        var delay = options.delay;
+
+        if (typeof delay === 'number' && delay > 0) {
+          startTime = currentTime + delay;
+        } else {
+          startTime = currentTime;
+        }
+
+        timeout = typeof options.timeout === 'number' ? options.timeout : timeoutForPriorityLevel(priorityLevel);
+      } else {
+        timeout = timeoutForPriorityLevel(priorityLevel);
+        startTime = currentTime;
+      }
+
+      var expirationTime = startTime + timeout;
+      var newTask = {
+        id: taskIdCounter++,
+        callback: callback,
+        priorityLevel: priorityLevel,
+        startTime: startTime,
+        expirationTime: expirationTime,
+        sortIndex: -1
+      };
+      {
+        newTask.isQueued = false;
+      }
+
+      if (startTime > currentTime) {
+        // This is a delayed task.
+        newTask.sortIndex = startTime;
+        push(timerQueue, newTask);
+
+        if (peek(taskQueue) === null && newTask === peek(timerQueue)) {
+          // All tasks are delayed, and this is the task with the earliest delay.
+          if (isHostTimeoutScheduled) {
+            // Cancel an existing timeout.
+            cancelHostTimeout();
+          } else {
+            isHostTimeoutScheduled = true;
+          } // Schedule a timeout.
+
+
+          requestHostTimeout(handleTimeout, startTime - currentTime);
+        }
+      } else {
+        newTask.sortIndex = expirationTime;
+        push(taskQueue, newTask);
+        {
+          markTaskStart(newTask, currentTime);
+          newTask.isQueued = true;
+        } // Schedule a host callback, if needed. If we're already performing work,
+        // wait until the next time we yield.
+
+        if (!isHostCallbackScheduled && !isPerformingWork) {
+          isHostCallbackScheduled = true;
+
+          _requestHostCallback(flushWork);
+        }
+      }
+
+      return newTask;
+    }
+
+    function unstable_pauseExecution() {}
+
+    function unstable_continueExecution() {
+      if (!isHostCallbackScheduled && !isPerformingWork) {
+        isHostCallbackScheduled = true;
+
+        _requestHostCallback(flushWork);
+      }
+    }
+
+    function unstable_getFirstCallbackNode() {
+      return peek(taskQueue);
+    }
+
+    function unstable_cancelCallback(task) {
+      {
+        if (task.isQueued) {
+          var currentTime = exports.unstable_now();
+          markTaskCanceled(task, currentTime);
+          task.isQueued = false;
+        }
+      } // Null out the callback to indicate the task has been canceled. (Can't
+      // remove from the queue because you can't remove arbitrary nodes from an
+      // array based heap, only the first one.)
+
+      task.callback = null;
+    }
+
+    function unstable_getCurrentPriorityLevel() {
+      return currentPriorityLevel;
+    }
+
+    function unstable_shouldYield() {
+      var currentTime = exports.unstable_now();
+      advanceTimers(currentTime);
+      var firstTask = peek(taskQueue);
+      return firstTask !== currentTask && currentTask !== null && firstTask !== null && firstTask.callback !== null && firstTask.startTime <= currentTime && firstTask.expirationTime < currentTask.expirationTime || shouldYieldToHost();
+    }
+
+    var unstable_requestPaint = requestPaint;
+    var unstable_Profiling = {
+      startLoggingProfilingEvents: startLoggingProfilingEvents,
+      stopLoggingProfilingEvents: stopLoggingProfilingEvents,
+      sharedProfilingBuffer: sharedProfilingBuffer
+    };
+    exports.unstable_IdlePriority = IdlePriority;
+    exports.unstable_ImmediatePriority = ImmediatePriority;
+    exports.unstable_LowPriority = LowPriority;
+    exports.unstable_NormalPriority = NormalPriority;
+    exports.unstable_Profiling = unstable_Profiling;
+    exports.unstable_UserBlockingPriority = UserBlockingPriority;
+    exports.unstable_cancelCallback = unstable_cancelCallback;
+    exports.unstable_continueExecution = unstable_continueExecution;
+    exports.unstable_getCurrentPriorityLevel = unstable_getCurrentPriorityLevel;
+    exports.unstable_getFirstCallbackNode = unstable_getFirstCallbackNode;
+    exports.unstable_next = unstable_next;
+    exports.unstable_pauseExecution = unstable_pauseExecution;
+    exports.unstable_requestPaint = unstable_requestPaint;
+    exports.unstable_runWithPriority = unstable_runWithPriority;
+    exports.unstable_scheduleCallback = unstable_scheduleCallback;
+    exports.unstable_shouldYield = unstable_shouldYield;
+    exports.unstable_wrapCallback = unstable_wrapCallback;
+  })();
+}
+
+/***/ }),
+
+/***/ "./node_modules/scheduler/index.js":
+/*!*****************************************!*\
+  !*** ./node_modules/scheduler/index.js ***!
+  \*****************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+if (false) {} else {
+  module.exports = __webpack_require__(/*! ./cjs/scheduler.development.js */ "./node_modules/scheduler/cjs/scheduler.development.js");
+}
+
+/***/ }),
+
+/***/ "./node_modules/scheduler/tracing.js":
+/*!*******************************************!*\
+  !*** ./node_modules/scheduler/tracing.js ***!
+  \*******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+if (false) {} else {
+  module.exports = __webpack_require__(/*! ./cjs/scheduler-tracing.development.js */ "./node_modules/scheduler/cjs/scheduler-tracing.development.js");
+}
+
+/***/ }),
+
 /***/ "./node_modules/tslib/tslib.es6.js":
 /*!*****************************************!*\
   !*** ./node_modules/tslib/tslib.es6.js ***!
@@ -15024,11 +16919,12 @@ if (false) {} else {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "__extends": () => (/* binding */ __extends),
 /* harmony export */   "__assign": () => (/* binding */ _assign),
+/* harmony export */   "__rest": () => (/* binding */ __rest),
 /* harmony export */   "__values": () => (/* binding */ __values),
 /* harmony export */   "__read": () => (/* binding */ __read),
 /* harmony export */   "__spread": () => (/* binding */ __spread)
 /* harmony export */ });
-/* unused harmony exports __rest, __decorate, __param, __metadata, __awaiter, __generator, __exportStar, __spreadArrays, __await, __asyncGenerator, __asyncDelegator, __asyncValues, __makeTemplateObject, __importStar, __importDefault */
+/* unused harmony exports __decorate, __param, __metadata, __awaiter, __generator, __exportStar, __spreadArrays, __await, __asyncGenerator, __asyncDelegator, __asyncValues, __makeTemplateObject, __importStar, __importDefault */
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 /*! *****************************************************************************
@@ -15436,4 +17332,4 @@ function __importDefault(mod) {
 /***/ })
 
 }]);
-//# sourceMappingURL=chunk-vendors.682db938.bundle.js.map
+//# sourceMappingURL=chunk-vendors.e5e018df.bundle.js.map

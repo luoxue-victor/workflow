@@ -1,15 +1,27 @@
-## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.4.0...v1.0.9) (2021-04-01)
+## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.4.1...v1.0.9) (2021-04-01)
+## [1.4.1](https://github.com/luoxue-victor/learn_webpack/compare/v1.4.0...v1.4.1) (2021-04-01)
+
+范围|描述|commitId
+--|--|--
+ - | v1.4.1 | [bb6ed05](https://github.com/luoxue-victor/learn_webpack/commit/bb6ed05)
+
+
+### 🐛 Bug 修复
+范围|描述|commitId
+--|--|--
+ webpack-box | 优化build | [083cc98](https://github.com/luoxue-victor/learn_webpack/commit/083cc98)
+
 # [1.4.0](https://github.com/luoxue-victor/learn_webpack/compare/v1.3.3...v1.4.0) (2021-04-01)
 
 范围|描述|commitId
 --|--|--
- v1.4.0 | [cf2072f](https://github.com/luoxue-victor/learn_webpack/commit/cf2072f)
+ - | v1.4.0 | [cf2072f](https://github.com/luoxue-victor/learn_webpack/commit/cf2072f)
 
 
 ### 🌟 新功能
 范围|描述|commitId
 --|--|--
- 优化cli | [4eff3f3](https://github.com/luoxue-victor/learn_webpack/commit/4eff3f3)
+ - | 优化cli | [4eff3f3](https://github.com/luoxue-victor/learn_webpack/commit/4eff3f3)
 
 
 ### 🐛 Bug 修复
@@ -28,7 +40,7 @@
 
 范围|描述|commitId
 --|--|--
- v1.3.3 | [d46e9c8](https://github.com/luoxue-victor/learn_webpack/commit/d46e9c8)
+ - | v1.3.3 | [d46e9c8](https://github.com/luoxue-victor/learn_webpack/commit/d46e9c8)
 
 
 ### 🌟 新功能
@@ -40,7 +52,7 @@
 
 范围|描述|commitId
 --|--|--
- v1.3.2 | [fadee3e](https://github.com/luoxue-victor/learn_webpack/commit/fadee3e)
+ - | v1.3.2 | [fadee3e](https://github.com/luoxue-victor/learn_webpack/commit/fadee3e)
 
 
 ### 🐛 Bug 修复
@@ -52,7 +64,7 @@
 
 范围|描述|commitId
 --|--|--
- v1.3.1 | [f3c56d9](https://github.com/luoxue-victor/learn_webpack/commit/f3c56d9)
+ - | v1.3.1 | [f3c56d9](https://github.com/luoxue-victor/learn_webpack/commit/f3c56d9)
 
 
 ### 🌟 新功能
@@ -70,7 +82,7 @@
 
 范围|描述|commitId
 --|--|--
- v1.3.0 | [5d7d4e2](https://github.com/luoxue-victor/learn_webpack/commit/5d7d4e2)
+ - | v1.3.0 | [5d7d4e2](https://github.com/luoxue-victor/learn_webpack/commit/5d7d4e2)
 
 
 ### 🐛 Bug 修复
@@ -82,7 +94,7 @@
 
 范围|描述|commitId
 --|--|--
- v1.2.18 | [9c0313c](https://github.com/luoxue-victor/learn_webpack/commit/9c0313c)
+ - | v1.2.18 | [9c0313c](https://github.com/luoxue-victor/learn_webpack/commit/9c0313c)
 
 
 ### 🌟 新功能
@@ -100,7 +112,7 @@
 
 范围|描述|commitId
 --|--|--
- v1.2.16 | [4f253e3](https://github.com/luoxue-victor/learn_webpack/commit/4f253e3)
+ - | v1.2.16 | [4f253e3](https://github.com/luoxue-victor/learn_webpack/commit/4f253e3)
 
 
 ### 🌟 新功能
@@ -113,7 +125,7 @@
 
 范围|描述|commitId
 --|--|--
- v1.2.15 | [edee920](https://github.com/luoxue-victor/learn_webpack/commit/edee920)
+ - | v1.2.15 | [edee920](https://github.com/luoxue-victor/learn_webpack/commit/edee920)
 
 
 ### 🔨 代码重构
@@ -125,7 +137,7 @@
 
 范围|描述|commitId
 --|--|--
- v1.2.14 | [3105af2](https://github.com/luoxue-victor/learn_webpack/commit/3105af2)
+ - | v1.2.14 | [3105af2](https://github.com/luoxue-victor/learn_webpack/commit/3105af2)
 
 
 ### 🐛 Bug 修复
@@ -166,7 +178,7 @@
 
 范围|描述|commitId
 --|--|--
- v1.2.13 | [e317bc7](https://github.com/luoxue-victor/learn_webpack/commit/e317bc7)
+ - | v1.2.13 | [e317bc7](https://github.com/luoxue-victor/learn_webpack/commit/e317bc7)
 
 
 ### 🌟 新功能
@@ -197,13 +209,13 @@
 ### chore
 范围|描述|commitId
 --|--|--
- 合并代码 | [dfdc68f](https://github.com/luoxue-victor/learn_webpack/commit/dfdc68f)
+ - | 合并代码 | [dfdc68f](https://github.com/luoxue-victor/learn_webpack/commit/dfdc68f)
 
 ## [1.2.12](https://github.com/luoxue-victor/learn_webpack/compare/v1.2.11...v1.2.12) (2019-12-27)
 
 范围|描述|commitId
 --|--|--
- v1.2.12 | [12fcb8f](https://github.com/luoxue-victor/learn_webpack/commit/12fcb8f)
+ - | v1.2.12 | [12fcb8f](https://github.com/luoxue-victor/learn_webpack/commit/12fcb8f)
 
 
 ### 🌟 新功能
@@ -215,7 +227,7 @@
 
 范围|描述|commitId
 --|--|--
- v1.2.11 | [6be2344](https://github.com/luoxue-victor/learn_webpack/commit/6be2344)
+ - | v1.2.11 | [6be2344](https://github.com/luoxue-victor/learn_webpack/commit/6be2344)
 
 
 ### 🌟 新功能
@@ -234,7 +246,7 @@
 
 范围|描述|commitId
 --|--|--
- v1.2.10 | [c42188a](https://github.com/luoxue-victor/learn_webpack/commit/c42188a)
+ - | v1.2.10 | [c42188a](https://github.com/luoxue-victor/learn_webpack/commit/c42188a)
 
 
 ### 🌟 新功能
@@ -252,7 +264,7 @@
 
 范围|描述|commitId
 --|--|--
- v1.2.9 | [6672864](https://github.com/luoxue-victor/learn_webpack/commit/6672864)
+ - | v1.2.9 | [6672864](https://github.com/luoxue-victor/learn_webpack/commit/6672864)
 
 
 ### 🐛 Bug 修复
@@ -273,7 +285,7 @@
 
 范围|描述|commitId
 --|--|--
- v1.2.8 | [0c8a592](https://github.com/luoxue-victor/learn_webpack/commit/0c8a592)
+ - | v1.2.8 | [0c8a592](https://github.com/luoxue-victor/learn_webpack/commit/0c8a592)
 
 
 ### 🌟 新功能
@@ -291,7 +303,7 @@
 
 范围|描述|commitId
 --|--|--
- v1.2.7 | [752a9ae](https://github.com/luoxue-victor/learn_webpack/commit/752a9ae)
+ - | v1.2.7 | [752a9ae](https://github.com/luoxue-victor/learn_webpack/commit/752a9ae)
 
 
 ### 🐛 Bug 修复
@@ -303,7 +315,7 @@
 
 范围|描述|commitId
 --|--|--
- v1.2.6 | [154d425](https://github.com/luoxue-victor/learn_webpack/commit/154d425)
+ - | v1.2.6 | [154d425](https://github.com/luoxue-victor/learn_webpack/commit/154d425)
 
 
 ### 🐛 Bug 修复
@@ -315,7 +327,7 @@
 
 范围|描述|commitId
 --|--|--
- v1.2.5 | [593203e](https://github.com/luoxue-victor/learn_webpack/commit/593203e)
+ - | v1.2.5 | [593203e](https://github.com/luoxue-victor/learn_webpack/commit/593203e)
 
 
 ### 🌟 新功能
@@ -327,7 +339,7 @@
 
 范围|描述|commitId
 --|--|--
- v1.2.4 | [108355e](https://github.com/luoxue-victor/learn_webpack/commit/108355e)
+ - | v1.2.4 | [108355e](https://github.com/luoxue-victor/learn_webpack/commit/108355e)
 
 
 ### 🌟 新功能
@@ -357,7 +369,7 @@
 
 范围|描述|commitId
 --|--|--
- v1.2.3 | [94524bf](https://github.com/luoxue-victor/learn_webpack/commit/94524bf)
+ - | v1.2.3 | [94524bf](https://github.com/luoxue-victor/learn_webpack/commit/94524bf)
 
 
 ### 🌟 新功能
@@ -369,7 +381,7 @@
 
 范围|描述|commitId
 --|--|--
- v1.2.2 | [5bac953](https://github.com/luoxue-victor/learn_webpack/commit/5bac953)
+ - | v1.2.2 | [5bac953](https://github.com/luoxue-victor/learn_webpack/commit/5bac953)
 
 
 ### 🌟 新功能
@@ -381,7 +393,7 @@
 
 范围|描述|commitId
 --|--|--
- v1.2.1 | [9ad9441](https://github.com/luoxue-victor/learn_webpack/commit/9ad9441)
+ - | v1.2.1 | [9ad9441](https://github.com/luoxue-victor/learn_webpack/commit/9ad9441)
 
 
 ### 🐛 Bug 修复
@@ -394,7 +406,7 @@
 
 范围|描述|commitId
 --|--|--
- v1.0.5 | [1c9bcfb](https://github.com/luoxue-victor/learn_webpack/commit/1c9bcfb)
+ - | v1.0.5 | [1c9bcfb](https://github.com/luoxue-victor/learn_webpack/commit/1c9bcfb)
 
 
 ### 🌟 新功能
@@ -406,7 +418,7 @@
 
 范围|描述|commitId
 --|--|--
- v1.0.4 | [fa6d07b](https://github.com/luoxue-victor/learn_webpack/commit/fa6d07b)
+ - | v1.0.4 | [fa6d07b](https://github.com/luoxue-victor/learn_webpack/commit/fa6d07b)
 
 
 ### 🐛 Bug 修复
@@ -418,7 +430,7 @@
 
 范围|描述|commitId
 --|--|--
- v1.0.3 | [55a01c1](https://github.com/luoxue-victor/learn_webpack/commit/55a01c1)
+ - | v1.0.3 | [55a01c1](https://github.com/luoxue-victor/learn_webpack/commit/55a01c1)
 
 
 ### 🌟 新功能
@@ -430,8 +442,8 @@
 
 范围|描述|commitId
 --|--|--
- v1.0.2 | [cb9c2a5](https://github.com/luoxue-victor/learn_webpack/commit/cb9c2a5)
- :speech_balloon: 添加注释 | [2c2586d](https://github.com/luoxue-victor/learn_webpack/commit/2c2586d)
+ - | v1.0.2 | [cb9c2a5](https://github.com/luoxue-victor/learn_webpack/commit/cb9c2a5)
+ - | :speech_balloon: 添加注释 | [2c2586d](https://github.com/luoxue-victor/learn_webpack/commit/2c2586d)
 
 
 ### 🌟 新功能
@@ -444,7 +456,7 @@
  test | 测试 eslint | [2a418b9](https://github.com/luoxue-victor/learn_webpack/commit/2a418b9)
  test2 | 测试 lint-staged | [054e0f9](https://github.com/luoxue-victor/learn_webpack/commit/054e0f9)
  目录 | 整理目录，使结构看起来更加合理 | [f270fee](https://github.com/luoxue-victor/learn_webpack/commit/f270fee)
- 增加react配置 | [76c0fe1](https://github.com/luoxue-victor/learn_webpack/commit/76c0fe1), closes [#8](https://github.com/luoxue-victor/learn_webpack/issues/8)
+ - | 增加react配置 | [76c0fe1](https://github.com/luoxue-victor/learn_webpack/commit/76c0fe1), closes [#8](https://github.com/luoxue-victor/learn_webpack/issues/8)
 
 
 ### 🎨 代码样式
@@ -495,14 +507,14 @@
 
 范围|描述|commitId
 --|--|--
- v1.0.1 | [d0a4a41](https://github.com/luoxue-victor/learn_webpack/commit/d0a4a41)
- Create nodejs.yml | [7268a79](https://github.com/luoxue-victor/learn_webpack/commit/7268a79)
- Update README.md | [87ef92f](https://github.com/luoxue-victor/learn_webpack/commit/87ef92f)
- Update 课时-14.md | [6e4c579](https://github.com/luoxue-victor/learn_webpack/commit/6e4c579)
- Update README.md | [3ebdc06](https://github.com/luoxue-victor/learn_webpack/commit/3ebdc06)
- Delete .DS_Store | [b9d18cd](https://github.com/luoxue-victor/learn_webpack/commit/b9d18cd)
- dev,build 命令descreiption错误 | [b47f016](https://github.com/luoxue-victor/learn_webpack/commit/b47f016)
- Initial commit | [18fbebf](https://github.com/luoxue-victor/learn_webpack/commit/18fbebf)
+ - | v1.0.1 | [d0a4a41](https://github.com/luoxue-victor/learn_webpack/commit/d0a4a41)
+ - | Create nodejs.yml | [7268a79](https://github.com/luoxue-victor/learn_webpack/commit/7268a79)
+ - | Update README.md | [87ef92f](https://github.com/luoxue-victor/learn_webpack/commit/87ef92f)
+ - | Update 课时-14.md | [6e4c579](https://github.com/luoxue-victor/learn_webpack/commit/6e4c579)
+ - | Update README.md | [3ebdc06](https://github.com/luoxue-victor/learn_webpack/commit/3ebdc06)
+ - | Delete .DS_Store | [b9d18cd](https://github.com/luoxue-victor/learn_webpack/commit/b9d18cd)
+ - | dev,build 命令descreiption错误 | [b47f016](https://github.com/luoxue-victor/learn_webpack/commit/b47f016)
+ - | Initial commit | [18fbebf](https://github.com/luoxue-victor/learn_webpack/commit/18fbebf)
 
 
 ### 🌟 新功能
@@ -549,9 +561,9 @@
  新增loader配置 | 增加ts、css、less、sass、postcss、babel配置 | [53616f8](https://github.com/luoxue-victor/learn_webpack/commit/53616f8)
  编译 | 提升编译速度，增加了 cache-loader dllPlugin threadLoader | [4d44ad7](https://github.com/luoxue-victor/learn_webpack/commit/4d44ad7)
  课题2 | 完成基本构建，js、css打包进html，实现dev跟build环境 | [71a6a19](https://github.com/luoxue-victor/learn_webpack/commit/71a6a19)
- asasdasasd | [8f9515f](https://github.com/luoxue-victor/learn_webpack/commit/8f9515f)
- asd | [d278787](https://github.com/luoxue-victor/learn_webpack/commit/d278787)
- 你好 | [6e534da](https://github.com/luoxue-victor/learn_webpack/commit/6e534da)
+ - | asasdasasd | [8f9515f](https://github.com/luoxue-victor/learn_webpack/commit/8f9515f)
+ - | asd | [d278787](https://github.com/luoxue-victor/learn_webpack/commit/d278787)
+ - | 你好 | [6e534da](https://github.com/luoxue-victor/learn_webpack/commit/6e534da)
 
 
 ### 🐛 Bug 修复

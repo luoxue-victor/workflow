@@ -137,11 +137,18 @@ var Bar = function Bar() {
 /*!********************************************!*\
   !*** ./packages/react/template/index.scss ***!
   \********************************************/
-/***/ (() => {
+/***/ ((module, __unused_webpack___webpack_exports__, __webpack_require__) => {
 
 "use strict";
 // extracted by mini-css-extract-plugin
 
+    if(true) {
+      // 1617259312084
+      var cssReload = __webpack_require__(/*! ./node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js */ "./node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js")(module.id, {"publicPath":"../","locals":false});
+      module.hot.dispose(cssReload);
+      module.hot.accept(undefined, cssReload);
+    }
+  
 
 /***/ })
 
@@ -154,4 +161,4 @@ var Bar = function Bar() {
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);
-//# sourceMappingURL=index2.1dbb25f3.bundle.js.map
+//# sourceMappingURL=index2.b315e842.bundle.js.map

@@ -21,6 +21,14 @@ program
   })
 
 program
+  .command('update')
+  .description('更新项目依赖')
+  .action((cmd) => {
+    const options = cleanArgs(cmd)
+    require('../lib/update')(options)
+  })
+
+program
   .command('add [plugin] [pluginOptions]')
   .description('安装插件并在已创建的项目中调用其生成器')
   .option('--registry <url>', '安装依赖项时使用指定的npm注册表(仅适用于npm)')
@@ -39,15 +47,6 @@ program
       const creator = new Creator(name, targetDir, getPromptModules())
       await creator.create({})
     }
-  })
-
-program
-  .command('invoke <plugin> [pluginOptions]')
-  .description('安装插件并在已创建的项目中调用其生成器')
-  .option('--registry <url>', '安装依赖项时使用指定的npm注册表(仅适用于npm)')
-  .allowUnknownOption()
-  .action((plugin) => {
-    require('../lib/invoke')(plugin, minimist(process.argv.slice(3)))
   })
 
 program
