@@ -3,21 +3,7 @@
 <details open=“open”>
  <summary>点击关闭/打开安装</summary><br/>
 
-#### 1. 全局脚手架安装及使用
-
-脚手架主要针对所有项目的管理，甚至可以针对任何非本工程的项目使用
-
-```bash
-# 全局安装
-npm i -g @pkb/cli # 全局安装使用
-
-pk create <project-name> # 创建项目（待完善）
-pk add <plugin> # 安装插件
-pk info # 查看项目及系统配置
-pk upgrade [filter] # 检查升级 npm 版本
-```
-
-#### 2. webpack-box 配置安装及开发
+#### webpack-box 配置安装及开发
 
 `webpack-box` 针对某个项目使用，可以在本地 `npm script` 内使用，也可以全局使用
 
