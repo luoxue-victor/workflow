@@ -1,8 +1,11 @@
 #!/usr/bin/env node
 const { chalk, semver } = require('@pkb/shared-utils')
 const didYouMean = require('didyoumean')
-const minimist = require('minimist')
 const program = require('commander')
+const path = require('path')
+const fs = require('fs')
+const LOG = require('../lib/tools/log')
+const execSync = require('child_process').execSync
 
 didYouMean.threshold = 0.6
 
@@ -12,64 +15,19 @@ program
   .version(`@pkb/cli ${require('../package.json').version}`)
   .usage('<command> [options]')
 
-program
-  .command('create <app-name>')
-  .description('创建一个项目')
-  .action((name, cmd) => {
-    const options = cleanArgs(cmd)
-    require('../lib/create')(name, options)
-  })
+const commandsPath = path.join(__dirname, '..', 'commands')
+const fileNames = fs.readdirSync(commandsPath)
 
-program
-  .command('upgrade [filter]')
-  .description('更新项目依赖')
-  .action((filter, cmd) => {
-    const options = cleanArgs(cmd)
-    options.filter = filter
-    require('../lib/upgrade')(options)
+fileNames.forEach(fileName => {
+  const filePath = path.join(commandsPath, fileName)
+  const command = require(filePath)
+  command.registerCommand({
+    program,
+    cleanArgs,
+    LOG,
+    execSync
   })
-
-program
-  .command('add [plugin] [pluginOptions]')
-  .description('安装插件并在已创建的项目中调用其生成器')
-  .option('--registry <url>', '安装依赖项时使用指定的npm注册表(仅适用于npm)')
-  .allowUnknownOption()
-  .action(async (plugin, options = {}) => {
-    if (plugin) {
-      require('../lib/add')(plugin, minimist(process.argv.slice(3)))
-    } else {
-      const path = require('path')
-      const Creator = require('../lib/Creator')
-      const cwd = options.cwd || process.cwd()
-      const inCurrent = '.'
-      const name = inCurrent ? path.relative('../', cwd) : ''
-      const targetDir = path.resolve(cwd, '.')
-      const { getPromptModules } = require('../lib/util/createTools')
-      const creator = new Creator(name, targetDir, getPromptModules())
-      await creator.create({})
-    }
-  })
-
-program
-  .command('info')
-  .description('打印有关环境的调试信息')
-  .action(() => {
-    console.log(chalk.cyanBright('\n 正在搜检环境信息:'))
-    require('envinfo').run(
-      {
-        System: ['OS', 'CPU'],
-        Binaries: ['Node', 'Yarn', 'npm'],
-        Browsers: ['Chrome', 'Edge', 'Firefox', 'Safari'],
-        npmPackages: '/**/{*webpack*,*babel*,**typescript**,*pkb*}',
-        npmGlobalPackages: ['@pkb/cli']
-      },
-      {
-        showNotFound: true,
-        duplicates: true,
-        fullTree: true
-      }
-    ).then(info => console.log(chalk.greenBright(info)))
-  })
+})
 
 // output help information on unknown commands
 program

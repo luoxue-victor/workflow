@@ -1,4 +1,10 @@
-## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.4.3...v1.0.9) (2021-04-01)
+## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.4.3...v1.0.9) (2021-04-02)
+
+### 📝 文档
+范围|描述|commitId
+--|--|--
+ package.json | 更新版本 | [7b84d17](https://github.com/luoxue-victor/learn_webpack/commit/7b84d17)
+
 ## [1.4.3](https://github.com/luoxue-victor/learn_webpack/compare/v1.4.2...v1.4.3) (2021-04-01)
 
 范围|描述|commitId
