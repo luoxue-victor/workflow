@@ -22,7 +22,7 @@ async function commit(args, execSync, LOG) {
 
 async function commitCmd(cm, execSync, LOG) {
   const add = ' git add .'
-  const commit = ` git commit -m '${cm}'`
+  const commit = `git commit -m '${cm}'`
   execSync(add)
   console.log(add)
   execSync(commit)
