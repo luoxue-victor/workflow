@@ -13,17 +13,15 @@
     "build": "webpack-box build",
     "dev:docker": "docker run -v \"$(PWD)\":/usr/src/webpack-box/ docker-webpack-box npm run dev",
     "build:docker": "docker build -t docker-webpack-box .",
-    "info": "pk info",
     "test": "jest --color --config jest.config.js",
     "cr": "node tools/create-readme",
-    "push": "npm run cr && git push origin master"
+    "push": "npm run cr && git add . && git commit -m 'update' && git push origin master"
   },
   "main": "index.js",
   "devDependencies": {
     "@babel/preset-typescript": "^7.13.0",
-    "@pkb/cli": "^1.4.4",
-    "@pkb/plugin-react": "^1.4.0",
-    "@pkb/webpack-box": "^1.4.1"
+    "@pkb/plugin-react": "^1.4.5",
+    "@pkb/webpack-box": "^1.4.5"
   },
   "bugs": {
     "url": "https://github.com/luoxue-victor/learn_webpack/issues"
@@ -33,9 +31,5 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/luoxue-victor/learn_webpack.git"
-  },
-  "sideEffects": true,
-  "dependencies": {
-    "right-pad": "^1.0.1"
   }
 }

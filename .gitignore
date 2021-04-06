@@ -5,3 +5,4 @@ dist
 .vscode
 coverage
 package-lock.json
+lerna-debug.log
