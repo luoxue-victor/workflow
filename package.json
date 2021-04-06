@@ -19,7 +19,6 @@
   },
   "main": "index.js",
   "devDependencies": {
-    "@babel/preset-typescript": "^7.13.0",
     "@pkb/plugin-react": "^1.4.5",
     "@pkb/webpack-box": "^1.4.5"
   },
