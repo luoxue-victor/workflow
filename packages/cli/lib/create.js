@@ -8,11 +8,7 @@ const { chalk, error, stopSpinner, exit } = require('@pkb/shared-utils')
 const validateProjectName = require('validate-npm-package-name')
 
 async function create(projectName, options) {
-  if (options.proxy) {
-    process.env.HTTP_PROXY = options.proxy
-  }
-
-  const cwd = options.cwd || process.cwd()
+  const cwd = process.cwd()
   const inCurrent = projectName === '.'
   const name = inCurrent ? path.relative('../', cwd) : projectName
   const targetDir = path.resolve(cwd, projectName || '.')
@@ -30,38 +26,34 @@ async function create(projectName, options) {
   }
   // 如果文件夹存在
   if (fs.existsSync(targetDir)) {
-    if (options.force) {
-      await fs.remove(targetDir)
-    } else {
-      await clearConsole()
-      if (inCurrent) {
-        const { ok } = await inquirer.prompt([
-          {
-            name: 'ok',
-            type: 'confirm',
-            message: '是否在当前目录下创建项目？'
-          }
-        ])
-        if (!ok) return
-      } else {
-        const { action } = await inquirer.prompt([
-          {
-            name: 'action',
-            type: 'list',
-            message: `目标文件夹 ${chalk.cyan(targetDir)} 已经存在. 选一种方式:`,
-            choices: [
-              { name: '覆盖', value: 'overwrite' },
-              { name: '合并', value: 'merge' },
-              { name: '删除', value: false }
-            ]
-          }
-        ])
-        if (!action) {
-          return
-        } else if (action === 'overwrite') {
-          console.log(`\n正在删除中 ${chalk.cyan(targetDir)}...`)
-          await fs.remove(targetDir)
+    await clearConsole()
+    if (inCurrent) {
+      const { ok } = await inquirer.prompt([
+        {
+          name: 'ok',
+          type: 'confirm',
+          message: '是否在当前目录下创建项目？'
         }
+      ])
+      if (!ok) return
+    } else {
+      const { action } = await inquirer.prompt([
+        {
+          name: 'action',
+          type: 'list',
+          message: `目标文件夹 ${chalk.cyan(targetDir)} 已经存在. 选一种方式:`,
+          choices: [
+            { name: '覆盖', value: 'overwrite' },
+            { name: '合并', value: 'merge' },
+            { name: '删除', value: false }
+          ]
+        }
+      ])
+      if (!action) {
+        return
+      } else if (action === 'overwrite') {
+        console.log(`\n正在删除中 ${chalk.cyan(targetDir)}...`)
+        await fs.remove(targetDir)
       }
     }
   }

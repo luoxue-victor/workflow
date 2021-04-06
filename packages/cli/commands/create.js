@@ -1,5 +1,5 @@
 exports.registerCommand = (params) => {
-  const { program } = params
+  const { program, cleanArgs } = params
   program
     .command('create <app-name>')
     .description('创建一个项目')

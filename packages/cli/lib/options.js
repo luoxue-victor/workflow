@@ -5,7 +5,7 @@ const { exit } = require('@pkb/shared-utils/lib/exit')
 const { error } = require('@pkb/shared-utils/lib/logger')
 const { createSchema, validate } = require('@pkb/shared-utils/lib/validate')
 
-const rcPath = exports.rcPath = getRcPath('.vuerc')
+const rcPath = exports.rcPath = getRcPath('.pkdrc')
 
 const presetSchema = createSchema(joi => joi.object().keys({
   bare: joi.boolean(),
@@ -55,6 +55,8 @@ exports.loadOptions = () => {
   if (cachedOptions) {
     return cachedOptions
   }
+
+  console.log(rcPath)
   if (fs.existsSync(rcPath)) {
     try {
       cachedOptions = JSON.parse(fs.readFileSync(rcPath, 'utf-8'))

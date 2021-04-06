@@ -1,0 +1,5 @@
+require('./index.css')
+require('./app.css')
+require('./index.less')
+require('./index.scss')
+import('./index.postcss')

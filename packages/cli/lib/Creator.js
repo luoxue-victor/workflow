@@ -1,9 +1,7 @@
-const debug = require('debug')
 const inquirer = require('inquirer')
 const EventEmitter = require('events')
 const Generator = require('./Generator')
 const cloneDeep = require('lodash.clonedeep')
-const getVersions = require('./util/getVersions')
 const PackageManager = require('./util/ProjectPackageManager')
 const { clearConsole } = require('./util/clearConsole')
 const PromptModuleAPI = require('./PromptModuleAPI')
@@ -13,7 +11,6 @@ const generateReadme = require('./util/generateReadme')
 
 const {
   defaults,
-  saveOptions,
   loadOptions,
   validatePreset
 } = require('./options')
@@ -21,7 +18,6 @@ const {
 const {
   chalk,
   execa,
-  semver,
   log,
   warn,
   error,
@@ -30,7 +26,6 @@ const {
   hasGit,
   hasYarn,
   hasPnpm3OrLater,
-  hasPnpmVersionOrLater,
   exit,
   loadModule
 } = require('@pkb/shared-utils')
@@ -72,37 +67,21 @@ module.exports = class Creator extends EventEmitter {
       (hasYarn() ? 'yarn' : null) ||
       (hasPnpm3OrLater() ? 'pnpm' : 'npm')
     )
+
     const pm = new PackageManager({ context, forcePackageManager: packageManager })
 
     await clearConsole()
     logWithSpinner('✨', `创建项目 in ${chalk.yellow(context)}.`)
-    this.emit('creation', { event: 'creating' })
 
-    const { current, latest } = await getVersions()
-    let latestMinor = `${semver.major(latest)}.${semver.minor(latest)}.0`
-    if (
-      /major/.test(semver.diff(current, latest)) ||
-      (semver.gte(current, latest) && semver.prerelease(current))
-    ) {
-      latestMinor = current
-    }
     const pkg = {
       name,
       version: '0.1.0',
       private: true,
       devDependencies: {}
     }
-    const deps = Object.keys(preset.plugins)
-    deps.forEach(dep => {
-      if (preset.plugins[dep]._isPreset) {
-        return
-      }
 
-      pkg.devDependencies[dep] = (
-        preset.plugins[dep].version ||
-        ((/^@vue/.test(dep)) ? `^${latestMinor}` : 'latest')
-      )
-    })
+    // todo 安装插件
+    const deps = Object.keys(preset.plugins)
 
     await writeFileTree(context, {
       'package.json': JSON.stringify(pkg, null, 2)
@@ -122,7 +101,6 @@ module.exports = class Creator extends EventEmitter {
 
     // run generator
     log('🚀  创建中...')
-    this.emit('creation', { event: 'invoking-generators' })
     const plugins = await this.resolvePlugins(preset.plugins)
     const generator = new Generator(context, {
       pkg,
@@ -133,7 +111,6 @@ module.exports = class Creator extends EventEmitter {
 
     // install additional deps (injected by generators)
     log('📦  安装依赖中...')
-    this.emit('creation', { event: 'deps-install' })
     log()
     if (!isTestOrDebug) {
       await pm.install()
@@ -141,7 +118,6 @@ module.exports = class Creator extends EventEmitter {
 
     // run complete cbs if any (injected by generators)
     logWithSpinner('⚓', '运行完成 hooks...')
-    this.emit('creation', { event: 'completion-hooks' })
     for (const cb of afterInvokeCbs) {
       await cb()
     }
@@ -157,28 +133,11 @@ module.exports = class Creator extends EventEmitter {
       'README.md': generateReadme(generator.pkg, packageManager)
     })
 
-    // generate a .npmrc file for pnpm, to persist the `shamefully-flatten` flag
-    if (packageManager === 'pnpm') {
-      const pnpmConfig = hasPnpmVersionOrLater('4.0.0')
-        ? 'shamefully-hoist=true\n'
-        : 'shamefully-flatten=true\n'
-
-      await writeFileTree(context, {
-        '.npmrc': pnpmConfig
-      })
-    }
-
-    // commit initial state
     let gitCommitFailed = false
     if (shouldInitGit) {
       await run('git add -A')
-      if (isTestOrDebug) {
-        await run('git', ['config', 'user.name', 'test'])
-        await run('git', ['config', 'user.email', 'test@test.com'])
-      }
-      const msg = typeof cliOptions.git === 'string' ? cliOptions.git : 'init'
       try {
-        await run('git', ['commit', '-m', msg])
+        await run('git', ['commit', '-m', 'init'])
       } catch (e) {
         gitCommitFailed = true
       }
@@ -187,15 +146,7 @@ module.exports = class Creator extends EventEmitter {
     stopSpinner()
     log()
     log(`🎉  成功创建项目 ${chalk.yellow(name)}.`)
-    if (!cliOptions.skipGetStarted) {
-      log(
-        '👉  开始使用以下命令:\n\n' +
-        (this.context === process.cwd() ? '' : chalk.cyan(` ${chalk.gray('$')} cd ${name}\n`)) +
-        chalk.cyan(` ${chalk.gray('$')} ${packageManager === 'yarn' ? 'yarn serve' : packageManager === 'pnpm' ? 'pnpm run serve' : 'npm run serve'}`)
-      )
-    }
     log()
-    this.emit('creation', { event: 'done' })
 
     if (gitCommitFailed) {
       warn(
@@ -217,18 +168,8 @@ module.exports = class Creator extends EventEmitter {
       await clearConsole(true)
       answers = await inquirer.prompt(this.resolveFinalPrompts())
     }
-    debug('vue-cli:answers')(answers)
 
-    if (answers.packageManager) {
-      saveOptions({
-        packageManager: answers.packageManager
-      })
-    }
-
-    let preset
-    if (answers.preset && answers.preset !== '__manual__') {
-      preset = await this.resolvePreset(answers.preset)
-    }
+    const preset = await this.resolvePreset(answers.preset)
 
     validatePreset(preset)
 
@@ -239,11 +180,12 @@ module.exports = class Creator extends EventEmitter {
     let preset
     const savedPresets = loadOptions().presets || {}
 
+    console.log(name, preset, savedPresets)
+
     if (name in savedPresets) {
       preset = savedPresets[name]
     } else if (name.includes('/')) {
       logWithSpinner(`Fetching remote preset ${chalk.cyan(name)}...`)
-      this.emit('creation', { event: 'fetch-remote-preset' })
       try {
         preset = await loadRemotePreset(name, clone)
         stopSpinner()
@@ -254,21 +196,17 @@ module.exports = class Creator extends EventEmitter {
       }
     }
 
-    if (name === 'default' && !preset) {
-      preset = defaults.presets.default
-    }
-
-    if (!preset) {
-      error(`preset "${name}" not found.`)
-      const presets = Object.keys(savedPresets)
-      if (presets.length) {
-        log()
-        log(`available presets:\n${presets.join('\n')}`)
-      } else {
-        log('you don\'t seem to have any saved preset.')
-      }
-      exit(1)
-    }
+    // if (!preset) {
+    //   error(`preset "${name}" not found.`)
+    //   const presets = Object.keys(savedPresets)
+    //   if (presets.length) {
+    //     log()
+    //     log(`available presets:\n${presets.join('\n')}`)
+    //   } else {
+    //     log('you don\'t seem to have any saved preset.')
+    //   }
+    //   exit(1)
+    // }
 
     return preset
   }
