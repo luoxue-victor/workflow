@@ -1,6 +1,6 @@
 {
   "name": "@pkb/plugin-react",
-  "version": "1.4.0",
+  "version": "1.4.5",
   "description": "pk 插件，配置react",
   "author": "luoxue",
   "main": "index.js",
