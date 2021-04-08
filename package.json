@@ -20,9 +20,8 @@
   "main": "index.js",
   "devDependencies": {
     "@pkb/cli": "^1.4.7",
-    "@pkb/plugin-react": "^1.4.5",
-    "@pkb/webpack-box": "^1.4.6",
-    "style-loader": "^2.0.0"
+    "@pkb/plugin-react": "^1.4.8",
+    "@pkb/webpack-box": "^1.4.8"
   },
   "bugs": {
     "url": "https://github.com/luoxue-victor/learn_webpack/issues"
