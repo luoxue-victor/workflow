@@ -8,6 +8,7 @@ module.exports = function({ injectCommand }) {
       .option('-r, --report', '打包分析报告')
       .option('-d, --dll', '合并差分包')
       .action(async (name, cmd) => {
+        process.env.NODE_ENV = 'production'
         const options = cleanArgs(cmd)
         const args = Object.assign(options, { name }, boxConfig)
         if (!name && boxConfig.pages) {

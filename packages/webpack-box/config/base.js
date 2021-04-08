@@ -19,7 +19,7 @@ module.exports = ({ config, webpackVersion, resolve, options }) => {
       })
       // 模式 "production" | "development" | "none"
       // .mode(process.env.NODE_ENV) 等价下面
-      .set('mode', 'development') // process.env.NODE_ENV
+      .set('mode', process.env.NODE_ENV) // process.env.NODE_ENV
       // 出口
       .output
       .path(resolve(output))

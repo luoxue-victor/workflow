@@ -1,4 +1,4 @@
 // 加载react
 if (process.env.REACT === 'react') {
-  require('../packages/react/template')
+  require('../template/webpack/main.js')
 }

@@ -8,6 +8,7 @@ module.exports = function (options) {
   const port = options.port || 8080
   const publicPath = options.publicPath || '/'
 
+  config.target('web')
   config.devServer
     .quiet(true)
     .hot(true)
@@ -21,6 +22,7 @@ module.exports = function (options) {
   }
 
   const compiler = webpack(config.toConfig())
+
   // 拿到 devServer 参数
   const chainDevServer = compiler.options.devServer
   const server = new WebpackDevServer(

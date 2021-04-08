@@ -1,4 +1,6 @@
 // [样式表配置]
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
 module.exports = ({ config, options = {} }) => {
   const rootOptions = options
   const getAssetPath = require('../util/getAssetPath')
@@ -45,20 +47,25 @@ module.exports = ({ config, options = {} }) => {
       const cssLoaderOptions = Object.assign({
         sourceMap
       }, loaderOptions.css)
-      if (extract) {
+
+      const isDev = process.env.NODE_ENV === 'development'
+
+      console.log('========isdev========',isDev)
+
+      if (isDev) {
         rule
           .use('extract-css-loader')
-          .loader(require('mini-css-extract-plugin').loader)
+          .loader('style-loader')
+          .options({
+            injectType: 'styleTag'
+          })
+      } else {
+        rule
+          .use('extract-css-loader')
+          .loader(MiniCssExtractPlugin.loader,)
           .options({
             publicPath: cssPublicPath
           })
-      } else {
-        // rule
-        //   .use('vue-style-loader')
-        //   .loader(require.resolve('vue-style-loader'))
-        //   .options({
-        //     sourceMap
-        //   })
       }
       if (isCssModule) {
         cssLoaderOptions.modules = {
