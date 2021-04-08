@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 const fs = require('fs')
 const path = require('path')
-const readmePath = path.join('tools', 'create-readme')
+const readmePath = path.join('docs', 'readme')
 console.log('--- 创建readme ---')
 const configCtx = extraTxt('packages/webpack-box/config', function(firstRow) {
   return firstRow.replace('// ', '')
@@ -39,7 +39,7 @@ function detailTag (title, ctx, isOpen = true) {
 ### ${title}
 
 <details ${isOpen ? 'open=“open”' : ''}>
-  <summary>点击关闭/打开${title}</summary> 
+  <summary>点击关闭/打开${title}</summary>
   <br/>
 \n\n${ctx}
 </details> \n\n`
@@ -88,7 +88,7 @@ function boxConfig () {
 在根目录下添加 \`box.config.js\`，即可配置使用
 
 box.config.js
-  
+
 \`\`\`js
 ${ctx}
 \`\`\`

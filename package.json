@@ -14,7 +14,7 @@
     "dev:docker": "docker run -v \"$(PWD)\":/usr/src/webpack-box/ docker-webpack-box npm run dev",
     "build:docker": "docker build -t docker-webpack-box .",
     "test": "jest --color --config jest.config.js",
-    "cr": "node tools/create-readme",
+    "cr": "node docs/readme",
     "push": "npm run cr && git add . && git commit -m 'update' && git push origin master"
   },
   "main": "index.js",

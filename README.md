@@ -89,7 +89,7 @@ pk cm # commit 提交
 ### 所有课题
 
 <details open=“open”>
-  <summary>点击关闭/打开所有课题</summary> 
+  <summary>点击关闭/打开所有课题</summary>
   <br/>
 
 
@@ -191,7 +191,7 @@ webpack-box stylelint # 自动修复 stylelint 错误
 ### 所有配置
 
 <details open=“open”>
-  <summary>点击关闭/打开所有配置</summary> 
+  <summary>点击关闭/打开所有配置</summary>
   <br/>
 
 
@@ -235,7 +235,7 @@ webpack-box stylelint # 自动修复 stylelint 错误
 在根目录下添加 `box.config.js`，即可配置使用
 
 box.config.js
-  
+
 ```js
 const path = require('path')
 function resolve (dir) {
