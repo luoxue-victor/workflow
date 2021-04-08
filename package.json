@@ -19,8 +19,7 @@
   },
   "main": "index.js",
   "devDependencies": {
-    "@babel/core": "^7.13.14",
-    "@babel/register": "^7.13.14",
+    "@pkb/cli": "^1.4.7",
     "@pkb/plugin-react": "^1.4.5",
     "@pkb/webpack-box": "^1.4.6"
   },
@@ -32,8 +31,5 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/luoxue-victor/learn_webpack.git"
-  },
-  "dependencies": {
-    "npm-check-updates": "^11.4.1"
   }
 }
