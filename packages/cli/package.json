@@ -24,12 +24,12 @@
     "isbinaryfile": "^4.0.2",
     "jscodeshift": "^0.6.4",
     "lodash.clonedeep": "^4.5.0",
-    "npm-check-updates": "^11.3.0",
     "resolve": "^1.13.1",
     "semver": "^6.3.0",
     "validate-npm-package-name": "^3.0.0",
     "vue-jscodeshift-adapter": "^2.0.2",
-    "yaml-front-matter": "^4.0.0"
+    "yaml-front-matter": "^4.0.0",
+    "npm-check-updates": "^11.4.1"
   },
   "gitHead": "9c0313c0f8ad7aa891cdf284d78188d9232ab453"
 }
