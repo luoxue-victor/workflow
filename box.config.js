@@ -23,19 +23,19 @@ module.exports = function (config) {
    */
   return {
     pages: {
-      index: {
+      index1: {
         entry: 'src/main.js',
         template: 'public/index.html',
         filename: 'index.html',
         publicPath: './',
-        output: 'dist1'
+        output: 'dist/index1'
       },
       index2: {
         entry: 'src/main.js',
         template: 'public/index2.html',
         filename: 'index2.html',
         publicPath: './',
-        output: 'dist2'
+        output: 'dist/index2'
       }
     },
     port: 9001,

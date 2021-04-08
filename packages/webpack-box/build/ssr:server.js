@@ -2,9 +2,12 @@ module.exports = function (options) {
   const express = require('express')
   const { renderToString } = require('react-dom/server')
   const chalk = require('chalk')
+  const path = require('path')
 
-  const SSR = require('../static/ssr')
-  const port = process.env.PORT || 8080
+  require('@babel/register')();
+
+  const SSR = require(path.join(process.cwd(), 'src', 'ssr.jsx'))
+  const port = process.env.PORT || 7005
 
   server(port)
 
@@ -32,7 +35,6 @@ module.exports = function (options) {
     </head>
     <body>
       <div id="app">${html}</div>
-      <script src="./ssr.js"></script>
     </body>
   </html>`
   }

@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "outDir": "dist",
+    "rootDir": ".",
+    "outDir": "./dist",
     "sourceMap": false,
     "target": "es5",
     "module": "esnext",
@@ -18,12 +19,12 @@
     "jsx": "react",
     "lib": ["esnext", "dom"],
     "types": ["node"],
-    "rootDir": ".",
     "paths": {
       "@src/*": [
         "src/*"
       ]
     }
   },
-  "include": ["src"]
+  "include": ["**/*"],
+  "exclude": ["**/*.spec.ts","**/*.d.ts","node_modules"]
 }

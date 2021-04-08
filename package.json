@@ -19,6 +19,8 @@
   },
   "main": "index.js",
   "devDependencies": {
+    "@babel/core": "^7.13.14",
+    "@babel/register": "^7.13.14",
     "@pkb/plugin-react": "^1.4.5",
     "@pkb/webpack-box": "^1.4.5"
   },
