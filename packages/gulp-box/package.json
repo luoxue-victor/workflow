@@ -1,6 +1,6 @@
 {
   "name": "@pkb/gulp-box",
-  "version": "1.4.12",
+  "version": "1.4.13",
   "description": "使用 rollup 打包",
   "author": "luoxue",
   "main": "index.js",
