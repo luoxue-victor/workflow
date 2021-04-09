@@ -1,0 +1,16 @@
+{
+  "name": "@pkb/esbuild-box",
+  "version": "1.4.0",
+  "description": "使用 esbuild 打包",
+  "author": "luoxue",
+  "main": "index.js",
+  "bin": {
+    "esbuild-box": "bin/index.js"
+  },
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "commander": "^7.2.0",
+    "didyoumean": "^1.2.1",
+    "esbuild": "^0.11.6"
+  }
+}

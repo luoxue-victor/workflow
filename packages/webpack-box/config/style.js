@@ -50,8 +50,6 @@ module.exports = ({ config, options = {} }) => {
 
       const isDev = process.env.NODE_ENV === 'development'
 
-      console.log('========isdev========',isDev)
-
       if (isDev) {
         rule
           .use('extract-css-loader')

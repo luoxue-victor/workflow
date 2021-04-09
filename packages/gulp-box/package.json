@@ -1,0 +1,30 @@
+{
+  "name": "@pkb/gulp-box",
+  "version": "1.4.0",
+  "description": "使用 rollup 打包",
+  "author": "luoxue",
+  "main": "index.js",
+  "bin": {
+    "rollup-box": "bin/index.js"
+  },
+  "scripts": {
+    "build": "gulp",
+    "docs": "jsdoc src -d docs",
+    "open": "open ./docs/index.html"
+  },
+  "dependencies": {
+    "gulp": "^4.0.2",
+    "gulp-better-rollup": "^4.0.1",
+    "gulp-cli": "^2.3.0",
+    "gulp-jsdoc3": "^3.0.0",
+    "gulp-sass": "^4.1.0",
+    "jsdoc": "^3.6.4",
+    "open": "^7.0.4",
+    "opn": "^6.0.0",
+    "rollup": "^2.21.0",
+    "rollup-plugin-terser": "^6.1.0"
+  },
+  "devDependencies": {
+    "rollup-plugin-sass": "^1.2.2"
+  }
+}
