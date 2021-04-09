@@ -25,6 +25,8 @@ exports.plugins = (() => {
     return require(path.join(pluginsPath, _))()
   })
 
+  console.log(flatten(plugins))
+
   return flatten(plugins)
 })()
 
@@ -42,7 +44,7 @@ exports.builder = async (mode, plugins, config = {}) => {
   const outputOptions = Object.assign({
     name: 'app',
     dir: 'dist',
-    format: 'cjs'
+    format: 'umd'
   }, config.output || {})
 
   const rolluper = mode === 'watch' ? watch : build

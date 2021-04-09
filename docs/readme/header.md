@@ -52,9 +52,17 @@ pk info # 查看项目及系统配置
 pk upgrade [filter] # 检查升级 npm 版本
 pk cm # commit 提交
 ```
+
+### rollup-box
+
+对 rollup 进行封装，大量插件，开箱即用
+
+- [传送门](./packages/rollup-box/README.md)
 ### node 工具集
 
-- [node 工具](./packages/tools/README.md)
+集成了一些 node 工具
+
+- [传送门](./packages/tools/README.md)
 
 ### 开发&学习
 
