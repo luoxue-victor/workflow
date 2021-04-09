@@ -1,4 +1,4 @@
-70 error Error: Command failed: git add -- packages/gulp-box/package.json packages/esbuild-box/package.json packages/cli/package.json packages/cli/package-lock.json packages/rollup-box/package.json packages/rollup-box/package-lock.json packages/webpack-box/package.json packages/webpack-box/package-lock.json lerna.json
+70 error Error: Command failed: git add -- packages/gulp-box/package.json packages/esbuild-box/package.json packages/rollup-box/package.json packages/rollup-box/package-lock.json packages/cli/package.json packages/cli/package-lock.json packages/webpack-box/package.json packages/webpack-box/package-lock.json lerna.json
 70 error The following paths are ignored by one of your .gitignore files:
 70 error packages/rollup-box/package-lock.json
 70 error Use -f if you really want to add them.
