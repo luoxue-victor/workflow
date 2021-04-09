@@ -1,8 +1,8 @@
-50 error Error: Command failed: git add -- packages/cli/package.json packages/cli/package-lock.json packages/tools/package.json packages/tools/package-lock.json lerna.json
-50 error The following paths are ignored by one of your .gitignore files:
-50 error packages/tools/package-lock.json
-50 error Use -f if you really want to add them.
-50 error
-50 error     at makeError (/Users/luoxue/Desktop/open/workflow/node_modules/execa/index.js:174:9)
-50 error     at /Users/luoxue/Desktop/open/workflow/node_modules/execa/index.js:278:16
-50 error     at processTicksAndRejections (internal/process/task_queues.js:97:5)
+70 error Error: Command failed: git add -- packages/esbuild-box/package.json packages/gulp-box/package.json packages/rollup-box/package.json packages/rollup-box/package-lock.json packages/cli/package.json packages/cli/package-lock.json packages/webpack-box/package.json packages/webpack-box/package-lock.json lerna.json
+70 error The following paths are ignored by one of your .gitignore files:
+70 error packages/rollup-box/package-lock.json
+70 error Use -f if you really want to add them.
+70 error
+70 error     at makeError (/Users/luoxue/.nvm/versions/node/v12.18.0/lib/node_modules/lerna/node_modules/execa/index.js:174:9)
+70 error     at /Users/luoxue/.nvm/versions/node/v12.18.0/lib/node_modules/lerna/node_modules/execa/index.js:278:16
+70 error     at processTicksAndRejections (internal/process/task_queues.js:97:5)
