@@ -1,11 +1,11 @@
 {
   "name": "@pkb/gulp-box",
-  "version": "1.4.11",
+  "version": "1.4.12",
   "description": "使用 rollup 打包",
   "author": "luoxue",
   "main": "index.js",
   "bin": {
-    "rollup-box": "bin/index.js"
+    "gulp-box": "bin/index.js"
   },
   "scripts": {
     "build": "gulp",
