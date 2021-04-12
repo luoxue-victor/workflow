@@ -24,7 +24,7 @@ pluginPaths.forEach(_ => {
   if (match) {
     const name = getValue('name', match[0])
     const description = getValue('description', match[0])
-    pluginsContent += `- ${name} ${description}\n`
+    pluginsContent += `- [${name}](./config/${_}) ${description}\n`
   }
 })
 

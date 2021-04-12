@@ -27,11 +27,11 @@ builder(MODE.WATCH, plugins, options)
 
 ### 支持的插件
 
-- @rollup/plugin-alias 定义别名
-- @rollup/plugin-auto-install 自动安装依赖
-- @rollup/plugin-graphql 可将.gql / .graphql文件转换为ES6模块
-- @rollup/plugin-html 会在输出目录输出一个html页面，方便测试
-- @rollup/plugin-image 将图片转成 base64 打包在js中
-- rollup-plugin-terser 代码压缩
-- @rollup/plugin-typescript 支持ts
+- [@rollup/plugin-alias](./config/alias.js) 定义别名
+- [@rollup/plugin-auto-install](./config/auto-install.js) 自动安装依赖
+- [@rollup/plugin-graphql](./config/graphql.js) 可将.gql / .graphql文件转换为ES6模块
+- [@rollup/plugin-html](./config/html.js) 会在输出目录输出一个html页面，方便测试
+- [@rollup/plugin-image](./config/image.js) 将图片转成 base64 打包在js中
+- [rollup-plugin-terser](./config/terser.js) 代码压缩
+- [@rollup/plugin-typescript](./config/typescript.js) 支持ts
 
