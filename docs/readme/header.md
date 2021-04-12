@@ -62,19 +62,19 @@ pk cm # commit 提交
 - 您也可以当作参考手册，来这里找到任何想要的 webpack 配置
 - 如果想要从头系统学习，可以切换到不同分支上，我把每课时的内容都分别切成了不同的分支，您可以在这些分支上自由尝试
 
-[点击查看详情](./packages/webpack-box/README.md)
+[......](./packages/webpack-box/README.md)
 ### rollup-box
 
 对 rollup 进行封装，大量插件，开箱即用
 
-[点击查看详情](./packages/rollup-box/README.md)
+[......](./packages/rollup-box/README.md)
 
 
 ### node-tools
 
 集成了一些 node 工具
 
-[点击查看详情](./packages/tools/README.md)
+[......](./packages/tools/README.md)
 ### 开发&学习
 
 - [项目计划] 把 issue 整理到 project 中做好分类，并有计划的完成目标。
