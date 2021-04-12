@@ -19,15 +19,16 @@
 
 ## 为什么使用 workflow？
 
-本项目经多多次迭代，终于迎来了第三次革命。以 `@pkb/cli` 脚手架为根本，创建/配置项目，以 `webpack-box` 为服务，打包/运行项目。以 `workflow-ui` 为平台，构建工作流。另增加 node 工具命令行，让您可以更方便使用工具。
+workflow 致力于打造一个前端工作流平台，使用 workflow 你可以从生成代码到打包上线，整个流程你都可以使用为你量身定做
+
+- `@pkb/cli` 生成项目/添加插件/代码提交检查等，包括大型项目、spa、多页面应用、ssr、小程序等等，后面会考虑将跨端加入进来
+- `learn`，本平台会支持一系列学习课程，从零开始学习某项技能
+- 目前有 webpack / rollup 的学习
 
 ### workflow 有哪些优势
 
-- 📦 使用了目前最流行的打包工具 webpack，且使用 webpack-chain 进行 webpack 配置
 - 🏈 约定式目录
 - 🍁 多框架支持（vue/react/小程序等应有尽有）
-- 💈 编译速度（支持一键开启 dll 等）
-- 🚄 功能完备（可支持 webpack 所有最佳实践方案）
 - 🎉 可插拔的插件系统（多项目管理）
 - 🚀 定制化解决方案（webp、图片压缩、骨架屏等）
 - 🧪 测试（单元测试、e2e）
@@ -55,7 +56,7 @@ pk cm # commit 提交
 
 ### webpack-box
 
-[从零开始 webpack 学习，使用 webpack5 版本，一共 27 课时，让你从小白到大神](./docs/webpack)
+[从零开始 webpack 学习，使用 webpack5 版本，一共 27 课时，让你从小白到大神](./learn/webpack)
 
 - webpack-box 是一个对 webpack 进行了封装的开箱即用的项目。集成了 webpack 的各种优化，配置了 webpack 常用到的 loader 和 plugin，原则上您不需要做任何配置就可以使用。
 - webpack-box 支持插件配置，您可以使用插件管理项目配置，可以多项目复用
