@@ -55,8 +55,6 @@ pk cm # commit 提交
 
 ### webpack-box
 
-[点击查看详情](./packages/webpack-box/README.md)
-
 [从零开始 webpack 学习，使用 webpack5 版本，一共 27 课时，让你从小白到大神](./docs/webpack)
 
 - webpack-box 是一个对 webpack 进行了封装的开箱即用的项目。集成了 webpack 的各种优化，配置了 webpack 常用到的 loader 和 plugin，原则上您不需要做任何配置就可以使用。
@@ -64,18 +62,19 @@ pk cm # commit 提交
 - 您也可以当作参考手册，来这里找到任何想要的 webpack 配置
 - 如果想要从头系统学习，可以切换到不同分支上，我把每课时的内容都分别切成了不同的分支，您可以在这些分支上自由尝试
 
+[点击查看详情](./packages/webpack-box/README.md)
 ### rollup-box
-
-[点击查看详情](./packages/rollup-box/README.md)
 
 对 rollup 进行封装，大量插件，开箱即用
 
-### node-tools
+[点击查看详情](./packages/rollup-box/README.md)
 
-[点击查看详情](./packages/tools/README.md)
+
+### node-tools
 
 集成了一些 node 工具
 
+[点击查看详情](./packages/tools/README.md)
 ### 开发&学习
 
 - [项目计划] 把 issue 整理到 project 中做好分类，并有计划的完成目标。
