@@ -1,4 +1,8 @@
 // [babel-loader 配置]
+/**
+ * @name babel-loader
+ * @description babel-loader 配置
+ */
 module.exports = ({ config }) => {
   const presets = [
     ['@babel/typescript'],

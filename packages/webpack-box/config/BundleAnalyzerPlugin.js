@@ -1,4 +1,8 @@
 // [打包分析]
+/**
+ * @name BundleAnalyzerPlugin
+ * @description 打包分析
+ */
 const {
   BundleAnalyzerPlugin
 } = require('webpack-bundle-analyzer')

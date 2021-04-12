@@ -1,4 +1,8 @@
 // [加载资源 images、svg、media、fonts]
+/**
+ * @name assets
+ * @description 加载资源 images、svg、media、fonts
+ */
 module.exports = ({ config, webpackVersion, resolve, options }) => {
   return () => {
     // const resolveLocal = require('../util/resolveLocal')

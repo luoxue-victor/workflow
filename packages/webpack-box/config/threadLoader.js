@@ -1,4 +1,8 @@
 // [多线程配置]
+/**
+ * @name thread
+ * @description 多线程配置
+ */
 module.exports = ({ config, options }) => {
   const baseRule = config.module.rule('thread').test(/.js|.tsx?$/)
   return () => {

@@ -1,5 +1,9 @@
 // [PreloadWebpackPlugin]
 // npm install  preload-webpack-plugin@next
+/**
+ * @name PreloadWebpackPlugin
+ * @description preload 预加载
+ */
 module.exports = ({ config, resolve, options }) => {
   const PreloadWebpackPlugin = require('preload-webpack-plugin')
   return () => {

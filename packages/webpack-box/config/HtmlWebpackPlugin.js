@@ -1,7 +1,10 @@
 // [html-webpack-plugin 生成html]
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
-
+/**
+ * @name html-webpack-plugin
+ * @description 生成html
+ */
 module.exports = ({ config, options }) => {
   let template = path.join(process.cwd(), 'public/index.html')
   let publicPath = options.publicPath || '/'

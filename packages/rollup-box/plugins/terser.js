@@ -1,6 +1,6 @@
 /**
- * rollup-plugin-terser
- * 代码压缩
+ * @name rollup-plugin-terser
+ * @description 代码压缩
  */
 const { terser } = require('rollup-plugin-terser')
 

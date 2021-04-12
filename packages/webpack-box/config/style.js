@@ -1,6 +1,9 @@
 // [样式表配置]
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-
+/**
+ * @name style
+ * @description 样式表配置，包括 less\sass\stylus\postcss
+ */
 module.exports = ({ config, options = {} }) => {
   const rootOptions = options
   const getAssetPath = require('../util/getAssetPath')

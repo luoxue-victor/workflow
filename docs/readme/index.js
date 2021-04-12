@@ -21,9 +21,6 @@ const packageConfig = extraTxtFromDirWithFilename(
 function joinCtx () {
   let str = ''
   str += readMdBy('header')
-  str += detailTag('所有课题', docsCtx, true)
-  str += readMdBy('useAndIntsall')
-  str += detailTag('所有配置', configCtx + packageConfig)
   str += boxConfig()
   str += '\n' + fs.readFileSync(path.join(__dirname, 'contributors.md')).toString()
   return str

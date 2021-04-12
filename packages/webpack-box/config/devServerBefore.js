@@ -1,4 +1,8 @@
 // [devServer.before 在devServer中添加中间件]
+/**
+ * @name devServer.before
+ * @description 在devServer中添加中间件，mock数据
+ */
 module.exports = ({
   config,
   options

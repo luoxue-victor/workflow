@@ -1,6 +1,9 @@
 // [dll-plugin 配置]
 const webpack = require('webpack')
-
+/**
+ * @name dll-plugin
+ * @description 查分包配置
+ */
 module.exports = ({ config, resolve, options }) => {
   return () => {
     if (options.dll) {

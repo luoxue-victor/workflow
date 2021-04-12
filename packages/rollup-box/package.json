@@ -7,6 +7,9 @@
   "bin": {
     "rollup-box": "bin/index.js"
   },
+  "scripts": {
+    "readme": "node readme"
+  },
   "dependencies": {
     "@rollup/plugin-alias": "^3.1.2",
     "@rollup/plugin-auto-install": "^2.1.0",

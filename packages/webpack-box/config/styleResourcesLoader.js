@@ -1,4 +1,8 @@
 // [设置 style 全局变量]
+/**
+ * @name global style
+ * @description 全局样式变量
+ */
 module.exports = ({ config, options }) => {
   const resourcesOpt = options.resources
   return () => {

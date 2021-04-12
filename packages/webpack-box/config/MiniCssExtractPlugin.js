@@ -1,6 +1,9 @@
 // [mini-css-extract-plugin 配置]
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-
+/**
+ * @name mini-css-extract-plugin
+ * @description 提取样式
+ */
 module.exports = ({ config, options = {} }) => {
   const rootOptions = options
   const getAssetPath = require('../util/getAssetPath')

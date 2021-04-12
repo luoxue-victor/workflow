@@ -1,4 +1,8 @@
 // [tslint 配置]
+/**
+ * @name tslint
+ * @description ts 检查配置
+ */
 module.exports = ({
   config,
   options: {

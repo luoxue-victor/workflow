@@ -1,7 +1,10 @@
 // [fork-ts-checher 检查ts类型]
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 const ForkTsCheckerNotifierWebpackPlugin = require('fork-ts-checker-notifier-webpack-plugin')
-
+/**
+ * @name fork-ts-checker
+ * @description 检查ts类型
+ */
 module.exports = ({ config, resolve }) => {
   const fs = require('fs')
   return () => {

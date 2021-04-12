@@ -1,5 +1,6 @@
 /**
- * @rollup/plugin-alias
+ * @name @rollup/plugin-alias
+ * @description 定义别名
  * @example
  * import a from '@src/moudleA'
  */

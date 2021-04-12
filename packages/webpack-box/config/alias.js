@@ -1,4 +1,8 @@
 // [别名配置]
+/**
+ * @name alias
+ * @description 别名配置
+ */
 module.exports = ({ config, options, resolve }) => {
   const fs = require('fs')
   const conf = options.alias

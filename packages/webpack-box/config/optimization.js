@@ -1,4 +1,8 @@
 // [optimization 优化配置]
+/**
+ * @name optimization
+ * @description 优化配置
+ */
 module.exports = ({ config, webpackVersion }) => {
   const v = parseInt(webpackVersion)
   return () => {
