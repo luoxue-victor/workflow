@@ -53,25 +53,21 @@ pk upgrade [filter] # 检查升级 npm 版本
 pk cm # commit 提交
 ```
 
-### webpack-box
+### [webpack-box](./packages/webpack-box/README.md)
 
 1. webpack-box 是一个对 webpack 进行了封装的开箱即用的项目。集成了 webpack 的各种优化，配置了 webpack 常用到的 loader 和 plugin，原则上您不需要做任何配置就可以使用。
 2. webpack-box 支持插件配置，您可以使用插件管理项目配置，可以多项目复用
 3. 您也可以当作参考手册，来这里找到任何想要的 webpack 配置
 4. 如果想要从头系统学习，可以切换到不同分支上，我把每课时的内容都分别切成了不同的分支，您可以在这些分支上自由尝试
 
-- [传送门](./packages/webpack-box/README.md)
-- [webpack学习](./docs/webpack)
-### rollup-box
+- [webpack课程学习](./docs/webpack)
+### [rollup-box](./packages/rollup-box/README.md)
 
 对 rollup 进行封装，大量插件，开箱即用
 
-- [传送门](./packages/rollup-box/README.md)
-### node 工具集
+### [node 工具集](./packages/tools/README.md)
 
 集成了一些 node 工具
-
-- [传送门](./packages/tools/README.md)
 
 ### 开发&学习
 
