@@ -8,6 +8,7 @@
   "author": "luoxue",
   "main": "index.js",
   "dependencies": {
+    "@pkb/plugin-eslint": "^1.2.16",
     "@pkb/shared-utils": "^1.2.16",
     "boxen": "^4.1.0",
     "chalk": "^3.0.0",
