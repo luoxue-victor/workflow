@@ -33,7 +33,7 @@ exports.getPlugins = (config) => {
 // 构建项目
 exports.builder = async (mode, plugins, config = {}) => {
   if (!mode) {
-    throw '需要使用 watch｜rollup 模式'
+    throw new Throw('需要使用 watch｜rollup 模式')
   }
 
   const inputOptions = Object.assign({
