@@ -17,12 +17,12 @@ const renamedArgs = {
   config: 'configFile'
 }
 
-module.exports = function lint ({ args = {}, api }) {
+module.exports = function lint ({ args = {} }) {
   const path = require('path')
-  const cwd = api.resolve('.')
+  const cwd = process.cwd()
   const { log, done, exit, chalk, loadModule } = require('@pkb/shared-utils')
   const { CLIEngine } = loadModule('eslint', cwd, true) || require('eslint')
-  const extensions = require('./eslintOptions').extensions(api)
+  const extensions = require('./eslintOptions').extensions()
   const argsConfig = normalizeConfig(args)
   const config = Object.assign({
     extensions,
@@ -65,9 +65,6 @@ module.exports = function lint ({ args = {}, api }) {
     : defaultFilesToLint
 
   const processCwd = process.cwd
-  if (!api.invoking) {
-    process.cwd = () => cwd
-  }
 
   const report = engine.executeOnFiles(files)
   process.cwd = processCwd
@@ -111,8 +108,6 @@ module.exports = function lint ({ args = {}, api }) {
     }
     exit(1)
   }
-
-  console.log('--------end------')
 }
 
 function normalizeConfig (args) {
