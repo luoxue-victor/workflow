@@ -124,7 +124,7 @@ webpack-box stylelint # 自动修复 stylelint 错误
 ```
 ----
 
-<details>
+</details>
 
 ### rollup-box
 
