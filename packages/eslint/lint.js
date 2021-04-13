@@ -17,7 +17,7 @@ const renamedArgs = {
   config: 'configFile'
 }
 
-module.exports = function lint ({ args = {} }) {
+module.exports = function lint ({ args = {} } = {}) {
   const path = require('path')
   const cwd = process.cwd()
   const { log, done, exit, chalk, loadModule } = require('@pkb/shared-utils')

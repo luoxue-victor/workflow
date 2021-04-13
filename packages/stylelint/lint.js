@@ -31,13 +31,13 @@ function format(label, msg) {
   return lines.join('\n')
 }
 
-module.exports = async function lint({ api, args = {}, pluginOptions = {} }) {
+module.exports = async function lint({ args = {}, pluginOptions = {} } = {}) {
   if (args.options) {
     execSync('stylelint --help', { stdio: 'inherit' })
     return
   }
 
-  const cwd = api.resolve('.')
+  const cwd = process.cwd()
 
   const files = args._ && args._.length ? args._ : [cwd + '/src/**/*.{vue,htm,html,css,sss,less,scss}']
   if (args['no-fix']) {
