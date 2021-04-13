@@ -90,7 +90,7 @@ pk cm # commit 提交
 - [更多...](./packages/webpack-box/README.md)
 
 
-#### 使用
+##### 安装使用
 
 ```bash
 npm i @pkb/webpack-box -g # 全局安装/本地安装
@@ -132,7 +132,7 @@ webpack-box stylelint # 自动修复 stylelint 错误
 - 对 rollup 进行封装，大量插件，开箱即用
 - [更多...](./packages/rollup-box/README.md)
 
-#### 使用
+##### 安装使用
 
 ```sh
 npm i @pkb/rollup-box -g # 全局安装/本地安装
