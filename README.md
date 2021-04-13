@@ -56,19 +56,51 @@ pk cm # commit 提交
 ----
 ### webpack-box
 
-[从零开始 webpack 学习，使用 webpack5 版本，一共 27 课时，让你从小白到大神](./learn/webpack)
-
+- [从零开始 webpack 学习，使用 webpack5 版本，一共 27 课时，让你从小白到大神](./learn/webpack)
 - webpack-box 是一个对 webpack 进行了封装的开箱即用的项目。集成了 webpack 的各种优化，配置了 webpack 常用到的 loader 和 plugin，原则上您不需要做任何配置就可以使用。
 - webpack-box 支持插件配置，您可以使用插件管理项目配置，可以多项目复用
 - 您也可以当作参考手册，来这里找到任何想要的 webpack 配置
 - 如果想要从头系统学习，可以切换到不同分支上，我把每课时的内容都分别切成了不同的分支，您可以在这些分支上自由尝试
 - [更多...](./packages/webpack-box/README.md)
 
+
+#### 使用
+
+```bash
+npm i @pkb/webpack-box -g # 全局安装/本地安装
+
+# --- 项目构建 ---
+webpack-box dev   # 开发环境
+webpack-box build # 生产环境
+webpack-box dll   # 编译差分包
+webpack-box dev index   # 指定页面编译（多页面）
+webpack-box build index # 指定页面编译（多页面）
+webpack-box build index --report # 开启打包分析
+webpack-box build:ssr  # 编译ssr
+webpack-box ssr:server # 在 server 端运行
+# --- 切换 webpack 版本 ---
+webpack-box upgrade 5 # 可以切换到 webpack5/4
+# --- 检查配置 ---
+webpack-box inspect > output.json # 导出所有配置到 output.json
+webpack-box inspect --rules # 查看所有 loader 列表
+webpack-box inspect --rule babel # 查看指定 loader 配置
+webpack-box inspect --plugins # 查看所有插件列表
+webpack-box inspect --plugin mini-css-extract # 查看指定插件配置
+# --- graphql ---
+webpack-box server:gql # graphql-server
+# --- 插件命令及安装 ---
+# npm i -D @pkb/plugin-eslint
+webpack-box eslint # 自动修复 eslint 错误
+# npm i -D @pkb/plugin-tslint
+webpack-box tslint # 自动修复 tslint 错误
+# npm i -D @pkb/plugin-stylelint
+webpack-box stylelint # 自动修复 stylelint 错误
+```
 ----
 ### rollup-box
 
-- 对 rollup 进行封装，大量插件，开箱即用
 - [从零开始 rollup 学习](./learn/rollup)
+- 对 rollup 进行封装，大量插件，开箱即用
 - [更多...](./packages/rollup-box/README.md)
 
 #### 使用
@@ -108,6 +140,8 @@ rollup-box watch # 开发模式
 [issue]: https://img.shields.io/github/issues/luoxue-victor/webpack-box
 [forks]: https://img.shields.io/github/forks/luoxue-victor/webpack-box
 [star]: https://img.shields.io/github/stars/luoxue-victor/webpack-box
+
+----
 
 
 ### 扩展配置
