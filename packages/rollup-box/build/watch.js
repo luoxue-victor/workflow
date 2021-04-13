@@ -12,7 +12,7 @@ module.exports = async (inputOptions, outputOptions) => {
       include: 'src/**',
       exclude: 'node_modules/**'
     }
-  });
+  })
 
   watcher.on('event', event => {
     const code = event.code
@@ -28,5 +28,5 @@ module.exports = async (inputOptions, outputOptions) => {
     if (code === 'BUNDLE_END') {
       // console.log(chalk.cyan('编译完成'))
     }
-  });
+  })
 }

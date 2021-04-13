@@ -4,7 +4,7 @@ module.exports = function (options) {
   const chalk = require('chalk')
   const path = require('path')
 
-  require('@babel/register')();
+  require('@babel/register')()
 
   const SSR = require(path.join(process.cwd(), 'src', 'ssr.jsx'))
   const port = process.env.PORT || 7005

@@ -20,5 +20,5 @@ function makeJSOnlyValue (str) {
   return fn
 }
 
-const baseExtensions = ['.js', '.jsx']
-exports.extensions = api => baseExtensions
+const baseExtensions = ['.js', '.jsx', '.ts', '.tsx']
+exports.extensions = () => baseExtensions

@@ -14,16 +14,16 @@ const watch = async () => {
   process.env.NODE_ENV = 'development'
   const { builder, getPlugins, MODE } = require('../index')
 
-  tryUsePort(2100, (port)=> {
+  tryUsePort(2100, (port) => {
     builder(MODE.WATCH, getPlugins({
       port: port,
       host: '::',
       dirs: ['dist'],
-      basePath: '/',
+      basePath: '/'
     }), {
       output: {
-        sourcemap: true,
-      },
+        sourcemap: true
+      }
     })
   })
 }

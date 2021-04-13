@@ -7,13 +7,12 @@ const pluginDirPath = path.join(__dirname, '..', 'config')
 let tempalteContent = ''
 let pluginsContent = ''
 
-tempalteContent = fs.readFileSync(templatePath, {encoding: 'utf-8'})
+tempalteContent = fs.readFileSync(templatePath, { encoding: 'utf-8' })
 const pluginPaths = fs.readdirSync(pluginDirPath)
 
 pluginPaths.forEach(_ => {
   const _path = path.join(pluginDirPath, _)
-  const content = fs.readFileSync(_path,  {encoding: 'utf-8'})
-
+  const content = fs.readFileSync(_path, { encoding: 'utf-8' })
 
   const match = content.match(/(\/\*)[\s\S]+(\*\/)/)
   const getValue = (type, str) => {

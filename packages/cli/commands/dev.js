@@ -23,10 +23,10 @@ const dev = async () => {
   await new Promise((resolve, reject) => {
     srv.on('error', reject)
     srv.on('listening', () => resolve())
-    srv.on('request', (req,res)=>{
-      res.writeHead(200,{'Content-Type': "text/plain", 'Access-Control-Allow-Origin': '*'});
-      res.write('Hello World');
-      res.end();
+    srv.on('request', (req, res) => {
+      res.writeHead(200, { 'Content-Type': 'text/plain', 'Access-Control-Allow-Origin': '*' })
+      res.write('Hello World')
+      res.end()
     })
 
     console.log(`http://${hostname}:${port}`)

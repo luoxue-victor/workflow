@@ -4,10 +4,8 @@ const fs = require('fs-extra')
 const net = require('net')
 const chalk = require('chalk')
 
-
 const { execSync } = require('child_process')
 const { success } = require('../util/log')
-
 
 const errLog = (msg) => console.log(`${chalk.red('[错误]')}${msg}`)
 const successLog = (msg) => console.log(`${chalk.green('[成功]')}${msg}`)

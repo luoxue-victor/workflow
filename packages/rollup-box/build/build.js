@@ -8,9 +8,9 @@ module.exports = async (inputOptions, outputOptions, isNeedGenerate) => {
 
   let bundler
   if (isNeedGenerate) {
-    bundler = await bundle.generate(outputOptions);
+    bundler = await bundle.generate(outputOptions)
   } else {
-    bundler = await bundle.write(outputOptions);
+    bundler = await bundle.write(outputOptions)
   }
 
   return bundler

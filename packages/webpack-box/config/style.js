@@ -1,5 +1,5 @@
 // [样式表配置]
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 /**
  * @name style
  * @description 样式表配置，包括 less\sass\stylus\postcss
@@ -63,7 +63,7 @@ module.exports = ({ config, options = {} }) => {
       } else {
         rule
           .use('extract-css-loader')
-          .loader(MiniCssExtractPlugin.loader,)
+          .loader(MiniCssExtractPlugin.loader)
           .options({
             publicPath: cssPublicPath
           })

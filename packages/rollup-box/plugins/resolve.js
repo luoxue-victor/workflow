@@ -5,7 +5,7 @@ const resolve = require('@rollup/plugin-node-resolve').default
  * @description
  */
 module.exports = () => {
-  const extensions = ['.cjs', '.js', '.jsx', '.json', '.ts', '.tsx', '.css', '.png'];
+  const extensions = ['.cjs', '.js', '.jsx', '.json', '.ts', '.tsx', '.css', '.png']
 
   return [
     resolve({
@@ -13,4 +13,4 @@ module.exports = () => {
       browser: true
     })
   ]
-};
+}

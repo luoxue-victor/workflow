@@ -31,7 +31,7 @@ module.exports = ({ host = '127.0.0.1', port = 6000, basePath = '/', dirs = ['di
     host,
     port,
     headers: {
-      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Origin': '*'
     },
     onListening: function (server) {
       const address = server.address()

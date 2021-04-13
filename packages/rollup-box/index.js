@@ -3,7 +3,7 @@ const watch = require('./build/watch')
 const build = require('./build/build')
 const fs = require('fs')
 
-const isDevEnv = process.env.NODE_ENV === 'development';
+const isDevEnv = process.env.NODE_ENV === 'development'
 
 // 提供两种模式，watch 跟 rollup
 exports.MODE = {
@@ -13,9 +13,9 @@ exports.MODE = {
 
 // 数组扁平化
 function flatten(arr) {
-  return arr.reduce((result, item)=> {
-      return result.concat(Array.isArray(item) ? flatten(item) : item);
-  }, []);
+  return arr.reduce((result, item) => {
+    return result.concat(Array.isArray(item) ? flatten(item) : item)
+  }, [])
 }
 
 // 导出所有插件，可以自行选择使用哪些插件
@@ -33,7 +33,7 @@ exports.getPlugins = (config) => {
 // 构建项目
 exports.builder = async (mode, plugins, config = {}) => {
   if (!mode) {
-    throw `需要使用 watch｜rollup 模式`
+    throw '需要使用 watch｜rollup 模式'
   }
 
   const inputOptions = Object.assign({

@@ -1,5 +1,5 @@
 // [提取 manifest]
-const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
+const { WebpackManifestPlugin } = require('webpack-manifest-plugin')
 /**
  * @name webpack-manifest-plugin
  * @description 提取 manifest

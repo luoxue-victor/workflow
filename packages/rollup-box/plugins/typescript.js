@@ -5,5 +5,5 @@
 const typescript = require('@rollup/plugin-typescript')
 
 module.exports = () => {
-  return typescript(/*{ plugin options }*/)
+  return typescript(/* { plugin options } */)
 }

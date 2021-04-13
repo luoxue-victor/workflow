@@ -8,7 +8,6 @@ const alias = require('@rollup/plugin-alias')
 const path = require('path')
 
 module.exports = () => {
-
   return alias({
     entries: [
       { find: '@src', replacement: path.join(process.cwd(), 'src') }

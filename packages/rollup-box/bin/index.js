@@ -17,7 +17,7 @@ fileNames.forEach(fileName => {
   const command = require(filePath)
   command.registerCommand({
     program,
-    cleanArgs,
+    cleanArgs
   })
 })
 

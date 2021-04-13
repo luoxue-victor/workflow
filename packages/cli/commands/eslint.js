@@ -4,6 +4,6 @@ exports.registerCommand = (params) => {
     .command('eslint')
     .description('js代码检查')
     .action((cmd) => {
-      require('@pkb/plugin-eslint/lint')()
+      require('@pkb/plugin-eslint/lint')({})
     })
 }

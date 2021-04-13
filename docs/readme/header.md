@@ -68,6 +68,7 @@ pk add <plugin> # 安装插件
 pk info # 查看项目及系统配置
 pk upgrade [filter] # 检查升级 npm 版本
 pk cm # commit 提交
+pk eslint # eslint 检查
 ```
 ----
 ### webpack-box

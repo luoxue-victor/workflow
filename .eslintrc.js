@@ -20,14 +20,14 @@ module.exports = {
     'prefer-promise-reject-errors': 0,
     'no-undef': 0,
     'no-unused-vars': 0,
-    'no-sequences': 0
+    'no-sequences': 0,
+    'no-unused-expressions': 0
+    // 'no-throw-literal': 0
   },
   globals: {
-    wx: true,
     window: true,
     document: true,
-    MY_ENV: true,
-    $: true
+    process: true
   },
   parserOptions: {
     parser: '@typescript-eslint/parser'

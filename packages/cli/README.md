@@ -2,5 +2,7 @@
 
 ```sh
 npm install -g @pkb/cli
-pkb create my-project
+
+pk create my-project
+pk eslint
 ```

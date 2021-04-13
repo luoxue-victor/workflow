@@ -21,7 +21,7 @@ module.exports = () => {
       '.json': 'json',
       // Enable JSX in .js files too
       '.js': 'jsx',
-      '.ts': 'tsx',
+      '.ts': 'tsx'
     }
   })
 }

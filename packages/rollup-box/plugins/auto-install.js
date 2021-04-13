@@ -8,4 +8,4 @@ module.exports = () => {
   return [
     auto()
   ]
-};
+}
