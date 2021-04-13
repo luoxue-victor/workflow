@@ -15,6 +15,7 @@
     "build:docker": "docker build -t docker-webpack-box .",
     "test": "jest --color --config jest.config.js",
     "cr": "node docs/readme",
+    "reload": "livereload 'dist/' -d -p 9000",
     "push": "npm run cr && git add . && git commit -m 'update' && git push origin master"
   },
   "main": "index.js",
@@ -32,5 +33,8 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/luoxue-victor/learn_webpack.git"
+  },
+  "dependencies": {
+    "livereload": "^0.9.3"
   }
 }

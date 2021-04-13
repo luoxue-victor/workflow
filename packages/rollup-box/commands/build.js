@@ -9,7 +9,8 @@ exports.registerCommand = (params) => {
 }
 
 const build = async () => {
-  const { builder, plugins, MODE } = require('../index')
+  process.env.NODE_ENV = 'prod'
+  const { builder, getPlugins, MODE } = require('../index')
 
-  builder(MODE.BUILD, plugins)
+  builder(MODE.BUILD, getPlugins())
 }

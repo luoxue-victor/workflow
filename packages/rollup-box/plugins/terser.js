@@ -5,5 +5,5 @@
 const { terser } = require('rollup-plugin-terser')
 
 module.exports = () => {
-  return terser()
+  // return terser()
 }

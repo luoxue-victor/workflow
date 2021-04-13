@@ -1,3 +1,5 @@
+const { tryUsePort } = require('@pkb/tools/util/checkPort')
+
 exports.registerCommand = (params) => {
   const { program } = params
   program
@@ -9,7 +11,19 @@ exports.registerCommand = (params) => {
 }
 
 const watch = async () => {
-  const { builder, plugins, MODE } = require('../index')
+  process.env.NODE_ENV = 'development'
+  const { builder, getPlugins, MODE } = require('../index')
 
-  builder(MODE.WATCH, plugins)
+  tryUsePort(2100, (port)=> {
+    builder(MODE.WATCH, getPlugins({
+      port: port,
+      host: '::',
+      dirs: ['dist'],
+      basePath: '/',
+    }), {
+      output: {
+        sourcemap: true,
+      },
+    })
+  })
 }

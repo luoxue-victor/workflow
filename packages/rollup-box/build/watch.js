@@ -22,11 +22,11 @@ module.exports = async (inputOptions, outputOptions) => {
     }
 
     if (code === 'BUNDLE_START') {
-      console.log(chalk.cyan('开始编译'))
+      // console.log(chalk.cyan('开始编译'))
     }
 
     if (code === 'BUNDLE_END') {
-      console.log(chalk.cyan('编译完成'))
+      // console.log(chalk.cyan('编译完成'))
     }
   });
 }

@@ -3,6 +3,8 @@ const watch = require('./build/watch')
 const build = require('./build/build')
 const fs = require('fs')
 
+const isDevEnv = process.env.NODE_ENV === 'development';
+
 // 提供两种模式，watch 跟 rollup
 exports.MODE = {
   WATCH: 'watch',
@@ -17,18 +19,16 @@ function flatten(arr) {
 }
 
 // 导出所有插件，可以自行选择使用哪些插件
-exports.plugins = (() => {
+exports.getPlugins = (config) => {
   const pluginsPath = path.join(__dirname, 'plugins')
   const pluginsName = fs.readdirSync(pluginsPath) || []
 
   const plugins = pluginsName.map(_ => {
-    return require(path.join(pluginsPath, _))()
+    return require(path.join(pluginsPath, _))(config)
   })
 
-  console.log(flatten(plugins))
-
   return flatten(plugins)
-})()
+}
 
 // 构建项目
 exports.builder = async (mode, plugins, config = {}) => {
@@ -44,7 +44,8 @@ exports.builder = async (mode, plugins, config = {}) => {
   const outputOptions = Object.assign({
     name: 'app',
     dir: 'dist',
-    format: 'umd'
+    inlineDynamicImports: true,
+    format: 'es'
   }, config.output || {})
 
   const rolluper = mode === 'watch' ? watch : build

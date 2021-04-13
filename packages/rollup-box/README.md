@@ -29,9 +29,13 @@ builder(MODE.WATCH, plugins, options)
 
 - [@rollup/plugin-alias](./config/alias.js) 定义别名
 - [@rollup/plugin-auto-install](./config/auto-install.js) 自动安装依赖
+- [rollup-plugin-dev](./config/dev.js) 开发模式
 - [@rollup/plugin-graphql](./config/graphql.js) 可将.gql / .graphql文件转换为ES6模块
 - [@rollup/plugin-html](./config/html.js) 会在输出目录输出一个html页面，方便测试
 - [@rollup/plugin-image](./config/image.js) 将图片转成 base64 打包在js中
+- [null](./config/livereload.js) 自动刷新页面
+- [@rollup/plugin-replace](./config/replace.js) 代码压缩
+- [null](./config/resolve.js) null
 - [rollup-plugin-terser](./config/terser.js) 代码压缩
 - [@rollup/plugin-typescript](./config/typescript.js) 支持ts
 
