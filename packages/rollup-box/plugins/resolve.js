@@ -1,7 +1,7 @@
 const resolve = require('@rollup/plugin-node-resolve').default
 
 /**
- * @resolve @rollup/plugin-node-resolve
+ * @name @rollup/plugin-node-resolve
  * @description
  */
 module.exports = () => {

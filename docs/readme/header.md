@@ -38,6 +38,7 @@ workflow 致力于打造一个前端工作流平台，使用 workflow 你可以�
 - 🍎 可扩展
 - 🔧 node 工具
 
+-----
 ### @pkb/cli 脚手架
 
 `@pkb/cli` 为本项目的脚手架，可用来生成项目、添加插件、检查项目配置、升级更新等等，主要的功能就是对整体项目的管理。
@@ -52,7 +53,7 @@ pk info # 查看项目及系统配置
 pk upgrade [filter] # 检查升级 npm 版本
 pk cm # commit 提交
 ```
-
+----
 ### webpack-box
 
 [从零开始 webpack 学习，使用 webpack5 版本，一共 27 课时，让你从小白到大神](./learn/webpack)
@@ -61,23 +62,31 @@ pk cm # commit 提交
 - webpack-box 支持插件配置，您可以使用插件管理项目配置，可以多项目复用
 - 您也可以当作参考手册，来这里找到任何想要的 webpack 配置
 - 如果想要从头系统学习，可以切换到不同分支上，我把每课时的内容都分别切成了不同的分支，您可以在这些分支上自由尝试
+- [更多...](./packages/webpack-box/README.md)
 
-[查看详情](./packages/webpack-box/README.md)
-
+----
 ### rollup-box
 
-[从零开始 rollup 学习](./learn/rollup)
+- 对 rollup 进行封装，大量插件，开箱即用
+- [从零开始 rollup 学习](./learn/rollup)
+- [更多...](./packages/rollup-box/README.md)
 
-对 rollup 进行封装，大量插件，开箱即用
+#### 使用
 
-[查看详情](./packages/rollup-box/README.md)
+```sh
+npm i @pkb/rollup-box -g # 全局安装/本地安装
 
+rollup-box build # 构建项目
+rollup-box watch # 开发模式
+```
 
+------
 ### node-tools
 
-集成了一些 node 工具
+- 集成了一些 node 工具
+- [更多...](./packages/tools/README.md)
 
-[点击查看详情...](./packages/tools/README.md)
+-----
 ### 开发&学习
 
 - [项目计划] 把 issue 整理到 project 中做好分类，并有计划的完成目标。
