@@ -1,6 +1,6 @@
 {
   "name": "@pkb/cli",
-  "version": "1.4.15",
+  "version": "1.4.18",
   "bin": {
     "pk": "bin/index.js"
   },
@@ -8,7 +8,7 @@
   "author": "luoxue",
   "main": "index.js",
   "dependencies": {
-    "@pkb/plugin-eslint": "^1.2.16",
+    "@pkb/plugin-eslint": "^1.4.18",
     "@pkb/shared-utils": "^1.2.16",
     "boxen": "^4.1.0",
     "chalk": "^3.0.0",
