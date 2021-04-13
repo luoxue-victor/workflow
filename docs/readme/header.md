@@ -39,6 +39,29 @@ workflow 致力于打造一个前端工作流平台，使用 workflow 你可以�
 - 🔧 node 工具
 
 -----
+### 开发&学习
+
+- [项目计划] 把 issue 整理到 project 中做好分类，并有计划的完成目标。
+- [开发指南] 如果想要一起开发的可以参考这里。
+- [插件市场] 目前已经完成的插件。
+- [好的文章] 把我觉得好的 webpack 的文章整理到我的 wiki 里，也可以在项目中点击 wiki 查看。
+
+[项目计划]: https://github.com/luoxue-victor/webpack-box/projects/1
+[开发指南]: ./learn/webpack/课时-25.md
+[插件市场]: https://www.npmjs.com/search?q=%40pkb
+[好的文章]: https://github.com/luoxue-victor/webpack-box/wiki
+[npm-url]: https://www.npmjs.com/package/webpack-box
+[issue-url]: https://github.com/luoxue-victor/webpack-box/issues
+[node]: https://img.shields.io/node/v/webpack.svg
+[node-url]: https://nodejs.org
+[github-url]: https://github.com/luoxue-victor/webpack-box
+[downloads]: https://img.shields.io/npm/dt/@pkb/webpack-box.svg?style=flat-square
+[npm]: https://img.shields.io/npm/v/webpack.svg
+[issue]: https://img.shields.io/github/issues/luoxue-victor/webpack-box
+[forks]: https://img.shields.io/github/forks/luoxue-victor/webpack-box
+[star]: https://img.shields.io/github/stars/luoxue-victor/webpack-box
+
+-----
 ### @pkb/cli 脚手架
 
 `@pkb/cli` 为本项目的脚手架，可用来生成项目、添加插件、检查项目配置、升级更新等等，主要的功能就是对整体项目的管理。
@@ -55,6 +78,9 @@ pk cm # commit 提交
 ```
 ----
 ### webpack-box
+
+<details open=“open”>
+ <summary>点击关闭/打开安装</summary><br/>
 
 - [从零开始 webpack 学习，使用 webpack5 版本，一共 27 课时，让你从小白到大神](./learn/webpack)
 - webpack-box 是一个对 webpack 进行了封装的开箱即用的项目。集成了 webpack 的各种优化，配置了 webpack 常用到的 loader 和 plugin，原则上您不需要做任何配置就可以使用。
@@ -97,6 +123,9 @@ webpack-box tslint # 自动修复 tslint 错误
 webpack-box stylelint # 自动修复 stylelint 错误
 ```
 ----
+
+<details>
+
 ### rollup-box
 
 - [从零开始 rollup 学习](./learn/rollup)
@@ -119,26 +148,3 @@ rollup-box watch # 开发模式
 - [更多...](./packages/tools/README.md)
 
 -----
-### 开发&学习
-
-- [项目计划] 把 issue 整理到 project 中做好分类，并有计划的完成目标。
-- [开发指南] 如果想要一起开发的可以参考这里。
-- [插件市场] 目前已经完成的插件。
-- [好的文章] 把我觉得好的 webpack 的文章整理到我的 wiki 里，也可以在项目中点击 wiki 查看。
-
-[项目计划]: https://github.com/luoxue-victor/webpack-box/projects/1
-[开发指南]: ./docs/课时-25.md
-[插件市场]: https://www.npmjs.com/search?q=%40pkb
-[好的文章]: https://github.com/luoxue-victor/webpack-box/wiki
-[npm-url]: https://www.npmjs.com/package/webpack-box
-[issue-url]: https://github.com/luoxue-victor/webpack-box/issues
-[node]: https://img.shields.io/node/v/webpack.svg
-[node-url]: https://nodejs.org
-[github-url]: https://github.com/luoxue-victor/webpack-box
-[downloads]: https://img.shields.io/npm/dt/@pkb/webpack-box.svg?style=flat-square
-[npm]: https://img.shields.io/npm/v/webpack.svg
-[issue]: https://img.shields.io/github/issues/luoxue-victor/webpack-box
-[forks]: https://img.shields.io/github/forks/luoxue-victor/webpack-box
-[star]: https://img.shields.io/github/stars/luoxue-victor/webpack-box
-
-----
