@@ -2,7 +2,7 @@
 
 # 制定你自己的前端工作流
 
-![logo](public/asset/logo-mini2.png)
+<img src="public/asset/logo-mini2.png" width="200">
 
 ### <strong>workflow</strong>
 
@@ -37,12 +37,14 @@ workflow 致力于打造一个工作流平台，所有的工作都可以使用�
 - [项目计划] 把 issue 整理到 project 中做好分类，并有计划的完成目标。
 - [开发指南] 如果想要一起开发的可以参考这里。
 - [插件市场] 目前已经完成的插件。
-- [好的文章] 把我觉得好的 webpack 的文章整理到我的 wiki 里，也可以在项目中点击 wiki 查看。
+- [好的文章] 把我觉得好的文章整理到我的 wiki 里，也可以在项目中点击 wiki 查看。
+- [好的网站] 一些比较实用的网站
 
 [项目计划]: https://github.com/luoxue-victor/webpack-box/projects/1
 [开发指南]: ./learn/webpack/课时-25.md
 [插件市场]: https://www.npmjs.com/search?q=%40pkb
 [好的文章]: https://github.com/luoxue-victor/webpack-box/wiki
+[好的网站]: ./learn/web.md
 [npm-url]: https://www.npmjs.com/package/webpack-box
 [issue-url]: https://github.com/luoxue-victor/webpack-box/issues
 [node]: https://img.shields.io/node/v/webpack.svg

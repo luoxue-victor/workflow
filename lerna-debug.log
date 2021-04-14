@@ -1,8 +1,0 @@
-58 error Error: Command failed: git add -- packages/rollup-box/package.json packages/rollup-box/package-lock.json packages/webpack-box/package.json packages/webpack-box/package-lock.json lerna.json
-58 error The following paths are ignored by one of your .gitignore files:
-58 error packages/rollup-box/package-lock.json
-58 error Use -f if you really want to add them.
-58 error
-58 error     at makeError (/Users/luoxue/.nvm/versions/node/v12.18.0/lib/node_modules/lerna/node_modules/execa/index.js:174:9)
-58 error     at /Users/luoxue/.nvm/versions/node/v12.18.0/lib/node_modules/lerna/node_modules/execa/index.js:278:16
-58 error     at processTicksAndRejections (internal/process/task_queues.js:97:5)
