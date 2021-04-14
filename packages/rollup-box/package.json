@@ -1,6 +1,6 @@
 {
   "name": "@pkb/rollup-box",
-  "version": "1.4.20",
+  "version": "1.4.24",
   "description": "使用 rollup 打包",
   "author": "luoxue",
   "main": "index.js",

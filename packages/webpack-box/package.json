@@ -1,6 +1,6 @@
 {
   "name": "@pkb/webpack-box",
-  "version": "1.4.22",
+  "version": "1.4.24",
   "description": "一个开箱即用的 webpack 打包器配置",
   "main": "index.js",
   "bin": {
@@ -33,7 +33,7 @@
     "@babel/preset-stage-3": "^7.0.0",
     "@babel/preset-typescript": "^7.6.0",
     "@babel/register": "^7.7.4",
-    "@pkb/shared-utils": "^1.2.16",
+    "@pkb/shared-utils": "^1.4.24",
     "@pkb/tools": "^1.4.19",
     "@soda/friendly-errors-webpack-plugin": "^1.7.1",
     "@types/case-sensitive-paths-webpack-plugin": "^2.1.4",
