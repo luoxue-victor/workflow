@@ -8,7 +8,6 @@
 
 [![npm][npm]][github-url]
 [![node][node]][node-url]
-
 [![star][star]][github-url]
 [![issue][issue]][issue-url]
 [![forks][forks]][github-url]
