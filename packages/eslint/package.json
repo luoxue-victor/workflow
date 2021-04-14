@@ -1,16 +1,16 @@
 {
   "name": "@pkb/plugin-eslint",
-  "version": "1.4.24",
+  "version": "1.4.25",
   "description": "webpack-box 插件，配置 eslint 及修复",
   "author": "luoxue",
   "main": "index.js",
   "dependencies": {
     "@pkb/shared-utils": "^1.4.24",
     "@typescript-eslint/parser": "^2.10.0",
-    "eslint-loader": "^3.0.3",
     "eslint": "^7.24.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-standard": "^14.1.1",
+    "eslint-loader": "^3.0.3",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-node": "^11.1.0",
