@@ -1,6 +1,13 @@
 {
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "dev": "webpack-box dev",
+    "dev:dash": "webpack-dashboard -- webpack-box dev",
+    "build": "webpack-box build",
+    "dev:docker": "docker run -v \"$(PWD)\":/usr/src/webpack-box/ docker-webpack-box npm run dev",
+    "build:docker": "docker build -t docker-webpack-box ."
+  },
   "devDependencies": {
     "@pkb/plugin-react": "1.4.8",
     "@pkb/webpack-box": "1.4.19"
