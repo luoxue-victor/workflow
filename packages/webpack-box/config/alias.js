@@ -14,7 +14,7 @@ module.exports = ({ config, options, resolve }) => {
       .merge(['.mjs', '.js', '.jsx', '.vue', '.ts', '.tsx', '.json', '.wasm'])
       .end()
       .alias
-    dirs.forEach(v => {
+    dirs.forEach((v) => {
       const stat = fs.statSync(resolve(`src/${v}`))
       if (stat.isDirectory()) {
         aliasConfig = aliasConfig.set(`@${v}`, resolve(`src/${v}`))
@@ -24,7 +24,7 @@ module.exports = ({ config, options, resolve }) => {
     // 用户配置别名
     if (conf.alias) {
       const keys = Object.keys(conf.alias)
-      keys.forEach(key => {
+      keys.forEach((key) => {
         aliasConfig = aliasConfig.set(key, conf.alias[key])
       })
     }

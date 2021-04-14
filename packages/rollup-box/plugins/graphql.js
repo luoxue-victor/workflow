@@ -4,6 +4,4 @@
  */
 const graphql = require('@rollup/plugin-graphql')
 
-module.exports = () => {
-  return graphql()
-}
+module.exports = () => graphql()

@@ -5,7 +5,7 @@ const globby = require('globby')
 const { isBinaryFileSync } = require('isbinaryfile')
 const normalizeFilePaths = require('./normalizeFilePaths')
 
-module.exports = async function readFiles (context) {
+module.exports = async function readFiles(context) {
   const files = await globby(['**'], {
     cwd: context,
     onlyFiles: true,

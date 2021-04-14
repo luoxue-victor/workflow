@@ -2,7 +2,7 @@ const fs = require('fs-extra')
 const os = require('os')
 const path = require('path')
 
-const xdgConfigPath = file => {
+const xdgConfigPath = (file) => {
   const xdgConfigHome = process.env.XDG_CONFIG_HOME
   if (xdgConfigHome) {
     const rcDir = path.join(xdgConfigHome, 'pkd')
@@ -13,7 +13,7 @@ const xdgConfigPath = file => {
   }
 }
 
-const migrateWindowsConfigPath = file => {
+const migrateWindowsConfigPath = (file) => {
   if (process.platform !== 'win32') {
     return
   }
@@ -34,7 +34,7 @@ const migrateWindowsConfigPath = file => {
   }
 }
 
-exports.getRcPath = file => {
+exports.getRcPath = (file) => {
   migrateWindowsConfigPath(file)
   return (
     process.env.VUE_CLI_CONFIG_PATH ||

@@ -1,5 +1,5 @@
 exports.request = {
-  get (uri) {
+  get(uri) {
     // lazy require
     const request = require('request-promise-native')
     const reqOpts = {

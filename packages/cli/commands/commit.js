@@ -2,7 +2,9 @@ const inquirer = require('inquirer')
 const chalk = require('chalk')
 
 exports.registerCommand = (params) => {
-  const { program, cleanArgs, execSync, LOG } = params
+  const {
+    program, cleanArgs, execSync, LOG
+  } = params
   program
     .command('cm')
     .description('提交 commit')
@@ -30,7 +32,9 @@ async function commitCmd(cm, execSync, LOG) {
 }
 
 async function getCommitMsg(params) {
-  const { type, desc, id, detail } = params
+  const {
+    type, desc, id, detail
+  } = params
   const idStr = id ? `(fix #${id})` : ''
   const detailStr = detail ? `${detail}` : ''
 
@@ -46,7 +50,7 @@ async function getDesc(type) {
     type: 'input',
     message: '请输入一句话描述',
     name: 'msg',
-    validate: function (val) {
+    validate(val) {
       const max = 5
       if (!val) {
         return '此项为必填项'

@@ -44,26 +44,23 @@ exports.tryUsePort = (port, _portAvailableCallback) => {
   portInUse(port).then((port) => {
     _portAvailableCallback(port)
   }).catch(() => {
-    console.log(port + ' 被占用')
+    console.log(`${port} 被占用`)
     port += 1
     tryUsePort(port, _portAvailableCallback)
   })
 }
 
 // 获取当前分支
-exports.getCurBranch = () => {
-  return execSync('git rev-parse --abbrev-ref HEAD').toString().trim()
-}
+exports.getCurBranch = () => execSync('git rev-parse --abbrev-ref HEAD').toString().trim()
 
-exports.getCurBranchPromise = (context) => {
+exports.getCurBranchPromise = (context) =>
   // eslint-disable-next-line no-async-promise-executor
-  return new Promise(async (resolve) => {
+  new Promise(async (resolve) => {
     const { stdout } = await execa('git', ['rev-parse', '--abbrev-ref', 'HEAD'], {
       cwd: context || process.cwd()
     })
     resolve(stdout)
   })
-}
 
 exports.gitPull = async (context) => {
   const { stdout } = await execa('git', ['pull'], {
@@ -107,11 +104,11 @@ exports.copyToClipboard = (text) => {
 async function portInUse(port) {
   return new Promise((resolve, reject) => {
     const server = net.createServer().listen(port)
-    server.on('listening', function () {
+    server.on('listening', () => {
       server.close()
       resolve(port)
     })
-    server.on('error', function (err) {
+    server.on('error', (err) => {
       if (err.code === 'EADDRINUSE') {
         port++
         reject(err)

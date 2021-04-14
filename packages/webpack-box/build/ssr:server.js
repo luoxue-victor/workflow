@@ -14,14 +14,12 @@ module.exports = function (options) {
   function server(port) {
     const app = express()
     app.use(express.static('static'))
-    app.get('/', (req, res) =>
-      res.status(200).send(renderMarkup(renderToString(SSR)))
-    )
+    app.get('/', (req, res) => res.status(200).send(renderMarkup(renderToString(SSR))))
 
     const empty = '    '
     const common = `App running at:
       - Local: http://127.0.0.1:${port}\n`
-    console.log(chalk.cyan('\n' + empty + common))
+    console.log(chalk.cyan(`\n${empty}${common}`))
 
     app.listen(port, () => process.send && process.send('online'))
   }

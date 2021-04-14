@@ -1,4 +1,4 @@
-module.exports = function getPadLength (obj) {
+module.exports = function getPadLength(obj) {
   let longest = 10
   for (const name in obj) {
     if (name.length + 1 > longest) {

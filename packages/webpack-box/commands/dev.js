@@ -1,7 +1,7 @@
 const inquirer = require('inquirer')
 
-module.exports = function({ injectCommand }) {
-  injectCommand(function({ program, cleanArgs, boxConfig }) {
+module.exports = function ({ injectCommand }) {
+  injectCommand(({ program, cleanArgs, boxConfig }) => {
     program
       .command('dev [app-page]')
       .description('构建开发环境')
@@ -12,7 +12,7 @@ module.exports = function({ injectCommand }) {
         const args = Object.assign(options, { name }, boxConfig)
         const choices = []
         if (!name && boxConfig.pages) {
-          Object.keys(boxConfig.pages).forEach(page => {
+          Object.keys(boxConfig.pages).forEach((page) => {
             choices.push({
               name: page,
               value: page

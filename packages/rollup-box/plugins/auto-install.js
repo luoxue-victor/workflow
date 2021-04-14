@@ -4,8 +4,6 @@
  */
 const auto = require('@rollup/plugin-auto-install')
 
-module.exports = () => {
-  return [
-    auto()
-  ]
-}
+module.exports = () => [
+  auto()
+]

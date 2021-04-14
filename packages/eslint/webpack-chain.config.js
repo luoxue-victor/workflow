@@ -9,8 +9,7 @@ module.exports = ({ config, options: { eslint: { lintOnSave = false, extensions 
     const allWarnings = lintOnSave === true || lintOnSave === 'warning'
     const allErrors = lintOnSave === 'error'
 
-    const eslintPkg =
-      loadModule('eslint/package.json', cwd, true) ||
+    const eslintPkg = loadModule('eslint/package.json', cwd, true) ||
       loadModule('eslint/package.json', __dirname, true)
     const { cacheIdentifier } = api.genCacheConfig(
       'eslint-loader',

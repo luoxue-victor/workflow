@@ -11,7 +11,7 @@ const rules = [
   }
 ]
 
-exports.transformer = error => {
+exports.transformer = (error) => {
   if (error.webpackError) {
     const message = typeof error.webpackError === 'string'
       ? error.webpackError
@@ -19,29 +19,30 @@ exports.transformer = error => {
     for (const { re, msg, type } of rules) {
       const match = message.match(re)
       if (match) {
-        return Object.assign({}, error, {
-          // type is necessary to avoid being printed as defualt error
+        return {
+          ...error, // type is necessary to avoid being printed as defualt error
           // by friendly-error-webpack-plugin
           type,
           shortMessage: msg(error, match)
-        })
+        }
       }
     }
     // no match, unknown webpack error without a message.
     // friendly-error-webpack-plugin fails to handle this.
     if (!error.message) {
-      return Object.assign({}, error, {
+      return {
+        ...error,
         type: 'unknown-webpack-error',
         shortMessage: message
-      })
+      }
     }
   }
   return error
 }
 
-exports.formatter = errors => {
-  errors = errors.filter(e => e.shortMessage)
+exports.formatter = (errors) => {
+  errors = errors.filter((e) => e.shortMessage)
   if (errors.length) {
-    return errors.map(e => e.shortMessage)
+    return errors.map((e) => e.shortMessage)
   }
 }

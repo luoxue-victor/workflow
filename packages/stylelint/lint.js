@@ -2,6 +2,7 @@ const { execSync } = require('child_process')
 const chalk = require('chalk')
 const stylelint = require('stylelint')
 const CodeframeFormatter = require('stylelint-codeframe-formatter')
+
 function camelize(str) {
   return str.replace(/-(\w)/g, (_, c) => (
     c
@@ -39,7 +40,7 @@ module.exports = async function lint({ args = {}, pluginOptions = {} } = {}) {
 
   const cwd = process.cwd()
 
-  const files = args._ && args._.length ? args._ : [cwd + '/src/**/*.{vue,htm,html,css,sss,less,scss}']
+  const files = args._ && args._.length ? args._ : [`${cwd}/src/**/*.{vue,htm,html,css,sss,less,scss}`]
   if (args['no-fix']) {
     args.fix = false
     delete args['no-fix']
@@ -64,12 +65,14 @@ module.exports = async function lint({ args = {}, pluginOptions = {} } = {}) {
     }
   }
 
-  const options = Object.assign({}, {
+  const options = {
     configBasedir: cwd,
     fix: true,
     files,
-    formatter: CodeframeFormatter
-  }, pluginOptions, normalizeConfig(args))
+    formatter: CodeframeFormatter,
+    ...pluginOptions,
+    ...normalizeConfig(args)
+  }
 
   try {
     const { errored, results, output: formattedOutput } = await stylelint.lint(options)
@@ -79,7 +82,7 @@ module.exports = async function lint({ args = {}, pluginOptions = {} } = {}) {
           if (result.ignored) {
             return null
           }
-          return result.warnings.some(warning => warning.severity === 'warning')
+          return result.warnings.some((warning) => warning.severity === 'warning')
         })
         if (hasWarnings) {
           console.log(formattedOutput)

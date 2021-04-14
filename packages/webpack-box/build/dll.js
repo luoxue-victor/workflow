@@ -14,12 +14,10 @@ module.exports = function (options) {
   if (options.report) BundleAnalyzerPlugin()
   if (options.dll && !Array.isArray(options.dll.venders)) { throw console.log('请添加 dll.entry') }
 
-  options.dll.venders.forEach(_ =>
-    config
-      .entry('dll')
-      .add(_)
-      .end()
-  )
+  options.dll.venders.forEach((_) => config
+    .entry('dll')
+    .add(_)
+    .end())
 
   config
     .set('mode', 'production')
@@ -40,17 +38,17 @@ module.exports = function (options) {
   const spinner = ora('开始构建项目...')
   spinner.start()
 
-  webpack(config.toConfig(), function(err, stats) {
+  webpack(config.toConfig(), (err, stats) => {
     spinner.stop()
     if (err) throw err
     process.stdout.write(
-      stats.toString({
+      `${stats.toString({
         colors: true,
         modules: false,
         children: false,
         chunks: false,
         chunkModules: false
-      }) + '\n\n'
+      })}\n\n`
     )
 
     if (stats.hasErrors()) {

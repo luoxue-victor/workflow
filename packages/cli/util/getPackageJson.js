@@ -1,7 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 
-module.exports = function getPackageJson (projectPath) {
+module.exports = function getPackageJson(projectPath) {
   const packagePath = path.join(projectPath, 'package.json')
 
   let packageJson

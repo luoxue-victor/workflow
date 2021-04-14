@@ -9,7 +9,7 @@ module.exports = ({ config, options }) => {
     [
       'normal'
     ].forEach((oneOf) => {
-      Object.keys(resourcesOpt).forEach(loader => {
+      Object.keys(resourcesOpt).forEach((loader) => {
         config.module.rule(loader).oneOf(oneOf)
           .use('style-resources-loader')
           .loader('style-resources-loader')

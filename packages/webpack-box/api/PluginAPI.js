@@ -22,7 +22,7 @@ exports.genCacheConfig = function (id, partialIdentifier, configFiles = []) {
     'pnpm-lock.yaml'
   ])
 
-  const readConfig = file => {
+  const readConfig = (file) => {
     const absolutePath = this.resolve(file)
     if (!fs.existsSync(absolutePath)) {
       return

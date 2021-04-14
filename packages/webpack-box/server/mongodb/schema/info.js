@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-const Schema = mongoose.Schema
+const { Schema } = mongoose
 // const ObjectId = Schema.Types.ObjectId
 
 const InfoSchema = new Schema({

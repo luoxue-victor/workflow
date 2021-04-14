@@ -16,10 +16,11 @@ module.exports = ({ config, options = {} }) => {
       rootOptions,
       `css/[name]${rootOptions.filenameHashing ? '.[contenthash:8]' : ''}.css`
     )
-    const extractOptions = Object.assign({
+    const extractOptions = {
       filename,
-      chunkFilename: filename
-    }, extract && typeof extract === 'object' ? extract : {})
+      chunkFilename: filename,
+      ...(extract && typeof extract === 'object' ? extract : {})
+    }
     config
       .plugin('mini-css-extract')
       .use(MiniCssExtractPlugin, [extractOptions])

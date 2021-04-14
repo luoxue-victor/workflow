@@ -4,6 +4,4 @@
  */
 const typescript = require('@rollup/plugin-typescript')
 
-module.exports = () => {
-  return typescript(/* { plugin options } */)
-}
+module.exports = () => typescript(/* { plugin options } */)

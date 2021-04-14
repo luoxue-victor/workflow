@@ -1,23 +1,21 @@
 module.exports = class PromptModuleAPI {
-  constructor (creator) {
+  constructor(creator) {
     this.creator = creator
   }
 
-  injectFeature (feature) {
+  injectFeature(feature) {
     this.creator.featurePrompt.choices.push(feature)
   }
 
-  injectPrompt (prompt) {
+  injectPrompt(prompt) {
     this.creator.injectedPrompts.push(prompt)
   }
 
-  injectOptionForPrompt (name, option) {
-    this.creator.injectedPrompts.find(f => {
-      return f.name === name
-    }).choices.push(option)
+  injectOptionForPrompt(name, option) {
+    this.creator.injectedPrompts.find((f) => f.name === name).choices.push(option)
   }
 
-  onPromptComplete (cb) {
+  onPromptComplete(cb) {
     this.creator.promptCompleteCbs.push(cb)
   }
 }

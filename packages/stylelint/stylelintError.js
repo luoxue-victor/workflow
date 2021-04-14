@@ -9,7 +9,7 @@ exports.transformer = (error) => {
     fileName.indexOf('stylelint-webpack-plugin') > 0
   ))
   if (match) {
-    return Object.assign({}, error, { type: TYPE })
+    return { ...error, type: TYPE }
   }
   return error
 }
@@ -26,7 +26,7 @@ function severityColor(severity) {
 }
 
 exports.formatter = (errors, severity) => {
-  errors = errors.filter(e => e.type === TYPE)
+  errors = errors.filter((e) => e.type === TYPE)
   if (errors.length > 0) {
     return [
       '',

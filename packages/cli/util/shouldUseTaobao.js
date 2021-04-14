@@ -7,19 +7,19 @@ const {
 const inquirer = require('inquirer')
 const registries = require('./registries')
 
-async function ping (registry) {
+async function ping(registry) {
   await request.get(`${registry}/vue-cli-version-marker/latest`)
   return registry
 }
 
-function removeSlash (url) {
+function removeSlash(url) {
   return url.replace(/\/$/, '')
 }
 
 let checked
 let result
 
-module.exports = async function shouldUseTaobao (command) {
+module.exports = async function shouldUseTaobao(command) {
   if (!command) {
     command = hasYarn() ? 'yarn' : 'npm'
   }
@@ -28,7 +28,7 @@ module.exports = async function shouldUseTaobao (command) {
   if (checked) return result
   checked = true
 
-  const save = val => {
+  const save = (val) => {
     result = val
     return val
   }

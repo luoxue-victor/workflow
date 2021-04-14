@@ -15,11 +15,12 @@ module.exports = ({
     if (!lintOnSave) return
     config
       .plugin('stylelint')
-      .use(StyleLintPlugin, [Object.assign({
+      .use(StyleLintPlugin, [{
         failOnError: lintOnSave === 'error',
         files: [`src/**/*.{${extensions.join()}}`],
-        formatter: CodeframeFormatter
-      }, stylelint)])
+        formatter: CodeframeFormatter,
+        ...stylelint
+      }])
       .end()
       .plugin('friendly-errors')
       .tap(([options]) => {

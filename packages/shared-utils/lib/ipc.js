@@ -13,8 +13,8 @@ const DEFAULT_OPTIONS = {
 const PROJECT_ID = process.env.VUE_CLI_PROJECT_ID
 
 exports.IpcMessenger = class IpcMessenger {
-  constructor (options = {}) {
-    options = Object.assign({}, DEFAULT_OPTIONS, options)
+  constructor(options = {}) {
+    options = { ...DEFAULT_OPTIONS, ...options }
     ipc.config.id = this.id = options.networkId
     ipc.config.retry = 1500
     ipc.config.silent = true
@@ -32,20 +32,20 @@ exports.IpcMessenger = class IpcMessenger {
 
     // Prevent forced process exit
     // (or else ipc messages may not be sent before kill)
-    process.exit = code => {
+    process.exit = (code) => {
       process.exitCode = code
     }
 
     this._reset()
   }
 
-  checkConnection () {
+  checkConnection() {
     if (!ipc.of[this.id]) {
       this.connected = false
     }
   }
 
-  send (data, type = 'message') {
+  send(data, type = 'message') {
     this.checkConnection()
     if (this.connected) {
       if (this.options.namespaceOnProject && PROJECT_ID) {
@@ -71,7 +71,7 @@ exports.IpcMessenger = class IpcMessenger {
     }
   }
 
-  connect () {
+  connect() {
     this.checkConnection()
     if (this.connected || this.connecting) return
     this.connecting = true
@@ -79,14 +79,14 @@ exports.IpcMessenger = class IpcMessenger {
     ipc.connectTo(this.id, () => {
       this.connected = true
       this.connecting = false
-      this.queue && this.queue.forEach(data => this.send(data))
+      this.queue && this.queue.forEach((data) => this.send(data))
       this.queue = null
 
       ipc.of[this.id].on('message', this._onMessage)
     })
   }
 
-  disconnect () {
+  disconnect() {
     this.checkConnection()
     if (!this.connected || this.disconnecting) return
     this.disconnecting = true
@@ -98,7 +98,7 @@ exports.IpcMessenger = class IpcMessenger {
 
     this.send({ done: true }, 'ack')
 
-    ipc.of[this.id].on('ack', data => {
+    ipc.of[this.id].on('ack', (data) => {
       if (data.ok) {
         clearTimeout(ipcTimer)
         this._disconnect()
@@ -106,29 +106,29 @@ exports.IpcMessenger = class IpcMessenger {
     })
   }
 
-  on (listener) {
+  on(listener) {
     this.listeners.push(listener)
   }
 
-  off (listener) {
+  off(listener) {
     const index = this.listeners.indexOf(listener)
     if (index !== -1) this.listeners.splice(index, 1)
   }
 
-  _reset () {
+  _reset() {
     this.queue = []
     this.connected = false
   }
 
-  _disconnect () {
+  _disconnect() {
     this.connected = false
     this.disconnecting = false
     ipc.disconnect(this.id)
     this._reset()
   }
 
-  _onMessage (data) {
-    this.listeners.forEach(fn => {
+  _onMessage(data) {
+    this.listeners.forEach((fn) => {
       if (this.options.namespaceOnProject && data._projectId) {
         if (data._projectId === PROJECT_ID) {
           data = data._data

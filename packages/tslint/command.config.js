@@ -1,5 +1,5 @@
-module.exports = function({ injectCommand, api }) {
-  injectCommand(function({ program, cleanArgs, boxConfig }) {
+module.exports = function ({ injectCommand, api }) {
+  injectCommand(({ program, cleanArgs, boxConfig }) => {
     program
       .command('tslint')
       .description('修复 tslint')

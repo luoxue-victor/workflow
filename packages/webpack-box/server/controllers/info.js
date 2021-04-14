@@ -1,4 +1,5 @@
 import mongoose from 'mongoose'
+
 const Info = mongoose.model('Info')
 
 // 保存Info信息

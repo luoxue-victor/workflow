@@ -1,6 +1,6 @@
 const { done } = require('@pkb/shared-utils')
 
-module.exports = function lint ({ args = {}, api, silent }) {
+module.exports = function lint({ args = {}, api, silent }) {
   const cwd = api.resolve('.')
   const fs = require('fs')
   const path = require('path')
@@ -8,7 +8,7 @@ module.exports = function lint ({ args = {}, api, silent }) {
   const tslint = require('tslint')
   const ts = require('typescript')
   const vueCompiler = require('vue-template-compiler')
-  const isVueFile = file => /\.vue(\.ts)?$/.test(file)
+  const isVueFile = (file) => /\.vue(\.ts)?$/.test(file)
 
   const options = {
     fix: args.fix !== false,
@@ -18,7 +18,7 @@ module.exports = function lint ({ args = {}, api, silent }) {
   }
 
   const vueFileCache = new Map()
-  const writeFileSync = fs.writeFileSync
+  const { writeFileSync } = fs
 
   const patchWriteFile = () => {
     fs.writeFileSync = (file, content, options) => {
@@ -38,7 +38,7 @@ module.exports = function lint ({ args = {}, api, silent }) {
     fs.writeFileSync = writeFileSync
   }
 
-  const parseTSFromVueFile = file => {
+  const parseTSFromVueFile = (file) => {
     if (vueFileCache.has(file)) {
       return vueFileCache.get(file)
     }
@@ -57,16 +57,15 @@ module.exports = function lint ({ args = {}, api, silent }) {
 
   const program = tslint.Linter.createProgram(api.resolve('tsconfig.json'))
 
-  const patchProgram = program => {
-    const getSourceFile = program.getSourceFile
+  const patchProgram = (program) => {
+    const { getSourceFile } = program
     program.getSourceFile = function (file, languageVersion, onError) {
       if (isVueFile(file)) {
         const { content, lang = 'js' } = parseTSFromVueFile(file) || { content: '', lang: 'js' }
         const contentLang = ts.ScriptKind[lang.toUpperCase()]
         return ts.createSourceFile(file, content, languageVersion, true, contentLang)
-      } else {
-        return getSourceFile.call(this, file, languageVersion, onError)
       }
+      return getSourceFile.call(this, file, languageVersion, onError)
     }
   }
 
@@ -74,25 +73,23 @@ module.exports = function lint ({ args = {}, api, silent }) {
 
   const linter = new tslint.Linter(options, program)
 
-  const updateProgram = linter.updateProgram
+  const { updateProgram } = linter
   linter.updateProgram = function (...args) {
     updateProgram.call(this, ...args)
     patchProgram(this.program)
   }
 
   const tslintConfigPath = tslint.Configuration.CONFIG_FILENAMES
-    .map(filename => api.resolve(filename))
-    .find(file => fs.existsSync(file))
+    .map((filename) => api.resolve(filename))
+    .find((file) => fs.existsSync(file))
 
   const config = tslint.Configuration.findConfiguration(tslintConfigPath).results
   const vueConfig = Object.assign(config)
   const rules = vueConfig.rules = new Map(vueConfig.rules)
   const rule = rules.get('no-consecutive-blank-lines')
-  rules.set('no-consecutive-blank-lines', Object.assign({}, rule, {
-    ruleSeverity: 'off'
-  }))
+  rules.set('no-consecutive-blank-lines', { ...rule, ruleSeverity: 'off' })
 
-  const lint = file => {
+  const lint = (file) => {
     const filePath = api.resolve(file)
     const isVue = isVueFile(file)
     patchWriteFile()
@@ -106,15 +103,15 @@ module.exports = function lint ({ args = {}, api, silent }) {
 
   const files = args._ && args._.length
     ? args._
-    : [cwd + '/src/**/*.ts', cwd + '/src/**/*.vue', cwd + '/src/**/*.tsx']
+    : [`${cwd}/src/**/*.ts`, `${cwd}/src/**/*.vue`, `${cwd}/src/**/*.tsx`]
 
   if (config.linterOptions && config.linterOptions.exclude) {
     const rawTslintConfig = tslint.Configuration.readConfigurationFile(tslintConfigPath)
     const excludedGlobs = rawTslintConfig.linterOptions.exclude
-    excludedGlobs.forEach((g) => files.push('!' + g))
+    excludedGlobs.forEach((g) => files.push(`!${g}`))
   }
 
-  return globby(files, { cwd }).then(files => {
+  return globby(files, { cwd }).then((files) => {
     files.forEach(lint)
     if (silent) return
     const result = linter.getResult()

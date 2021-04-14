@@ -10,6 +10,7 @@ import {
 } from 'graphql'
 
 import mongoose from 'mongoose'
+
 const Info = mongoose.model('Info')
 
 // 定义日期时间 类型
@@ -51,7 +52,7 @@ export const InfoType = new GraphQLObjectType({
 export const infos = {
   type: new GraphQLList(InfoType),
   args: {},
-  resolve (root, params, options) {
+  resolve(root, params, options) {
     return Info.find({}).exec()
   }
 }
@@ -66,7 +67,7 @@ export const info = {
       type: new GraphQLNonNull(GraphQLID) // 参数不为空
     }
   },
-  resolve (root, params, options) {
+  resolve(root, params, options) {
     return Info.findOne({ _id: params.id }).exec() // 查询单条数据
   }
 }

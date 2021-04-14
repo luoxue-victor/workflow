@@ -57,7 +57,7 @@ const PACKAGE_MANAGER_CONFIG = {
   }
 }
 class PackageManager {
-  constructor ({ context, forcePackageManager } = {}) {
+  constructor({ context, forcePackageManager } = {}) {
     this.context = context
 
     if (forcePackageManager) {
@@ -81,7 +81,7 @@ class PackageManager {
 
   // Any command that implemented registry-related feature should support
   // `-r` / `--registry` option
-  async getRegistry () {
+  async getRegistry() {
     if (this._registry) {
       return this._registry
     }
@@ -108,7 +108,7 @@ class PackageManager {
     return this._registry
   }
 
-  async addRegistryToArgs (args) {
+  async addRegistryToArgs(args) {
     const registry = await this.getRegistry()
     args.push(`--registry=${registry}`)
 
@@ -116,7 +116,7 @@ class PackageManager {
   }
 
   // set mirror urls for users in china
-  async setBinaryMirrors () {
+  async setBinaryMirrors() {
     const registry = await this.getRegistry()
 
     if (registry !== registries.taobao) {
@@ -145,15 +145,14 @@ class PackageManager {
       if (targetPlatform && !process.env.CYPRESS_INSTALL_BINARY) {
         // We only support cypress 3 for the current major version
         const latestCypressVersion = await this.getRemoteVersion('cypress', '^3')
-        process.env.CYPRESS_INSTALL_BINARY =
-          `${cypressMirror.host}/${latestCypressVersion}/${targetPlatform}/cypress.zip`
+        process.env.CYPRESS_INSTALL_BINARY = `${cypressMirror.host}/${latestCypressVersion}/${targetPlatform}/cypress.zip`
       }
     } catch (e) {
       // get binary mirror config failed
     }
   }
 
-  async getMetadata (packageName, { field = '' } = {}) {
+  async getMetadata(packageName, { field = '' } = {}) {
     const registry = await this.getRegistry()
 
     const metadataKey = `${this.bin}-${registry}-${packageName}`
@@ -176,7 +175,7 @@ class PackageManager {
     return metadata
   }
 
-  async getRemoteVersion (packageName, versionRange = 'latest') {
+  async getRemoteVersion(packageName, versionRange = 'latest') {
     const metadata = await this.getMetadata(packageName)
     if (Object.keys(metadata['dist-tags']).includes(versionRange)) {
       return metadata['dist-tags'][versionRange]
@@ -185,7 +184,7 @@ class PackageManager {
     return semver.maxSatisfying(versions, versionRange)
   }
 
-  getInstalledVersion (packageName) {
+  getInstalledVersion(packageName) {
     // for first level deps, read package.json directly is way faster than `npm list`
     try {
       const packageJson = getPackageJson(
@@ -197,13 +196,13 @@ class PackageManager {
     }
   }
 
-  async install () {
+  async install() {
     await this.setBinaryMirrors()
     const args = await this.addRegistryToArgs(PACKAGE_MANAGER_CONFIG[this.bin].install)
     return executeCommand(this.bin, args, this.context)
   }
 
-  async add (packageName, isDev = true) {
+  async add(packageName, isDev = true) {
     await this.setBinaryMirrors()
     const args = await this.addRegistryToArgs([
       ...PACKAGE_MANAGER_CONFIG[this.bin].add,
@@ -213,7 +212,7 @@ class PackageManager {
     return executeCommand(this.bin, args, this.context)
   }
 
-  async remove (packageName) {
+  async remove(packageName) {
     const args = [
       ...PACKAGE_MANAGER_CONFIG[this.bin].remove,
       packageName

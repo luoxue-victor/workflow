@@ -32,10 +32,11 @@ module.exports = ({ config, options = {} }) => {
       rootOptions,
       `css/[name]${rootOptions.filenameHashing ? '.[contenthash:8]' : ''}.css`
     )
-    const extractOptions = Object.assign({
+    const extractOptions = {
       filename,
-      chunkFilename: filename
-    }, extract && typeof extract === 'object' ? extract : {})
+      chunkFilename: filename,
+      ...(extract && typeof extract === 'object' ? extract : {})
+    }
 
     const cssPublicPath = '../'.repeat(
       extractOptions.filename
@@ -46,10 +47,8 @@ module.exports = ({ config, options = {} }) => {
 
     applyLoaders(normalRule, isCssModule)
 
-    function applyLoaders (rule, isCssModule) {
-      const cssLoaderOptions = Object.assign({
-        sourceMap
-      }, loaderOptions.css)
+    function applyLoaders(rule, isCssModule) {
+      const cssLoaderOptions = { sourceMap, ...loaderOptions.css }
 
       const isDev = process.env.NODE_ENV === 'development'
 
@@ -95,7 +94,7 @@ module.exports = ({ config, options = {} }) => {
       rule
         .use('postcss-loader')
         .loader(require.resolve('postcss-loader'))
-        .options(Object.assign({ sourceMap }, loaderOptions.postcss))
+        .options({ sourceMap, ...loaderOptions.postcss })
 
       if (loader) {
         let resolvedLoader
@@ -107,7 +106,7 @@ module.exports = ({ config, options = {} }) => {
         rule
           .use(loader)
           .loader(resolvedLoader)
-          .options(Object.assign({ sourceMap }, options))
+          .options({ sourceMap, ...options })
       }
     }
   }
@@ -115,31 +114,25 @@ module.exports = ({ config, options = {} }) => {
   return () => {
     createCSSRule('css', /\.css$/, 'css-loader')
     createCSSRule('postcss', /\.p(ost)?css$/)
-    createCSSRule('scss', /\.scss$/, 'sass-loader', Object.assign(
-      {},
-      defaultSassLoaderOptions,
-      loaderOptions.scss || loaderOptions.sass
-    ))
+    createCSSRule('scss', /\.scss$/, 'sass-loader', {
 
-    createCSSRule('sass', /\.sass$/, 'sass-loader', Object.assign(
-      {},
-      defaultSassLoaderOptions,
-      loaderOptions.sass,
-      {
-        sassOptions: Object.assign(
-          {},
-          loaderOptions.sass && loaderOptions.sass.sassOptions,
-          {
-            indentedSyntax: true
-          }
-        )
+      ...defaultSassLoaderOptions,
+      ...loaderOptions.scss || loaderOptions.sass
+    })
+
+    createCSSRule('sass', /\.sass$/, 'sass-loader', {
+
+      ...defaultSassLoaderOptions,
+      ...loaderOptions.sass,
+      sassOptions: {
+
+        ...loaderOptions.sass && loaderOptions.sass.sassOptions,
+        indentedSyntax: true
       }
-    ))
+    })
 
     createCSSRule('less', /\.less$/, 'less-loader', loaderOptions.less)
 
-    createCSSRule('stylus', /\.styl(us)?$/, 'stylus-loader', Object.assign({
-      preferPathResolver: 'webpack'
-    }, loaderOptions.stylus))
+    createCSSRule('stylus', /\.styl(us)?$/, 'stylus-loader', { preferPathResolver: 'webpack', ...loaderOptions.stylus })
   }
 }

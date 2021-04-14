@@ -3,9 +3,11 @@ const path = require('path')
 const program = require('commander')
 const packageConfig = require('../package.json')
 const { cleanArgs } = require('../lib')
+
 const boxPath = path.join(process.cwd(), 'box.config.js')
 const chalk = require('chalk')
 const semver = require('semver')
+
 const commandNames = []
 
 const commandStore = exports.commandStore = []
@@ -22,23 +24,25 @@ program
 module.exports.injectCommand = function (cmd) {
   if (status === 'done') return console.error('注册命令行时机已经是 done，请提前注册～')
   if (typeof cmd !== 'function') return console.error(cmd, '必须是一个函数')
-  cmd({ program, boxConfig, commandStore, cleanArgs })
+  cmd({
+    program, boxConfig, commandStore, cleanArgs
+  })
 }
 
-module.exports.getAllCommands = function() {
+module.exports.getAllCommands = function () {
   const path = require('path')
   const fs = require('fs')
   const localCwdPath = path.join(__dirname, '..', 'commands')
   const localCwdNames = [...fs.readdirSync(localCwdPath)]
   const cwdFns = []
-  localCwdNames.forEach(name => {
+  localCwdNames.forEach((name) => {
     const cwdPath = path.join(localCwdPath, name)
     cwdFns.push(require(cwdPath))
   })
 
   const { getAllPluginIdOfPackageJson } = require('@pkb/shared-utils')
 
-  getAllPluginIdOfPackageJson().forEach(id => {
+  getAllPluginIdOfPackageJson().forEach((id) => {
     const command = `${id}/command.config.js`
     try {
       const cwd = require(command)
@@ -50,7 +54,7 @@ module.exports.getAllCommands = function() {
   return cwdFns
 }
 
-module.exports.commandComplete = function() {
+module.exports.commandComplete = function () {
   commandValidate()
   parse()
   status = 'done'
@@ -58,11 +62,11 @@ module.exports.commandComplete = function() {
 
 function parse() {
   program.parse(process.argv)
-  program.commands.forEach(c => c.on('--help', () => console.log()))
+  program.commands.forEach((c) => c.on('--help', () => console.log()))
 }
 
 function commandValidate() {
-  program.commands.map(_ => commandNames.push(_._name))
+  program.commands.map((_) => commandNames.push(_._name))
   const commandName = process.argv[2]
   if (commandName && !commandNames.includes(commandName)) {
     console.log()
@@ -76,7 +80,7 @@ function commandValidate() {
   }
 }
 
-function checkNodeVersionForWarning () {
+function checkNodeVersionForWarning() {
   if (semver.satisfies(process.version, '10.x')) {
     console.log(chalk.red(
       `你正在用的 node 版本是：${process.version}.\n` +

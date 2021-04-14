@@ -10,11 +10,11 @@ const pkbOfficialPlugins = [
   'tslint'
 ]
 
-exports.isPlugin = id => pkPluginRE.test(id)
+exports.isPlugin = (id) => pkPluginRE.test(id)
 
-exports.isOfficialPlugin = id => exports.isPlugin(id) && pbOfficialRE.test(id)
+exports.isOfficialPlugin = (id) => exports.isPlugin(id) && pbOfficialRE.test(id)
 
-exports.toShortPluginId = id => id.replace(vuePluginRE, '')
+exports.toShortPluginId = (id) => id.replace(vuePluginRE, '')
 
 exports.getAllPluginIdOfPackageJson = () => {
   const pkgJsonPath = path.join(process.cwd(), 'package.json')
@@ -22,13 +22,13 @@ exports.getAllPluginIdOfPackageJson = () => {
   const plugins = []
   const pkg = require(pkgJsonPath)
   Object.assign(deps, pkg.devDependencies || {}, pkg.dependencies || {})
-  Object.keys(deps).forEach(dep => {
+  Object.keys(deps).forEach((dep) => {
     pkPluginRE.test(dep) && plugins.push(dep)
   })
   return plugins
 }
 
-exports.resolvePluginId = id => {
+exports.resolvePluginId = (id) => {
   if (pkPluginRE.test(id)) {
     return id
   }

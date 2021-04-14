@@ -3,35 +3,35 @@ const EventEmitter = require('events')
 const readline = require('readline')
 
 class InstallProgress extends EventEmitter {
-  constructor () {
+  constructor() {
     super()
 
     this._progress = -1
   }
 
-  get progress () {
+  get progress() {
     return this._progress
   }
 
-  set progress (value) {
+  set progress(value) {
     this._progress = value
     this.emit('progress', value)
   }
 
-  get enabled () {
+  get enabled() {
     return this._progress !== -1
   }
 
-  set enabled (value) {
+  set enabled(value) {
     this.progress = value ? 0 : -1
   }
 
-  log (value) {
+  log(value) {
     this.emit('log', value)
   }
 }
 
-function toStartOfLine (stream) {
+function toStartOfLine(stream) {
   if (!chalk.supportsColor) {
     stream.write('\r')
     return
@@ -39,7 +39,7 @@ function toStartOfLine (stream) {
   readline.cursorTo(stream, 0)
 }
 
-function renderProgressBar (curr, total) {
+function renderProgressBar(curr, total) {
   const ratio = Math.min(Math.max(curr / total, 0), 1)
   const bar = ` ${curr}/${total}`
   const availableSpace = Math.max(0, process.stderr.columns - bar.length - 3)
@@ -52,7 +52,7 @@ function renderProgressBar (curr, total) {
 }
 
 const progress = exports.progress = new InstallProgress()
-exports.executeCommand = function executeCommand (command, args, cwd) {
+exports.executeCommand = function executeCommand(command, args, cwd) {
   return new Promise((resolve, reject) => {
     const apiMode = process.env.VUE_CLI_API_MODE
 
@@ -74,7 +74,7 @@ exports.executeCommand = function executeCommand (command, args, cwd) {
     if (apiMode) {
       let progressTotal = 0
       let progressTime = Date.now()
-      child.stdout.on('data', buffer => {
+      child.stdout.on('data', (buffer) => {
         let str = buffer.toString().trim()
         if (str && command === 'yarn' && str.indexOf('"type":') !== -1) {
           const newLineIndex = str.lastIndexOf('\n')
@@ -108,7 +108,7 @@ exports.executeCommand = function executeCommand (command, args, cwd) {
     } else {
       // filter out unwanted yarn output
       if (command === 'yarn') {
-        child.stderr.on('data', buf => {
+        child.stderr.on('data', (buf) => {
           const str = buf.toString()
           if (/warning/.test(str)) {
             return
@@ -128,7 +128,7 @@ exports.executeCommand = function executeCommand (command, args, cwd) {
       }
     }
 
-    child.on('close', code => {
+    child.on('close', (code) => {
       if (code !== 0) {
         reject(`command failed: ${command} ${args.join(' ')}`)
         return

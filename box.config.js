@@ -1,5 +1,6 @@
 const path = require('path')
-function resolve (dir) {
+
+function resolve(dir) {
   return path.join(process.cwd(), dir)
 }
 

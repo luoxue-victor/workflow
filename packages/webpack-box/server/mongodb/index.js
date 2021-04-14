@@ -1,5 +1,6 @@
 import mongoose from 'mongoose'
 import config from '../config'
+
 const chalk = require('chalk')
 
 require('./schema/info')
@@ -15,7 +16,7 @@ const database = () => {
   mongoose.connection.on('disconnected', () => {
     mongoose.connect(config.dbPath)
   })
-  mongoose.connection.on('error', err => {
+  mongoose.connection.on('error', (err) => {
     console.error(err)
   })
 

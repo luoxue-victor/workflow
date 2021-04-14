@@ -1,10 +1,12 @@
 const fs = require('fs-extra')
 const path = require('path')
 const inquirer = require('inquirer')
+const {
+  chalk, error, stopSpinner, exit
+} = require('@pkb/shared-utils')
+const validateProjectName = require('validate-npm-package-name')
 const Creator = require('./Creator')
 const { clearConsole } = require('../util/clearConsole')
-const { chalk, error, stopSpinner, exit } = require('@pkb/shared-utils')
-const validateProjectName = require('validate-npm-package-name')
 
 async function create(projectName, options) {
   const cwd = process.cwd()
@@ -14,11 +16,11 @@ async function create(projectName, options) {
   const result = validateProjectName(name)
   if (!result.validForNewPackages) {
     console.error(chalk.red(`无效的项目名: "${name}"`))
-    result.errors && result.errors.forEach(err => {
-      console.error(chalk.red.dim('Error: ' + err))
+    result.errors && result.errors.forEach((err) => {
+      console.error(chalk.red.dim(`Error: ${err}`))
     })
-    result.warnings && result.warnings.forEach(warn => {
-      console.error(chalk.red.dim('Warning: ' + warn))
+    result.warnings && result.warnings.forEach((warn) => {
+      console.error(chalk.red.dim(`Warning: ${warn}`))
     })
     exit(1)
   }
@@ -40,7 +42,7 @@ async function create(projectName, options) {
     ])
     if (action === 'cancel') {
       return
-    } else if (action === 'delete') {
+    } if (action === 'delete') {
       console.log(`\n正在删除中 ${chalk.cyan(targetDir)}...`)
       await fs.remove(targetDir)
     }
@@ -50,10 +52,8 @@ async function create(projectName, options) {
   await creator.create(options)
 }
 
-module.exports = (...args) => {
-  return create(...args).catch(err => {
-    stopSpinner(false)
-    error(err)
-    process.exit(1)
-  })
-}
+module.exports = (...args) => create(...args).catch((err) => {
+  stopSpinner(false)
+  error(err)
+  process.exit(1)
+})

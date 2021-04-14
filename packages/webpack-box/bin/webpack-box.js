@@ -7,7 +7,7 @@ const {
 const PluginAPI = require('../api/PluginAPI')
 
 // 注册命令行
-getAllCommands().forEach(cwd => {
+getAllCommands().forEach((cwd) => {
   cwd({ injectCommand, api: PluginAPI })
 })
 

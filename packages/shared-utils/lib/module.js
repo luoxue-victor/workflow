@@ -1,6 +1,6 @@
 const semver = require('semver')
 
-function resolveFallback (request, options) {
+function resolveFallback(request, options) {
   const Module = require('module')
   const isMain = false
   const fakeParent = new Module('', null)
@@ -59,12 +59,12 @@ exports.clearModule = function (request, context) {
   }
 }
 
-function clearRequireCache (id, map = new Map()) {
+function clearRequireCache(id, map = new Map()) {
   const module = require.cache[id]
   if (module) {
     map.set(id, true)
     // Clear children modules
-    module.children.forEach(child => {
+    module.children.forEach((child) => {
       if (!map.get(child.id)) clearRequireCache(child.id, map)
     })
     delete require.cache[id]

@@ -1,4 +1,4 @@
-const spawn = require('child_process').spawn
+const { spawn } = require('child_process')
 const { watchFile } = require('fs')
 const http = require('http')
 

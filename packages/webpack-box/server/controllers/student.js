@@ -1,4 +1,5 @@
 import mongoose from 'mongoose'
+
 const Student = mongoose.model('Student')
 
 // 保存学生数据的方法

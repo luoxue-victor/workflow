@@ -30,11 +30,10 @@ module.exports = function (options) {
         'html-webpack-plugin': '^4.5.0',
         webpack: '^5.11.0'
       }
-    } else {
-      return {
-        'html-webpack-plugin': '^3.2.0',
-        webpack: '^4.41.2'
-      }
+    }
+    return {
+      'html-webpack-plugin': '^3.2.0',
+      webpack: '^4.41.2'
     }
   }
 }

@@ -16,7 +16,7 @@ const watch = async () => {
 
   tryUsePort(2100, (port) => {
     builder(MODE.WATCH, getPlugins({
-      port: port,
+      port,
       host: '::',
       dirs: ['dist'],
       basePath: '/'

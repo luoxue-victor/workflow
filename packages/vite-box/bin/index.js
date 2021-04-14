@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
-const { createServer } = require('vite')
+const { createServer } = require('vite');
 
-;(async () => {
+(async () => {
   const server = await createServer({
     configFile: false,
     root: __dirname,

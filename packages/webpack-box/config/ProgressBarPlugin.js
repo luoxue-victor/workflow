@@ -9,7 +9,7 @@ module.exports = ({ config, resolve, options }) => {
   return () => {
     config.plugin('ProgressBarPlugin')
       .use(ProgressBarPlugin, [{
-        format: '  build [:bar] ' + chalk.green.bold(':percent') + ' (:elapsed seconds)',
+        format: `  build [:bar] ${chalk.green.bold(':percent')} (:elapsed seconds)`,
         clear: false
       }])
   }

@@ -16,17 +16,17 @@ module.exports = function (options) {
       options.chainWebpack(config)
     }
 
-    webpack(config.toConfig(), function(err, stats) {
+    webpack(config.toConfig(), (err, stats) => {
       spinner.stop()
       if (err) throw err
       process.stdout.write(
-        stats.toString({
+        `${stats.toString({
           colors: true,
           modules: false,
           children: false,
           chunks: false,
           chunkModules: false
-        }) + '\n\n'
+        })}\n\n`
       )
 
       if (stats.hasErrors()) {

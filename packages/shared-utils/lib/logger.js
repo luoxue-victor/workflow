@@ -6,7 +6,7 @@ const EventEmitter = require('events')
 
 exports.events = new EventEmitter()
 
-function _log (type, tag, message) {
+function _log(type, tag, message) {
   if (process.env.VUE_CLI_API_MODE && message) {
     exports.events.emit('log', {
       message,
@@ -16,15 +16,11 @@ function _log (type, tag, message) {
   }
 }
 
-const format = (label, msg) => {
-  return msg.split('\n').map((line, i) => {
-    return i === 0
-      ? `${label} ${line}`
-      : padStart(line, stripAnsi(label).length)
-  }).join('\n')
-}
+const format = (label, msg) => msg.split('\n').map((line, i) => (i === 0
+  ? `${label} ${line}`
+  : padStart(line, stripAnsi(label).length))).join('\n')
 
-const chalkTag = msg => chalk.bgBlackBright.white.dim(` ${msg} `)
+const chalkTag = (msg) => chalk.bgBlackBright.white.dim(` ${msg} `)
 
 exports.log = (msg = '', tag = null) => {
   tag ? console.log(format(chalkTag(tag), msg)) : console.log(msg)
@@ -55,7 +51,7 @@ exports.error = (msg, tag = null) => {
   }
 }
 
-exports.clearConsole = title => {
+exports.clearConsole = (title) => {
   if (process.stdout.isTTY) {
     const blank = '\n'.repeat(process.stdout.rows)
     console.log(blank)

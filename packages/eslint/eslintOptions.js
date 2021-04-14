@@ -1,4 +1,4 @@
-exports.config = api => {
+exports.config = (api) => {
   const config = {
     root: true,
     env: { node: true },
@@ -14,7 +14,7 @@ exports.config = api => {
   return config
 }
 
-function makeJSOnlyValue (str) {
+function makeJSOnlyValue(str) {
   const fn = () => {}
   fn.__expression = str
   return fn

@@ -1,5 +1,6 @@
 const fs = require('fs')
 const path = require('path')
+
 const readmePath = path.join(__dirname, '..', 'README.md')
 const templatePath = path.join(__dirname, 'template.md')
 const pluginDirPath = path.join(__dirname, '..', 'plugins')
@@ -10,7 +11,7 @@ let pluginsContent = ''
 tempalteContent = fs.readFileSync(templatePath, { encoding: 'utf-8' })
 const pluginPaths = fs.readdirSync(pluginDirPath)
 
-pluginPaths.forEach(_ => {
+pluginPaths.forEach((_) => {
   const _path = path.join(pluginDirPath, _)
   const content = fs.readFileSync(_path, { encoding: 'utf-8' })
 

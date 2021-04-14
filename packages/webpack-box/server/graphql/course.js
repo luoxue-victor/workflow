@@ -11,6 +11,7 @@ import {
 } from 'graphql'
 
 import mongoose from 'mongoose'
+
 const Course = mongoose.model('Course')
 
 const objType = new GraphQLObjectType({
@@ -52,7 +53,7 @@ const CourseType = new GraphQLObjectType({
 export const course = {
   type: new GraphQLList(CourseType),
   args: {},
-  resolve (root, params, options) {
+  resolve(root, params, options) {
     return Course.find({}).exec()
   }
 }

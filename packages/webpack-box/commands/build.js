@@ -1,7 +1,7 @@
 const chalk = require('chalk')
 
-module.exports = function({ injectCommand }) {
-  injectCommand(function({ program, cleanArgs, boxConfig }) {
+module.exports = function ({ injectCommand }) {
+  injectCommand(({ program, cleanArgs, boxConfig }) => {
     program
       .command('build [app-page]')
       .description('构建生产环境')

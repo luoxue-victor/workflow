@@ -14,8 +14,8 @@ module.exports = async (inputOptions, outputOptions) => {
     }
   })
 
-  watcher.on('event', event => {
-    const code = event.code
+  watcher.on('event', (event) => {
+    const { code } = event
 
     if (code === 'ERROR') {
       console.error(event)

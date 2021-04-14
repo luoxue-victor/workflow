@@ -9,7 +9,7 @@ module.exports = () => {
 
   return [
     resolve({
-      extensions: extensions,
+      extensions,
       browser: true
     })
   ]

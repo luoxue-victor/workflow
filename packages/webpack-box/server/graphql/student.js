@@ -13,6 +13,7 @@ import {
 import mongoose from 'mongoose'
 
 import { InfoType } from './info'
+
 const Student = mongoose.model('Student')
 
 // 定义Student的数据类型
@@ -41,7 +42,7 @@ const StudentType = new GraphQLObjectType({
 export const student = {
   type: new GraphQLList(StudentType),
   args: {},
-  resolve (root, params, options) {
+  resolve(root, params, options) {
     return Student.find({}).populate({
       path: 'info',
       select: 'hobby height weight'

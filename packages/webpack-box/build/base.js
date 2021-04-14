@@ -1,11 +1,11 @@
 const fs = require('fs')
 const Config = require('webpack-chain')
+
 const config = new Config()
 const path = require('path')
 const PluginAPI = require('../api/PluginAPI')
-const resolve = (p) => {
-  return path.join(process.cwd(), p)
-}
+
+const resolve = (p) => path.join(process.cwd(), p)
 
 const webpackVersion = require(resolve('node_modules/webpack/package.json')).version
 module.exports = (options) => {
@@ -13,9 +13,9 @@ module.exports = (options) => {
   const files = fs.readdirSync(configPath)
   const { getAllPluginIdOfPackageJson } = require('@pkb/shared-utils')
   const configs = []
-  files.forEach(fileName => configs.push(require(`${configPath}/${fileName}`)))
+  files.forEach((fileName) => configs.push(require(`${configPath}/${fileName}`)))
   // 读取插件中的配置
-  getAllPluginIdOfPackageJson().forEach(id => {
+  getAllPluginIdOfPackageJson().forEach((id) => {
     const pluginWebpackChainPath = `${id}/webpack-chain.config.js`
     try {
       const config = require(pluginWebpackChainPath)
@@ -25,7 +25,7 @@ module.exports = (options) => {
     }
   })
 
-  configs.forEach(c => c({
+  configs.forEach((c) => c({
     config,
     webpackVersion,
     resolve,

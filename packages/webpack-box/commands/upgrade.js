@@ -1,5 +1,5 @@
-module.exports = function({ injectCommand }) {
-  injectCommand(function({ program, cleanArgs, boxConfig }) {
+module.exports = function ({ injectCommand }) {
+  injectCommand(({ program, cleanArgs, boxConfig }) => {
     program
       .command('upgrade <v>')
       .description('webpack版本，输入 4 或 5 ')

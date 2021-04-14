@@ -1,5 +1,5 @@
-module.exports = function({ injectCommand }) {
-  injectCommand(function({ program, cleanArgs, boxConfig }) {
+module.exports = function ({ injectCommand }) {
+  injectCommand(({ program, cleanArgs, boxConfig }) => {
     program
       .command('dll [app-page]')
       .description('编译差分包')

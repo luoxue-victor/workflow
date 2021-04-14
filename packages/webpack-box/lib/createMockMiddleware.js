@@ -80,7 +80,7 @@ module.exports = function getMockMiddleware(/* api */) {
   }
 
   function createHandler(method, path, handler) {
-    return function(req, res, next) {
+    return function (req, res, next) {
       if (BODY_PARSED_METHODS.includes(method)) {
         bodyParser.json({ limit: '5mb', strict: false })(req, res, () => {
           bodyParser.urlencoded({ limit: '5mb', extended: true })(
@@ -128,7 +128,7 @@ module.exports = function getMockMiddleware(/* api */) {
   }
 
   function cleanRequireCache() {
-    Object.keys(require.cache).forEach(file => {
+    Object.keys(require.cache).forEach((file) => {
       if (file === absConfigPath || file.indexOf(absMockPath) > -1) {
         delete require.cache[file]
       }
@@ -145,7 +145,7 @@ module.exports = function getMockMiddleware(/* api */) {
         if (match) {
           const params = {}
 
-          for (let i = 1; i < match.length; i = i + 1) {
+          for (let i = 1; i < match.length; i += 1) {
             const key = keys[i - 1]
             const prop = key.name
             const val = decodeParam(match[i])
@@ -177,9 +177,7 @@ module.exports = function getMockMiddleware(/* api */) {
       }
     }
 
-    return mockData.filter(({ method, re }) => {
-      return method === exceptMethod && re.test(exceptPath)
-    })[0]
+    return mockData.filter(({ method, re }) => method === exceptMethod && re.test(exceptPath))[0]
   }
 
   return (req, res, next) => {
@@ -187,8 +185,7 @@ module.exports = function getMockMiddleware(/* api */) {
     if (match) {
       debug(`mock matched: [${match.method}] ${match.path}`)
       return match.handler(req, res, next)
-    } else {
-      return next()
     }
+    return next()
   }
 }

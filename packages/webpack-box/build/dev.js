@@ -30,7 +30,7 @@ module.exports = function (options) {
     Object.assign(chainDevServer, {})
   );
 
-  ['SIGINT', 'SIGTERM'].forEach(signal => {
+  ['SIGINT', 'SIGTERM'].forEach((signal) => {
     process.on(signal, () => {
       server.close(() => {
         process.exit(0)
@@ -39,12 +39,12 @@ module.exports = function (options) {
   })
 
   // 监听端口
-  tryUsePort(port, function (port) {
-    console.log(port + ' ====端口：' + port + '可用====\n')
+  tryUsePort(port, (port) => {
+    console.log(`${port} ====端口：${port}可用====\n`)
     server.listen(port)
 
     new Promise(() => {
-      compiler.hooks.done.tap('dev', stats => {
+      compiler.hooks.done.tap('dev', (stats) => {
         const empty = '    '
         const common = `
       App running at:
@@ -52,41 +52,39 @@ module.exports = function (options) {
   ${options.mock ? `    - mock at: http://localhost:${port}/api/users/12` : ''}
   `
         docker()
-        console.log(chalk.cyan('\n' + empty + common))
+        console.log(chalk.cyan(`\n${empty}${common}`))
       })
     })
   })
 }
 
-function docker () {
+function docker() {
   try {
     const getDockerHost = require('get-docker-host')
     const isInDocker = require('is-in-docker')
 
-    const checkDocker = () => {
-      return new Promise((resolve, reject) => {
-        if (isInDocker()) {
-          getDockerHost((error, result) => {
-            if (result) {
-              resolve(result)
-            } else {
-              reject(error)
-            }
-          })
-        } else {
-          resolve(null)
-        }
-      })
-    }
+    const checkDocker = () => new Promise((resolve, reject) => {
+      if (isInDocker()) {
+        getDockerHost((error, result) => {
+          if (result) {
+            resolve(result)
+          } else {
+            reject(error)
+          }
+        })
+      } else {
+        resolve(null)
+      }
+    })
 
     checkDocker().then((addr) => {
       if (addr) {
-        console.log('Docker host is ' + addr)
+        console.log(`Docker host is ${addr}`)
       } else {
         console.log('Not in Docker')
       }
     }).catch((error) => {
-      console.log('Could not find Docker host: ' + error)
+      console.log(`Could not find Docker host: ${error}`)
     })
   } catch (error) {
     console.error(error)

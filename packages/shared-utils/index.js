@@ -11,7 +11,7 @@
   'request',
   'spinner',
   'validate'
-].forEach(m => {
+].forEach((m) => {
   Object.assign(exports, require(`./lib/${m}`))
 })
 

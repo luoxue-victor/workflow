@@ -1,5 +1,5 @@
-module.exports = function({ injectCommand }) {
-  injectCommand(function({ program, cleanArgs, boxConfig }) {
+module.exports = function ({ injectCommand }) {
+  injectCommand(({ program, cleanArgs, boxConfig }) => {
     program
       .command('server:gql [app-page]')
       .description('服务端渲染 gql')

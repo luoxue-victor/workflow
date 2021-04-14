@@ -42,7 +42,7 @@ exports.hasProjectYarn = (cwd) => {
   return checkYarn(result)
 }
 
-function checkYarn (result) {
+function checkYarn(result) {
   if (result && !exports.hasYarn()) throw new Error('The project seems to require yarn but it\'s not installed.')
   return result
 }
@@ -85,7 +85,7 @@ const _pnpmProjects = new LRU({
   maxAge: 1000
 })
 
-function getPnpmVersion () {
+function getPnpmVersion() {
   if (_pnpmVersion != null) {
     return _pnpmVersion
   }
@@ -108,9 +108,7 @@ exports.hasPnpmVersionOrLater = (version) => {
   return semver.gte(getPnpmVersion(), version)
 }
 
-exports.hasPnpm3OrLater = () => {
-  return this.hasPnpmVersionOrLater('3.0.0')
-}
+exports.hasPnpm3OrLater = () => this.hasPnpmVersionOrLater('3.0.0')
 
 exports.hasProjectPnpm = (cwd) => {
   if (_pnpmProjects.has(cwd)) {
@@ -123,7 +121,7 @@ exports.hasProjectPnpm = (cwd) => {
   return checkPnpm(result)
 }
 
-function checkPnpm (result) {
+function checkPnpm(result) {
   if (result && !exports.hasPnpm3OrLater()) {
     throw new Error(`The project seems to require pnpm${_hasPnpm ? ' >= 3' : ''} but it's not installed.`)
   }
@@ -138,7 +136,7 @@ exports.isLinux = process.platform === 'linux'
 const browsers = {}
 let hasCheckedBrowsers = false
 
-function tryRun (cmd) {
+function tryRun(cmd) {
   try {
     return execSync(cmd, {
       stdio: [0, 'pipe', 'ignore']
@@ -148,11 +146,11 @@ function tryRun (cmd) {
   }
 }
 
-function getLinuxAppVersion (binary) {
+function getLinuxAppVersion(binary) {
   return tryRun(`${binary} --version`).replace(/^.* ([^ ]*)/g, '$1')
 }
 
-function getMacAppVersion (bundleIdentifier) {
+function getMacAppVersion(bundleIdentifier) {
   const bundlePath = tryRun(`mdfind "kMDItemCFBundleIdentifier=='${bundleIdentifier}'"`)
 
   if (bundlePath) {
@@ -164,7 +162,7 @@ function getMacAppVersion (bundleIdentifier) {
 
 Object.defineProperty(exports, 'installedBrowsers', {
   enumerable: true,
-  get () {
+  get() {
     if (hasCheckedBrowsers) {
       return browsers
     }

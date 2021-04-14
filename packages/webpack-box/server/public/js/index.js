@@ -1,9 +1,9 @@
 window.onload = function () {
-  $('#btn2').click(function() {
+  $('#btn2').click(() => {
     $.ajax({
       url: '/student',
       data: {},
-      success: function (res) {
+      success(res) {
         if (res.success) {
           renderStudent(res.student)
         }
@@ -11,7 +11,7 @@ window.onload = function () {
     })
   })
 
-  $('#btn1').click(function() {
+  $('#btn1').click(() => {
     $.ajax({
       url: '/course',
       data: {
@@ -21,7 +21,7 @@ window.onload = function () {
             }
           }`
       },
-      success: function (res) {
+      success(res) {
         if (res.success) {
           console.log(res)
           renderCourse(res.data)
@@ -30,23 +30,23 @@ window.onload = function () {
     })
   })
 
-  function renderStudent (data) {
-    var str = ''
-    data.forEach(function(item) {
-      str += '<li>姓名：' + item.name + '，性别：' + item.sex + '，年龄：' + item.age + '</li>'
+  function renderStudent(data) {
+    let str = ''
+    data.forEach((item) => {
+      str += `<li>姓名：${item.name}，性别：${item.sex}，年龄：${item.age}</li>`
     })
     $('#studentList').html(str)
   }
 
-  function renderCourse (data) {
-    var str = ''
-    data.forEach(function(item) {
-      str += '<li>课程：' + item.title + '，简介：' + item.desc + '</li>'
+  function renderCourse(data) {
+    let str = ''
+    data.forEach((item) => {
+      str += `<li>课程：${item.title}，简介：${item.desc}</li>`
     })
     $('#courseList').html(str)
   }
 
-  $('#btn3').click(function() {
+  $('#btn3').click(() => {
     $.ajax({
       url: '/graphql',
       data: {
@@ -63,14 +63,14 @@ window.onload = function () {
             }
           }`
       },
-      success: function (res) {
+      success(res) {
         renderStudent(res.data.student)
         renderCourse(res.data.course)
       }
     })
   })
 
-  $('#btn4').click(function() {
+  $('#btn4').click(() => {
     $.ajax({
       url: '/savescourse',
       type: 'POST',
@@ -80,7 +80,7 @@ window.onload = function () {
         page: 20,
         author: 'luoxue'
       },
-      success: function (res) {
+      success(res) {
         console.log(res, '插入课程成功')
       }
     })

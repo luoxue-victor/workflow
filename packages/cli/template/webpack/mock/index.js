@@ -8,7 +8,7 @@ module.exports = {
       success: true
     })
   },
-  '/api/users/3' (req, res) { // http://127.0.0.1:8888/api/users/3
+  '/api/users/3': function (req, res) { // http://127.0.0.1:8888/api/users/3
     res.json({
       success: true
     })

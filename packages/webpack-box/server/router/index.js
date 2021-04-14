@@ -17,10 +17,10 @@ router.post('/saveinfo', saveInfo)
   .get('/course', fetchCourse)
 
 router.post('/graphql', async (ctx, next) => {
-  await graphqlKoa({ schema: schema })(ctx, next) // 使用schema
+  await graphqlKoa({ schema })(ctx, next) // 使用schema
 })
   .get('/graphql', async (ctx, next) => {
-    await graphqlKoa({ schema: schema })(ctx, next) // 使用schema
+    await graphqlKoa({ schema })(ctx, next) // 使用schema
   })
   .get('/graphiql', async (ctx, next) => {
     await graphiqlKoa({ endpointURL: '/graphql' })(ctx, next) // 重定向到graphiql路由

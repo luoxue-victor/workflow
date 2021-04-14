@@ -11,7 +11,7 @@ module.exports = ({ config, options }) => {
   let filename = options.filename || 'index.html'
 
   if (options.name) {
-    const name = options.name
+    const { name } = options
     filename = options.pages[name].filename
     publicPath = options.pages[name].publicPath
     template = options.pages[name].template

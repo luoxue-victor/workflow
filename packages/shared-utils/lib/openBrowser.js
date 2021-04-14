@@ -1,7 +1,7 @@
 const open = require('open')
 const execa = require('execa')
 const chalk = require('chalk')
-const execSync = require('child_process').execSync
+const { execSync } = require('child_process')
 
 // https://github.com/sindresorhus/open#app
 const OSX_CHROME = 'google chrome'
@@ -12,7 +12,7 @@ const Actions = Object.freeze({
   SCRIPT: 2
 })
 
-function getBrowserEnv () {
+function getBrowserEnv() {
   // Attempt to honor this environment variable.
   // It is specific to the operating system.
   // See https://github.com/sindresorhus/open#app for documentation.
@@ -31,12 +31,12 @@ function getBrowserEnv () {
   return { action, value }
 }
 
-function executeNodeScript (scriptPath, url) {
+function executeNodeScript(scriptPath, url) {
   const extraArgs = process.argv.slice(2)
   const child = execa('node', [scriptPath, ...extraArgs, url], {
     stdio: 'inherit'
   })
-  child.on('close', code => {
+  child.on('close', (code) => {
     if (code !== 0) {
       console.log()
       console.log(
@@ -44,20 +44,19 @@ function executeNodeScript (scriptPath, url) {
           'The script specified as BROWSER environment variable failed.'
         )
       )
-      console.log(chalk.cyan(scriptPath) + ' exited with code ' + code + '.')
+      console.log(`${chalk.cyan(scriptPath)} exited with code ${code}.`)
       console.log()
     }
   })
   return true
 }
 
-function startBrowserProcess (browser, url) {
+function startBrowserProcess(browser, url) {
   // If we're on OS X, the user hasn't specifically
   // requested a different browser, we can try opening
   // Chrome with AppleScript. This lets us reuse an
   // existing tab when possible instead of creating a new one.
-  const shouldTryOpenChromeWithAppleScript =
-    process.platform === 'darwin' &&
+  const shouldTryOpenChromeWithAppleScript = process.platform === 'darwin' &&
     (typeof browser !== 'string' || browser === OSX_CHROME)
 
   if (shouldTryOpenChromeWithAppleScript) {
@@ -65,7 +64,7 @@ function startBrowserProcess (browser, url) {
       // Try our best to reuse existing tab
       // on OS X Google Chrome with AppleScript
       execSync('ps cax | grep "Google Chrome"')
-      execSync('osascript openChrome.applescript "' + encodeURI(url) + '"', {
+      execSync(`osascript openChrome.applescript "${encodeURI(url)}"`, {
         cwd: __dirname,
         stdio: 'ignore'
       })
@@ -86,7 +85,7 @@ function startBrowserProcess (browser, url) {
   // Fallback to open
   // (It will always open new tab)
   try {
-    var options = { app: browser }
+    const options = { app: browser }
     open(url, options).catch(() => {}) // Prevent `unhandledRejection` error.
     return true
   } catch (err) {

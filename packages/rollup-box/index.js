@@ -1,7 +1,7 @@
 const path = require('path')
+const fs = require('fs')
 const watch = require('./build/watch')
 const build = require('./build/build')
-const fs = require('fs')
 
 const isDevEnv = process.env.NODE_ENV === 'development'
 
@@ -13,9 +13,7 @@ exports.MODE = {
 
 // 数组扁平化
 function flatten(arr) {
-  return arr.reduce((result, item) => {
-    return result.concat(Array.isArray(item) ? flatten(item) : item)
-  }, [])
+  return arr.reduce((result, item) => result.concat(Array.isArray(item) ? flatten(item) : item), [])
 }
 
 // 导出所有插件，可以自行选择使用哪些插件
@@ -23,9 +21,7 @@ exports.getPlugins = (config) => {
   const pluginsPath = path.join(__dirname, 'plugins')
   const pluginsName = fs.readdirSync(pluginsPath) || []
 
-  const plugins = pluginsName.map(_ => {
-    return require(path.join(pluginsPath, _))(config)
-  })
+  const plugins = pluginsName.map((_) => require(path.join(pluginsPath, _))(config))
 
   return flatten(plugins)
 }
@@ -36,17 +32,19 @@ exports.builder = async (mode, plugins, config = {}) => {
     throw new Throw('需要使用 watch｜rollup 模式')
   }
 
-  const inputOptions = Object.assign({
+  const inputOptions = {
     input: path.join(process.cwd(), 'src', 'index.ts'),
-    plugins
-  }, config.input || {})
+    plugins,
+    ...config.input || {}
+  }
 
-  const outputOptions = Object.assign({
+  const outputOptions = {
     name: 'app',
     dir: 'dist',
     inlineDynamicImports: true,
-    format: 'es'
-  }, config.output || {})
+    format: 'es',
+    ...config.output || {}
+  }
 
   const rolluper = mode === 'watch' ? watch : build
 

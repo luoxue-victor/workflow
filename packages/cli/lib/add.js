@@ -21,19 +21,19 @@ require = (path) => {
 }
 
 // -------------以上为本地调试，修改了 require-------------------
-const invoke = require('./invoke')
 const {
   chalk,
   semver,
   resolveModule
 } = require('@pkb/shared-utils')
-const PackageManager = require('./util/ProjectPackageManager')
 const {
   log,
   error,
   resolvePluginId,
   isOfficialPlugin
 } = require('@pkb/shared-utils')
+const invoke = require('./invoke')
+const PackageManager = require('./util/ProjectPackageManager')
 const confirmIfGitDirty = require('./util/confirmIfGitDirty')
 
 async function add(pluginName, options = {}, context = process.cwd()) {
@@ -69,9 +69,7 @@ async function add(pluginName, options = {}, context = process.cwd()) {
   }
 }
 
-module.exports = (...args) => {
-  return add(...args).catch(err => {
-    error(err)
-    process.exit(1)
-  })
-}
+module.exports = (...args) => add(...args).catch((err) => {
+  error(err)
+  process.exit(1)
+})

@@ -3,7 +3,9 @@
  * @name base
  * @description 基础配置
  */
-module.exports = ({ config, webpackVersion, resolve, options }) => {
+module.exports = ({
+  config, webpackVersion, resolve, options
+}) => {
   const name = options.name || 'app'
   const pageConfig = options.pages[name]
   const output = `${pageConfig.output || 'dist'}/${name}`

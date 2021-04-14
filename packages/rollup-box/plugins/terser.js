@@ -4,6 +4,4 @@
  */
 const { terser } = require('rollup-plugin-terser')
 
-module.exports = () => {
-  return terser()
-}
+module.exports = () => terser()

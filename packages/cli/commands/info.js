@@ -21,6 +21,6 @@ exports.registerCommand = (params) => {
           duplicates: true,
           fullTree: true
         }
-      ).then(info => console.log(chalk.greenBright(info)))
+      ).then((info) => console.log(chalk.greenBright(info)))
     })
 }

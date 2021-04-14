@@ -4,17 +4,17 @@ module.exports = function (args, api) {
   const { toString } = require('webpack-chain')
   const { highlight } = require('cli-highlight')
   const configByBox = require(api.resolve('box.config.js'))()
-  const config = require('../build/base')(configByBox).toConfig()
+  const config = require('./base')(configByBox).toConfig()
   const { _: paths = '', verbose } = args
 
   let res
   let hasUnnamedRule
   if (args.rule) {
-    res = config.module.rules.find(r => r.__ruleNames[0] === args.rule)
+    res = config.module.rules.find((r) => r.__ruleNames[0] === args.rule)
   } else if (args.plugin) {
-    res = config.plugins.find(p => p.__pluginName === args.plugin)
+    res = config.plugins.find((p) => p.__pluginName === args.plugin)
   } else if (args.rules) {
-    res = config.module.rules.map(r => {
+    res = config.module.rules.map((r) => {
       const name = r.__ruleNames ? r.__ruleNames[0] : 'Nameless Rule (*)'
 
       hasUnnamedRule = hasUnnamedRule || !r.__ruleNames
@@ -22,10 +22,10 @@ module.exports = function (args, api) {
       return name
     })
   } else if (args.plugins) {
-    res = config.plugins.map(p => p.__pluginName || p.constructor.name)
+    res = config.plugins.map((p) => p.__pluginName || p.constructor.name)
   } else if (paths.length > 1) {
     res = {}
-    paths.forEach(path => {
+    paths.forEach((path) => {
       res[path] = get(config, path)
     })
   } else if (paths.length === 1) {
@@ -41,12 +41,12 @@ module.exports = function (args, api) {
   if (hasUnnamedRule) {
     console.log(`--- ${chalk.green('Footnotes')} ---`)
     console.log(`*: ${chalk.green(
-          'Nameless Rules'
-        )} were added through the ${chalk.green(
-          'configureWebpack()'
-        )} API (possibly by a plugin) instead of ${chalk.green(
-          'chainWebpack()'
-        )} (recommended).
+      'Nameless Rules'
+    )} were added through the ${chalk.green(
+      'configureWebpack()'
+    )} API (possibly by a plugin) instead of ${chalk.green(
+      'chainWebpack()'
+    )} (recommended).
     You can run ${chalk.green(
     'vue-cli-service inspect'
   )} without any arguments to inspect the full config and read these rules' config.`)

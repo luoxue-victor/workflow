@@ -1,4 +1,4 @@
-module.exports = cli => {
+module.exports = (cli) => {
   cli.injectFeature({
     name: 'commitlint [代码提交规范检查]',
     value: 'commitlint',
