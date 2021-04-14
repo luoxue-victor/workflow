@@ -6,7 +6,7 @@
   "main": "index.js",
   "dependencies": {
     "@pkb/shared-utils": "^1.4.24",
-    "@typescript-eslint/parser": "^2.10.0",
+    "@typescript-eslint/parser": "^4.22.0",
     "eslint": "^7.24.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-standard": "^14.1.1",

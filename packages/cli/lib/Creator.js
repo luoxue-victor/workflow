@@ -32,7 +32,7 @@ module.exports = class Creator extends EventEmitter {
   }
 
   async create (cliOptions = {}) {
-    const { run, name, context, afterInvokeCbs, afterAnyInvokeCbs } = this
+    const { run, name, context } = this
 
     const packageManager = (
       (hasYarn() ? 'yarn' : null) ||
@@ -42,15 +42,19 @@ module.exports = class Creator extends EventEmitter {
     const pm = new PackageManager({ context, forcePackageManager: packageManager })
     const projectType = await this.choiceProject()
     const templatePath = path.join(__dirname, '..', 'template', projectType)
+    const baseTemplatePath = path.join(__dirname, '..', 'template', 'base')
 
     await clearConsole('创建项目')
     logWithSpinner('✨', `创建项目 ${chalk.yellow(context)}.`)
 
     fs.mkdirSync(name)
-    copydir.sync(templatePath, path.join(process.cwd(), name), {
-      utimes: true,
-      mode: true,
-      cover: true
+
+    [templatePath, baseTemplatePath].forEach(_ => {
+      copydir.sync(_, path.join(process.cwd(), name), {
+        utimes: true,
+        mode: true,
+        cover: true
+      })
     })
 
     logWithSpinner('✨', '更新 package.json')
