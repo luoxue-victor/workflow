@@ -3,8 +3,8 @@ const {
   clearConsole
 } = require('@pkb/shared-utils')
 
-exports.generateTitle = async function () {
-  return chalk.bold.blue('pk-cli')
+exports.generateTitle = async function (checkUpdate) {
+  return chalk.bold.blue(checkUpdate)
 }
 
 exports.clearConsole = async function clearConsoleWithTitle (checkUpdate) {

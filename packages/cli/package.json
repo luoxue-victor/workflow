@@ -8,12 +8,11 @@
   "author": "luoxue",
   "main": "index.js",
   "dependencies": {
-    "@pkb/plugin-eslint": "^1.4.21",
-    "@pkb/plugin-stylelint": "^1.4.21",
     "@pkb/shared-utils": "^1.2.16",
     "boxen": "^4.1.0",
     "chalk": "^3.0.0",
     "commander": "^4.0.1",
+    "copy-dir": "^1.3.0",
     "debug": "^4.1.1",
     "deepmerge": "^4.2.2",
     "didyoumean": "^1.2.1",
@@ -25,12 +24,12 @@
     "inquirer": "^7.0.0",
     "isbinaryfile": "^4.0.2",
     "jscodeshift": "^0.6.4",
+    "latest-version": "^5.1.0",
     "lodash.clonedeep": "^4.5.0",
     "npm-check-updates": "^11.4.1",
     "resolve": "^1.13.1",
     "semver": "^6.3.0",
     "validate-npm-package-name": "^3.0.0",
-    "vue-jscodeshift-adapter": "^2.0.2",
     "yaml-front-matter": "^4.0.0"
   },
   "gitHead": "9c0313c0f8ad7aa891cdf284d78188d9232ab453"

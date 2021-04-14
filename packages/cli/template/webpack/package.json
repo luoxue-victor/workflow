@@ -1,0 +1,8 @@
+{
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "@pkb/plugin-react": "1.4.8",
+    "@pkb/webpack-box": "1.4.19"
+  }
+}

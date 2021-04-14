@@ -3,38 +3,48 @@ const path = require('path')
 const fs = require('fs-extra')
 const net = require('net')
 const chalk = require('chalk')
-
 const { execSync } = require('child_process')
-const { success } = require('../util/log')
 
-const errLog = (msg) => console.log(`${chalk.red('[错误]')}${msg}`)
-const successLog = (msg) => console.log(`${chalk.green('[成功]')}${msg}`)
-const baseLog = (msg) => console.log(`${chalk.cyanBright(msg)}`)
-const warnLog = (msg) => console.log(`${chalk.yellow('[警告]')}${msg}`)
-const changeLog = (msg) => console.log(`${chalk.cyan('[变更]')}${msg}`)
-const compileLog = (msg) => console.log(`${chalk.grey('[编译]')}${msg}`)
+const PackageManager = require('./util/ProjectPackageManager')
 
-async function portInUse(port) {
-  return new Promise((resolve, reject) => {
-    const server = net.createServer().listen(port)
-    server.on('listening', function () {
-      server.close()
-      resolve(port)
-    })
-    server.on('error', function (err) {
-      if (err.code === 'EADDRINUSE') {
-        port++
-        reject(err)
-      }
-    })
-  })
+const err = (msg) => console.log(`${chalk.red('[错误]')}${msg}`)
+const success = (msg) => console.log(`${chalk.green('[成功]')}${msg}`)
+const base = (msg) => console.log(`${chalk.cyanBright(msg)}`)
+const warn = (msg) => console.log(`${chalk.yellow('[警告]')}${msg}`)
+const change = (msg) => console.log(`${chalk.cyan('[变更]')}${msg}`)
+const compile = (msg) => console.log(`${chalk.grey('[编译]')}${msg}`)
+
+// 日志
+exports.LOG = {
+  err,
+  success,
+  base,
+  warn,
+  change,
+  compile
 }
 
+/**
+ * npm 管理
+ *
+ * pm.install()
+ * pm.add('包名', isDev)
+ * pm.remove('包名')
+ */
+exports.pm = new PackageManager({ context: process.cwd() })
+
+// 打开 app
+exports.openApp = (appname, path) => {
+  const commander = `open -a /Applications/${appname}.app ${path || ''}`
+  execSync(commander)
+}
+
+// 防止端口号被占用
 exports.tryUsePort = (port, _portAvailableCallback) => {
   portInUse(port).then((port) => {
     _portAvailableCallback(port)
   }).catch(() => {
-    console.log(port + '被占用')
+    console.log(port + ' 被占用')
     port += 1
     tryUsePort(port, _portAvailableCallback)
   })
@@ -91,4 +101,21 @@ exports.copyToClipboard = (text) => {
   fs.removeSync(context)
 
   success('复制到剪切板')
+}
+
+// -----------------------utils----------------------------------
+async function portInUse(port) {
+  return new Promise((resolve, reject) => {
+    const server = net.createServer().listen(port)
+    server.on('listening', function () {
+      server.close()
+      resolve(port)
+    })
+    server.on('error', function (err) {
+      if (err.code === 'EADDRINUSE') {
+        port++
+        reject(err)
+      }
+    })
+  })
 }

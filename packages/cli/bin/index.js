@@ -4,7 +4,6 @@ const didYouMean = require('didyoumean')
 const program = require('commander')
 const path = require('path')
 const fs = require('fs')
-const LOG = require('../lib/tools/log')
 const execSync = require('child_process').execSync
 
 didYouMean.threshold = 0.6
@@ -24,7 +23,6 @@ fileNames.forEach(fileName => {
   command.registerCommand({
     program,
     cleanArgs,
-    LOG,
     execSync
   })
 })
@@ -49,7 +47,7 @@ program.on('--help', () => {
 program.commands.forEach(c => c.on('--help', () => console.log()))
 
 // enhance common error messages
-const enhanceErrorMessages = require('../lib/util/enhanceErrorMessages')
+const enhanceErrorMessages = require('../util/enhanceErrorMessages')
 
 enhanceErrorMessages('missingArgument', argName => {
   return `Missing required argument ${chalk.yellow(`<${argName}>`)}.`

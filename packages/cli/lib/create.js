@@ -2,15 +2,13 @@ const fs = require('fs-extra')
 const path = require('path')
 const inquirer = require('inquirer')
 const Creator = require('./Creator')
-const { clearConsole } = require('./util/clearConsole')
-const { getPromptModules } = require('./util/createTools')
+const { clearConsole } = require('../util/clearConsole')
 const { chalk, error, stopSpinner, exit } = require('@pkb/shared-utils')
 const validateProjectName = require('validate-npm-package-name')
 
 async function create(projectName, options) {
   const cwd = process.cwd()
-  const inCurrent = projectName === '.'
-  const name = inCurrent ? path.relative('../', cwd) : projectName
+  const name = projectName
   const targetDir = path.resolve(cwd, projectName || '.')
 
   const result = validateProjectName(name)
@@ -24,47 +22,37 @@ async function create(projectName, options) {
     })
     exit(1)
   }
+
   // 如果文件夹存在
   if (fs.existsSync(targetDir)) {
     await clearConsole()
-    if (inCurrent) {
-      const { ok } = await inquirer.prompt([
-        {
-          name: 'ok',
-          type: 'confirm',
-          message: '是否在当前目录下创建项目？'
-        }
-      ])
-      if (!ok) return
-    } else {
-      const { action } = await inquirer.prompt([
-        {
-          name: 'action',
-          type: 'list',
-          message: `目标文件夹 ${chalk.cyan(targetDir)} 已经存在. 选一种方式:`,
-          choices: [
-            { name: '覆盖', value: 'overwrite' },
-            { name: '合并', value: 'merge' },
-            { name: '删除', value: false }
-          ]
-        }
-      ])
-      if (!action) {
-        return
-      } else if (action === 'overwrite') {
-        console.log(`\n正在删除中 ${chalk.cyan(targetDir)}...`)
-        await fs.remove(targetDir)
+
+    const { action } = await inquirer.prompt([
+      {
+        name: 'action',
+        type: 'list',
+        message: `目标文件夹 ${chalk.cyan(targetDir)} 已经存在. 选一种方式:`,
+        choices: [
+          { name: '删除重建', value: 'delete' },
+          { name: '取消', value: 'cancel' }
+        ]
       }
+    ])
+    if (action === 'cancel') {
+      return
+    } else if (action === 'delete') {
+      console.log(`\n正在删除中 ${chalk.cyan(targetDir)}...`)
+      await fs.remove(targetDir)
     }
   }
 
-  const creator = new Creator(name, targetDir, getPromptModules())
+  const creator = new Creator(name, targetDir)
   await creator.create(options)
 }
 
 module.exports = (...args) => {
   return create(...args).catch(err => {
-    stopSpinner(false) // do not persist
+    stopSpinner(false)
     error(err)
     process.exit(1)
   })

@@ -1,6 +1,4 @@
-const fs = require('fs-extra')
 const path = require('path')
-
 const minimist = require('minimist')
 const LRU = require('lru-cache')
 
@@ -15,14 +13,10 @@ const {
   hasPnpmVersionOrLater,
   hasProjectPnpm,
 
-  isOfficialPlugin,
-  resolvePluginId,
-
   log,
   warn
 } = require('@pkb/shared-utils')
 
-const { loadOptions } = require('../options')
 const getPackageJson = require('./getPackageJson')
 const { executeCommand } = require('./executeCommand')
 
@@ -33,8 +27,6 @@ const metadataCache = new LRU({
   max: 200,
   maxAge: 1000 * 60 * 30 // 30 min.
 })
-
-const isTestOrDebug = process.env.VUE_CLI_TEST || process.env.VUE_CLI_DEBUG
 
 const SUPPORTED_PACKAGE_MANAGERS = ['yarn', 'pnpm', 'npm']
 const PACKAGE_MANAGER_PNPM4_CONFIG = {
@@ -64,19 +56,6 @@ const PACKAGE_MANAGER_CONFIG = {
     remove: ['remove']
   }
 }
-
-// extract the package name 'xx' from the format 'xx@1.1'
-function stripVersion (packageName) {
-  const nameRegExp = /^(@?[^@]+)(@.*)?$/
-  const result = packageName.match(nameRegExp)
-
-  if (!result) {
-    throw new Error(`Invalid package name ${packageName}`)
-  }
-
-  return result[1]
-}
-
 class PackageManager {
   constructor ({ context, forcePackageManager } = {}) {
     this.context = context
@@ -86,7 +65,7 @@ class PackageManager {
     } else if (context) {
       this.bin = hasProjectYarn(context) ? 'yarn' : hasProjectPnpm(context) ? 'pnpm' : 'npm'
     } else {
-      this.bin = loadOptions().packageManager || (hasYarn() ? 'yarn' : hasPnpm3OrLater() ? 'pnpm' : 'npm')
+      this.bin = hasYarn() ? 'yarn' : hasPnpm3OrLater() ? 'pnpm' : 'npm'
     }
 
     if (!SUPPORTED_PACKAGE_MANAGERS.includes(this.bin)) {
@@ -230,28 +209,6 @@ class PackageManager {
       ...PACKAGE_MANAGER_CONFIG[this.bin].add,
       packageName,
       ...(isDev ? ['-D'] : [])
-    ])
-    return executeCommand(this.bin, args, this.context)
-  }
-
-  async upgrade (packageName) {
-    const realname = stripVersion(packageName)
-    if (
-      isTestOrDebug &&
-      (packageName === '@vue/cli-service' || isOfficialPlugin(resolvePluginId(realname)))
-    ) {
-      // link packages in current repo for test
-      const src = path.resolve(__dirname, `../../../../${realname}`)
-      const dest = path.join(this.context, 'node_modules', realname)
-      await fs.remove(dest)
-      await fs.symlink(src, dest, 'dir')
-      return
-    }
-
-    await this.setBinaryMirrors()
-    const args = await this.addRegistryToArgs([
-      ...PACKAGE_MANAGER_CONFIG[this.bin].add,
-      packageName
     ])
     return executeCommand(this.bin, args, this.context)
   }

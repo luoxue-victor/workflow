@@ -2,12 +2,10 @@ const {
   chalk,
   execa,
   request,
-
   hasYarn
 } = require('@pkb/shared-utils')
 const inquirer = require('inquirer')
 const registries = require('./registries')
-const { loadOptions, saveOptions } = require('../options')
 
 async function ping (registry) {
   await request.get(`${registry}/vue-cli-version-marker/latest`)
@@ -30,15 +28,8 @@ module.exports = async function shouldUseTaobao (command) {
   if (checked) return result
   checked = true
 
-  // previously saved preference
-  const saved = loadOptions().useTaobaoRegistry
-  if (typeof saved === 'boolean') {
-    return (result = saved)
-  }
-
   const save = val => {
     result = val
-    saveOptions({ useTaobaoRegistry: val })
     return val
   }
 
@@ -73,10 +64,6 @@ module.exports = async function shouldUseTaobao (command) {
   if (faster !== registries.taobao) {
     // default is already faster
     return save(false)
-  }
-
-  if (process.env.VUE_CLI_API_MODE) {
-    return save(true)
   }
 
   // ask and save preference
