@@ -4,7 +4,7 @@
 
 <img src="public/asset/logo-mini2.png" width="200">
 
-### <strong>workflow</strong>
+## <strong>workflow</strong>
 
 [![npm][npm]][github-url]
 [![node][node]][node-url]
