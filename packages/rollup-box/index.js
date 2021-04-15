@@ -2,7 +2,7 @@ const path = require('path')
 const fs = require('fs')
 const watch = require('./build/watch')
 const build = require('./build/build')
-const rootConfigPath = path.join(__dirname, 'rollup-box.config.js')
+const rootConfigPath = path.join(process.cwd(), 'rollup-box.config.js')
 const boxConfig = fs.existsSync(rootConfigPath) ? require(rootConfigPath)() : {}
 
 // 提供两种模式，watch 跟 rollup

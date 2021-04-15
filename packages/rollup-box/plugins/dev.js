@@ -9,8 +9,6 @@ const chalk = require('chalk')
 module.exports = (config = {}) => {
   const devConfig = config.dev || {}
 
-  console.log(devConfig)
-
   process.env.NODE_ENV === 'development' && dev(Object.assign({
     openPage: './index.html',
     contentBase: './dist',
