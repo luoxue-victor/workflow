@@ -2,8 +2,8 @@ const path = require('path')
 const fs = require('fs')
 const watch = require('./build/watch')
 const build = require('./build/build')
-
-const isDevEnv = process.env.NODE_ENV === 'development'
+const rootConfigPath = path.join(__dirname, 'rollup-box.config.js')
+const boxConfig = fs.existsSync(rootConfigPath) ? require(rootConfigPath)() : {}
 
 // 提供两种模式，watch 跟 rollup
 exports.MODE = {
@@ -17,17 +17,16 @@ function flatten(arr) {
 }
 
 // 导出所有插件，可以自行选择使用哪些插件
-exports.getPlugins = (config) => {
+exports.getPlugins = () => {
   const pluginsPath = path.join(__dirname, 'plugins')
   const pluginsName = fs.readdirSync(pluginsPath) || []
-
-  const plugins = pluginsName.map((_) => require(path.join(pluginsPath, _))(config))
+  const plugins = pluginsName.map((_) => require(path.join(pluginsPath, _))(boxConfig))
 
   return flatten(plugins)
 }
 
 // 构建项目
-exports.builder = async (mode, plugins, config = {}) => {
+exports.builder = async (mode, plugins) => {
   if (!mode) {
     throw new Throw('需要使用 watch｜rollup 模式')
   }
@@ -35,7 +34,7 @@ exports.builder = async (mode, plugins, config = {}) => {
   const inputOptions = {
     input: path.join(process.cwd(), 'src', 'index.ts'),
     plugins,
-    ...config.input || {}
+    ...(boxConfig.input || {})
   }
 
   const outputOptions = {
@@ -43,7 +42,7 @@ exports.builder = async (mode, plugins, config = {}) => {
     dir: 'dist',
     inlineDynamicImports: true,
     format: 'es',
-    ...config.output || {}
+    ...(boxConfig.output || {})
   }
 
   const rolluper = mode === 'watch' ? watch : build

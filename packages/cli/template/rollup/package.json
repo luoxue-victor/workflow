@@ -1,0 +1,15 @@
+{
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "rollup-box watch",
+    "build": "rollup-box build",
+    "cm": "pk cm",
+    "eslint": "pk eslint"
+  },
+  "devDependencies": {
+    "@pkb/cli": "1.4.25",
+    "@pkb/rollup-box": "1.4.24",
+    "@pkb/plugin-eslint": "^1.4.25"
+  }
+}

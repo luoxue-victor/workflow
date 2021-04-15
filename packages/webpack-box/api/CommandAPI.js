@@ -4,7 +4,7 @@ const program = require('commander')
 const packageConfig = require('../package.json')
 const { cleanArgs } = require('../lib')
 
-const boxPath = path.join(process.cwd(), 'box.config.js')
+const boxPath = path.join(process.cwd(), 'webpack-box.config.js')
 const chalk = require('chalk')
 const semver = require('semver')
 
@@ -12,7 +12,7 @@ const commandNames = []
 
 const commandStore = exports.commandStore = []
 let boxConfig = {}
-if (fs.existsSync(boxPath)) boxConfig = require(path.join(process.cwd(), 'box.config.js'))()
+if (fs.existsSync(boxPath)) boxConfig = require(path.join(process.cwd(), 'webpack-box.config.js'))()
 let status = 'pending'
 
 checkNodeVersionForWarning()

@@ -4,42 +4,28 @@
  */
 // const dev = require('rollup-plugin-dev')
 const dev = require('rollup-plugin-serve')
-const path = require('path')
+const chalk = require('chalk')
 
-module.exports = ({
-  host = '127.0.0.1', port = 6000, basePath = '/', dirs = ['dist']
-}) =>
-// const livereload = require('livereload');
-// const server = livereload.createServer();
+module.exports = (config = {}) => {
+  const devConfig = config.dev || {}
 
-// dirs.forEach(_ => {
-//   server.watch(path.join(process.cwd(), _));
-// })
+  console.log(devConfig)
 
-// return process.env.NODE_ENV === 'development' && dev({
-//   host,
-//   basePath,
-//   port,
-//   dirs,
-//   silent: true,
-//   spa: 'dist/index.html',
-//   force: true
-// })
-
-  process.env.NODE_ENV === 'development' && dev({
+  process.env.NODE_ENV === 'development' && dev(Object.assign({
     openPage: './index.html',
     contentBase: './dist',
     historyApiFallback: true,
-    host,
-    port,
+    host: '::',
+    port: 6000,
     headers: {
       'Access-Control-Allow-Origin': '*'
     },
     onListening(server) {
       const address = server.address()
       const host = address.address === '::' ? 'localhost' : address.address
-      // by using a bound function, we can access options as `this`
       const protocol = this.https ? 'https' : 'http'
-      console.log(`Server listening at ${protocol}://${host}:${address.port}/`)
+      console.log(`Server listening at ${chalk.cyan(`${protocol}://${host}:${address.port}/`)}`)
+      console.log()
     }
-  })
+  }, devConfig))
+}
