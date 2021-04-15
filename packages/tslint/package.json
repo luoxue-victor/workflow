@@ -1,6 +1,6 @@
 {
   "name": "@pkb/plugin-tslint",
-  "version": "1.4.24",
+  "version": "1.4.30",
   "description": "webpack-box 插件，配置 tslint 及修复",
   "author": "luoxue",
   "main": "index.js",
