@@ -20,10 +20,10 @@
   },
   "main": "index.js",
   "devDependencies": {
-    "@pkb/cli": "^1.4.27",
+    "@pkb/cli": "^1.4.28",
     "@pkb/plugin-react": "^1.4.24",
     "@pkb/plugin-stylelint": "^1.4.26",
-    "@pkb/rollup-box": "^1.4.27",
+    "@pkb/rollup-box": "^1.4.29",
     "@pkb/webpack-box": "^1.4.27"
   },
   "bugs": {

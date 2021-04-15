@@ -4,7 +4,7 @@ node_modules
 commitlint.config.js
 dist
 dll
-box.config.js
+webpack-box.config.js
 commitlint.config.js
 src
 mock

@@ -10,7 +10,7 @@ npm i -D @pkb/plugin-tslint
 
 ### 配置
 
-在根目录下 `box.config.js` 开启 tslint
+在根目录下 `webpack-box.config.js` 开启 tslint
 
 ```js
 module.exports = function(config) {

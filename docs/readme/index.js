@@ -28,7 +28,7 @@ fs.writeFileSync('README.md', ctx, 'utf-8')
 
 function boxConfig () {
   let ctx = ''
-  ctx = fs.readFileSync(path.join(process.cwd(), 'box.config.js')).toString()
+  ctx = fs.readFileSync(path.join(process.cwd(), 'webpack-box.config.js')).toString()
   return `
 
 ### 扩展配置
@@ -36,9 +36,9 @@ function boxConfig () {
 <details open=“open”>
   <br/>
   <summary>点击关闭/打开扩展配置</summary>
-在根目录下添加 \`box.config.js\`，即可配置使用
+在根目录下添加 \`webpack-box.config.js\`，即可配置使用
 
-box.config.js
+webpack-box.config.js
 
 \`\`\`js
 ${ctx}

@@ -10,7 +10,7 @@ npm i -D @pkb/plugin-eslint
 
 ### 配置
 
-在根目录下 `box.config.js` 开启 eslint
+在根目录下 `webpack-box.config.js` 开启 eslint
 
 ```js
 module.exports = function(config) {

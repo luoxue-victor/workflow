@@ -10,7 +10,7 @@ npm i -D @pkb/plugin-react
 
 ### 配置
 
-在根目录下 `box.config.js` 开启 react
+在根目录下 `webpack-box.config.js` 开启 react
 
 ```js
 module.exports = function(config) {

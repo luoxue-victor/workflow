@@ -3,7 +3,7 @@ module.exports = function (args, api) {
   const { get } = require('@pkb/shared-utils')
   const { toString } = require('webpack-chain')
   const { highlight } = require('cli-highlight')
-  const configByBox = require(api.resolve('box.config.js'))()
+  const configByBox = require(api.resolve('webpack-box.config.js'))()
   const config = require('./base')(configByBox).toConfig()
   const { _: paths = '', verbose } = args
 

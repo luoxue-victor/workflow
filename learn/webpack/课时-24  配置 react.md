@@ -4,7 +4,7 @@
 
 开启 react
 
-box.config.js
+webpack-box.config.js
 
 ```js
 {

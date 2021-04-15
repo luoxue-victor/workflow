@@ -4,7 +4,7 @@
 
 直接访问 mock 链接即可
 
-box.config.js
+webpack-box.config.js
 
 ```js
 {

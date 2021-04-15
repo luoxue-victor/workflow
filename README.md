@@ -151,9 +151,9 @@ rollup-box watch # 开发模式
 <details open=“open”>
   <br/>
   <summary>点击关闭/打开扩展配置</summary>
-在根目录下添加 `box.config.js`，即可配置使用
+在根目录下添加 `webpack-box.config.js`，即可配置使用
 
-box.config.js
+webpack-box.config.js
 
 ```js
 const path = require('path')

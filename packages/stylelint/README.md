@@ -10,7 +10,7 @@ npm i -D @pkb/plugin-stylelint
 
 ### 配置
 
-在根目录下 `box.config.js` 开启 stylelint
+在根目录下 `webpack-box.config.js` 开启 stylelint
 
 ```js
 module.exports = function(config) {
