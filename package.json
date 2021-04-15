@@ -22,6 +22,7 @@
   "devDependencies": {
     "@pkb/cli": "^1.4.25",
     "@pkb/plugin-react": "^1.4.24",
+    "@pkb/plugin-stylelint": "^1.4.24",
     "@pkb/rollup-box": "^1.4.24",
     "@pkb/webpack-box": "^1.4.24"
   },

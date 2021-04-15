@@ -4,7 +4,7 @@ const cloneDeep = require('lodash.clonedeep')
 const PackageManager = require('../util/ProjectPackageManager')
 const { clearConsole } = require('../util/clearConsole')
 const path = require('path')
-const fs = require('fs')
+const fs = require('fs-extra')
 const copydir = require('copy-dir')
 const ncu = require('npm-check-updates')
 
@@ -43,19 +43,22 @@ module.exports = class Creator extends EventEmitter {
     const projectType = await this.choiceProject()
     const templatePath = path.join(__dirname, '..', 'template', projectType)
     const baseTemplatePath = path.join(__dirname, '..', 'template', 'base')
+    const targetPath = path.join(process.cwd(), name)
 
     await clearConsole('创建项目')
     logWithSpinner('✨', `创建项目 ${chalk.yellow(context)}.`)
 
     fs.mkdirSync(name)
 
-    [templatePath, baseTemplatePath].forEach(_ => {
-      copydir.sync(_, path.join(process.cwd(), name), {
+    ;[templatePath, baseTemplatePath].forEach(_ => {
+      copydir.sync(_, targetPath, {
         utimes: true,
         mode: true,
         cover: true
       })
     })
+
+    await fs.rename(path.join(targetPath, '_vscode'), path.join(targetPath, '.vscode'))
 
     logWithSpinner('✨', '更新 package.json')
     await ncu.run({

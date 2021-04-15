@@ -3,13 +3,18 @@
   "private": true,
   "scripts": {
     "dev": "webpack-box dev",
-    "dev:dash": "webpack-dashboard -- webpack-box dev",
     "build": "webpack-box build",
+    "cm": "pk cm",
+    "eslint": "pk eslint",
+    "dev:dash": "webpack-dashboard -- webpack-box dev",
     "dev:docker": "docker run -v \"$(PWD)\":/usr/src/webpack-box/ docker-webpack-box npm run dev",
     "build:docker": "docker build -t docker-webpack-box ."
   },
   "devDependencies": {
-    "@pkb/plugin-react": "1.4.8",
-    "@pkb/webpack-box": "1.4.19"
+    "@pkb/cli": "1.4.25",
+    "@pkb/plugin-react": "1.4.24",
+    "@pkb/plugin-eslint": "^1.4.25",
+    "@pkb/plugin-stylelint": "^1.4.25",
+    "@pkb/webpack-box": "1.4.24"
   }
 }

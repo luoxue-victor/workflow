@@ -5,6 +5,8 @@ const program = require('commander')
 const path = require('path')
 const fs = require('fs')
 const { execSync } = require('child_process')
+const { getAllPluginIdOfPackageJson } = require('@pkb/shared-utils')
+const PluginAPI = require('../api/PluginAPI')
 
 didYouMean.threshold = 0.6
 
@@ -27,6 +29,21 @@ fileNames.forEach((fileName) => {
   })
 })
 
+// 注册插件中的 command
+if (fs.existsSync(path.join(process.cwd(), 'package.json'))) {
+  getAllPluginIdOfPackageJson().forEach((id) => {
+    try {
+      const command = require(`${id}/cli-command.config.js`)
+      try {
+        // config 为预留api
+        command({ program, api: PluginAPI, cleanArgs, config: {} })
+      } catch (error) {
+        console.log(error)
+      }
+    } catch (error) {}
+  })
+}
+
 // output help information on unknown commands
 program
   .arguments('<command>')
@@ -46,7 +63,6 @@ program.on('--help', () => {
 
 program.commands.forEach((c) => c.on('--help', () => console.log()))
 
-// enhance common error messages
 const enhanceErrorMessages = require('../util/enhanceErrorMessages')
 
 enhanceErrorMessages('missingArgument', (argName) => `Missing required argument ${chalk.yellow(`<${argName}>`)}.`)
@@ -84,16 +100,6 @@ function cleanArgs(cmd) {
     }
   })
   return args
-}
-
-function checkNodeVersion(wanted, id) {
-  if (!semver.satisfies(process.version, wanted)) {
-    console.log(chalk.red(
-      `你正在用的 node 版本是：${process.version
-      }\n需要的版本：${wanted}\n请升级你的 node 版本.`
-    ))
-    process.exit(1)
-  }
 }
 
 function checkNodeVersionForWarning() {

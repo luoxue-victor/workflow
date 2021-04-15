@@ -8,8 +8,6 @@
   "author": "luoxue",
   "main": "index.js",
   "dependencies": {
-    "@pkb/plugin-eslint": "^1.4.25",
-    "@pkb/plugin-stylelint": "^1.4.24",
     "@pkb/shared-utils": "^1.4.24",
     "boxen": "^4.1.0",
     "chalk": "^3.0.0",
