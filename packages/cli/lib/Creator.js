@@ -1,6 +1,5 @@
 const inquirer = require('inquirer')
 const EventEmitter = require('events')
-const cloneDeep = require('lodash.clonedeep')
 const PackageManager = require('../util/ProjectPackageManager')
 const { clearConsole } = require('../util/clearConsole')
 const path = require('path')
@@ -50,7 +49,7 @@ module.exports = class Creator extends EventEmitter {
 
     fs.mkdirSync(name)
 
-    ;[templatePath, baseTemplatePath].forEach(_ => {
+    ;[baseTemplatePath, templatePath].forEach(_ => {
       copydir.sync(_, targetPath, {
         utimes: true,
         mode: true,
