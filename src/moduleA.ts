@@ -1,2 +1,4 @@
-/** @module ModuleA */
+/**
+ * @name a
+ */
 export default 'a'

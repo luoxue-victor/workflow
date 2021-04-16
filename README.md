@@ -20,43 +20,36 @@
 
 workflow 致力于打造一个工作流平台，所有的工作都可以使用一个平台来完成
 
-### workflow 有哪些优势
+### 目录
 
-- 🍁 多框架支持（vue/react/小程序等应有尽有）
-- 🎉 可插拔的插件系统（多项目管理）
-- 🚀 定制化解决方案（webp、图片压缩、骨架屏等）
-- 📺 工具链集成
-- 🔧 集成解决方案
-- 🏠 监控（性能监控、异常错误监控）
-- 🌴 界面化管理项目
+1. <a href="#1_1">workflow 有哪些优势</a>
+2. <a href="#1_2">Resources</a>
+3. <a href="#1_3">@pkb/cli 脚手架</a>
+4. <a href="#1_4">webpack-box 插件</a>
+5. <a href="#1_5">rollup-box</a>
+6. <a href="#1_6">node-tools</a>
+7. <a href="#1_7">开发&学习</a>
+8. <a href="#1_8">配置</a>
 
------
-### 开发&学习
+### <a name="1_1">workflow 有哪些优势</a>
 
-- [项目计划] 把 issue 整理到 project 中做好分类，并有计划的完成目标。
-- [开发指南] 如果想要一起开发的可以参考这里。
-- [插件市场] 目前已经完成的插件。
-- [好的文章] 把我觉得好的文章整理到我的 wiki 里，也可以在项目中点击 wiki 查看。
-- [好的网站] 一些比较实用的网站
+- [工具教学](./learn/)
+- 可插拔的插件系统
+- 各种构建工具封装
+- 项目集成管理
+- 工具链集成
+- 监控（性能监控、异常错误监控）
+- 界面化管理项目
 
-[项目计划]: https://github.com/luoxue-victor/webpack-box/projects/1
-[开发指南]: ./learn/webpack/课时-25.md
-[插件市场]: https://www.npmjs.com/search?q=%40pkb
-[好的文章]: https://github.com/luoxue-victor/webpack-box/wiki
-[好的网站]: ./learn/web.md
-[npm-url]: https://www.npmjs.com/package/webpack-box
-[issue-url]: https://github.com/luoxue-victor/webpack-box/issues
-[node]: https://img.shields.io/node/v/webpack.svg
-[node-url]: https://nodejs.org
-[github-url]: https://github.com/luoxue-victor/webpack-box
-[downloads]: https://img.shields.io/npm/dt/@pkb/webpack-box.svg?style=flat-square
-[npm]: https://img.shields.io/npm/v/webpack.svg
-[issue]: https://img.shields.io/github/issues/luoxue-victor/webpack-box
-[forks]: https://img.shields.io/github/forks/luoxue-victor/webpack-box
-[star]: https://img.shields.io/github/stars/luoxue-victor/webpack-box
+### <a name="1_2">Resources</a>
+
+[webpack 学习](./learn/webpack)
+[rollup 学习](./learn/rollup)
+[官方插件](./packages)
 
 -----
-### @pkb/cli 脚手架
+
+### <a name="1_3">@pkb/cli 脚手架</a>
 
 `@pkb/cli` 为本项目的脚手架，可用来生成项目、添加插件、检查项目配置、升级更新等等，主要的功能就是对整体项目的管理。
 
@@ -69,11 +62,13 @@ pk add <plugin> # 安装插件
 pk info # 查看项目及系统配置
 pk upgrade [filter] # 检查升级 npm 版本
 pk cm # commit 提交
-pk eslint # eslint 检查
-pk stylelint # stylelint 检查
+pk eslint # eslint 检查，需要安装 @pkb/plugin-eslint
+pk stylelint # stylelint 检查，需要安装 @pkb/plugin-stylelint
+pk gotty # 在 web 中使用终端
+pk jsdoc2md # 把 js 注释生成 md
 ```
 ----
-### webpack-box
+### <a name="1_4">webpack-box 插件</a>
 
 <details open=“open”>
  <summary>点击关闭/打开安装</summary><br/>
@@ -123,6 +118,7 @@ webpack-box stylelint # 自动修复 stylelint 错误
 </details>
 
 ### rollup-box
+### <a name="1_5">rollup-box</a>
 
 - [从零开始 rollup 学习](./learn/rollup)
 - 对 rollup 进行封装，大量插件，开箱即用
@@ -138,15 +134,41 @@ rollup-box watch # 开发模式
 ```
 
 ------
-### node-tools
+### <a name="1_6">node-tools</a>
 
 - 集成了一些 node 工具
 - [更多...](./packages/tools/README.md)
 
 -----
 
+### <a name="1_7">开发&学习</a>
 
-### 扩展配置
+- [项目计划] 把 issue 整理到 project 中做好分类，并有计划的完成目标。
+- [开发指南] 如果想要一起开发的可以参考这里。
+- [插件市场] 目前已经完成的插件。
+- [好的文章] 把我觉得好的文章整理到我的 wiki 里，也可以在项目中点击 wiki 查看。
+- [好的网站] 一些比较实用的网站
+
+[项目计划]: https://github.com/luoxue-victor/webpack-box/projects/1
+[开发指南]: ./learn/webpack/课时-25.md
+[插件市场]: https://www.npmjs.com/search?q=%40pkb
+[好的文章]: https://github.com/luoxue-victor/webpack-box/wiki
+[好的网站]: ./learn/web.md
+[npm-url]: https://www.npmjs.com/package/webpack-box
+[issue-url]: https://github.com/luoxue-victor/webpack-box/issues
+[node]: https://img.shields.io/node/v/webpack.svg
+[node-url]: https://nodejs.org
+[github-url]: https://github.com/luoxue-victor/webpack-box
+[downloads]: https://img.shields.io/npm/dt/@pkb/webpack-box.svg?style=flat-square
+[npm]: https://img.shields.io/npm/v/webpack.svg
+[issue]: https://img.shields.io/github/issues/luoxue-victor/webpack-box
+[forks]: https://img.shields.io/github/forks/luoxue-victor/webpack-box
+[star]: https://img.shields.io/github/stars/luoxue-victor/webpack-box
+
+-----
+
+
+### ### <a name="1_8">配置</a>
 
 <details open=“open”>
   <br/>

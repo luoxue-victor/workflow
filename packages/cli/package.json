@@ -24,6 +24,7 @@
     "inquirer": "^7.0.0",
     "isbinaryfile": "^4.0.2",
     "jscodeshift": "^0.6.4",
+    "jsdoc-to-markdown": "^7.0.1",
     "latest-version": "^5.1.0",
     "lodash.clonedeep": "^4.5.0",
     "npm-check-updates": "^11.4.1",

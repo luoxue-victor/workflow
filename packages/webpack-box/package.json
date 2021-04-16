@@ -11,15 +11,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/luoxue-victor/learn_webpack.git"
+    "url": "git+https://github.com/luoxue-victor/workflow.git"
   },
   "author": "jijiang",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/luoxue-victor/learn_webpack/issues"
+    "url": "https://github.com/luoxue-victor/workflow/issues"
   },
   "sideEffects": true,
-  "homepage": "https://github.com/luoxue-victor/learn_webpack#readme",
+  "homepage": "https://github.com/luoxue-victor/workflow#readme",
   "dependencies": {
     "@babel/cli": "^7.6.0",
     "@babel/core": "^7.6.0",

@@ -4,8 +4,7 @@ const fs = require('fs-extra')
 const net = require('net')
 const chalk = require('chalk')
 const { execSync } = require('child_process')
-
-const PackageManager = require('./util/ProjectPackageManager')
+const PackageManager = require('./ProjectPackageManager')
 
 const err = (msg) => console.log(`${chalk.red('[错误]')}${msg}`)
 const success = (msg) => console.log(`${chalk.green('[成功]')}${msg}`)
@@ -42,11 +41,15 @@ exports.openApp = (appname, path) => {
 // 防止端口号被占用
 exports.tryUsePort = (port, _portAvailableCallback) => {
   portInUse(port).then((port) => {
-    _portAvailableCallback(port)
+    try {
+      _portAvailableCallback(port)
+    } catch (error) {
+      console.log(error)
+    }
   }).catch(() => {
     console.log(`${port} 被占用`)
     port += 1
-    tryUsePort(port, _portAvailableCallback)
+    exports.tryUsePort(port, _portAvailableCallback)
   })
 }
 
