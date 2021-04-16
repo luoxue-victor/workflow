@@ -31,14 +31,13 @@ workflow 致力于打造一个工作流平台，所有的工作都可以使用�
 
 ### 目录
 
-2. <a href="#1_2">Resources</a>
-3. <a href="#1_3">@pkb/cli 脚手架</a>
-4. <a href="#1_4">webpack-box</a>
-5. <a href="#1_5">rollup-box</a>
-6. <a href="#1_6">node-tools</a>
-7. <a href="#1_7">开发&学习</a>
-8. <a href="#1_8">配置</a>
-
+- <a href="#1_2">Resources</a>
+- <a href="#1_3">@pkb/cli 脚手架</a>
+- <a href="#1_4">webpack-box</a>
+- <a href="#1_5">rollup-box</a>
+- <a href="#1_6">node-tools</a>
+- <a href="#1_7">开发&学习</a>
+- <a href="#1_8">配置</a>
 
 ### <a name="1_2">Resources</a>
 
