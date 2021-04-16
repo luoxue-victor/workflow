@@ -1,6 +1,6 @@
 {
   "name": "@pkb/cli",
-  "version": "1.4.34",
+  "version": "1.4.35",
   "bin": {
     "pk": "bin/index.js"
   },
