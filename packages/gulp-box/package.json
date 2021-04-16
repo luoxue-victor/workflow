@@ -26,5 +26,6 @@
   },
   "devDependencies": {
     "rollup-plugin-sass": "^1.2.2"
-  }
+  },
+  "gitHead": "99cfb71b47331113234c66c33f79d752cc010ee1"
 }
