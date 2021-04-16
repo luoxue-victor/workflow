@@ -31,7 +31,7 @@ function boxConfig () {
   ctx = fs.readFileSync(path.join(process.cwd(), 'webpack-box.config.js')).toString()
   return `
 
-### ### <a name="1_8">配置</a>
+### <a name="1_8">配置</a>  <a href="#1_0">⬆️</a>
 
 <details open=“open”>
   <br/>

@@ -17,19 +17,7 @@
 
 </div>
 
-### 目录
-
-1. <a href="#1_1">简介</a>
-2. <a href="#1_2">Resources</a>
-3. <a href="#1_3">@pkb/cli 脚手架</a>
-4. <a href="#1_4">webpack-box</a>
-5. <a href="#1_5">rollup-box</a>
-6. <a href="#1_6">node-tools</a>
-7. <a href="#1_7">开发&学习</a>
-8. <a href="#1_8">配置</a>
-
 ### <a name="1_1">简介</a>
-
 
 workflow 致力于打造一个工作流平台，所有的工作都可以使用一个平台来完成，诚邀大家一起来共建
 
@@ -40,6 +28,17 @@ workflow 致力于打造一个工作流平台，所有的工作都可以使用�
 - 工具链集成
 - 监控（性能监控、异常错误监控）
 - 界面化管理项目
+
+### 目录
+
+2. <a href="#1_2">Resources</a>
+3. <a href="#1_3">@pkb/cli 脚手架</a>
+4. <a href="#1_4">webpack-box</a>
+5. <a href="#1_5">rollup-box</a>
+6. <a href="#1_6">node-tools</a>
+7. <a href="#1_7">开发&学习</a>
+8. <a href="#1_8">配置</a>
+
 
 ### <a name="1_2">Resources</a>
 
@@ -167,7 +166,8 @@ rollup-box watch # 开发模式
 -----
 
 
-### ### <a name="1_8">配置</a>
+
+### <a name="1_8">配置</a>  <a href="#1_0">⬆️</a>
 
 <details open=“open”>
   <br/>
