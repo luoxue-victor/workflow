@@ -43,9 +43,9 @@ workflow 致力于打造一个工作流平台，所有的工作都可以使用�
 
 ### <a name="1_2">Resources</a>
 
-[webpack 学习](./learn/webpack)
-[rollup 学习](./learn/rollup)
-[官方插件](./packages)
+- [webpack 学习](./learn/webpack)
+- [rollup 学习](./learn/rollup)
+- [官方插件](./packages)
 
 -----
 
