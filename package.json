@@ -34,5 +34,8 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/luoxue-victor/learn_webpack.git"
+  },
+  "dependencies": {
+    "jsdoc-to-markdown": "^7.0.1"
   }
 }
