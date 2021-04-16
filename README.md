@@ -28,7 +28,7 @@
 7. <a href="#1_7">开发&学习</a>
 8. <a href="#1_8">配置</a>
 
-### <a name="1_1">简介 <a href="#1_0"><font size=10>上</font></a></a>
+### <a name="1_1">简介</a>
 
 
 workflow 致力于打造一个工作流平台，所有的工作都可以使用一个平台来完成，诚邀大家一起来共建
@@ -41,7 +41,7 @@ workflow 致力于打造一个工作流平台，所有的工作都可以使用�
 - 监控（性能监控、异常错误监控）
 - 界面化管理项目
 
-### <a name="1_2">Resources</a>  <a href="#1_0">回到顶部</a>
+### <a name="1_2">Resources</a>
 
 [webpack 学习](./learn/webpack)
 [rollup 学习](./learn/rollup)
@@ -49,7 +49,7 @@ workflow 致力于打造一个工作流平台，所有的工作都可以使用�
 
 -----
 
-### <a name="1_3">@pkb/cli 脚手架</a>  <a href="#1_0">回到顶部</a>
+### <a name="1_3">@pkb/cli 脚手架</a>  <a href="#1_0">⬆️</a>
 
 `@pkb/cli` 为本项目的脚手架，可用来生成项目、添加插件、检查项目配置、升级更新等等，主要的功能就是对整体项目的管理。
 
@@ -68,7 +68,7 @@ pk gotty # 在 web 中使用终端
 pk jsdoc2md # 把 js 注释生成 md
 ```
 ----
-### <a name="1_4">webpack-box</a>  <a href="#1_0">回到顶部</a>
+### <a name="1_4">webpack-box</a>  <a href="#1_0">⬆️</a>
 
 <details open=“open”>
  <summary>点击关闭/打开安装</summary><br/>
@@ -117,7 +117,7 @@ webpack-box stylelint # 自动修复 stylelint 错误
 
 </details>
 
-### <a name="1_5">rollup-box</a>  <a href="#1_0">回到顶部</a>
+### <a name="1_5">rollup-box</a>  <a href="#1_0">⬆️</a>
 
 - [从零开始 rollup 学习](./learn/rollup)
 - 对 rollup 进行封装，大量插件，开箱即用
@@ -133,14 +133,14 @@ rollup-box watch # 开发模式
 ```
 
 ------
-### <a name="1_6">node-tools</a>  <a href="#1_0">回到顶部</a>
+### <a name="1_6">node-tools</a>  <a href="#1_0">⬆️</a>
 
 - 集成了一些 node 工具
 - [更多...](./packages/tools/README.md)
 
 -----
 
-### <a name="1_7">开发&学习</a>  <a href="#1_0">回到顶部</a>
+### <a name="1_7">开发&学习</a>  <a href="#1_0">⬆️</a>
 
 - [项目计划] 把 issue 整理到 project 中做好分类，并有计划的完成目标。
 - [开发指南] 如果想要一起开发的可以参考这里。
