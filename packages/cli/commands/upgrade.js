@@ -24,7 +24,7 @@ exports.upgrade = async ({ filter }) => {
 
   const keys = Object.keys(upgraded)
   if (keys.length) {
-    console.log(`检查出${keys.length}项`)
+    console.log(`升级了 ${keys.length} 项`)
     console.log(upgraded)
     const pm = new PackageManager({ context: process.cwd() })
 

@@ -20,11 +20,11 @@
   },
   "main": "index.js",
   "devDependencies": {
-    "@pkb/cli": "^1.4.36",
+    "@pkb/cli": "^1.4.37",
     "@pkb/plugin-react": "^1.4.30",
     "@pkb/plugin-stylelint": "^1.4.30",
     "@pkb/rollup-box": "^1.4.29",
-    "@pkb/webpack-box": "^1.4.36"
+    "@pkb/webpack-box": "^1.4.37"
   },
   "bugs": {
     "url": "https://github.com/luoxue-victor/learn_webpack/issues"
