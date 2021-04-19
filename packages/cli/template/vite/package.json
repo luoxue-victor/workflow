@@ -3,8 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite-box server",
-    "build": "vite-box build",
-    "serve": "vite preview"
+    "build": "vite-box build"
   },
   "devDependencies": {
     "@pkb/vite-box": "1.0.0",

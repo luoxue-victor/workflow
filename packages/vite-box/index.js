@@ -18,13 +18,13 @@ exports.getPlugins = () => {
 }
 
 // 构建项目
-exports.createServer = async (plugins) => {
+exports.createServer = async (plugins, port = 7777, root = process.cwd()) => {
   const { createServer } = require('vite')
   const server = await createServer({
     configFile: false,
-    root: __dirname,
+    root,
     server: {
-      port: 7777
+      port
     },
     plugins
   })
