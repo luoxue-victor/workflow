@@ -1,11 +1,11 @@
 {
   "name": "@pkb/plugin-eslint",
-  "version": "1.4.30",
+  "version": "1.4.37",
   "description": "webpack-box 插件，配置 eslint 及修复",
   "author": "luoxue",
   "main": "index.js",
   "dependencies": {
-    "@pkb/shared-utils": "^1.4.24",
+    "@pkb/shared-utils": "^1.4.37",
     "@typescript-eslint/parser": "^4.22.0",
     "eslint": "^7.24.0",
     "eslint-config-airbnb": "^18.2.1",
