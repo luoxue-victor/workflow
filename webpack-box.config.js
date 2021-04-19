@@ -79,19 +79,12 @@ module.exports = function (config) {
     filenameHashing: true,
     eslint: {
       lintOnSave: true, // 开启运行时检测
-      extensions: ['js', 'jsx', 'vue'] // 默认 ['js', 'jsx']
-    },
-    tslint: {
-      lintOnSave: true, // 开启运行时检测
-      useThreads: true
+      extensions: ['js', 'jsx', 'vue', 'ts', 'tsx'] // 默认 ['js', 'jsx']
     },
     stylelint: {
       lintOnSave: true // 开启运行时检测
       // extensions: ['vue', 'htm', 'html', 'css', 'sss', 'less', 'scss']
     },
-    // dll: {
-    //   venders: ['react']
-    // },
     chainWebpack(config) {}
   }
 }

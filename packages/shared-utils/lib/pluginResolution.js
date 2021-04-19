@@ -35,25 +35,7 @@ exports.resolvePluginId = (id) => {
   if (pkbOfficialPlugins.includes(id)) {
     return `@pkb/plugin-${id}`
   }
-
-  if (id.charAt(0) === '@') {
-    const scopeMatch = id.match(scopeRE)
-    if (scopeMatch) {
-      const scope = scopeMatch[0]
-      const shortId = id.replace(scopeRE, '')
-      let ii = ''
-      if (/^(@pkb)/.test(id)) {
-        ii = `${scope}${
-          (scope === '@pkb/' ? '' : 'pk-')
-        }cli-plugin-${shortId}`
-      } else {
-        ii = id
-      }
-      return ii
-    }
-  }
-
-  return `pk-cli-plugin-${id}`
+  return null
 }
 
 exports.matchesPluginId = (input, full) => {
