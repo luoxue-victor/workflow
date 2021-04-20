@@ -6,10 +6,9 @@
   },
   "description": "全局脚手架，用于全局操作项目，项目配置检查、生成项目、添加插件等等",
   "author": "luoxue",
-  "scripts": {
-  },
+  "scripts": {},
   "dependencies": {
-    "@pkb/shared-utils": "^1.4.37",
+    "@pkb/shared-utils": "^1.4.39",
     "@pkb/vite-box": "^1.4.38",
     "boxen": "^4.1.0",
     "chalk": "^3.0.0",
@@ -20,6 +19,7 @@
     "didyoumean": "^1.2.1",
     "ejs": "^3.0.1",
     "envinfo": "^7.5.0",
+    "eslint": "^5.13.0",
     "execa": "^3.4.0",
     "fs-extra": "^8.1.0",
     "globby": "^10.0.1",
@@ -36,8 +36,7 @@
     "semver": "^6.3.0",
     "validate-npm-package-name": "^3.0.0",
     "xterm": "^4.11.0",
-    "xterm-addon-web-links": "^0.4.0",
-    "eslint": "^5.13.0"
+    "xterm-addon-web-links": "^0.4.0"
   },
   "gitHead": "99cfb71b47331113234c66c33f79d752cc010ee1"
 }

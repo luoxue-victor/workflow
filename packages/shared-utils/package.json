@@ -1,6 +1,6 @@
 {
   "name": "@pkb/shared-utils",
-  "version": "1.4.37",
+  "version": "1.4.39",
   "description": "webpack-box 使用的公共 utils",
   "main": "index.js",
   "repository": {
