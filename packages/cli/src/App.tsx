@@ -1,24 +1,22 @@
-import React, { useState } from 'react'
-import logo from './logo.svg'
+import React, { useState, useEffect } from 'react'
 import './App.css'
+// import Iframe from './components/iframe/index.jsx'
+import { Terminal } from 'xterm';
+import 'xterm/css/xterm.css'
+// import { WebLinksAddon } from 'xterm-addon-web-links';
 
 function App() {
   const [count, setCount] = useState(0)
 
+  useEffect(() => {
+    const term = new Terminal()
+    // 将term挂砸到dom节点上
+    term.open(document.getElementById('root'))
+    term.fit();
+  }, [])
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.tsx</code> and save to test HMR updates.
-        </p>
-      </header>
+      {/* <Iframe></Iframe> */}
     </div>
   )
 }

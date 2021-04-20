@@ -1,15 +1,16 @@
 {
   "name": "@pkb/cli",
-  "version": "1.4.38",
+  "version": "1.4.39",
   "bin": {
     "pk": "bin/index.js"
   },
   "description": "全局脚手架，用于全局操作项目，项目配置检查、生成项目、添加插件等等",
   "author": "luoxue",
-  "main": "index.js",
+  "scripts": {
+  },
   "dependencies": {
     "@pkb/shared-utils": "^1.4.37",
-    "@pkb/vite-box": "1.0.0",
+    "@pkb/vite-box": "^1.4.38",
     "boxen": "^4.1.0",
     "chalk": "^3.0.0",
     "commander": "^4.0.1",
@@ -34,7 +35,9 @@
     "resolve": "^1.13.1",
     "semver": "^6.3.0",
     "validate-npm-package-name": "^3.0.0",
-    "yaml-front-matter": "^4.0.0"
+    "xterm": "^4.11.0",
+    "xterm-addon-web-links": "^0.4.0",
+    "eslint": "^5.13.0"
   },
   "gitHead": "99cfb71b47331113234c66c33f79d752cc010ee1"
 }
