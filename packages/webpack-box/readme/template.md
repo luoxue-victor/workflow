@@ -1,10 +1,10 @@
 # webpack-box
 
-1. webpack-box 是一个对 webpack 进行了封装的开箱即用的项目。集成了 webpack 的各种优化，配置了 webpack 常用到的 loader 和 plugin，原则上您不需要做任何配置就可以使用。
-2. webpack-box 支持插件配置，您可以使用插件管理项目配置，可以多项目复用
-3. 您也可以当作参考手册，来这里找到任何想要的 webpack 配置
-4. 如果想要从头系统学习，可以切换到不同分支上，我把每课时的内容都分别切成了不同的分支，您可以在这些分支上自由尝试
-5. [学习webpack](../../learn/webpack)
+- webpack-box 是一个对 webpack 进行了封装的开箱即用的项目。集成了 webpack 的各种优化，配置了 webpack 常用到的 loader 和 plugin，原则上您不需要做任何配置就可以使用。
+- webpack-box 支持插件配置，您可以使用插件管理项目配置，可以多项目复用
+- 您也可以当作参考手册，来这里找到任何想要的 webpack 配置
+- 如果想要从头系统学习，可以切换到不同分支上，我把每课时的内容都分别切成了不同的分支，您可以在这些分支上自由尝试
+- [学习webpack](../../learn/webpack)
 ### 安装
 
 <details open=“open”>
@@ -72,3 +72,105 @@ webpack-box stylelint # 自动修复 stylelint 错误
 ### 支持的配置
 
 {{plugins}}
+
+### webpack-box 配置
+
+```js
+const path = require('path')
+
+function resolve(dir) {
+  return path.join(process.cwd(), dir)
+}
+
+module.exports = function (config) {
+  /**
+   * @param {object} dll 开启差分包
+   * @param {object} pages 多页面配置 通过 box run/build index 来使用
+   * @param {function} chainWebpack
+   * @param {string} entry 入口
+   * @param {string} output 出口
+   * @param {string} publicPath
+   * @param {string} port 端口
+   * @param {object} eslint eslint 配置
+   * @param {object} stylelint stylelint 配置
+   * @param {object} eslint eslint 配置
+   * @param {object} alias 配置别名
+   * @param {object} env 配置通用变量，可以在 node 跟 web 之间共同使用
+   * @param {Boolean} filenameHashing 文件名是否使用 hash，当文件发生变动的时候 filename 才会改变
+   * @param {Boolean} css 配置 css
+   * @param {Boolean} mock 开启 mock
+   */
+  return {
+    pages: {
+      index1: {
+        entry: 'src/main.js',
+        template: 'public/index.html',
+        filename: 'index.html',
+        publicPath: './',
+        output: 'dist/index1'
+      },
+      index2: {
+        entry: 'src/main.js',
+        template: 'public/index2.html',
+        filename: 'index2.html',
+        publicPath: './',
+        output: 'dist/index2'
+      }
+    },
+    port: 9001,
+    mock: true,
+    env: {
+      REACT: 'react' // 配置 react
+    },
+    alias: {
+      '@': resolve('src'),
+      '@src': resolve('src')
+    },
+    resources: {
+      less: {
+        patterns: [
+          path.resolve(__dirname, './src/global/*.less')
+        ]
+      },
+      scss: {
+        patterns: [
+          path.resolve(__dirname, './src/global/*.scss')
+        ]
+      }
+    },
+    css: {
+      sourceMap: true,
+      loaderOptions: {
+        css: {},
+        less: {
+          globalVars: {
+            gray: '#ccc'
+          }
+        },
+        sass: {},
+        postcss: {},
+        stylus: {}
+      },
+      isCssModule: false, // 是否对css进行模块化处理
+      needInlineMinification: false // 是否需要压缩css
+    },
+    filenameHashing: true,
+    eslint: {
+      lintOnSave: true, // 开启运行时检测
+      extensions: ['js', 'jsx', 'vue'] // 默认 ['js', 'jsx']
+    },
+    tslint: {
+      lintOnSave: true, // 开启运行时检测
+      useThreads: true
+    },
+    stylelint: {
+      lintOnSave: true // 开启运行时检测
+      // extensions: ['vue', 'htm', 'html', 'css', 'sss', 'less', 'scss']
+    },
+    // dll: {
+    //   venders: ['react']
+    // },
+    chainWebpack(config) {}
+  }
+}
+```
