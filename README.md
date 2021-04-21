@@ -43,8 +43,8 @@ pk lerna # 多包管理 发布
 
 ### 可构建的项目
 
-- [webpack 项目](./packages/webpack-box/README.md) | [webpack 学习](./learn/webpack)
-- [rollup 项目](./packages/rollup-box/README.md) | [rollup 学习](./learn/rollup)
+- [webpack 项目](./packages/webpack-box/README.md)
+- [rollup 项目](./packages/rollup-box/README.md)
 - [vite 项目](./packages/vite-box/README.md)
 - [node 项目](./packages/node-box/README.md)
 - [node 工具](./packages/tools/README.md)
@@ -54,7 +54,11 @@ pk lerna # 多包管理 发布
 - [node-tools](./packages/tools/README.md)
 - [npm-packages](https://github.com/luoxue-victor/npm-packages)
 
-### 共建&学习
+### 学习
+
+- [webpack 学习](./learn/webpack)
+- [rollup 学习](./learn/rollup)
+### 共建
 
 - [项目计划] 把 issue 整理到 project 中做好分类，并有计划的完成目标。
 - [开发指南] 如果想要一起开发的可以参考这里。
