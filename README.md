@@ -55,7 +55,7 @@ workflow 致力于打造一个工作流平台，所有的工作都可以使用�
 # 全局安装
 npm i -g @pkb/cli # 全局安装使用
 
-pk create <project-name> # 创建项目 webpack|rollup|vite
+pk create <project-name> # 创建项目 webpack|rollup|vite|lerna|node
 pk add <plugin> # 安装插件
 pk info # 查看项目及系统配置
 pk upgrade [filter] # 检查升级 npm 版本
@@ -257,19 +257,12 @@ module.exports = function (config) {
     filenameHashing: true,
     eslint: {
       lintOnSave: true, // 开启运行时检测
-      extensions: ['js', 'jsx', 'vue'] // 默认 ['js', 'jsx']
-    },
-    tslint: {
-      lintOnSave: true, // 开启运行时检测
-      useThreads: true
+      extensions: ['js', 'jsx', 'vue', 'ts', 'tsx'] // 默认 ['js', 'jsx']
     },
     stylelint: {
       lintOnSave: true // 开启运行时检测
       // extensions: ['vue', 'htm', 'html', 'css', 'sss', 'less', 'scss']
     },
-    // dll: {
-    //   venders: ['react']
-    // },
     chainWebpack(config) {}
   }
 }
