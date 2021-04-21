@@ -1,6 +1,6 @@
 {
   "name": "@pkb/cli",
-  "version": "1.4.40",
+  "version": "1.4.41",
   "bin": {
     "pk": "bin/index.js"
   },
@@ -8,7 +8,7 @@
   "author": "luoxue",
   "scripts": {},
   "dependencies": {
-    "@pkb/node-box": "^1.4.40",
+    "@pkb/node-box": "^1.4.41",
     "@pkb/shared-utils": "^1.4.39",
     "@pkb/vite-box": "^1.4.38",
     "boxen": "^4.1.0",
