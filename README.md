@@ -1,7 +1,5 @@
 <div align="center">
 
-# 制定你自己的前端工作流
-
 <img src="public/asset/logo-mini2.png" width="120">
 
 ### <strong>workflow</strong>
