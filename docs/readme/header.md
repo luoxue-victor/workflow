@@ -17,13 +17,11 @@
 
 </div>
 
-### <a name="1_1">简介</a>
+### 简介
 
 workflow 致力于打造一个工作流平台，所有的工作都可以使用一个平台来完成，诚邀大家一起来共建
 
------
-
-### <a name="1_3">@pkb/cli 脚手架</a>  <a href="#1_0">⬆️</a>
+### 脚手架
 
 `@pkb/cli` 可用来生成项目、添加插件、检查项目配置、升级更新等等，主要的功能就是对整体项目的管理。
 
@@ -42,14 +40,21 @@ pk gotty # 在 web 中使用终端
 pk jsdoc2md # 把 js 注释生成 md
 pk lerna # 多包管理 发布
 ```
-----
+
+### 可构建的项目
 
 - [webpack 项目](./packages/webpack-box/README.md)
 - [rollup 项目](./packages/rollup-box/README.md)
+- [vite 项目](./packages/rollup-box/README.md)
 - [node 项目](./packages/node-box/README.md)
 - [node 工具](./packages/tools/README.md)
 
-### <a name="1_7">开发&学习</a>  <a href="#1_0">⬆️</a>
+### 工具
+
+- [node-tools](./packages/tools/README.md)
+- [npm-packages](https://github.com/luoxue-victor/npm-packages)
+
+### 共建&学习
 
 - [项目计划] 把 issue 整理到 project 中做好分类，并有计划的完成目标。
 - [开发指南] 如果想要一起开发的可以参考这里。
@@ -72,6 +77,3 @@ pk lerna # 多包管理 发布
 [issue]: https://img.shields.io/github/issues/luoxue-victor/webpack-box
 [forks]: https://img.shields.io/github/forks/luoxue-victor/webpack-box
 [star]: https://img.shields.io/github/stars/luoxue-victor/webpack-box
-
------
-
