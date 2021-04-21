@@ -20,7 +20,7 @@
   },
   "main": "index.js",
   "devDependencies": {
-    "@pkb/cli": "^1.4.45",
+    "@pkb/cli": "^1.4.47",
     "@pkb/plugin-react": "^1.4.30",
     "@pkb/plugin-stylelint": "^1.4.45",
     "@pkb/rollup-box": "^1.4.29",
@@ -34,9 +34,5 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/luoxue-victor/learn_webpack.git"
-  },
-  "dependencies": {
-    "detect-port": "^1.3.0",
-    "nodemon": "^2.0.7"
   }
 }
