@@ -31,19 +31,13 @@ workflow 致力于打造一个工作流平台，所有的工作都可以使用�
 
 ### 目录
 
-- <a href="#1_2">Resources</a>
 - <a href="#1_3">@pkb/cli 脚手架</a>
 - <a href="#1_4">webpack-box</a>
 - <a href="#1_5">rollup-box</a>
 - <a href="#1_6">node-tools</a>
 - <a href="#1_7">开发&学习</a>
+- <a href="#1_2">Resources</a>
 - <a href="#1_8">配置</a>
-
-### <a name="1_2">Resources</a>
-
-- [webpack 学习](./learn/webpack)
-- [rollup 学习](./learn/rollup)
-- [官方插件](./packages)
 
 -----
 
@@ -64,6 +58,7 @@ pk eslint # eslint 检查，需要安装 @pkb/plugin-eslint
 pk stylelint # stylelint 检查，需要安装 @pkb/plugin-stylelint
 pk gotty # 在 web 中使用终端
 pk jsdoc2md # 把 js 注释生成 md
+pk lerna # 多包管理 发布
 ```
 ----
 ### <a name="1_4">webpack-box</a>  <a href="#1_0">⬆️</a>
@@ -135,6 +130,13 @@ rollup-box watch # 开发模式
 
 - 集成了一些 node 工具
 - [更多...](./packages/tools/README.md)
+
+-----
+### <a name="1_2">Resources</a>
+
+- [webpack 学习](./learn/webpack)
+- [rollup 学习](./learn/rollup)
+- [官方插件](./packages)
 
 -----
 
