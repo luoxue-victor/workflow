@@ -47,11 +47,10 @@ pk lerna # 多包管理 发布
 - [rollup 项目](./packages/rollup-box/README.md)
 - [vite 项目](./packages/vite-box/README.md)
 - [node 项目](./packages/node-box/README.md)
-- [node 工具](./packages/tools/README.md)
 
 ### 工具
 
-- [node-tools](./packages/tools/README.md)
+- [node 工具](./packages/shared-utils/README.md)
 - [npm-packages](https://github.com/luoxue-victor/npm-packages)
 
 ### 学习
