@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 const fs = require('fs')
 const path = require('path')
-const readmePath = path.join('docs', 'readme')
 const packagesDirPath = path.join('packages')
 const packagePaths =  fs.readdirSync(packagesDirPath)
 const exec = require('child_process').execSync;
@@ -13,18 +12,3 @@ packagePaths.forEach(_ => {
     exec(`node ${pkgReadmePath}`)
   }
 })
-
-function joinCtx () {
-  let str = ''
-  str += readMdBy('header')
-  str += '\n' + fs.readFileSync(path.join(__dirname, 'contributors.md')).toString()
-  return str
-}
-
-const ctx = joinCtx()
-
-fs.writeFileSync('README.md', ctx, 'utf-8')
-
-function readMdBy(name) {
-  return fs.readFileSync(path.join(readmePath, name + '.md')).toString()
-}

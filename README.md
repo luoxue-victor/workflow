@@ -45,7 +45,7 @@ pk lerna # 多包管理 发布
 
 - [webpack 项目](./packages/webpack-box/README.md)
 - [rollup 项目](./packages/rollup-box/README.md)
-- [vite 项目](./packages/rollup-box/README.md)
+- [vite 项目](./packages/vite-box/README.md)
 - [node 项目](./packages/node-box/README.md)
 - [node 工具](./packages/tools/README.md)
 
