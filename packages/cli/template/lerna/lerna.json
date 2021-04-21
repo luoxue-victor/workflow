@@ -1,12 +1,12 @@
 {
   "npmClient": "npm",
   "useWorkspaces": true,
-  "version": "1.4.39",
+  "version": "1.0.0",
   "packages": [
-    "packages/packages-cli"
+    "packages/*"
   ],
   "changelog": {
-    "repo": "jijiang/cli",
+    "repo": "",
     "labels": {
       "PR: New Feature": ":rocket: New Features",
       "PR: Breaking Change": ":boom: Breaking Changes",

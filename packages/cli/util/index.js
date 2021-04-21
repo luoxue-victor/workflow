@@ -39,21 +39,6 @@ exports.openApp = (appname, path) => {
   execSync(commander)
 }
 
-// 防止端口号被占用
-exports.tryUsePort = async (port = 1000) => {
-  try {
-    const _port = await detect(port);
-
-    if (_port === port) {
-      return port
-    } else {
-      return await exports.tryUsePort(++port)
-    }
-  } catch (error) {
-    console.log(error)
-  }
-}
-
 // 获取当前分支
 exports.getCurBranch = () => execSync('git rev-parse --abbrev-ref HEAD').toString().trim()
 

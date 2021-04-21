@@ -4,15 +4,15 @@
    * @param tabSize 默认tab为两个空格
    * @param formatOnSave 保存时自动修复
    */
-  "editor.tabSize": 2,
-  "editor.formatOnSave": true,
+  // "editor.tabSize": 2,
+  // "editor.formatOnSave": true,
   /*
    * @description eslint 配置
    * @param alwaysShowStatus 配置
    * @param autoFixOnSave 保存时自动修复
    * @param validate 在vue中添加错误提示
    */
-  "eslint.alwaysShowStatus": true,
+  // "eslint.alwaysShowStatus": true,
   // "eslint.autoFixOnSave": true,
   // "eslint.validate": [
   //   "javascript",
@@ -23,49 +23,42 @@
   //   }
   // ],
   /*
-   * @description tslint 配置
-   * @param autoFixOnSave 保存时自动修复
-   * @param alwaysShowRuleFailuresAsWarnings 所有特征都是用 Warnings
-   */
-  "tslint.autoFixOnSave": true,
-  "tslint.alwaysShowRuleFailuresAsWarnings": true,
-  /*
    * @description stylelint 配置
    * @param autoFixOnSave 保存时自动修复
    */
-  "stylelint.autoFixOnSave": true,
+  // "stylelint.autoFixOnSave": true,
   /*
    * @description vetur 配置
    */
-  "vetur.format.defaultFormatter.html": "prettier",
-  "vetur.format.defaultFormatterOptions": {
-    "prettier": {
-      "semi": false,
-      "singleQuote": true
-    }
-  },
+  // "vetur.format.defaultFormatter.html": "prettier",
+  // "vetur.format.defaultFormatterOptions": {
+  //   "prettier": {
+  //     "semi": false,
+  //     "singleQuote": true
+  //   }
+  // },
   /*
    * @description 配置编辑器设置以覆盖某种语言
    */
-  "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[vue]": {
-    "editor.defaultFormatter": "eg2.tslint"
-  },
-  "[javascript]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-  },
-  "[javascriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
-  }
+  // "[html]": {
+  //   "editor.defaultFormatter": "esbenp.prettier-vscode"
+  // },
+  // "[jsonc]": {
+  //   "editor.defaultFormatter": "esbenp.prettier-vscode"
+  // },
+  // "[json]": {
+  //   "editor.defaultFormatter": "esbenp.prettier-vscode"
+  // },
+  // "[vue]": {
+  //   "editor.defaultFormatter": "eg2.tslint"
+  // },
+  // "[javascript]": {
+  //   "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  // },
+  // "[javascriptreact]": {
+  //   "editor.defaultFormatter": "esbenp.prettier-vscode"
+  // },
+  // "editor.codeActionsOnSave": {
+  //   "source.fixAll.eslint": true
+  // }
 }
