@@ -1,8 +1,5 @@
 const path = require('path')
-const chalk = require('chalk')
-const { spawn } = require('child_process');
 const nodemon = require('nodemon')
-const usePort = require('use-port');
 
 exports.registerCommand = (params) => {
   const { program } = params
@@ -21,13 +18,8 @@ const client = () => {
   createServer(plugins, 8888, path.join(__dirname, '..'))
 }
 
-const server = async () => {
-  const port = await usePort(1400)
-
-  const Server = require('@pkb/node-box')
-  Server({port, root: path.join(__dirname, '..')})
-  // nodemon({
-  //   script: require('')
-  // })
-
+const server = () => {
+  nodemon({
+    script: path.join(__dirname, '..', 'app', 'nodemon.js')
+  })
 }

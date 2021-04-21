@@ -37,6 +37,7 @@
     "react-dom": "^17.0.0",
     "resolve": "^1.13.1",
     "semver": "^6.3.0",
+    "use-gotty": "^1.0.7",
     "use-port": "^1.0.3",
     "validate-npm-package-name": "^3.0.0",
     "xterm": "^4.11.0",

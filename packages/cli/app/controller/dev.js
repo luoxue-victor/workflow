@@ -4,7 +4,7 @@ class DevController {
   async index({ ctx, next }) {
 
     ctx.body = {
-      http: 'domain',
+      http: '123111',
     };
   }
 }

@@ -2,13 +2,13 @@ exports.registerCommand = (params) => {
   const { program, cleanArgs } = params
   program
     .command('server')
-    .description('开发运行项目')
+    .description('构建开发环境')
     .action((cmd) => {
       const options = cleanArgs(cmd)
-      dev(options)
+      build(options)
     })
 }
 
-const dev = async () => {
-  require('..')()
+const build = async () => {
+  require('../build/server')()
 }

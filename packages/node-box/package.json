@@ -26,7 +26,8 @@
     "koa-onerror": "^4.1.0",
     "koa-views": "^7.0.1",
     "koa2-cors": "^2.0.6",
-    "semver": "^6.3.0"
+    "semver": "^6.3.0",
+    "use-port": "^1.0.4"
   },
   "gitHead": "99cfb71b47331113234c66c33f79d752cc010ee1"
 }
