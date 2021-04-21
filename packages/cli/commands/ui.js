@@ -1,7 +1,8 @@
 const path = require('path')
 const chalk = require('chalk')
 const { spawn } = require('child_process');
-
+const nodemon = require('nodemon')
+const detect = require('detect-port');
 
 exports.registerCommand = (params) => {
   const { program } = params
@@ -20,30 +21,27 @@ const client = () => {
   createServer(plugins, 8888, path.join(__dirname, '..'))
 }
 
-const server = () => {
-  return new Promise((resolve) => {
-    const cwd = path.join(__dirname, '..', 'ui-server')
-    process.env.PORT = 99999
-    const run = () => {
-      const devspawn = spawn('npm', ['run', 'dev'], { cwd });
+const getNoUsePort = async (port = 1000) => {
+  try {
+    const _port = await detect(port);
 
-      devspawn.stdout.on('data', function (data) {
-        const str = data.toString().replace(/\n$/, '')
-
-        chalk.cyan('[ui-server]')
-
-        const http = str.match(/egg started on (http:\/\/127\.0\.0\.1\:\d+)/)
-        if (http) {
-          resolve(http[1])
-        }
-
-        console.log(str);
-      });
-
-      devspawn.on('error', (err, b) => {
-        console.log(err, b)
-      })
+    if (_port === port) {
+      return port
+    } else {
+      return await getNoUsePort(++port)
     }
-    run()
-  })
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+const server = async () => {
+  const port = await getNoUsePort(1000)
+
+  const Server = require('@pkb/node-box')
+  Server({port, root: path.join(__dirname, '..')})
+  // nodemon({
+  //   script: require('')
+  // })
+
 }

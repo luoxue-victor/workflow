@@ -1,0 +1,10 @@
+{
+  "name": "example",
+  "version": "1.0.0",
+  "description": "",
+  "author": "",
+  "main": "index.js",
+  "bin": {
+    "example": "bin/index.js"
+  }
+}

@@ -5,6 +5,7 @@ const net = require('net')
 const chalk = require('chalk')
 const { execSync } = require('child_process')
 const PackageManager = require('./ProjectPackageManager')
+const detect = require('detect-port');
 
 const err = (msg) => console.log(`${chalk.red('[错误]')}${msg}`)
 const success = (msg) => console.log(`${chalk.green('[成功]')}${msg}`)
@@ -39,18 +40,18 @@ exports.openApp = (appname, path) => {
 }
 
 // 防止端口号被占用
-exports.tryUsePort = (port, _portAvailableCallback) => {
-  portInUse(port).then((port) => {
-    try {
-      _portAvailableCallback(port)
-    } catch (error) {
-      console.log(error)
+exports.tryUsePort = async (port = 1000) => {
+  try {
+    const _port = await detect(port);
+
+    if (_port === port) {
+      return port
+    } else {
+      return await exports.tryUsePort(++port)
     }
-  }).catch(() => {
-    console.log(`${port} 被占用`)
-    port += 1
-    exports.tryUsePort(port, _portAvailableCallback)
-  })
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 // 获取当前分支
@@ -101,21 +102,4 @@ exports.copyToClipboard = (text) => {
   fs.removeSync(context)
 
   success('复制到剪切板')
-}
-
-// -----------------------utils----------------------------------
-async function portInUse(port) {
-  return new Promise((resolve, reject) => {
-    const server = net.createServer().listen(port)
-    server.on('listening', () => {
-      server.close()
-      resolve(port)
-    })
-    server.on('error', (err) => {
-      if (err.code === 'EADDRINUSE') {
-        port++
-        reject(err)
-      }
-    })
-  })
 }

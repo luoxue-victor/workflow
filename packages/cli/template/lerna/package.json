@@ -1,0 +1,10 @@
+{
+  "name": "lerna",
+  "version": "1.0.9",
+  "private": true,
+  "description": "Lerna 多包存储库管理工具",
+  "author": "",
+  "workspaces": [
+    "packages/*"
+  ]
+}

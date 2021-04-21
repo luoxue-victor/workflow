@@ -139,6 +139,11 @@ module.exports = class Creator extends EventEmitter {
           name: 'vite',
           value: 'vite',
           message: '快速编译[使用 vite 打包]'
+        },
+        {
+          name: 'lerna',
+          value: 'lerna',
+          message: '多包存储库管理工具'
         }
       ]
     }
