@@ -1,7 +1,7 @@
 {
   "npmClient": "npm",
   "useWorkspaces": true,
-  "version": "1.4.43",
+  "version": "1.4.44",
   "packages": [
     "packages/packages-cli"
   ],
