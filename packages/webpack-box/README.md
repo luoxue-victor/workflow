@@ -98,6 +98,8 @@ webpack-box stylelint # 自动修复 stylelint 错误
 
 ### webpack-box 配置
 
+webpack-box.config.js
+
 ```js
 const path = require('path')
 
