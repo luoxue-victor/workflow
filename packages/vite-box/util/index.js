@@ -6,9 +6,8 @@ const defaultConfig = {
   root: process.cwd(),
   clearScreen: true,
   base: './',
-  root: './',
   server: {
-    port: 7777
+    port: 8000
   },
   plugins: [],
   build: {
