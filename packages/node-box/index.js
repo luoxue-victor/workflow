@@ -1,31 +1,25 @@
 const path = require('path')
 const fs = require('fs-extra')
+const chalk = require('chalk')
 const Koa = require('koa');
 const Router = require('koa-router');
 const views = require('koa-views')
 const json = require('koa-json')
 const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
-const logger = require('koa-logger')
-const cors = require('koa2-cors')
-const chalk = require('chalk')
 const app = new Koa();
 const router = new Router();
 
 module.exports = ({port = 30037, root = process.cwd()} = {}) => {
+  const config = {}
 
-  app.use(
-    cors({
-      origin: function (ctx) {
-        return '*'
-      },
-      maxAge: 5,
-      credentials: true,
-      allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-      allowHeaders: ['Content-Type', 'Authorization', 'Accept'],
-      exposeHeaders: ['WWW-Authenticate', 'Server-Authorization']
-    })
-  );
+  // 注册中间件
+  const middlewaresPath = path.join(__dirname, 'middleware')
+  const middlewares = fs.readdirSync(middlewaresPath)
+  middlewares.forEach(name => {
+    const middleware = require(path.join(middlewaresPath, name))
+    middleware(app, config)
+  })
 
   onerror(app)
 
@@ -34,7 +28,6 @@ module.exports = ({port = 30037, root = process.cwd()} = {}) => {
   }))
 
   app.use(json())
-  app.use(logger())
   app.use(require('koa-static')(root + '/public'))
 
   app.use(views(root + '/views', {
@@ -84,5 +77,5 @@ module.exports = ({port = 30037, root = process.cwd()} = {}) => {
 
   app.listen(port);
 
-  console.log(chalk.cyan(`  http://127.0.0.1:${port}/`))
+  console.log(chalk.green('[运行]'), `http://127.0.0.1:${port}/`)
 }

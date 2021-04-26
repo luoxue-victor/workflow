@@ -67,7 +67,7 @@ pk lerna # 多包管理 发布
 [开发指南]: ./learn/webpack/课时-25.md
 [插件市场]: https://www.npmjs.com/search?q=%40pkb
 [好的文章]: https://github.com/luoxue-victor/webpack-box/wiki
-[好的网站]: ./learn/web.md
+[好的网站]: ./learn/nice-web.md
 [npm-url]: https://www.npmjs.com/package/webpack-box
 [issue-url]: https://github.com/luoxue-victor/webpack-box/issues
 [node]: https://img.shields.io/node/v/webpack.svg
