@@ -6,7 +6,11 @@ exports.registerCommand = (params) => {
     .command('server')
     .description('开发')
     .action(async (plugin, options = {}) => {
-      const plugins = getPlugins();
-      createServer(plugins)
+      exports.server()
     })
+}
+
+exports.server = function() {
+  const plugins = getPlugins();
+  createServer({plugins})
 }

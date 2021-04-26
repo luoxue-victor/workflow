@@ -1,7 +1,9 @@
-const path = require('path')
 const fs = require('fs')
-const rootConfigPath = path.join(process.cwd(), 'vite-box.config.js')
-const boxConfig = fs.existsSync(rootConfigPath) ? require(rootConfigPath)() : {}
+const path = require('path')
+const deepExtend = require('deep-extend')
+const { build, createServer } = require('vite')
+const { getConfig } = require('./util')
+const config = getConfig()
 
 // 数组扁平化
 function flatten(arr) {
@@ -12,22 +14,18 @@ function flatten(arr) {
 exports.getPlugins = () => {
   const pluginsPath = path.join(__dirname, 'plugins')
   const pluginsName = fs.readdirSync(pluginsPath) || []
-  const plugins = pluginsName.map((_) => require(path.join(pluginsPath, _))(boxConfig))
+  const plugins = pluginsName.map((_) => require(path.join(pluginsPath, _))(config))
 
   return flatten(plugins)
 }
 
 // 构建项目
-exports.createServer = async (plugins, port = 7777, root = process.cwd()) => {
-  const { createServer } = require('vite')
-  const server = await createServer({
-    configFile: false,
-    root,
-    server: {
-      port
-    },
-    plugins
-  })
+exports.createServer = async (serverConfig) => {
+  const server = await createServer(deepExtend(config, serverConfig))
 
   await server.listen()
+}
+
+exports.build = async function (buildConfig = {}) {
+  await build(deepExtend(config, buildConfig))
 }
