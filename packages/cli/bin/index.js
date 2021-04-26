@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 const path = require('path')
-const bin = require('../../cli-box')
+const cli = require('@pkb/cli-box')
 
-bin({
+cli({
   root: path.join(__dirname, '..')
 })

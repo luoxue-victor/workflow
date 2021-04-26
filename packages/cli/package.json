@@ -12,6 +12,7 @@
   },
   "homepage": "https://github.com/luoxue-victor/workflow#readme",
   "dependencies": {
+    "@pkb/cli-box": "^1.4.50",
     "@pkb/node-box": "^1.4.50",
     "@pkb/shared-utils": "^1.4.50",
     "@pkb/vite-box": "^1.4.50",

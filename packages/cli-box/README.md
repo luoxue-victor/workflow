@@ -16,7 +16,15 @@ npm i @pkb/cli-box
 
 const bin = require('@pkb/cli-box')
 
-bin({
+cli({
   root: path.join(__dirname, '..')
 })
 ```
+
+### 目录结构
+
+```bash
+cli
+  -- commands # 所有命令行文件夹
+```
+
