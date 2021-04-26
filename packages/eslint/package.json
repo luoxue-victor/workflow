@@ -4,6 +4,11 @@
   "description": "webpack-box 插件，配置 eslint 及修复",
   "author": "luoxue",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luoxue-victor/workflow.git"
+  },
+  "homepage": "https://github.com/luoxue-victor/workflow#readme",
   "dependencies": {
     "@pkb/shared-utils": "^1.4.39",
     "@typescript-eslint/parser": "^4.22.0",

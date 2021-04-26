@@ -5,9 +5,9 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/luoxue-victor/webpack-box.git",
-    "directory": "packages/shared-utils"
+    "url": "git+https://github.com/luoxue-victor/workflow.git"
   },
+  "homepage": "https://github.com/luoxue-victor/workflow#readme",
   "keywords": [
     "pkb",
     "cli",

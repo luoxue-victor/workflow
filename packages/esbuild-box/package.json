@@ -7,6 +7,11 @@
   "bin": {
     "esbuild-box": "bin/index.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luoxue-victor/workflow.git"
+  },
+  "homepage": "https://github.com/luoxue-victor/workflow#readme",
   "dependencies": {
     "chalk": "^4.1.0",
     "commander": "^7.2.0",

@@ -22,7 +22,12 @@ const defaultConfig = {
 
 exports.getConfig = function () {
   const viteBoxConfigPath = path.join(process.cwd(), 'vite-box.config.js')
-  const config = fs.existsSync(viteBoxConfigPath) ? require(viteBoxConfigPath) : {}
+  const viteConfigPath = path.join(process.cwd(), 'vite.config.js')
+  const config = fs.existsSync(viteBoxConfigPath)
+    ? require(viteBoxConfigPath)
+    : fs.existsSync(viteConfigPath)
+      ? require(viteConfigPath)
+      : {}
 
   return deepExtend(defaultConfig, config)
 }

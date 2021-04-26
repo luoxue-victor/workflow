@@ -12,6 +12,11 @@
     "docs": "jsdoc src -d docs",
     "open": "open ./docs/index.html"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luoxue-victor/workflow.git"
+  },
+  "homepage": "https://github.com/luoxue-victor/workflow#readme",
   "dependencies": {
     "gulp": "^4.0.2",
     "gulp-better-rollup": "^4.0.1",

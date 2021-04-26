@@ -5,12 +5,12 @@ exports.registerCommand = (params) => {
   program
     .command('server')
     .description('开发')
-    .action(async (plugin, options = {}) => {
-      exports.server()
+    .action(async () => {
+      server()
     })
 }
 
-exports.server = function() {
+function server() {
   const plugins = getPlugins();
-  createServer({plugins})
+  createServer({ plugins })
 }

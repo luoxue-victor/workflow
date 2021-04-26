@@ -19,7 +19,6 @@ exports.getPlugins = () => {
   return flatten(plugins)
 }
 
-// 构建项目
 exports.createServer = async (serverConfig) => {
   const server = await createServer(deepExtend(config, serverConfig))
 

@@ -7,9 +7,11 @@
   "bin": {
     "rollup-box": "bin/index.js"
   },
-  "scripts": {
-    "readme": "node readme"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luoxue-victor/workflow.git"
   },
+  "homepage": "https://github.com/luoxue-victor/workflow#readme",
   "dependencies": {
     "@rollup/plugin-alias": "^3.1.2",
     "@rollup/plugin-auto-install": "^2.1.0",

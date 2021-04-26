@@ -1,19 +1,18 @@
 {
-  "name": "@pkb/plugin-react",
-  "version": "1.4.30",
-  "description": "pk 插件，配置react",
+  "name": "@pkb/cli-box",
+  "version": "1.4.45",
+  "description": "构建脚手架",
   "author": "luoxue",
   "main": "index.js",
-  "dependencies": {
-    "@babel/plugin-transform-react-jsx": "^7.7.4",
-    "@babel/preset-react": "^7.7.4",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/luoxue-victor/workflow.git"
   },
   "homepage": "https://github.com/luoxue-victor/workflow#readme",
+  "dependencies": {
+    "@pkb/shared-utils": "^1.4.39",
+    "commander": "^7.2.0",
+    "didyoumean": "^1.2.1"
+  },
   "gitHead": "3105af2c4b0b9c65d9e6cc9e00b8f12333964312"
 }

@@ -6,7 +6,11 @@
   },
   "description": "全局脚手架，用于全局操作项目，项目配置检查、生成项目、添加插件等等",
   "author": "luoxue",
-  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luoxue-victor/workflow.git"
+  },
+  "homepage": "https://github.com/luoxue-victor/workflow#readme",
   "dependencies": {
     "@pkb/node-box": "^1.4.48",
     "@pkb/shared-utils": "^1.4.39",
