@@ -1,6 +1,6 @@
 {
   "name": "@pkb/vite-box",
-  "version": "1.4.38",
+  "version": "1.4.48",
   "description": "使用 vite 打包",
   "author": "luoxue",
   "main": "index.js",
