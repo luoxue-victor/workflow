@@ -1,6 +1,6 @@
 {
   "name": "@pkb/cli-box",
-  "version": "1.4.50",
+  "version": "1.4.51",
   "description": "构建脚手架",
   "author": "luoxue",
   "main": "index.js",
