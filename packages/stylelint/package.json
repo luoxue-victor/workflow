@@ -1,6 +1,6 @@
 {
   "name": "@pkb/plugin-stylelint",
-  "version": "1.4.45",
+  "version": "1.4.50",
   "description": "webpack-box 插件，配置 stylelint 及修复",
   "author": "luoxue",
   "main": "index.js",

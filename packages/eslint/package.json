@@ -1,6 +1,6 @@
 {
   "name": "@pkb/plugin-eslint",
-  "version": "1.4.45",
+  "version": "1.4.50",
   "description": "webpack-box 插件，配置 eslint 及修复",
   "author": "luoxue",
   "main": "index.js",
@@ -10,7 +10,7 @@
   },
   "homepage": "https://github.com/luoxue-victor/workflow#readme",
   "dependencies": {
-    "@pkb/shared-utils": "^1.4.39",
+    "@pkb/shared-utils": "^1.4.50",
     "@typescript-eslint/parser": "^4.22.0",
     "eslint": "^7.24.0",
     "eslint-config-airbnb": "^18.2.1",

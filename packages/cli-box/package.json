@@ -1,6 +1,6 @@
 {
   "name": "@pkb/cli-box",
-  "version": "1.4.45",
+  "version": "1.4.50",
   "description": "构建脚手架",
   "author": "luoxue",
   "main": "index.js",
@@ -10,7 +10,7 @@
   },
   "homepage": "https://github.com/luoxue-victor/workflow#readme",
   "dependencies": {
-    "@pkb/shared-utils": "^1.4.39",
+    "@pkb/shared-utils": "^1.4.50",
     "commander": "^7.2.0",
     "didyoumean": "^1.2.1"
   },
