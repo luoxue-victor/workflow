@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/luoxue-victor/workflow#readme",
   "dependencies": {
+    "@pkb/cli-box": "^1.4.53",
     "gulp": "^4.0.2",
     "gulp-better-rollup": "^4.0.1",
     "gulp-cli": "^2.3.0",

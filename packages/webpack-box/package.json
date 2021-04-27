@@ -21,6 +21,7 @@
   "sideEffects": true,
   "homepage": "https://github.com/luoxue-victor/workflow#readme",
   "dependencies": {
+    "@pkb/cli-box": "^1.4.53",
     "@babel/cli": "^7.6.0",
     "@babel/core": "^7.6.0",
     "@babel/plugin-proposal-class-properties": "^7.7.4",
