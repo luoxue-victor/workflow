@@ -1,4 +1,8 @@
-## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.4.51...v1.0.9) (2021-04-27)
+## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.4.52...v1.0.9) (2021-04-27)
+
+
+
+## [1.4.52](https://github.com/luoxue-victor/learn_webpack/compare/v1.4.51...v1.4.52) (2021-04-27)
 
 
 

@@ -7,8 +7,8 @@ exports.registerCommand = (params) => {
   program
     .command('upgrade [filter]')
     .description('更新项目依赖')
-    .action((filter, cmd) => {
-      const options = cleanArgs(cmd)
+    .action((filter) => {
+      const options = {}
       options.filter = filter || '@pkb/*'
       exports.upgrade(options)
     })

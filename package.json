@@ -8,7 +8,6 @@
     "packages/*"
   ],
   "scripts": {
-    "genlog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "dev": "webpack-box dev",
     "dev:dash": "webpack-dashboard -- webpack-box dev",
     "build": "webpack-box build",
@@ -16,8 +15,7 @@
     "build:docker": "docker build -t docker-webpack-box .",
     "test": "jest --color --config jest.config.js",
     "cr": "node tools/readme.js",
-    "reload": "livereload 'dist/' -d -p 9000",
-    "push": "npm run cr && git add . && git commit -m 'update' && git push origin master"
+    "push": "pk changelog && npm run cr && pk cm && git push origin master"
   },
   "main": "index.js",
   "devDependencies": {
