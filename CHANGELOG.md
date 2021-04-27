@@ -1,4 +1,13 @@
-## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.4.53...v1.0.9) (2021-04-27)
+## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.4.54...v1.0.9) (2021-04-27)
+
+
+
+## [1.4.54](https://github.com/luoxue-victor/learn_webpack/compare/v1.4.53...v1.4.54) (2021-04-27)
+
+
+### Features
+
+* 增加 changelog ([33093a4](https://github.com/luoxue-victor/learn_webpack/commit/33093a4860dde852806051ae0dac06f71ea37f05))
 
 
 

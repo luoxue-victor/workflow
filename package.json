@@ -19,11 +19,11 @@
   },
   "main": "index.js",
   "devDependencies": {
-    "@pkb/cli": "^1.4.53",
+    "@pkb/cli": "^1.4.54",
     "@pkb/plugin-react": "^1.4.50",
     "@pkb/plugin-stylelint": "^1.4.50",
-    "@pkb/rollup-box": "^1.4.50",
-    "@pkb/webpack-box": "^1.4.50"
+    "@pkb/rollup-box": "^1.4.54",
+    "@pkb/webpack-box": "^1.4.54"
   },
   "bugs": {
     "url": "https://github.com/luoxue-victor/learn_webpack/issues"
@@ -37,6 +37,9 @@
   "dependencies": {
     "@pkb/cli-box": "^1.4.53",
     "commitizen": "^4.2.3",
-    "conventional-changelog-cli": "^2.1.1"
+    "conventional-changelog-cli": "^2.1.1",
+    "json-to-ts": "^1.7.0",
+    "json2ts": "0.0.7",
+    "yapi-to-typescript": "^3.19.0"
   }
 }
