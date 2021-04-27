@@ -8,6 +8,7 @@
     "packages/*"
   ],
   "scripts": {
+    "genlog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "dev": "webpack-box dev",
     "dev:dash": "webpack-dashboard -- webpack-box dev",
     "build": "webpack-box build",
@@ -36,6 +37,8 @@
     "url": "git+https://github.com/luoxue-victor/learn_webpack.git"
   },
   "dependencies": {
-    "@pkb/cli-box": "^1.4.51"
+    "@pkb/cli-box": "^1.4.51",
+    "commitizen": "^4.2.3",
+    "conventional-changelog-cli": "^2.1.1"
   }
 }
