@@ -1,6 +1,6 @@
 {
   "name": "@pkb/webpack-box",
-  "version": "1.4.50",
+  "version": "1.4.54",
   "description": "一个开箱即用的 webpack 打包器配置",
   "main": "index.js",
   "bin": {
@@ -21,7 +21,6 @@
   "sideEffects": true,
   "homepage": "https://github.com/luoxue-victor/workflow#readme",
   "dependencies": {
-    "@pkb/cli-box": "^1.4.53",
     "@babel/cli": "^7.6.0",
     "@babel/core": "^7.6.0",
     "@babel/plugin-proposal-class-properties": "^7.7.4",
@@ -34,6 +33,7 @@
     "@babel/preset-stage-3": "^7.0.0",
     "@babel/preset-typescript": "^7.6.0",
     "@babel/register": "^7.7.4",
+    "@pkb/cli-box": "^1.4.53",
     "@pkb/shared-utils": "^1.4.50",
     "@pkb/tools": "^1.4.19",
     "@soda/friendly-errors-webpack-plugin": "^1.7.1",

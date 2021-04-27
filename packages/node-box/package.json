@@ -1,6 +1,6 @@
 {
   "name": "@pkb/node-box",
-  "version": "1.4.50",
+  "version": "1.4.54",
   "bin": {
     "node-box": "bin/index.js"
   },
@@ -15,8 +15,8 @@
   },
   "homepage": "https://github.com/luoxue-victor/workflow#readme",
   "dependencies": {
-    "@pkb/shared-utils": "^1.4.50",
     "@pkb/cli-box": "^1.4.53",
+    "@pkb/shared-utils": "^1.4.50",
     "chalk": "^3.0.0",
     "commander": "^4.0.1",
     "copy-dir": "^1.3.0",

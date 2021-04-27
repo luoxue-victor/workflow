@@ -1,6 +1,6 @@
 {
   "name": "@pkb/esbuild-box",
-  "version": "1.4.50",
+  "version": "1.4.54",
   "description": "使用 esbuild 打包",
   "author": "luoxue",
   "main": "index.js",
