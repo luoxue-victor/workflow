@@ -1,4 +1,13 @@
-## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.4.54...v1.0.9) (2021-04-27)
+## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.4.55...v1.0.9) (2021-04-28)
+
+
+
+## [1.4.55](https://github.com/luoxue-victor/learn_webpack/compare/v1.4.54...v1.4.55) (2021-04-27)
+
+
+### Features
+
+* 新增 json2ts ([bbca789](https://github.com/luoxue-victor/learn_webpack/commit/bbca7890657112d583e8efddfbaad16b24deef54))
 
 
 

@@ -38,36 +38,39 @@ pk gotty # 在 web 中使用终端
 pk jsdoc2md # 把 js 注释生成 md
 pk lerna # 多包管理 发布
 pk changelog # 生成 changelog
+pk josn2ts # json 转成 ts
+pk mock # 开启 mock，支持 mockjs
 ```
+### 插件
 
-### 可构建的项目
+- [脚手架] 通过脚手架管理项目，辅助开发
+- [webpack-box] 集成了大量webpack插件，使用 webpackChain 配置，开箱即用
+- [rollup-box] 对 rollup 进行封装，开箱即用
+- [vite-box] 基于 vite 构建的脚手架，支持 vite 所有配置
+- [node-box] 基于 koa 构建的 node 框架
 
-- [webpack 项目](./packages/webpack-box/README.md)
-- [rollup 项目](./packages/rollup-box/README.md)
-- [vite 项目](./packages/vite-box/README.md)
-- [node 项目](./packages/node-box/README.md)
-
+[脚手架]: ./packages/cli/README.md
+[webpack-box]: ./packages/webpack-box/README.md
+[rollup-box]: ./packages/rollup-box/README.md
+[vite-box]: ./packages/vite-box/README.md
+[node-box]: ./packages/node-box/README.md
 ### 工具
 
 - [node 工具](./packages/shared-utils/README.md)
 - [npm-packages](https://github.com/luoxue-victor/npm-packages)
 
-### 学习
+### 学习&共建
 
 - [webpack 学习](./learn/webpack)
 - [rollup 学习](./learn/rollup)
-### 共建
-
 - [项目计划] 把 issue 整理到 project 中做好分类，并有计划的完成目标。
 - [开发指南] 如果想要一起开发的可以参考这里。
 - [插件市场] 目前已经完成的插件。
-- [好的文章] 把我觉得好的文章整理到我的 wiki 里，也可以在项目中点击 wiki 查看。
 - [好的网站] 一些比较实用的网站
 
 [项目计划]: https://github.com/luoxue-victor/webpack-box/projects/1
 [开发指南]: ./learn/webpack/课时-25.md
 [插件市场]: https://www.npmjs.com/search?q=%40pkb
-[好的文章]: https://github.com/luoxue-victor/webpack-box/wiki
 [好的网站]: ./learn/nice-web.md
 [npm-url]: https://www.npmjs.com/package/webpack-box
 [issue-url]: https://github.com/luoxue-victor/webpack-box/issues

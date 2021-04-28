@@ -17,4 +17,39 @@ pk gotty # 在 web 中使用终端
 pk jsdoc2md # 把 js 注释生成 md
 pk lerna # 多包管理 发布
 pk changelog # 生成 changelog
+pk mock # 开启 mock，支持 mockjs
+```
+### mock
+
+模拟接口，支持 mockjs
+
+```js
+module.exports = {
+  // 支持值为 Object 和 Array
+  'GET /api/users': { users: [1, 2] },
+  // GET 可省略
+  '/api/users/1': { id: 2 },
+  '/api/users/2': (req, res) => {
+    res.json({
+      success: true
+    })
+  },
+  '/api/users/3' (req, res) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.end('ok');
+  },
+  '/api/users/4': {
+    // 属性 list 的值是一个数组，其中含有 1 到 10 个元素
+    'list|1-30': [{
+      // 属性 id 是一个自增数，起始值为 1，每次增 1
+      'id|+1': 1
+    }]
+  }
+}
+
+// GET http://localhost:3000/api/users
+// GET http://localhost:3000/api/users/1
+// GET http://localhost:3000/api/users/2
+// GET http://localhost:3000/api/users/3
+// GET http://localhost:3000/api/users/4
 ```

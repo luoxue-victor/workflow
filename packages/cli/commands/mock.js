@@ -1,5 +1,4 @@
-const http = require('http')
-const fs = require('fs')
+const usePort = require('use-port')
 
 exports.registerCommand = (params) => {
   const { program } = params
@@ -7,5 +6,10 @@ exports.registerCommand = (params) => {
     .command('mock')
     .description('mock 数据')
     .action(async () => {
+      const port = await usePort(3000)
+      const app = require('express')()
+
+      app.use(require('../lib/createMockMiddleware')(port));
+      app.listen(port);
     })
 }

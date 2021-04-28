@@ -1,15 +1,21 @@
-const { existsSync } = require('fs')
+const { existsSync, fstat } = require('fs')
 const { join } = require('path')
 const bodyParser = require('body-parser')
 const glob = require('glob')
 const assert = require('assert')
 const chokidar = require('chokidar')
 const pathToRegexp = require('path-to-regexp')
+const chalk = require('chalk')
+const { mock } = require('mockjs')
+const { clearConsole } = require('@pkb/shared-utils')
+const copyDir = require('copy-dir')
 
 const VALID_METHODS = ['get', 'post', 'put', 'patch', 'delete']
 const BODY_PARSED_METHODS = ['post', 'put', 'patch']
+let PORT = null
 
-module.exports = function getMockMiddleware(/* api */) {
+module.exports = function getMockMiddleware(port) {
+  PORT = port
   const api = {
     debug: require('debug'),
     service: {
@@ -18,8 +24,13 @@ module.exports = function getMockMiddleware(/* api */) {
   }
   const { debug } = api
   const { cwd } = api.service
-  const absMockPath = join(cwd, 'mock')
+  const absMockPath = join(cwd, 'mocks')
   const absConfigPath = join(cwd, 'mock.config.js')
+  const mockTemplatePath = join(__dirname, '..', 'template', 'mocks')
+
+  if (!existsSync(absMockPath)) {
+    copyDir(mockTemplatePath, absMockPath, {})
+  }
 
   let mockData = getConfig()
   watch()
@@ -58,6 +69,7 @@ module.exports = function getMockMiddleware(/* api */) {
         return memo
       }, {})
     }
+
     return normalizeConfig(ret)
   }
 
@@ -96,6 +108,11 @@ module.exports = function getMockMiddleware(/* api */) {
       }
 
       function sendData() {
+        const resJson = res.json
+        res.json = function (json) {
+          resJson.call(this, mock(json))
+        }
+
         if (typeof handler === 'function') {
           handler(req, res, next)
         } else {
@@ -106,6 +123,9 @@ module.exports = function getMockMiddleware(/* api */) {
   }
 
   function normalizeConfig(config) {
+    clearConsole()
+    console.log(chalk.blue('mock apis:\n'))
+
     return Object.keys(config).reduce((memo, key) => {
       const handler = config[key]
       const type = typeof handler
@@ -123,6 +143,12 @@ module.exports = function getMockMiddleware(/* api */) {
         keys,
         handler: createHandler(method, path, handler)
       })
+
+      console.log(
+        chalk.green(method.toLocaleUpperCase()),
+        chalk.cyan(PORT ? `http://localhost:${PORT}${path}` : path)
+      )
+
       return memo
     }, [])
   }
@@ -181,7 +207,6 @@ module.exports = function getMockMiddleware(/* api */) {
   }
 
   return (req, res, next) => {
-    console.log(req, res, next)
     const match = matchMock(req)
     if (match) {
       debug(`mock matched: [${match.method}] ${match.path}`)
