@@ -1,4 +1,13 @@
-## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.4.55...v1.0.9) (2021-04-28)
+## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.4.56...v1.0.9) (2021-04-28)
+
+
+
+## [1.4.56](https://github.com/luoxue-victor/learn_webpack/compare/v1.4.55...v1.4.56) (2021-04-28)
+
+
+### Features
+
+* 增加pk mock ([27c8484](https://github.com/luoxue-victor/learn_webpack/commit/27c848486e27bbab9818d4121f5a986eb2ac78f2))
 
 
 

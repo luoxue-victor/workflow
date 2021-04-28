@@ -17,11 +17,15 @@
 
 ### 简介
 
-workflow 致力于打造一个工作流平台，所有的工作都可以使用一个平台来完成，诚邀大家一起来共建
+workflow 致力于打造一个工作流平台，将工作中的最佳实践集中在一起，提供解决各种在工作中开发遇到的问题
 
-### 脚手架
+### 原则
 
-`@pkb/cli` 可用来生成项目、添加插件、检查项目配置、升级更新等等，主要的功能就是对整体项目的管理。
+- 在任何事情上应该把复杂的东西变得更简单，而不是较为简单
+
+### [脚手架]
+
+`@pkb/cli` 可用来生成项目、添加插件、检查项目配置、升级更新等等，对整体项目管理。
 
 ```bash
 # 全局安装
@@ -41,13 +45,15 @@ pk changelog # 生成 changelog
 pk josn2ts # json 转成 ts
 pk mock # 开启 mock，支持 mockjs
 ```
-### 插件
+### 开发模板
 
-- [脚手架] 通过脚手架管理项目，辅助开发
-- [webpack-box] 集成了大量webpack插件，使用 webpackChain 配置，开箱即用
-- [rollup-box] 对 rollup 进行封装，开箱即用
-- [vite-box] 基于 vite 构建的脚手架，支持 vite 所有配置
-- [node-box] 基于 koa 构建的 node 框架
+`pk create yourProject` 选项
+
+- [webpack] 集成了大量webpack插件，使用 webpackChain 配置，开箱即用
+- [rollup] 对 rollup 进行封装，开箱即用
+- [vite] 基于 vite 构建的脚手架，支持 vite 所有配置
+- [node] 基于 koa 构建的 node 框架
+- [lerna] 一键创建 lerna 模板，`pk create yourProject`, 选择 lerna
 
 [脚手架]: ./packages/cli/README.md
 [webpack-box]: ./packages/webpack-box/README.md
