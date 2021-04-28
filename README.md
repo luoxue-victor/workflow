@@ -97,3 +97,10 @@ pk mock # 开启 mock，支持 mockjs
 </a><a href="https://github.com/liuys1107">
 ![](https://avatars2.githubusercontent.com/u/25242149?s=40&v=4)
 </a>
+
+
+### tips
+
+第一次发布带有命名空间的包需要使用
+
+npm publish --access=public
