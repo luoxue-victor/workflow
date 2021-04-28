@@ -60,6 +60,7 @@ pk mock # 开启 mock，支持 mockjs
 [rollup]: ./packages/rollup-box/README.md
 [vite]: ./packages/vite-box/README.md
 [node]: ./packages/node-box/README.md
+[lerna]: ./packages/cli/template/lerna/
 ### 工具
 
 - [node 工具](./packages/shared-utils/README.md)
