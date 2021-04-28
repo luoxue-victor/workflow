@@ -45,15 +45,16 @@ pk changelog # 生成 changelog
 pk josn2ts # json 转成 ts
 pk mock # 开启 mock，支持 mockjs
 ```
-### 开发模板
+### 创建项目及模板
 
-`pk create yourProject` 选项
+命令 `pk create [rojectName]` 选项
 
 - [webpack]: 集成了大量webpack插件，使用 webpackChain 配置，开箱即用
 - [rollup]: 对 rollup 进行封装，开箱即用
 - [vite]: 基于 vite 构建的脚手架，支持 vite 所有配置
 - [node]: 基于 koa 构建的 node 框架
-- [lerna]: 一键创建 lerna 模板，`pk create yourProject`, 选择 lerna
+- [lerna]: 一键创建 lerna 模板
+- [mocks]: mocks 模板，首次执行 pk mock 会自动添加在项目中
 
 [脚手架]: ./packages/cli/README.md
 [webpack]: ./packages/webpack-box/README.md
@@ -61,6 +62,7 @@ pk mock # 开启 mock，支持 mockjs
 [vite]: ./packages/vite-box/README.md
 [node]: ./packages/node-box/README.md
 [lerna]: ./packages/cli/template/lerna/
+[mocks]: ./packages/cli/template/mocks/
 ### 工具
 
 - [node 工具](./packages/shared-utils/README.md)
