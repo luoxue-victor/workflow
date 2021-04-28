@@ -70,13 +70,15 @@ pk mock # 开启 mock，支持 mockjs
 
 ### 学习&共建
 
-- [webpack 学习](./learn/webpack)
-- [rollup 学习](./learn/rollup)
+- [learn-webpack] 跟项目一起学习 webpack 
+- [learn-rollup] 跟项目一起学习 rollup 
 - [项目计划] 把 issue 整理到 project 中做好分类，并有计划的完成目标。
 - [开发指南] 如果想要一起开发的可以参考这里。
 - [插件市场] 目前已经完成的插件。
 - [好的网站] 一些比较实用的网站
 
+[learn-webpack]:./learn/webpack 
+[learn-rollup]: ./learn/rollup
 [项目计划]: https://github.com/luoxue-victor/webpack-box/projects/1
 [开发指南]: ./learn/webpack/课时-25.md
 [插件市场]: https://www.npmjs.com/search?q=%40pkb
