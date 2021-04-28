@@ -49,17 +49,17 @@ pk mock # 开启 mock，支持 mockjs
 
 `pk create yourProject` 选项
 
-- [webpack] 集成了大量webpack插件，使用 webpackChain 配置，开箱即用
-- [rollup] 对 rollup 进行封装，开箱即用
-- [vite] 基于 vite 构建的脚手架，支持 vite 所有配置
-- [node] 基于 koa 构建的 node 框架
-- [lerna] 一键创建 lerna 模板，`pk create yourProject`, 选择 lerna
+- [webpack]: 集成了大量webpack插件，使用 webpackChain 配置，开箱即用
+- [rollup]: 对 rollup 进行封装，开箱即用
+- [vite]: 基于 vite 构建的脚手架，支持 vite 所有配置
+- [node]: 基于 koa 构建的 node 框架
+- [lerna]: 一键创建 lerna 模板，`pk create yourProject`, 选择 lerna
 
 [脚手架]: ./packages/cli/README.md
-[webpack-box]: ./packages/webpack-box/README.md
-[rollup-box]: ./packages/rollup-box/README.md
-[vite-box]: ./packages/vite-box/README.md
-[node-box]: ./packages/node-box/README.md
+[webpack]: ./packages/webpack-box/README.md
+[rollup]: ./packages/rollup-box/README.md
+[vite]: ./packages/vite-box/README.md
+[node]: ./packages/node-box/README.md
 ### 工具
 
 - [node 工具](./packages/shared-utils/README.md)
