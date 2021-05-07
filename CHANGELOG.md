@@ -1,9 +1,18 @@
-## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.4.56...v1.0.9) (2021-05-07)
+## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.4.57...v1.0.9) (2021-05-07)
+
+
+
+## [1.4.57](https://github.com/luoxue-victor/learn_webpack/compare/v1.4.56...v1.4.57) (2021-05-07)
 
 
 ### Bug Fixes
 
 * 删除一些没有用的文件 ([a352079](https://github.com/luoxue-victor/learn_webpack/commit/a352079ebb00d0014b626ddf57c945aa99152390))
+
+
+### Features
+
+* 新增node模板 ([4b20972](https://github.com/luoxue-victor/learn_webpack/commit/4b20972cd864f638d59786621e5bb65fe1fdb179))
 
 
 
