@@ -1,5 +1,5 @@
+const { join } = require('path')
 const path = require('path')
-const nodemon = require('nodemon')
 
 exports.registerCommand = (params) => {
   const { program } = params
@@ -19,7 +19,7 @@ const client = () => {
 }
 
 const server = () => {
-  nodemon({
-    script: path.join(__dirname, '..', 'app', 'nodemon.js')
-  })
+  const server = require('@pkb/node-box/build/server')
+
+  server({ root: join(__dirname, '..') })
 }

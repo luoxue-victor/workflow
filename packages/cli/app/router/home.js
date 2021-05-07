@@ -3,7 +3,7 @@
 module.exports = app => {
   const { router, controller } = app;
 
-  router.get('/dev', controller.dev.index);
-  router.get('/open', controller.dev.index);
-  router.get('/', controller.dev.index);
+  router.get('/one', controller.home.one);
+  router.get('/two', controller.home.two);
+  router.get('/');
 };
