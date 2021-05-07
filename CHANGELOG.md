@@ -1,6 +1,11 @@
 ## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.4.57...v1.0.9) (2021-05-07)
 
 
+### Bug Fixes
+
+* delete tsconfig ([9c82cab](https://github.com/luoxue-victor/learn_webpack/commit/9c82cabb221c39e3bcb6781fc17100454d4236be))
+
+
 
 ## [1.4.57](https://github.com/luoxue-victor/learn_webpack/compare/v1.4.56...v1.4.57) (2021-05-07)
 
