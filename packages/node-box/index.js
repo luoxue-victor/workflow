@@ -52,19 +52,8 @@ module.exports = ({port = 30037, root = process.cwd()} = {}) => {
 
   const controller = {}
 
-  controllers.forEach(Controller => {
-    controller[Controller.name] = new Controller.content()
-  })
-
-  // 重写 router 方法
-  ;['get', 'post', 'put', 'del', 'all'].forEach(method => {
-    const oriMethod = router[method]
-
-    router[method] = function (path, fn) {
-      oriMethod.call(this, ...[path, async (ctx, next) => {
-        await fn.call(this, { ctx, next })
-      }])
-    }
+  controllers.forEach(c => {
+    controller[c.name] = c.content
   })
 
   routers.forEach(route => {

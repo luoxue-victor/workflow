@@ -2,9 +2,9 @@ const path = require('path')
 const nodemon = require('nodemon')
 const chalk = require('chalk')
 
-module.exports = ({ root }) => {
+module.exports = ({ root } = {}) => {
   process.env.NODE_ENV = 'development'
-  process.env.SERVER_ROOT = root
+  process.env.SERVER_ROOT = root || process.cwd()
 
   const server = nodemon({
     script: path.join(__dirname, '..', 'nodemon.js')
