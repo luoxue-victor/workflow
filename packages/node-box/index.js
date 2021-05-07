@@ -76,6 +76,6 @@ module.exports = ({port = 30037, root = process.cwd()} = {}) => {
     .use(router.allowedMethods());
 
   app.listen(port);
-
+  
   console.log(chalk.green('[运行]'), `http://127.0.0.1:${port}/`)
 }
