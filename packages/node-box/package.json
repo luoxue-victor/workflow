@@ -1,6 +1,6 @@
 {
   "name": "@pkb/node-box",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "bin": {
     "node-box": "bin/index.js"
   },
