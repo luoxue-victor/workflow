@@ -37,6 +37,8 @@
     "koa2-cors": "^2.0.6",
     "nodemon": "^2.0.7",
     "semver": "^6.3.0",
+    "socket.io": "^4.0.2",
+    "socket.io-client": "^4.0.2",
     "use-port": "^1.0.4"
   },
   "gitHead": "99cfb71b47331113234c66c33f79d752cc010ee1"
