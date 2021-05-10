@@ -1,6 +1,6 @@
 {
   "name": "@pkb/cli",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "bin": {
     "pk": "bin/index.js"
   },
@@ -13,9 +13,9 @@
   "homepage": "https://github.com/luoxue-victor/workflow#readme",
   "dependencies": {
     "@pkb/cli-box": "^1.4.53",
-    "@pkb/node-box": "^1.5.0",
+    "@pkb/node-box": "^1.5.1",
     "@pkb/shared-utils": "^1.4.50",
-    "@pkb/vite-box": "^1.4.54",
+    "@pkb/vite-box": "^1.5.1",
     "boxen": "^4.1.0",
     "chalk": "^3.0.0",
     "commander": "^4.0.1",
