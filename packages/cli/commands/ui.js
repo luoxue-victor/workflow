@@ -1,5 +1,5 @@
 const { join } = require('path')
-// const { createServer } = require('@pkb/node-box/socket')
+
 
 exports.registerCommand = (params) => {
   const { program } = params
@@ -7,13 +7,19 @@ exports.registerCommand = (params) => {
     .command('ui')
     .description('cli ui，界面话')
     .action(async (plugin, options = {}) => {
-      // await socket()
+      await socket()
       await server()
     })
 }
 
 async function socket () {
+  const { createServer } = require('@pkb/node-box/socket')
 
+  const socket = await createServer(8000)
+
+  socket.on('server run', (url) => {
+    console.log('server run', url)
+  })
 } 
 
 const client = () => {

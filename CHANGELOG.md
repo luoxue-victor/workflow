@@ -1,4 +1,13 @@
-## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.5.1...v1.0.9) (2021-05-10)
+## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.5.2...v1.0.9) (2021-05-10)
+
+
+
+## [1.5.2](https://github.com/luoxue-victor/learn_webpack/compare/v1.5.1...v1.5.2) (2021-05-10)
+
+
+### Features
+
+* 增加 socket ([945861d](https://github.com/luoxue-victor/learn_webpack/commit/945861d51dfd0fbb88b3fa56c08eb289683db743))
 
 
 

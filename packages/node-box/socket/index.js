@@ -1,7 +1,10 @@
 const fs = require('fs')
 const path = require('path')
-const configPath = path.join(__dirname, '__cfg__.json')
+const os = require('os')
+const chalk = require('chalk')
+const configPath = path.join(os.homedir(), '__cfg__.json')
 
+console.log(os.homedir())
 exports.createServer = async (port = 7000) => {
   const _port = await usePort(port)
 
