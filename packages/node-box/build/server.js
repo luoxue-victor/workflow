@@ -11,8 +11,8 @@ module.exports = ({ root } = {}) => {
   })
 
   server.addListener('restart', (file) => {
-    const changeName = file[0].replace(process.cwd(), '')
+    const changeName = file[0].replace(process.env.SERVER_ROOT, '')
 
-    console.log(chalk.cyan('[变更]'), changeName)
+    console.log(chalk.cyan('[变更]'), chalk.yellow('[server]'), changeName)
   })
 }

@@ -1,0 +1,57 @@
+.App {
+  height: 100vh;
+}
+
+body {
+  overflow: hidden;
+}
+
+.title {
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  background: chocolate;
+  color: white;
+  font-size: 28px;
+  font-weight: bold;
+  background: rgba(0, 0, 0, 0.863);
+}
+
+.content {
+  display: flex;
+
+  .left {
+    width: 300px;
+    background: rgba(0, 0, 0, 0.596);
+    height: ~"calc(100vh - 60px)";
+  }
+
+  .right {
+    width: ~"calc(100vw - 300px)";
+    background: rgba(0, 0, 0, 0.082);
+    display: flex;
+
+    .cmd {
+      width: 100%;
+      height: 300px;
+      align-self: flex-end;
+      flex-wrap: wrap;
+
+      .title {
+        height: 10%;
+        display: flex;
+        background: rgb(16, 16, 16);
+        font-size: 14px;
+        align-items: center;
+        color: burlywood;
+      }
+
+      iframe {
+        width: 110%;
+        height: 90%;
+        align-self: flex-end;
+      }
+    }
+  }
+}

@@ -45,6 +45,7 @@ pk lerna # 多包管理 发布
 pk changelog # 生成 changelog
 pk josn2ts # json 转成 ts
 pk mock # 开启 mock，支持 mockjs
+pk tinypng # 压缩图片
 ```
 ### 创建项目及模板
 

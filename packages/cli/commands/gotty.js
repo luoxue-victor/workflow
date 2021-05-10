@@ -5,7 +5,7 @@ const registerCommand = ({program}) => {
     .command('gotty [projectPath]')
     .description('web 终端')
     .action(async (projectPath) => {
-      const http = await useGotty(projectPath, 'sh', 6666)
+      const http = await useGotty(projectPath || process.cwd(), ['sh'], 6666)
 
       console.log(http)
     })

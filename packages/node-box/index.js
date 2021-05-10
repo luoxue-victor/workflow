@@ -66,5 +66,5 @@ module.exports = ({port = 30037, root = process.cwd()} = {}) => {
 
   app.listen(port);
   
-  console.log(chalk.green('[运行]'), `http://127.0.0.1:${port}/`)
+  console.log(chalk.green('[运行]'), chalk.yellow('[server]'), `http://127.0.0.1:${port}/`)
 }

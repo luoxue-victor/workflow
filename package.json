@@ -19,7 +19,7 @@
   },
   "main": "index.js",
   "devDependencies": {
-    "@pkb/cli": "^1.4.58",
+    "@pkb/cli": "^1.5.0",
     "@pkb/plugin-react": "^1.4.50",
     "@pkb/plugin-stylelint": "^1.4.50",
     "@pkb/rollup-box": "^1.4.54",

@@ -22,7 +22,6 @@ exports.getPlugins = () => {
 exports.createServer = async (serverConfig) => {
   const server = await createServer(deepExtend(config, serverConfig))
 
-  console.log(deepExtend(config, serverConfig))
   await server.listen()
 }
 
