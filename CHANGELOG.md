@@ -1,4 +1,18 @@
-## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.4.58...v1.0.9) (2021-05-07)
+## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.5.0...v1.0.9) (2021-05-10)
+
+
+### Features
+
+* 添加 tinypng ([49df6f9](https://github.com/luoxue-victor/learn_webpack/commit/49df6f936b5bd34e82a0bbda32f7019090958efa))
+
+
+
+# [1.5.0](https://github.com/luoxue-victor/learn_webpack/compare/v1.4.58...v1.5.0) (2021-05-07)
+
+
+### Bug Fixes
+
+* 修改node-box ([97227cb](https://github.com/luoxue-victor/learn_webpack/commit/97227cb7b33e61c32e6d536cb62fe34b5b1128cd))
 
 
 
