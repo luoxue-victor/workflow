@@ -1,4 +1,13 @@
-## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.5.2...v1.0.9) (2021-05-10)
+## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.5.3...v1.0.9) (2021-05-11)
+
+
+
+## [1.5.3](https://github.com/luoxue-victor/learn_webpack/compare/v1.5.2...v1.5.3) (2021-05-10)
+
+
+### Features
+
+* 新增mogon ([f0c9f5e](https://github.com/luoxue-victor/learn_webpack/commit/f0c9f5e1038a5383f3a6bc5d26c7e994a71b7c6d))
 
 
 

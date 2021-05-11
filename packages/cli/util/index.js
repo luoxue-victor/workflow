@@ -1,11 +1,9 @@
 const execa = require('execa')
 const path = require('path')
 const fs = require('fs-extra')
-const net = require('net')
 const chalk = require('chalk')
 const { execSync } = require('child_process')
 const PackageManager = require('./ProjectPackageManager')
-const detect = require('detect-port');
 
 const err = (msg) => console.log(`${chalk.red('[错误]')}${msg}`)
 const success = (msg) => console.log(`${chalk.green('[成功]')}${msg}`)
@@ -42,14 +40,23 @@ exports.openApp = (appname, path) => {
 // 获取当前分支
 exports.getCurBranch = () => execSync('git rev-parse --abbrev-ref HEAD').toString().trim()
 
-exports.getCurBranchPromise = (context) =>
-  // eslint-disable-next-line no-async-promise-executor
-  new Promise(async (resolve) => {
-    const { stdout } = await execa('git', ['rev-parse', '--abbrev-ref', 'HEAD'], {
-      cwd: context || process.cwd()
-    })
-    resolve(stdout)
+exports.getPwd = () => execSync('pwd').toString().trim()
+
+exports.getPwdPromise = async (context) => {
+  const { stdout } = await execa('pwd', {
+    cwd: context || process.cwd()
   })
+
+  return stdout
+}
+
+exports.getCurBranchPromise = async (context) => {
+  const { stdout } = await execa('git', ['rev-parse', '--abbrev-ref', 'HEAD'], {
+    cwd: context || process.cwd()
+  })
+
+  return stdout
+}
 
 exports.gitPull = async (context) => {
   const { stdout } = await execa('git', ['pull'], {

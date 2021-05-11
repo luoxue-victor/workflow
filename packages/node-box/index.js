@@ -9,6 +9,7 @@ const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const app = new Koa();
 const router = new Router();
+const { emit } = require('./socket')
 
 module.exports = ({port = 30037, root = process.cwd()} = {}) => {
   const config = {}
@@ -65,6 +66,7 @@ module.exports = ({port = 30037, root = process.cwd()} = {}) => {
     .use(router.allowedMethods());
 
   app.listen(port);
-  
-  console.log(chalk.green('[运行]'), chalk.yellow('[server]'), `http://127.0.0.1:${port}/`)
+  const url = `http://127.0.0.1:${port}/`
+
+  console.log(chalk.green('[运行]'), chalk.yellow('[server]'), url)
 }

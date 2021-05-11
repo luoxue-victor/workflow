@@ -7,7 +7,8 @@ module.exports = ({ root } = {}) => {
   process.env.SERVER_ROOT = root || process.cwd()
 
   const server = nodemon({
-    script: path.join(__dirname, '..', 'nodemon.js')
+    script: path.join(__dirname, '..', 'nodemon.js'),
+    ignoreRoot: ['**/src/**', 'node_modules/**']
   })
 
   server.addListener('restart', (file) => {

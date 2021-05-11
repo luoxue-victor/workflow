@@ -25,6 +25,58 @@ body {
     width: 300px;
     background: rgba(0, 0, 0, 0.596);
     height: ~"calc(100vh - 60px)";
+    text-align: center;
+    padding: 0 18px;
+
+    .clear-list {
+      color: rebeccapurple;
+      margin-top: 10px;
+      border-radius: 4px;
+      height: 20px;
+      background: lightblue;
+      padding: 0 4px;
+      float: right;
+      margin-bottom: 10px;
+    }
+
+    .project-input {
+      margin-top: 20px;
+      width: 100%;
+      border-radius: 8px;
+      border: none;
+      padding: 0 15px;
+      height: 30px;
+      box-sizing: border-box;
+    }
+
+    .project-list {
+      width: 100%;
+      margin-top: 20px;
+      box-sizing: border-box;
+      border-radius: 8px;
+      overflow: hidden;
+      background: black;
+
+      .project-li {
+        .delete {
+          color: grey;
+        }
+      }
+
+      .project-name {
+        width: 80%;
+        display: inline-block;
+        text-align: left;
+        color: white;
+
+        line-height: 30px;
+        box-sizing: border-box;
+      }
+
+      .project-name:hover {
+        color: yellow;
+      }
+    }
   }
 
   .right {
@@ -54,4 +106,10 @@ body {
       }
     }
   }
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  background: rgb(92, 89, 89);
 }
