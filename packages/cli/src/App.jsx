@@ -10,6 +10,7 @@ function App() {
   const [pwd, setPwd] = useState(undefined)
   const [gotty, setGotty] = useState(undefined)
   const [list, setList] = useState([])
+  const [diff, setDiff] = useState('')
 
   const inputEl = useRef(null);
 
@@ -30,6 +31,11 @@ function App() {
     // 获取当前项目分支
     socket.on('git branch', (data) => {
       setBranch(data)
+    })
+
+    // 设置diff
+    socket.on('git diff', (data) => {
+      setDiff(data)
     })
 
     // 获取当前项目路径
@@ -86,6 +92,9 @@ function App() {
           </div>
         </div>
         <div className="right">
+          <code className="code-diff">
+            { diff }
+          </code>
           <div className="cmd">
             {
               branch && <div className="title">

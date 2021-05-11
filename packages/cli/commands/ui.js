@@ -5,7 +5,7 @@ const chalk = require('chalk')
 const path = require('path')
 const os = require('os')
 
-const { getCurBranchPromise, getPwdPromise } = require('../util/index')
+const { getCurBranchPromise, getPwdPromise, getDiffPromise } = require('../util/index')
 const configPath = join(__dirname, '..', 'src', '_config.js')
 const projectListPath = path.join(os.homedir(), '__list__.json')
 
@@ -93,6 +93,17 @@ async function socket() {
           socket.emit('git branch', branch)
         } catch (error) {
           socket.emit('git branch', null)
+        }
+
+        try {
+          const diff = await getDiffPromise(context)
+
+          console.log(diff)
+          socket.emit('git diff', diff)
+        } catch (error) {
+
+          console.log(error)
+          socket.emit('git diff', null)
         }
 
         try {

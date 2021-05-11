@@ -1,6 +1,11 @@
 ## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.5.3...v1.0.9) (2021-05-11)
 
 
+### Features
+
+* ui 列表完成 ([5faba73](https://github.com/luoxue-victor/learn_webpack/commit/5faba73c75cef12c52b77d7c0820090dd070d498))
+
+
 
 ## [1.5.3](https://github.com/luoxue-victor/learn_webpack/compare/v1.5.2...v1.5.3) (2021-05-10)
 
