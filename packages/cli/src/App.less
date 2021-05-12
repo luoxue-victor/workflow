@@ -84,10 +84,65 @@ body {
     display: flex;
     flex-direction: column;
 
-    .code-diff {
+    .content {
       width: 100%;
       overflow-y: auto;
       flex: 1;
+
+      .tools {
+        width: 70%;
+      }
+
+
+
+      .code-diff-wrap {
+        width: 30%;
+        float: right;
+        display: flex;
+        flex-direction: column;
+        background: rgba(0, 0, 0, 0.74);
+
+        .title {
+          height: 30px;
+          color: cyan;
+          font-size: 16px;
+          line-height: 30px;
+          background: unset;
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 10px;
+          box-sizing: border-box;
+          padding: 0 8px;
+          background: rgba(0, 0, 0, 0.2);
+
+          button {
+            font-size: 12px;
+            border-radius: 4px;
+            height: 20px;
+            width: 40px;
+            background: white;
+            color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 4px;
+            font-weight: bold;
+          }
+        }
+
+        .code-diff {
+          color: white;
+          overflow: hidden;
+          overflow-y: auto;
+          box-sizing: border-box;
+          padding: 0 8px;
+          flex: 1;
+        }
+
+        .code-diff::-webkit-scrollbar {
+          width: 0 !important
+        }
+      }
     }
 
     .cmd {

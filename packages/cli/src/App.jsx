@@ -16,7 +16,6 @@ function App() {
 
 
   useEffect(() => {
-
     // 获取项目列表
     socket.on('get project list', (data = []) => {
       if (!data) {
@@ -67,6 +66,10 @@ function App() {
     socket.emit('clear project list')
   }
 
+  const gitCommit = () => {
+    socket.emit('git commit', pwd)
+  }
+
   return (
     <div className="App">
       <h1 className="title">Work Flow</h1>
@@ -92,9 +95,17 @@ function App() {
           </div>
         </div>
         <div className="right">
-          <code className="code-diff">
-            { diff }
-          </code>
+          <div className="content">
+            <div className="tools">
+              hahahah
+            </div>
+            <div className="code-diff-wrap">
+              <div className="title"><span>git diff</span><button onClick={gitCommit}>提交</button></div>
+              <code className="code-diff">
+                { diff.split('\n').map(line => <div className={ /^\+/.test(line) ? 'green' : /^\-/.test(line) ? 'red' : '' }>{ line }</div>) }
+              </code>
+            </div>
+          </div>
           <div className="cmd">
             {
               branch && <div className="title">
