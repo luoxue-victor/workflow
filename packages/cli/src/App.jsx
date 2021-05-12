@@ -107,15 +107,18 @@ function App() {
             </div>
           </div>
           <div className="cmd">
-            {
-              branch && <div className="title">
-                <span className="branch">➜</span>
-                <span className="hidden">空</span>
-                <span>{ pwd }</span>
-                <span className="hidden">空</span>
-                <span className="git">git:(<span className="branch">{ branch }</span>)</span>
-              </div>
-            }
+              <div className="title">
+              <button className="extsh">退回sh</button>
+              {
+                branch && <>
+                  <span className="branch">➜</span>
+                  <span className="hidden">空</span>
+                  <span>{ pwd }</span>
+                  <span className="hidden">空</span>
+                  <span className="git">git:(<span className="branch">{ branch }</span>)</span>
+                </>
+              }
+            </div>
             {
               gotty && <iframe src={gotty}></iframe>
             }
