@@ -67,7 +67,11 @@ function App() {
   }
 
   const gitCommit = () => {
-    socket.emit('git commit', pwd)
+    socket.emit('gotty cmd', pwd, ['pk', 'cm'])
+  }
+
+  const gottyRefresh = () => {
+    socket.emit('gotty cmd', pwd, ['sh'])
   }
 
   return (
@@ -108,7 +112,7 @@ function App() {
           </div>
           <div className="cmd">
               <div className="title">
-              <button className="extsh">退回sh</button>
+              <button className="extsh" onClick={gottyRefresh}>刷新</button>
               {
                 branch && <>
                   <span className="branch">➜</span>

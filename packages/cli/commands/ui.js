@@ -46,7 +46,7 @@ async function socket() {
       clearProjectList(socket, callback)
       addProjectList(socket, callback)
       deleteProjectList(socket, callback)
-      gitcommit(socket, callback)
+      gottyCmd(socket, callback)
     })
 
     // 将socket链接动态传给端上
@@ -59,10 +59,10 @@ async function socket() {
 }
 
 // ========================= listen =====================================
-const gitcommit = (socket) => {
-  socket.on('git commit', async (context) => {
-    console.log('git commt', context)
-    socketUseGotty(socket, context, ['pk', 'cm'])
+const gottyCmd = (socket) => {
+  socket.on('gotty cmd', async (context, cmd) => {
+    console.log('gottyCmd', context, cmd)
+    socketUseGotty(socket, context, cmd)
   })
 }
 
@@ -135,7 +135,7 @@ const addProjectList = (socket, cb) => {
   })
 }
 
-// ====================== util ==================================
+// ====================== util ==============================
 const client = () => {
   const { createServer, getPlugins } = require('@pkb/vite-box')
   const plugins = getPlugins();
