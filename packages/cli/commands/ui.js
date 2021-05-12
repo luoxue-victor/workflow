@@ -4,6 +4,7 @@ const useGotty = require('../util/useGotty')
 const chalk = require('chalk')
 const path = require('path')
 const os = require('os')
+const execa = require('execa')
 
 const { getCurBranchPromise, getPwdPromise, getDiffPromise } = require('../util/index')
 const configPath = join(__dirname, '..', 'src', '_config.js')
@@ -46,7 +47,8 @@ async function socket() {
       clearProjectList(socket, callback)
       addProjectList(socket, callback)
       deleteProjectList(socket, callback)
-      gottyCmd(socket, callback)
+      onGottyCmd(socket, callback)
+      onGitCommit(socket)
     })
 
     // 将socket链接动态传给端上
@@ -59,10 +61,26 @@ async function socket() {
 }
 
 // ========================= listen =====================================
-const gottyCmd = (socket) => {
+const onGottyCmd = (socket) => {
   socket.on('gotty cmd', async (context, cmd) => {
-    console.log('gottyCmd', context, cmd)
+    console.log('onGottyCmd', context, cmd)
     socketUseGotty(socket, context, cmd)
+  })
+}
+
+const onGitCommit = async (socket) => {
+  socket.on('git commit', async (context, commit) => {
+    console.log('commit', commit)
+
+    await execa('git', ['add', '.'], {
+      cwd: context
+    })
+    
+    const { stdout } = await execa('git', ['commit', '-m', commit], {
+      cwd: context
+    })
+
+    console.log(stdout.toString())
   })
 }
 
@@ -85,7 +103,6 @@ const toTopProject = (socket, cb) => {
     cb(socket)
   })
 }
-
 
 const clearProjectList = (socket, cb) => {
   socket.on('clear project list', () => {

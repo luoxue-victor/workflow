@@ -16,6 +16,7 @@
     "@pkb/node-box": "^1.5.3",
     "@pkb/shared-utils": "^1.4.50",
     "@pkb/vite-box": "^1.5.1",
+    "antd": "^4.15.5",
     "boxen": "^4.1.0",
     "chalk": "^3.0.0",
     "commander": "^4.0.1",
