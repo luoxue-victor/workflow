@@ -64,7 +64,7 @@ exports.gitPull = async (context) => {
   })
   return stdout
 }
- 
+
 exports.getDiffPromise = async (context) => {
   const { stdout } = await execa('git', ['diff'], {
     cwd: context
