@@ -89,11 +89,26 @@ body {
       overflow-y: auto;
       flex: 1;
 
-      .tools {
+      .flow {
         width: 70%;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+
+        .progress-card-wrap {
+          overflow: hidden;
+          overflow-y: auto;
+          box-sizing: border-box;
+          width: 100%;
+          display: flex;
+          flex-wrap: wrap;
+
+          svg {
+            width: 25px;
+            height: 25px;
+          }
+        }
       }
-
-
 
       .code-diff-wrap {
         width: 30%;

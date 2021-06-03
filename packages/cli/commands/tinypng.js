@@ -8,29 +8,43 @@ const conf = {
   files: {},
   isDeep: false,
   minOptimizeCompressRatio: 0.1,
-  compressCount: 1
+
+  allImageCount: 0,
+  ableCompressImageCount: 0,
+  sumOptimizeCompressRatio: 0,
+  avgOptimizeCompressRatio: 0, // 平均压缩比率
+  oriImageSize: 0,
+  nowImageSize: 0
 };
 
 exports.registerCommand = (params) => {
   const { program } = params
   program
-    .command('tinypng [imgEntryPath] [compressCount] [isDeep]')
+    .command('tinypng [imgEntryPath] [isDeep]')
     .description('tinypng 压缩图片')
-    .action(async (imgEntryPath = './', compressCount = 1, isDeep = false) => {
-      const tinyImg = new TinyImg(imgEntryPath, compressCount, isDeep);
+    .action(async (imgEntryPath = './', isDeep = true) => {
+      if (/(.js)$/.test(imgEntryPath)) {
+        const list = require(imgEntryPath)
+
+        list.forEach((item) => {
+          const tinyImg = new TinyImg(item, false);
+          tinyImg.compress();
+        })
+        
+        return
+      }
+
+      const tinyImg = new TinyImg(imgEntryPath, isDeep);
       tinyImg.compress();
     })
 }
-
 class TinyImg {
-  constructor(imgEntryPath, compressCount, isDeep) {
+  constructor(imgEntryPath, isDeep) {
     this.conf = {
       ...conf,
       imgEntryPath,
-      compressCount,
       isDeep
     };
-    this.compressEdCount = 0;
   }
 
   /**
@@ -114,16 +128,22 @@ class TinyImg {
   }
 
   fileUpload(imgPath) {
+    conf.allImageCount ++
+
     conf.files[imgPath] ? (conf.files[imgPath]++) : (conf.files[imgPath] = 1);
 
     const req = https.request(this.buildRequestParams(path.extname(imgPath).replace('.', '')), res => {
       res.on('data', buffer => {
-        const postInfo = JSON.parse(buffer.toString());
-        if (postInfo.error) {
-          console.error(chalk.red(`压缩失败！\n 当前文件：${imgPath} \n ${postInfo.message}`));
-        }
-        else {
-          this.fileUpdate(imgPath, postInfo);
+        try {
+          const postInfo = JSON.parse(buffer.toString());
+          if (postInfo.error) {
+            console.error(chalk.red(`压缩失败！\n 当前文件：${imgPath} \n ${postInfo.message}`));
+          }
+          else {
+            this.fileUpdate(imgPath, postInfo);
+          }
+        } catch (error) {
+          console.log(error)
         }
       });
     });
@@ -133,7 +153,6 @@ class TinyImg {
   }
 
   fileUpdate(entryImgPath, info) {
-
     if ((1 - info.output.ratio) < conf.minOptimizeCompressRatio) {
       console.info(chalk.green.bold(`优化压缩比例是 ${(1 - info.output.ratio)} 大于最小优化压缩比率 ${conf.minOptimizeCompressRatio}，不需要替换图片`));
       return
@@ -145,23 +164,26 @@ class TinyImg {
       res.setEncoding('binary');
       res.on('data', data => (body += data));
       res.on('end', () => {
+
+        let log = '';
+        log = '压缩成功:\n';
+        log += `       -优化比例: ${((1 - info.output.ratio) * 100).toFixed(2)}%\n`;
+        log += `       -原始大小: ${(info.input.size / 1024).toFixed(2)}KB\n`;
+        log += `       -压缩大小: ${(info.output.size / 1024).toFixed(2)}KB\n`;
+        log += `       -文件：${entryImgPath}`;
+        console.info(chalk.green.bold(log));
+
+        conf.ableCompressImageCount ++
+        conf.avgOptimizeCompressRatio += (1 - info.output.ratio)
+        conf.oriImageSize += info.input.size / 1024
+        conf.nowImageSize += info.output.size / 1024
+
+        console.log(`所有图片数量：${conf.allImageCount}，压缩比率大于10%的图片数量：${conf.ableCompressImageCount}，平均压缩比率：${conf.avgOptimizeCompressRatio / conf.ableCompressImageCount}`)
+        console.log(`原始size：${conf.oriImageSize}KB，压缩size：${conf.nowImageSize}KB，压缩比例：${1 - (conf.nowImageSize / conf.oriImageSize)}，压缩量：${conf.oriImageSize - conf.nowImageSize}KB`)
+
         fs.writeFile(entryImgPath, body, 'binary', err => {
           if (err) {
             return console.error(chalk.green.red(log));
-          }
-          let log = '';
-          if (conf.files[entryImgPath] <= this.conf.compressCount) {
-            console.info(chalk.green
-              .bold(`${entryImgPath}：已压缩${conf.files[entryImgPath]}次`));
-            this.fileUpload(entryImgPath);
-          }
-          else {
-            log = '压缩成功:\n';
-            log += `       -优化比例: ${((1 - info.output.ratio) * 100).toFixed(2)}%\n`;
-            log += `       -原始大小: ${(info.input.size / 1024).toFixed(2)}KB\n`;
-            log += `       -压缩大小: ${(info.output.size / 1024).toFixed(2)}KB\n`;
-            log += `       -文件：${entryImgPath}`;
-            console.info(chalk.green.bold(log));
           }
         });
       });

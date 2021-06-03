@@ -1,3 +1,3 @@
 export default {
-  "socketUrl": "http://localhost:20009"
+  "socketUrl": "http://localhost:20000"
 }

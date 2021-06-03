@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react'
-import './App.less'
-import CommitModal from './components/modal/CommitModal';
+import { message } from 'antd'
 import 'antd/dist/antd.css';
+import CommitModal from './components/modal/CommitModal'
+import ProgressCard from './components/card/ProgressCard'
+import './App.less'
 import { 
   init, 
   onGetProjectList, 
@@ -17,6 +19,7 @@ import {
   emitGottyCmd
 } from './lib/socket'
 
+window.message = message
 init();
 
 function App() {
@@ -83,8 +86,11 @@ function App() {
         </div>
         <div className="right">
           <div className="content">
-            <div className="tools">
-              hahahah
+            <div className="flow">
+              <div className="title">flow</div>
+              <div className="progress-card-wrap">
+                <ProgressCard></ProgressCard>
+              </div>
             </div>
             <div className="code-diff-wrap">
               <div className="title"><span>git diff</span><button onClick={() => { commitModalEl.current.showModal() }}>提交</button></div>
