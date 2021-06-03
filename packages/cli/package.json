@@ -1,6 +1,6 @@
 {
   "name": "@pkb/cli",
-  "version": "1.5.3",
+  "version": "1.5.4",
   "bin": {
     "pk": "bin/index.js"
   },
@@ -14,7 +14,7 @@
   "dependencies": {
     "@ant-design/icons": "^4.6.2",
     "@pkb/cli-box": "^1.4.53",
-    "@pkb/node-box": "^1.5.3",
+    "@pkb/node-box": "^1.5.4",
     "@pkb/shared-utils": "^1.4.50",
     "@pkb/vite-box": "^1.5.1",
     "antd": "^4.15.5",
