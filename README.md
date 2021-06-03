@@ -45,7 +45,10 @@ pk lerna # 多包管理 发布
 pk changelog # 生成 changelog
 pk josn2ts # json 转成 ts
 pk mock # 开启 mock，支持 mockjs
-pk tinypng # 压缩图片
+pk tinypng # 压缩图片，批量压缩
+pk tree [path] # 将目录生成 tree 结构
+pk find [fileName] [str] # 搜索文件及文件内容
+pk qrcode [content] # 在终端输出二维码
 ```
 ### 创建项目及模板
 
