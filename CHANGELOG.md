@@ -1,9 +1,30 @@
-## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.5.3...v1.0.9) (2021-05-11)
+## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.5.4...v1.0.9) (2021-06-16)
 
 
 ### Features
 
+* 增加vscode插件 ([1573186](https://github.com/luoxue-victor/learn_webpack/commit/1573186749362805769685d144d48cdf81980505))
+
+
+
+## [1.5.4](https://github.com/luoxue-victor/learn_webpack/compare/v1.5.3...v1.5.4) (2021-06-03)
+
+
+### Bug Fixes
+
+* test1 ([8b9c83c](https://github.com/luoxue-victor/learn_webpack/commit/8b9c83c153208a4bf60123a5fc6421c759e0b53f))
+
+
+### Features
+
+* add commit ([3c398e0](https://github.com/luoxue-victor/learn_webpack/commit/3c398e00593b56932fcd270a131dab5ab5fef100))
+* add test ([4a07451](https://github.com/luoxue-victor/learn_webpack/commit/4a074518a3262ca7e2d3745fc2ccd8a0e3f30b26))
+* add ui commit ([55a083a](https://github.com/luoxue-victor/learn_webpack/commit/55a083a58f0e4dd07b8a61a76a932a3a234c6a22))
+* ui commit add refresh ([53cd4b4](https://github.com/luoxue-victor/learn_webpack/commit/53cd4b4a2ae48a299beaf33b4db1b108f1d310a6))
 * ui 列表完成 ([5faba73](https://github.com/luoxue-victor/learn_webpack/commit/5faba73c75cef12c52b77d7c0820090dd070d498))
+* ui 增加 diff ([41dd03b](https://github.com/luoxue-victor/learn_webpack/commit/41dd03b65407fae281ebe9f1e4c611c510015a07))
+* 增加 qrcode ([b96a992](https://github.com/luoxue-victor/learn_webpack/commit/b96a992db8e4a4fdf7aed5825aed3494ac67384a))
+* 增加 qrcode ([18118d2](https://github.com/luoxue-victor/learn_webpack/commit/18118d2de1f2add1ea131ebbf2865eec71516382))
 
 
 
