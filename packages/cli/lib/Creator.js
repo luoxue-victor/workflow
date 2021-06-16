@@ -12,7 +12,6 @@ const {
   execa,
   log,
   warn,
-  error,
   logWithSpinner,
   stopSpinner,
   hasGit,
@@ -149,6 +148,11 @@ module.exports = class Creator extends EventEmitter {
           name: 'lerna',
           value: 'lerna',
           message: '多包存储库管理工具'
+        },
+        {
+          name: 'vscode 插件',
+          value: 'vscode',
+          message: 'vscode 插件'
         }
       ]
     }

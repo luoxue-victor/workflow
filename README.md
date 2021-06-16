@@ -32,7 +32,7 @@
 # 全局安装
 npm i -g @pkb/cli # 全局安装使用
 
-pk create <project-name> # 创建项目 webpack|rollup|vite|lerna|node
+pk create <project-name> # 创建项目 webpack|rollup|vite|lerna|node|vscode插件
 pk add <plugin> # 安装插件
 pk info # 查看项目及系统配置
 pk upgrade [filter] # 检查升级 npm 版本

@@ -2,7 +2,6 @@ node_modules
 dll
 dist
 .idea
-.vscode
 coverage
 package-lock.json
 lerna-debug.log
