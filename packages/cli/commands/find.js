@@ -13,12 +13,10 @@ exports.registerCommand = (params) => {
         + ` -name '**node_modules**' -prune -o `
         + ` -name '**.git**' -prune -o `
         + ` -name '**output**' -prune -o `
-        + ` -iname ${findPath} -a -print `
+        + ` -iname *${findPath.split('').join('*')}* -a -print `
       )
 
-      if (log) {
-        log = log.toString()
-      }
+      log = log && log.toString()
 
       const paths = log.split('\n').filter(_ => _)
 
@@ -28,7 +26,7 @@ exports.registerCommand = (params) => {
           const content = fs.readFileSync(p,{
             encoding: 'utf-8'
           })
-          const reg = new RegExp(`[^\n]*${str}[^\n]*\n`, 'g')
+          const reg = new RegExp(`[^\n]*${str}[^\n]*\n`, 'ig')
           const match = content.match(reg)
   
           if (match && match.length) {
@@ -39,7 +37,32 @@ exports.registerCommand = (params) => {
           }
         })
       } else {
-        console.log(paths)
+        paths.forEach(p => {
+          const ps = p.split('/')
+          let restName = ps.pop()
+          let nameStr = []
+
+          new RegExp()
+
+          findPath.split('').forEach(i => {
+
+            if ('.*'.includes(i)) {
+              i = `\\${i}`
+            }
+
+            restName.replace(new RegExp(i, 'i'), ($1) => {
+              const index = restName.indexOf($1)
+              const subName = restName.substring(0, index + 1)
+
+              nameStr.push(subName.replace(new RegExp(i, 'i'), ($1) => {
+                return chalk.blueBright($1)
+              }))
+              restName = restName.substring(index + 1, restName.length)
+            })
+          })
+
+          console.log([...ps, nameStr.join('')].join('/') + restName)
+        })
       }
     })
 }

@@ -60,6 +60,7 @@ pk qrcode [content] # 在终端输出二维码
 - [node]: 基于 koa 构建的 node 框架
 - [lerna]: 一键创建 lerna 模板
 - [mocks]: mocks 模板，首次执行 pk mock 会自动添加在项目中
+- [vscode]: 创建 vscode 插件模版
 
 [脚手架]: ./packages/cli/README.md
 [webpack]: ./packages/webpack-box/README.md
@@ -68,6 +69,7 @@ pk qrcode [content] # 在终端输出二维码
 [node]: ./packages/node-box/README.md
 [lerna]: ./packages/cli/template/lerna/
 [mocks]: ./packages/cli/template/mocks/
+[vscode]: ./packages/cli/template/vscode/
 ### 工具
 
 - [node 工具](./packages/shared-utils/README.md)
