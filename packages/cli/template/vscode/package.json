@@ -1,41 +1,74 @@
 {
-	"name": "vacode-plugins",
-	"displayName": "vscode 插件",
-	"description": "",
-	"version": "0.0.1",
-	"engines": {
-		"vscode": "^1.57.0"
-	},
-	"categories": [
-		"Other"
-	],
-	"activationEvents": [
-		"onCommand:extension.helloWorld"
-	],
-	"main": "./index.js",
-	"contributes": {
-		"commands": [
-			{
-				"command": "extension.helloWorld",
-				"title": "Hello World"
-			}
-		],
-		"snippets": [
-			{
-				"language": "",
-				"path": "./snippets/console.code-snippets"
-			}
-		]
-	},
-	"scripts": {},
-	"devDependencies": {
-		"@types/glob": "^7.1.3",
-		"@types/mocha": "^8.2.2",
-		"@types/node": "14.x",
-		"@types/vscode": "^1.57.0",
-		"eslint": "^7.27.0",
-		"glob": "^7.1.7",
-		"mocha": "^8.4.0",
-		"typescript": "^4.3.2"
-	}
+  "name": "vacode-plugins",
+  "displayName": "vscode 插件",
+  "description": "",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.57.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:extension.helloWorld",
+    "onLanguage:json"
+  ],
+  "main": "./main.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.helloWorld",
+        "title": "Hello World"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "",
+        "path": "./src/snippets/console.code-snippets"
+      }
+    ],
+    "themes": [
+      {
+        "label": "colortheme",
+        "uiTheme": "vs-dark",
+        "path": "./themes/colortheme-color-theme.json"
+      }
+    ],
+    "keybindings": [
+      {
+        "key": "ctrl+.",
+        "command": "workbench.action.showCommands"
+      }
+    ]
+  },
+  "menus": {
+    "editor/context": [
+      {
+        "when": "editorFocus",
+        "command": "extension.demo.getCurrentFilePath",
+        "group": "navigation"
+      }
+    ],
+    "explorer/context": [
+      {
+        "command": "extension.demo.getCurrentFilePath",
+        "group": "navigation"
+      }
+    ]
+  },
+  "extensionPack": [],
+  "scripts": {
+    "build": "node ./build/index.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.1.3",
+    "@types/mocha": "^8.2.2",
+    "@types/node": "14.x",
+    "@types/vscode": "^1.57.0",
+    "deep-readdir-sync": "^1.0.8",
+    "eslint": "^7.27.0",
+    "glob": "^7.1.7",
+    "mocha": "^8.4.0",
+    "typescript": "^4.3.2"
+  }
 }

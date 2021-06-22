@@ -7,11 +7,33 @@
 ### 目录结构
 
 ```bash
-├── index.js # 入口
+├── README.md
 ├── package.json
-├── .vscode # vscode 配置
+├── .vscode # 配置
 |  ├── extensions.json
 |  └── launch.json
-├── snippets/ # snippet 在这里写
-└── extensions/ # extensions 在这里写
+├── build/index.js # 构建
+└── src
+   ├── main.js # 入口
+   ├── extensions # 插件
+   |  ├── helloWorld.js
+   |  └── packageJsonJumpToNodeModules.js
+   ├── themes/colortheme-color-theme.json # 主题
+   ├── snippets/console.code-snippets # 代码片段
+   └── utils/index.js # 工具
+```
+
+### contributes
+
+```bash
+- commands # 脚本命令
+- snippets # 代码片段
+- themes # 主题
+- keybindings # 快捷键设置
+```
+
+### 开发
+
+```bash
+npm run build # 自动构建
 ```
