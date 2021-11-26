@@ -1,8 +1,10 @@
-## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.5.4...v1.0.9) (2021-06-17)
+## [1.0.9](https://github.com/luoxue-victor/learn_webpack/compare/v1.5.4...v1.0.9) (2021-11-26)
 
 
 ### Features
 
+* find 模糊搜索 搜索词加高亮 ([8d087a0](https://github.com/luoxue-victor/learn_webpack/commit/8d087a01baff07a4634ab2be1c848cdf3c647a0e))
+* 增加 vscode 构建 ([59e818e](https://github.com/luoxue-victor/learn_webpack/commit/59e818e3c3db3b359272d8dad05d09bd6e355266))
 * 增加vscode插件 ([1573186](https://github.com/luoxue-victor/learn_webpack/commit/1573186749362805769685d144d48cdf81980505))
 
 

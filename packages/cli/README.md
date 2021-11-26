@@ -18,6 +18,7 @@ pk jsdoc2md # 把 js 注释生成 md
 pk lerna # 多包管理 发布
 pk changelog # 生成 changelog
 pk mock # 开启 mock，支持 mockjs
+pk deps #
 ```
 ### mock
 
